@@ -4,9 +4,11 @@ import 'package:upwork/constanse.dart';
 
 class TextFieldContainer extends StatelessWidget {
   final Widget child;
+  final Color borderColor;
   const TextFieldContainer({
     Key key,
     this.child,
+    this.borderColor=bgUpwork,
   }) : super(key: key);
 
   @override
@@ -14,11 +16,13 @@ class TextFieldContainer extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0.05),
+      height: size.height * 0.07,
       width: size.width * 0.8,
       decoration: BoxDecoration(
-        color: bgUpwork,
-        borderRadius: BorderRadius.circular(29),
+        color: Colors.white,
+        border: Border.all(color: borderColor, width: 1.0),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: child,
     );
