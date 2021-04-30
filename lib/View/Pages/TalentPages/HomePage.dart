@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.grey[100],
       drawer: CustomDrawer(),
       appBar: AppBar(
         leading: Builder(
@@ -37,7 +37,6 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Column(
-        
         children: [
           Text("Home Page"),
         ],
@@ -58,56 +57,55 @@ class _HomePageState extends State<HomePage> {
           icon: Icon(Icons.search),
           title: Text(
             "Jobs",
-            style: TextStyle(color: Color(0xff6c788a),fontSize: 12),
+            style: TextStyle(color: Color(0xff6c788a), fontSize: 12),
           ),
           selectedTitle: Text(
             "Jobs",
-            style: TextStyle(color: bgUpwork,fontSize: 14),
+            style: TextStyle(color: bgUpwork, fontSize: 14),
           ),
         ),
         CustomNavigationBarItem(
           icon: Icon(Icons.description),
           title: Text(
             "Proposals",
-            style: TextStyle(color: Color(0xff6c788a),fontSize: 11),
+            style: TextStyle(color: Color(0xff6c788a), fontSize: 11),
           ),
           selectedTitle: Text(
             "Proposals",
-            style: TextStyle(color: bgUpwork,fontSize: 13),
-            
+            style: TextStyle(color: bgUpwork, fontSize: 13),
           ),
         ),
         CustomNavigationBarItem(
           icon: Icon(Icons.assignment_turned_in_sharp),
           title: Text(
             "Contracts",
-            style: TextStyle(color: Color(0xff6c788a),fontSize: 11),
+            style: TextStyle(color: Color(0xff6c788a), fontSize: 11),
           ),
           selectedTitle: Text(
             "Contracts",
-            style: TextStyle(color: bgUpwork,fontSize: 13),
+            style: TextStyle(color: bgUpwork, fontSize: 13),
           ),
         ),
         CustomNavigationBarItem(
           icon: Icon(Icons.chat),
           title: Text(
             "Messages",
-            style: TextStyle(color: Color(0xff6c788a),fontSize: 11),
+            style: TextStyle(color: Color(0xff6c788a), fontSize: 11),
           ),
           selectedTitle: Text(
             "Messages",
-            style: TextStyle(color: bgUpwork,fontSize: 13),
+            style: TextStyle(color: bgUpwork, fontSize: 13),
           ),
         ),
         CustomNavigationBarItem(
           icon: Icon(Icons.notifications_outlined),
           title: Text(
             "Alerts",
-            style: TextStyle(color: Color(0xff6c788a),fontSize: 11),
+            style: TextStyle(color: Color(0xff6c788a), fontSize: 11),
           ),
           selectedTitle: Text(
             "Jobs",
-            style: TextStyle(color: bgUpwork,fontSize: 13),
+            style: TextStyle(color: bgUpwork, fontSize: 13),
           ),
         ),
       ],
