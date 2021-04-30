@@ -1,32 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 
-class Reports extends StatefulWidget {
-  Reports({Key key}) : super(key: key);
+class MyStats extends StatefulWidget {
+  MyStats({Key key}) : super(key: key);
 
   @override
-  _ReportsState createState() => _ReportsState();
+  _MyStatsState createState() => _MyStatsState();
 }
 
-class _ReportsState extends State<Reports> {
+class _MyStatsState extends State<MyStats> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Center(
           child: Text(
-            "Reports",
-            style: TextStyle(color: Colors.white),
+            "My Stats",
           ),
         ),
         actions: [
           CustomMenuButton(),
         ],
       ),
-      body: Column(
-        children: [
-          Text("Reports"),
-        ],
+      body: Text(
+        "My Stats",
       ),
     );
   }

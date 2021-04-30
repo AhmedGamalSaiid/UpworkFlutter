@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
+import 'package:upwork/View/components/Talent/ProfileHeadSection.dart';
+import 'package:upwork/View/components/Talent/ProfileTotalEarning.dart';
 
-class Reports extends StatefulWidget {
-  Reports({Key key}) : super(key: key);
-
+class Profile extends StatefulWidget {
   @override
-  _ReportsState createState() => _ReportsState();
+  _ProfileState createState() => _ProfileState();
 }
 
-class _ReportsState extends State<Reports> {
+class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Center(
           child: Text(
-            "Reports",
+            "Profile",
             style: TextStyle(color: Colors.white),
           ),
         ),
@@ -25,7 +25,8 @@ class _ReportsState extends State<Reports> {
       ),
       body: Column(
         children: [
-          Text("Reports"),
+          ProfileHeadSection(),
+          ProfileTotalEarning(),
         ],
       ),
     );
