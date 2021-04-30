@@ -13,11 +13,12 @@ class MyApp extends StatelessWidget {
     bool login = false;
     return MaterialApp(
       title: 'Upwork',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: bgUpworkDark,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: login?Jobs(): Welcome(),
+      home: login ? Jobs() : Welcome(),
     );
   }
 }
