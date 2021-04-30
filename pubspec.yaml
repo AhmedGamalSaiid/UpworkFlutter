@@ -28,6 +28,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^0.19.1
   email_validator: ^2.0.1
+  custom_navigation_bar: ^0.8.1
+  
+
 
 dev_dependencies:
   flutter_test:
