@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/welcome.dart';
+import 'package:upwork/View/Pages/TalentPages/HomePage.dart';
+// import 'package:upwork/View/Pages/BeforeLoginPages/welcome.dart';
 import 'constanse.dart';
 
 void main() {
@@ -13,10 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Upwork',
       theme: ThemeData(
-        primaryColor: bgUpwork,
+        primaryColor: bgUpworkDark,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home:Welcome(),
+      home: HomePage(),
     );
   }
 }
