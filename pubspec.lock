@@ -117,7 +117,7 @@ packages:
     source: hosted
     version: "0.0.1"
   font_awesome_flutter:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: font_awesome_flutter
       url: "https://pub.dartlang.org"
