@@ -13,17 +13,17 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:bgUpworkDark,
-      
+      backgroundColor: bgUpworkDark,
       body: Container(
-       width: 500,
-       height: 500,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/img/1.jpg"),
-            fit: BoxFit.fill,
+          width: 500,
+          height: 500,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/img/1.jpg"),
+              fit: BoxFit.fill,
+            ),
           ),
-        ),
+        
         child:Column(
           mainAxisAlignment: MainAxisAlignment.end,
           

@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Upwork',
       theme: ThemeData(
-        primaryColor: bgUpwork,
+        primaryColor: bgUpworkDark,
         scaffoldBackgroundColor: Colors.white,
       ),
       home: login?Jobs(): Welcome(),
