@@ -47,6 +47,7 @@ class _ReportsPageState extends State<ReportsPage> {
                       alignment: Alignment.topLeft,
                       child: Column(children: <Widget>[
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'Work in Progress',
@@ -56,9 +57,9 @@ class _ReportsPageState extends State<ReportsPage> {
                                   fontWeight: FontWeight.bold),
                             ),
                             Icon(
-                              Icons.arrow_right,
+                              Icons.arrow_forward_ios_outlined,
                               color: Color(0xFF8ACC5E),
-                              size: 20.0,
+                              size: 25.0,
                             ),
                           ],
                         ),
@@ -101,6 +102,7 @@ class _ReportsPageState extends State<ReportsPage> {
                       alignment: Alignment.topLeft,
                       child: Column(children: <Widget>[
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'In review',
@@ -110,9 +112,9 @@ class _ReportsPageState extends State<ReportsPage> {
                                   fontWeight: FontWeight.bold),
                             ),
                             Icon(
-                              Icons.arrow_right,
+                              Icons.arrow_forward_ios_outlined,
                               color: Color(0xFF8ACC5E),
-                              size: 20.0,
+                              size: 25.0,
                             ),
                           ],
                         ),
@@ -155,6 +157,7 @@ class _ReportsPageState extends State<ReportsPage> {
                       alignment: Alignment.topLeft,
                       child: Column(children: <Widget>[
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'Pending',
@@ -164,7 +167,7 @@ class _ReportsPageState extends State<ReportsPage> {
                                   fontWeight: FontWeight.bold),
                             ),
                             Icon(
-                              Icons.arrow_right,
+                              Icons.arrow_forward_ios_outlined,
                               color: Color(0xFF8ACC5E),
                               size: 20.0,
                             ),
@@ -207,6 +210,7 @@ class _ReportsPageState extends State<ReportsPage> {
                       alignment: Alignment.topLeft,
                       child: Column(children: <Widget>[
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
                               'Available',
@@ -218,7 +222,7 @@ class _ReportsPageState extends State<ReportsPage> {
                             Align(
                               alignment: Alignment.topRight,
                               child: Icon(
-                                Icons.arrow_right,
+                                Icons.arrow_forward_ios_outlined,
                                 color: Color(0xFF8ACC5E),
                                 size: 20.0,
                               ),

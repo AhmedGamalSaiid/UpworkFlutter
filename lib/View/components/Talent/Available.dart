@@ -26,7 +26,7 @@ class _AvailablePageState extends State<AvailablePage> {
           ),
         ),
         body: Container(
-          color: Colors.black,
+          color: Colors.white,
           width: double.infinity,
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +36,7 @@ class _AvailablePageState extends State<AvailablePage> {
                   child: Text(
                     'you earned it!Where should we deliver your balance ? ',
                     style: TextStyle(
-                      color: Color(0xFF8ACC5E),
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                     ),
@@ -68,7 +68,7 @@ class _AvailablePageState extends State<AvailablePage> {
                   child: Text(
                     'No transactions in the last 30 days ',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                     ),
@@ -82,7 +82,7 @@ class _AvailablePageState extends State<AvailablePage> {
                     child: TextAnchor(
                       textColor: Colors.black54,
                       linkColor: Color(0xFF8ACC5E),
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.bold,
                       fontSize: 18.0,
                       text:
                           '(View all transactions)[https://medium.com/@ranaranvijaysingh9].',
@@ -98,7 +98,7 @@ class _AvailablePageState extends State<AvailablePage> {
                   child: Text(
                     'Note:this report is updated every hour',
                     style: TextStyle(
-                      color: Colors.white70,
+                      color: Colors.black54,
                       fontWeight: FontWeight.normal,
                       fontSize: 15,
                     ),

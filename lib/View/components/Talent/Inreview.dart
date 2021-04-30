@@ -25,7 +25,7 @@ class _InReviewPageState extends State<InReviewPage> {
           ),
         ),
         body: Container(
-          color: Colors.black,
+          color: Colors.white,
           width: double.infinity,
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +49,7 @@ class _InReviewPageState extends State<InReviewPage> {
                   child: Text(
                     'You have no jobs in review',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                     ),
@@ -63,7 +63,7 @@ class _InReviewPageState extends State<InReviewPage> {
                   child: Text(
                     'Note:this report is updated every hour',
                     style: TextStyle(
-                      color: Colors.white70,
+                      color: Colors.black54,
                       fontWeight: FontWeight.normal,
                       fontSize: 15,
                     ),

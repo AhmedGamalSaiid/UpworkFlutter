@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 // import 'package:upwork/View/components/Talent/Pending.dart';
 //import 'package:upwork/View/Pages/TalentPages/Proposals.dart';
 // import 'package:upwork/View/Pages/BeforeLoginPages/welcome.dart';
-//import 'package:upwork/View/Pages/TalentPages/Proposals.dart';
-import 'package:upwork/View/Pages/TalentPages/reports.dart';
+import 'package:upwork/View/Pages/TalentPages/Proposals.dart';
+//import 'package:upwork/View/Pages/TalentPages/reports.dart';
 // import 'package:upwork/View/components/Talent/Available.dart';
 // import 'package:upwork/View/components/Talent/Workinprogress.dart';
 import 'constanse.dart';
@@ -24,9 +24,10 @@ class MyApp extends StatelessWidget {
         primaryColor: bgUpwork,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: ReportsPage(),
+      home: ProposalsPage(),
+      //ReportsPage(),
       //AvailablePage(),
-      //ProposalsPage(),
+
       //WorkInProgressPage(),
       //PendingPage(),
       //InReviewPage(),
