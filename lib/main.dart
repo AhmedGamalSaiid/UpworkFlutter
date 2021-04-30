@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/welcome.dart';
+import 'package:upwork/View/Pages/TalentPages/Jobs.dart';
 import 'constanse.dart';
 
 void main() {
@@ -7,16 +8,16 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  //bool login = false;
   @override
   Widget build(BuildContext context) {
+    bool login = false;
     return MaterialApp(
       title: 'Upwork',
       theme: ThemeData(
         primaryColor: bgUpwork,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home:Welcome(),
+      home: login?Jobs(): Welcome(),
     );
   }
 }

@@ -5,13 +5,14 @@ import 'package:upwork/constanse.dart';
 class RoundedButton extends StatelessWidget {
   final String text;
    final Function press;
-  final Color color, textColor;
+  final Color color, textColor,borderColor;
    const RoundedButton({
      Key key,
      this.text,
     this.press,
    this.color = bgUpwork,
-   this.textColor = Colors.white,
+   this.textColor,
+   this.borderColor,
    }) : super(key: key);
 
   @override
@@ -20,15 +21,19 @@ class RoundedButton extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       width: size.width * 0.8,
+       decoration: BoxDecoration(
+        border: Border.all(color: borderColor,width: 1.0),
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(29),
+        borderRadius: BorderRadius.circular(15),
         child: FlatButton(
           padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
           color: color,
-          onPressed: ()=>{},
+          onPressed:press,
           child: Text(
             text,
-            style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,),
+            style: TextStyle(color:textColor,fontWeight: FontWeight.bold,),
           ),
         ),
       ),
