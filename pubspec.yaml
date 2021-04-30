@@ -27,6 +27,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_svg: ^0.19.1
+  flutter_statusbar_manager: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -42,7 +43,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/img/06.jpg
+    - assets/img/
 
   # To add assets to your application, add an assets section, like this:
   #   - images/a_dot_ham.jpeg
