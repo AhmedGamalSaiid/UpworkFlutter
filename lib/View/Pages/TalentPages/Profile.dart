@@ -11,7 +11,6 @@ import 'package:upwork/View/components/Talent/ProfileSkills.dart';
 import 'package:upwork/View/components/Talent/ProfileTotalEarning.dart';
 import 'package:upwork/View/components/Talent/ProfileViewProfile.dart';
 import 'package:upwork/View/components/Talent/ProfileWorkHistory.dart';
-// import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -55,17 +54,6 @@ class _ProfileState extends State<Profile> {
           ],
         ),
       ),
-      // bottomNavigationBar: ConvexAppBar(
-      //   items: [
-      //     TabItem(icon: Icons.home, title: 'Home'),
-      //     TabItem(icon: Icons.map, title: 'Discovery'),
-      //     TabItem(icon: Icons.add, title: 'Add'),
-      //     TabItem(icon: Icons.message, title: 'Message'),
-      //     TabItem(icon: Icons.people, title: 'Profile'),
-      //   ],
-      //   initialActiveIndex: 2, //optional, default as 0
-      //   onTap: (int i) => print('click index=$i'),
-      // ),
     );
   }
 }
