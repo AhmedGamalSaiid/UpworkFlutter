@@ -16,7 +16,6 @@ class _HomePageState extends State<HomePage> {
   Widget child;
   @override
   Widget build(BuildContext context) {
-    
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -53,16 +52,16 @@ class _HomePageState extends State<HomePage> {
                 text: "Saved",
               ),
               Tab(
-                text: "Search"
-                ,),
+                text: "Search",
+              ),
             ],
           ),
         ),
         body: TabBarView(
           children: <Widget>[
             MyFeedPage(),
-             MyFeedPage(),
-              MyFeedPage(),
+            MyFeedPage(),
+            MyFeedPage(),
           ],
         ),
         bottomNavigationBar: _buildOriginDesign(),
