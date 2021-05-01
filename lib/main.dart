@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/welcome.dart';
+import 'package:upwork/View/Pages/TalentPages/Contracts.dart';
 import 'package:upwork/View/Pages/TalentPages/HomePage.dart';
 import 'package:upwork/View/Pages/TalentPages/Proposals.dart';
 import 'package:upwork/View/Pages/TalentPages/myreports.dart';
@@ -23,11 +24,13 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => login ? HomePage() : Welcome(),
+          '/jobs': (context) =>HomePage(),
           '/proposals': (context) => ProposalsPage(),
-          // '/contracts': (context) => (),
+         '/contracts': (context) => Contracts(),
           // '/messages': (context) => (),
           // '/alerts': (context) => (),
           '/reports': (context) => ReportsPage(),
-        });
+        }
+        );
   }
 }
