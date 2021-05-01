@@ -1,48 +1,60 @@
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
+import 'package:upwork/View/components/Talent/Active.dart';
+import 'package:upwork/View/components/Talent/Archived.dart';
 import 'package:upwork/constanse.dart';
 
-class HomePage extends StatefulWidget {
+
+
+class ProposalsPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _ProposalsPageState createState() => _ProposalsPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ProposalsPageState extends State<ProposalsPage> {
   int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[100],
-      drawer: CustomDrawer(),
-      appBar: AppBar(
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: CircleAvatar(
-              radius: 50,
-              backgroundImage: ExactAssetImage("assets/img/06.jpg"),
+    Size size = MediaQuery.of(context).size;
+    return DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            leading: Builder(
+              builder: (context) => IconButton(
+                icon: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: ExactAssetImage("assets/img/06.jpg"),
+                ),
+                onPressed: () => Scaffold.of(context).openDrawer(),
+              ),
             ),
-            onPressed: () => Scaffold.of(context).openDrawer(),
+            title: Center(
+              child: Text(
+                "Proposals",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            actions: [
+              CustomMenuButton(),
+            ],
+            bottom: TabBar(
+              indicatorColor: Color(0xFF8ACC5E),
+              labelColor: Color(0xFF8ACC5E),
+              unselectedLabelColor: Colors.white,
+              tabs: <Widget>[
+                Tab(text: 'Active'),
+                Tab(text: 'Archived'),
+              ],
+            ),
           ),
-        ),
-        title: Center(
-          child: Text(
-            "Jobs",
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-        actions: [
-          CustomMenuButton(),
-        ],
-      ),
-      body: Column(
-        children: [
-          Text("Home Page"),
-        ],
-      ),
-      bottomNavigationBar: _buildOriginDesign(),
-    );
+          body: TabBarView(children: <Widget>[
+            ActiveBody(),
+            ArchivedBody(),
+          ]),
+          bottomNavigationBar: _buildOriginDesign(),
+        ));
   }
 
   Widget _buildOriginDesign() {
