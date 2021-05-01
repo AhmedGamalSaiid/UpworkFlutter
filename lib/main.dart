@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/welcome.dart';
+import 'package:upwork/View/Pages/TalentPages/Contracts.dart';
 import 'package:upwork/View/Pages/TalentPages/JobDetails.dart';
 import 'package:upwork/View/Pages/TalentPages/Jobs.dart';
 import 'constanse.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       // home: JobDetails(),
       home: login ? Jobs() : Welcome(),
+      // home: Contracts(),
     );
   }
 }
