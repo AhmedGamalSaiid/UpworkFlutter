@@ -7,6 +7,7 @@ import 'package:upwork/View/components/Shared/or_divider.dart';
 import 'package:upwork/View/components/beforeLogin/googleBtn.dart';
 import 'Loginbtn.dart';
 
+// ignore: must_be_immutable
 class LoginBody extends StatefulWidget {
   String emailVal;
   LoginBody({this.emailVal});

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/View/components/Talent/EditIcon.dart';
 
 import '../../../constanse.dart';
 
@@ -24,11 +25,29 @@ class _ProfileHeadSectionState extends State<ProfileHeadSection> {
             children: [
               Expanded(
                 flex: 1,
-                child: Column(
+                child: Stack(
                   children: <Widget>[
-                    CircleAvatar(
-                      radius: 40,
-                      backgroundImage: ExactAssetImage("assets/img/06.jpg"),
+                    Positioned(
+                      child: CircleAvatar(
+                        radius: 40,
+                        backgroundImage: ExactAssetImage("assets/img/06.jpg"),
+                      ),
+                    ),
+                    Positioned(
+                      left: 0,
+                      child: EditIcon(),
+                    ),
+                    Positioned(
+                      right: 25,
+                      bottom: 5,
+                      child: Container(
+                        width: 15,
+                        height: 15,
+                        decoration: BoxDecoration(
+                          color: Color(0xff37a000),
+                          shape: BoxShape.circle,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -42,7 +61,10 @@ class _ProfileHeadSectionState extends State<ProfileHeadSection> {
                       padding: const EdgeInsets.all(5.0),
                       child: Text(
                         "Freelancer Name",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
                       ),
                     ),
                     Padding(
@@ -76,9 +98,8 @@ class _ProfileHeadSectionState extends State<ProfileHeadSection> {
                             size: 15,
                             color: Color(0xFF1CAF9D),
                           ),
-                          Text(
-                            "RISING TALENT",
-                          ),
+                          Text("RISING TALENT",
+                              style: TextStyle(fontWeight: FontWeight.bold)),
                         ],
                       ),
                     ),

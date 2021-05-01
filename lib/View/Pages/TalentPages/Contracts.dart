@@ -1,11 +1,9 @@
 import 'dart:ui';
-import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/ActiveContracts.dart';
 import 'package:upwork/View/components/Talent/BottomNav.dart';
-import 'package:upwork/constanse.dart';
 
 class Contracts extends StatefulWidget {
   @override
@@ -70,8 +68,7 @@ class _ContractsState extends State<Contracts> {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Icon(Icons.more_horiz),
-                          )
-                      )
+                          ))
                     ],
                   ),
                 ),

@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
             MyFeedPage(),
           ],
         ),
-        bottomNavigationBar:BottomNav(),
+        bottomNavigationBar: BottomNav(),
       ),
     );
   }
