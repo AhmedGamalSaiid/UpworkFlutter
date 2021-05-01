@@ -5,6 +5,8 @@ import 'package:upwork/View/components/Talent/Active.dart';
 import 'package:upwork/View/components/Talent/Archived.dart';
 import 'package:upwork/constanse.dart';
 
+
+
 class ProposalsPage extends StatefulWidget {
   @override
   _ProposalsPageState createState() => _ProposalsPageState();

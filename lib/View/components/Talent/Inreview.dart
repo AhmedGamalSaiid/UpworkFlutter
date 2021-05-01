@@ -13,15 +13,6 @@ class _InReviewPageState extends State<InReviewPage> {
 
     return Scaffold(
         appBar: AppBar(
-          leading: Builder(
-            builder: (context) => IconButton(
-              icon: CircleAvatar(
-                radius: 50,
-                backgroundImage: ExactAssetImage("assets/img/06.jpg"),
-              ),
-              onPressed: () => Scaffold.of(context).openDrawer(),
-            ),
-          ),
           title: Center(
             child: Text(
               "In Review",

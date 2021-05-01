@@ -10,18 +10,8 @@ class _PendingPageState extends State<PendingPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     return Scaffold(
         appBar: AppBar(
-          leading: Builder(
-            builder: (context) => IconButton(
-              icon: CircleAvatar(
-                radius: 50,
-                backgroundImage: ExactAssetImage("assets/img/06.jpg"),
-              ),
-              onPressed: () => Scaffold.of(context).openDrawer(),
-            ),
-          ),
           title: Center(
             child: Text(
               "Pending",

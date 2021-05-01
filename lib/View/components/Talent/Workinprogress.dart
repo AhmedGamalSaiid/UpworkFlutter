@@ -12,18 +12,9 @@ class _WorkInProgressPageState extends State<WorkInProgressPage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          leading: Builder(
-            builder: (context) => IconButton(
-              icon: CircleAvatar(
-                radius: 50,
-                backgroundImage: ExactAssetImage("assets/img/06.jpg"),
-              ),
-              onPressed: () => Scaffold.of(context).openDrawer(),
-            ),
-          ),
           title: Center(
             child: Text(
-              "Work In Progress",
+              "Work in progress",
               style: TextStyle(color: Colors.white),
             ),
           ),

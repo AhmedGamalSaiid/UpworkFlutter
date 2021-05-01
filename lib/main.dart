@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/welcome.dart';
 import 'package:upwork/View/Pages/TalentPages/Jobs.dart';
-import 'package:upwork/View/Pages/TalentPages/Proposals.dart';
 import 'constanse.dart';
 
 void main() {
@@ -13,13 +12,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     bool login = false;
     return MaterialApp(
-      title: 'Upwork',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: bgUpworkDark,
-        scaffoldBackgroundColor: Colors.white,
-      ),
-      home: login ? Jobs() : ProposalsPage(),
-    );
+        title: 'Upwork',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: bgUpworkDark,
+          scaffoldBackgroundColor: Colors.white,
+        ),
+        home: login ? Jobs() : Welcome());
   }
 }
