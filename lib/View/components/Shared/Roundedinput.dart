@@ -1,6 +1,5 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:upwork/constanse.dart';
 import 'TextFieldContainer.dart';
 
 class RoundedInputField extends StatelessWidget {
@@ -15,14 +14,14 @@ class RoundedInputField extends StatelessWidget {
     this.icon = Icons.person,
     this.onChanged,
     this.err = "invalid",
-    this.validate=true,
+    this.validate = true,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
         child: Form(
-      child: TextFormField(       
+      child: TextFormField(
         validator: (value) => EmailValidator.validate(value) ? null : err,
         onChanged: onChanged,
         cursorColor: Colors.black,

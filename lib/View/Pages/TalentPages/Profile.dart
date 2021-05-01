@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
-import 'package:upwork/View/components/Talent/EditIcon.dart';
+import 'package:upwork/View/components/Talent/ProfileAvailability.dart';
+import 'package:upwork/View/components/Talent/ProfileEducation.dart';
+import 'package:upwork/View/components/Talent/ProfileEmploymentHistory.dart';
 import 'package:upwork/View/components/Talent/ProfileHeadSection.dart';
+import 'package:upwork/View/components/Talent/ProfileLanguages.dart';
+import 'package:upwork/View/components/Talent/ProfileOtherExperience.dart';
+import 'package:upwork/View/components/Talent/ProfilePortofolio.dart';
+import 'package:upwork/View/components/Talent/ProfileSkills.dart';
 import 'package:upwork/View/components/Talent/ProfileTotalEarning.dart';
+import 'package:upwork/View/components/Talent/ProfileViewProfile.dart';
+import 'package:upwork/View/components/Talent/ProfileWorkHistory.dart';
+// import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -10,8 +19,6 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  String dropdownValue;
-  List ListItems = ["All Work", "CMS Development", "Frontend Development"];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,53 +33,39 @@ class _ProfileState extends State<Profile> {
           CustomMenuButton(),
         ],
       ),
-      body: Column(
-        children: [
-          ProfileHeadSection(),
-          ProfileTotalEarning(),
-          Column(
-            children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 20.0,
-                      top: 15,
-                      right: 20,
-                      bottom: 15,
-                    ),
-                    child: Text(
-                      "View Profile",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                  EditIcon(),
-                ],
-              ),
-              DropdownButton(
-                hint: Text("All Work"),
-                value: dropdownValue,
-                icon: const Icon(Icons.arrow_downward),
-                iconSize: 24,
-                onChanged: (newValue) {
-                  setState(() {
-                    dropdownValue = newValue;
-                  });
-                },
-                items: ListItems.map((valueItem) {
-                  return DropdownMenuItem(
-                    value: valueItem,
-                    child: Text(valueItem),
-                  );
-                }).toList(),
-              )
-            ],
-          )
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ProfileHeadSection(),
+            ProfileTotalEarning(),
+            ProfileViewProfile(),
+            ProfileWorkHistory(),
+            ProfilePortofolio(),
+            ProfileSkills(),
+            ProfileAvailability(
+              "As Needed - Open to Offers",
+            ),
+            ProfileLanguages(
+              "Fluent",
+              arabic: "Native or Bilingual",
+            ),
+            ProfileEducation(),
+            ProfileEmploymentHistory(),
+            ProfileOtherExperience(),
+          ],
+        ),
       ),
+      // bottomNavigationBar: ConvexAppBar(
+      //   items: [
+      //     TabItem(icon: Icons.home, title: 'Home'),
+      //     TabItem(icon: Icons.map, title: 'Discovery'),
+      //     TabItem(icon: Icons.add, title: 'Add'),
+      //     TabItem(icon: Icons.message, title: 'Message'),
+      //     TabItem(icon: Icons.people, title: 'Profile'),
+      //   ],
+      //   initialActiveIndex: 2, //optional, default as 0
+      //   onTap: (int i) => print('click index=$i'),
+      // ),
     );
   }
 }

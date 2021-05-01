@@ -30,6 +30,8 @@ dependencies:
   flutter_statusbar_manager: ^2.0.0
   email_validator: ^2.0.1
   custom_navigation_bar: ^0.8.1
+  convex_bottom_bar: ^3.0.0
+  flutter_rating_bar: ^4.0.0
 
 dev_dependencies:
   flutter_test:

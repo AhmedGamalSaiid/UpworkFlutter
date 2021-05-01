@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class EditIcon extends StatelessWidget {
+class ShareIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,7 +13,7 @@ class EditIcon extends StatelessWidget {
         ),
       ),
       child: Icon(
-        Icons.mode_edit,
+        Icons.share,
         color: Color(0xff656565),
       ),
     );
