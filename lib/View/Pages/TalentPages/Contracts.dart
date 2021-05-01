@@ -30,47 +30,51 @@ class _ContractsState extends State<Contracts> {
             CustomMenuButton(),
           ],
         ),
-        body: Container(
-          width: MediaQuery.of(context).size.width * 1,
-          color: Color(0xffF1F2F4),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
+        body: Column(
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width * 1,
+              color: Color(0xffF1F2F4),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          "Earning available :",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                        Row(
+                          children: [
+                            Text(
+                              "Earning available :",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 20),
+                            ),
+                            Text(
+                              "100\$",
+                              style: TextStyle(
+                                  color: Color(0xff57A72D),
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
                         ),
-                        Text(
-                          "100\$",
-                          style: TextStyle(
-                              color: Color(0xff57A72D),
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        )
+                        Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(color: Colors.grey),
+                                borderRadius: BorderRadius.circular(30)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Icon(Icons.more_horiz),
+                            ))
                       ],
                     ),
-                    Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(30)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Icon(Icons.more_horiz),
-                        ))
-                  ],
-                ),
+                  ),
+                  ActiveContracts()
+                ],
               ),
-              ActiveContracts()
-            ],
-          ),
+            )
+          ],
         ));
   }
 }
