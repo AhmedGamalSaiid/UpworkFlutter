@@ -21,14 +21,13 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
         ),
         initialRoute: '/',
-          routes: {
-            '/': (context) =>login ?  HomePage() : Welcome(),
-            '/proposals': (context) => ProposalsPage(),
-            // '/contracts': (context) => (),
-            // '/messages': (context) => (),
-            // '/alerts': (context) => (),
-            '/reports': (context) => ReportsPage(),
-          }
-        );
+        routes: {
+          '/': (context) => login ? HomePage() : Welcome(),
+          '/proposals': (context) => ProposalsPage(),
+          // '/contracts': (context) => (),
+          // '/messages': (context) => (),
+          // '/alerts': (context) => (),
+          '/reports': (context) => ReportsPage(),
+        });
   }
 }

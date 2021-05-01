@@ -1,71 +1,86 @@
+import 'dart:ui';
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:upwork/View/Pages/TalentPages/MyfeedPage.dart';
-import 'package:upwork/View/Pages/TalentPages/Proposals.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
+import 'package:upwork/View/components/Talent/ActiveContracts.dart';
 import 'package:upwork/constanse.dart';
 
-class HomePage extends StatefulWidget {
+class Contracts extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _ContractsState createState() => _ContractsState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ContractsState extends State<Contracts> {
   int _currentIndex = 0;
-  Widget child;
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        backgroundColor: Colors.grey[100],
-        drawer: CustomDrawer(),
-        appBar: AppBar(
-          leading: Builder(
-            builder: (context) => IconButton(
-              icon: CircleAvatar(
-                radius: 50,
-                backgroundImage: ExactAssetImage("assets/img/06.jpg"),
-              ),
-              onPressed: () => Scaffold.of(context).openDrawer(),
+    return Scaffold(
+      drawer: CustomDrawer(),
+      appBar: AppBar(
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: CircleAvatar(
+              radius: 50,
+              backgroundImage: ExactAssetImage("assets/img/06.jpg"),
             ),
-          ),
-          title: Center(
-            child: Text(
-              "Jobs",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          actions: [
-            CustomMenuButton(),
-          ],
-          bottom: TabBar(
-            indicatorColor: bgUpwork,
-            labelColor: Color(0xFF8ACC5E),
-            unselectedLabelColor: Colors.white,
-            tabs: <Widget>[
-              Tab(
-                text: "Myfeed",
-              ),
-              Tab(
-                text: "Saved",
-              ),
-              Tab(
-                text: "Search",
-              ),
-            ],
+            onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
-        body: TabBarView(
-          children: <Widget>[
-            MyFeedPage(),
-            MyFeedPage(),
-            MyFeedPage(),
-          ],
+        title: Center(
+          child: Text("Contracts"),
         ),
-        bottomNavigationBar: _buildOriginDesign(),
+        actions: [
+          CustomMenuButton(),
+        ],
       ),
+      body: Column(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width * 1,
+            color: Color(0xffF1F2F4),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            "Earning available :",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                          Text(
+                            "100\$",
+                            style: TextStyle(
+                                color: Color(0xff57A72D),
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(30)),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(Icons.more_horiz),
+                          ))
+                    ],
+                  ),
+                ),
+                ActiveContracts()
+              ],
+            ),
+          )
+        ],
+      ),
+      bottomNavigationBar: _buildOriginDesign(),
     );
   }
 
