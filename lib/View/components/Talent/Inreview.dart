@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 
 class InReviewPage extends StatefulWidget {
   @override
@@ -12,17 +13,15 @@ class _InReviewPageState extends State<InReviewPage> {
 
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFF1E4355),
           title: Center(
             child: Text(
-              'In Review',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-              ),
+              "In Review",
+              style: TextStyle(color: Colors.white),
             ),
           ),
+          actions: [
+            CustomMenuButton(),
+          ],
         ),
         body: Container(
           color: Colors.white,
