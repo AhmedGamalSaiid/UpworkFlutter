@@ -7,7 +7,10 @@ import 'package:upwork/View/components/Shared/or_divider.dart';
 import 'package:upwork/View/components/beforeLogin/googleBtn.dart';
 import 'Loginbtn.dart';
 
+// ignore: must_be_immutable
 class LoginBody extends StatefulWidget {
+  String emailVal;
+  LoginBody({this.emailVal});
   @override
   _LoginBodyState createState() => _LoginBodyState();
 }
@@ -23,7 +26,7 @@ class _LoginBodyState extends State<LoginBody> {
           children: <Widget>[
             SvgPicture.asset(
               "assets/svg/upwork.svg",
-              height: size.height * 0.12,
+              height: size.height * 0.13,
             ),
             SizedBox(height: size.height * 0.03),
             Text(
@@ -35,7 +38,10 @@ class _LoginBodyState extends State<LoginBody> {
               icon: Icons.person,
               err: "Oops! Email is incorrect",
               hintText: "Username or Email",
-              onChanged: (value) {},
+              onChanged: (value) {
+                widget.emailVal = value;
+                print(widget.emailVal);
+              },
             ),
             RoundedButton(
               color: Color(0XFF37a000),
@@ -43,10 +49,13 @@ class _LoginBodyState extends State<LoginBody> {
               textColor: Colors.white,
               borderColor: Color(0x00000000),
               press: () {
+                print(widget.emailVal);
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) {
-                    return PasswordPage();
+                    return PasswordPage(
+                      emailVal: widget.emailVal,
+                    );
                   }),
                 );
               },
