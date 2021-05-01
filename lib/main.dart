@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/welcome.dart';
-import 'package:upwork/View/Pages/TalentPages/Jobs.dart';
+import 'package:upwork/View/Pages/TalentPages/HomePage.dart';
+import 'package:upwork/View/Pages/TalentPages/Proposals.dart';
+import 'package:upwork/View/Pages/TalentPages/myreports.dart';
 import 'constanse.dart';
 
 void main() {
@@ -18,6 +20,15 @@ class MyApp extends StatelessWidget {
           primaryColor: bgUpworkDark,
           scaffoldBackgroundColor: Colors.white,
         ),
-        home: login ? Jobs() : Welcome());
+        initialRoute: '/',
+          routes: {
+            '/': (context) =>login ?  HomePage() : Welcome(),
+            '/proposals': (context) => ProposalsPage(),
+            // '/contracts': (context) => (),
+            // '/messages': (context) => (),
+            // '/alerts': (context) => (),
+            '/reports': (context) => ReportsPage(),
+          }
+        );
   }
 }
