@@ -25,7 +25,7 @@ class _PasswordPageState extends State<PasswordPage> {
           children: <Widget>[
             SvgPicture.asset(
               "assets/svg/login.svg",
-              height: size.height * 0.12,
+              height: size.height * 0.25,
             ),
             SizedBox(height: size.height * 0.03),
             Text(
@@ -34,7 +34,8 @@ class _PasswordPageState extends State<PasswordPage> {
             ),
             SizedBox(height: size.height * 0.03),
             Text(
-              widget.emailVal,
+              "s",
+              //widget.emailVal,
               style: TextStyle(fontSize: 15),
             ),
             SizedBox(height: size.height * 0.03),

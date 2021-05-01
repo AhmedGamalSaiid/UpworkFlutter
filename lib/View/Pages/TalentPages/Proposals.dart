@@ -16,7 +16,6 @@ class _ProposalsPageState extends State<ProposalsPage> {
   int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return DefaultTabController(
         length: 2,
         child: Scaffold(
