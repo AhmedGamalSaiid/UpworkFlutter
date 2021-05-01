@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 
 class WorkInProgressPage extends StatefulWidget {
   @override
@@ -11,17 +12,15 @@ class _WorkInProgressPageState extends State<WorkInProgressPage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFF1E4355),
           title: Center(
             child: Text(
-              'Work in  progress',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-              ),
+              "Work in progress",
+              style: TextStyle(color: Colors.white),
             ),
           ),
+          actions: [
+            CustomMenuButton(),
+          ],
         ),
         body: Container(
           color: Colors.white,

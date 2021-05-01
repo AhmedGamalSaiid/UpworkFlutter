@@ -22,7 +22,6 @@ class ActiveBody extends StatelessWidget {
           contentBackgroundColor: Colors.white,
           contentVerticalPadding: 5.0,
           contentHorizontalPadding: 5.0,
-          // leftIcon: Icon(Icons.question_answer_rounded, color: Colors.white),
 
           children: [
             AccordionSection(
@@ -63,7 +62,7 @@ class ActiveBody extends StatelessWidget {
               ),
             ),
             AccordionSection(
-              isOpen: true,
+              isOpen: false,
               headerText: 'Submmitted Proposals (1)',
               content: Align(
                 alignment: Alignment.topLeft,

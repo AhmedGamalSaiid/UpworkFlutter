@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 
 class PendingPage extends StatefulWidget {
   @override
@@ -9,20 +10,17 @@ class _PendingPageState extends State<PendingPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFF1E4355),
           title: Center(
             child: Text(
-              'Pending',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-              ),
+              "Pending",
+              style: TextStyle(color: Colors.white),
             ),
           ),
+          actions: [
+            CustomMenuButton(),
+          ],
         ),
         body: Container(
           color: Colors.white,

@@ -7,6 +7,8 @@ import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
 
 class PasswordPage extends StatefulWidget {
+  final String emailVal;
+  PasswordPage({this.emailVal="sad"});
   @override
   _PasswordPageState createState() => _PasswordPageState();
 }
@@ -23,7 +25,7 @@ class _PasswordPageState extends State<PasswordPage> {
           children: <Widget>[
             SvgPicture.asset(
               "assets/svg/login.svg",
-              height: size.height * 0.12,
+              height: size.height * 0.25,
             ),
             SizedBox(height: size.height * 0.03),
             Text(
@@ -32,7 +34,8 @@ class _PasswordPageState extends State<PasswordPage> {
             ),
             SizedBox(height: size.height * 0.03),
             Text(
-              "Ahmedgamal81995@gmail.com",
+              "s",
+              //widget.emailVal,
               style: TextStyle(fontSize: 15),
             ),
             SizedBox(height: size.height * 0.03),
@@ -48,13 +51,9 @@ class _PasswordPageState extends State<PasswordPage> {
               textColor: Colors.white,
               borderColor: Color(0x00000000),
               press: () {
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return HomePage();
-                }
-              )
-            );
-
+                }));
               },
             ),
             SizedBox(height: 10),
