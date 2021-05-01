@@ -1,5 +1,6 @@
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/Active.dart';
 import 'package:upwork/View/components/Talent/Archived.dart';
 import 'package:upwork/constanse.dart';
@@ -18,17 +19,24 @@ class _ProposalsPageState extends State<ProposalsPage> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Color(0xFF1E4355),
-            title: Center(
-              child: Text(
-                'Proposals',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
+            leading: Builder(
+              builder: (context) => IconButton(
+                icon: CircleAvatar(
+                  radius: 50,
+                  backgroundImage: ExactAssetImage("assets/img/06.jpg"),
                 ),
+                onPressed: () => Scaffold.of(context).openDrawer(),
               ),
             ),
+            title: Center(
+              child: Text(
+                "Proposals",
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+            actions: [
+              CustomMenuButton(),
+            ],
             bottom: TabBar(
               indicatorColor: Color(0xFF8ACC5E),
               labelColor: Color(0xFF8ACC5E),

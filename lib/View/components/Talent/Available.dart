@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_button/flutter_button.dart';
 import 'package:flutter_text_anchor/flutter_text_anchor.dart';
+import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 
 class AvailablePage extends StatefulWidget {
   @override
@@ -13,17 +14,24 @@ class _AvailablePageState extends State<AvailablePage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFF1E4355),
-          title: Center(
-            child: Text(
-              'Avaliable',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.normal,
-                fontSize: 25,
+          leading: Builder(
+            builder: (context) => IconButton(
+              icon: CircleAvatar(
+                radius: 50,
+                backgroundImage: ExactAssetImage("assets/img/06.jpg"),
               ),
+              onPressed: () => Scaffold.of(context).openDrawer(),
             ),
           ),
+          title: Center(
+            child: Text(
+              "Available",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          actions: [
+            CustomMenuButton(),
+          ],
         ),
         body: Container(
           color: Colors.white,
