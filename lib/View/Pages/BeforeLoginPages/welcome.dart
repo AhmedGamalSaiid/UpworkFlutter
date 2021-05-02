@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Login.dart';
-import 'package:upwork/View/components/beforeLogin/LoginBody.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
 
@@ -23,42 +22,39 @@ class _WelcomeState extends State<Welcome> {
               fit: BoxFit.fill,
             ),
           ),
-        
-        child:Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          
-          children:[
-               SizedBox(height: 10),
-            Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: RoundedButton(
-              borderColor: Color(0x00000000),
-            text: "Login",
-            textColor: Colors.white,
-            color: bgUpwork,
-            press: ()=>{
-               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return  LoginPage();
-                    },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.all(0.0),
+                child: RoundedButton(
+                  borderColor: Color(0x00000000),
+                  text: "Login",
+                  textColor: Colors.white,
+                  color: bgUpwork,
+                  press: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return LoginPage();
+                        },
+                      ),
+                    )
+                  },
+                ),
+              ),
+              SizedBox(height: 10),
+              InkWell(
+                  child: new Text(
+                    'New to Upwork ? Sign Up',
+                    style:
+                        TextStyle(color: bgUpwork, fontWeight: FontWeight.bold),
                   ),
-                )
-            },
-            ),
-          ),
-        
-            SizedBox(height: 10),
-         InkWell(
-              child: new Text('New to Upwork ? Sign Up',style: TextStyle(color: bgUpwork,fontWeight: FontWeight.bold),),
-              onTap: () =>{   }
-          ),
-         
-
-          ],
-        )
-      ),
+                  onTap: () => {}),
+            ],
+          )),
     );
   }
 }
