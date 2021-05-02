@@ -28,6 +28,7 @@ dependencies:
   accordion: ^1.0.4
   flutter_button: ^0.0.4
   flutter_text_anchor: ^0.0.1
+
   
 
 
@@ -37,6 +38,7 @@ dependencies:
   flutter_svg: ^0.19.1
   email_validator: ^2.0.1
   custom_navigation_bar: ^0.8.1
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
