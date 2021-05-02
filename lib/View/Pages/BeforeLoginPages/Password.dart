@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:upwork/View/Pages/TalentPages/HomePage.dart';
 import 'package:upwork/View/components/Shared/BackGround.dart';
+import 'package:upwork/View/Pages/TalentPages/HomePage.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
+import 'package:upwork/Services/authService.dart';
 
 class PasswordPage extends StatefulWidget {
   final String emailVal;
-  PasswordPage({this.emailVal="sad"});
+  PasswordPage({this.emailVal});
   @override
   _PasswordPageState createState() => _PasswordPageState();
 }
 
 class _PasswordPageState extends State<PasswordPage> {
+  String passVal;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -34,8 +36,7 @@ class _PasswordPageState extends State<PasswordPage> {
             ),
             SizedBox(height: size.height * 0.03),
             Text(
-              "s",
-              //widget.emailVal,
+              widget.emailVal,
               style: TextStyle(fontSize: 15),
             ),
             SizedBox(height: size.height * 0.03),
@@ -43,17 +44,23 @@ class _PasswordPageState extends State<PasswordPage> {
               icon: Icons.lock,
               err: "Oops! Password is incorrect",
               hintText: "Password",
-              onChanged: (value) {},
+              onChanged: (value) {
+                passVal = value;
+              },
             ),
             RoundedButton(
               color: Color(0XFF37a000),
               text: "Log in",
               textColor: Colors.white,
               borderColor: Color(0x00000000),
-              press: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return HomePage();
-                }));
+              press: () async {
+                bool isLogin =
+                    await AuthService().signIn(widget.emailVal, passVal);
+                if (isLogin) {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return HomePage();
+                  }));
+                }
               },
             ),
             SizedBox(height: 10),

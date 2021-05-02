@@ -22,7 +22,7 @@ class RoundedInputField extends StatelessWidget {
     return TextFieldContainer(
         child: Form(
       child: TextFormField(
-        validator: (value) => EmailValidator.validate(value) ? null : err,
+        validator: (value) => EmailValidator.validate(value) ? null : "etc",
         onChanged: onChanged,
         cursorColor: Colors.black,
         decoration: InputDecoration(
