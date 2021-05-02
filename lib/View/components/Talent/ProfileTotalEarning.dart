@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Models/UserData.dart';
 
 import '../../../constanse.dart';
 
 class ProfileTotalEarning extends StatefulWidget {
-  ProfileTotalEarning({Key key}) : super(key: key);
-
+  final UserDataModel user;
+  ProfileTotalEarning(this.user);
   @override
   _ProfileTotalEarningState createState() => _ProfileTotalEarningState();
 }

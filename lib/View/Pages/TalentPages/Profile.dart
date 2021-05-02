@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Models/UserData.dart';
+import 'package:upwork/Services/UserDataService.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/ProfileAvailability.dart';
 import 'package:upwork/View/components/Talent/ProfileEducation.dart';
@@ -18,6 +20,19 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  UserDataModel user;
+
+  getData() async {
+    user = await UserData().getUserData();
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,26 +48,25 @@ class _ProfileState extends State<Profile> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ProfileHeadSection(),
-            ProfileTotalEarning(),
-            ProfileViewProfile(),
-            ProfileWorkHistory(),
-            ProfilePortofolio(),
-            ProfileSkills(),
-            ProfileAvailability(
-              "As Needed - Open to Offers",
-            ),
-            ProfileLanguages(
-              "Fluent",
-              arabic: "Native or Bilingual",
-            ),
-            ProfileEducation(),
-            ProfileEmploymentHistory(),
-            ProfileOtherExperience(),
-          ],
-        ),
+        child: user != null
+            ? Column(
+                children: [
+                  ProfileHeadSection(user),
+                  ProfileTotalEarning(user),
+                  ProfileViewProfile(user),
+                  ProfileWorkHistory(user),
+                  ProfilePortofolio(),
+                  ProfileSkills(),
+                  ProfileAvailability(
+                    "As Needed - Open to Offers",
+                  ),
+                  ProfileLanguages(user),
+                  ProfileEducation(user),
+                  ProfileEmploymentHistory(user),
+                  ProfileOtherExperience(),
+                ],
+              )
+            : Text(""),
       ),
     );
   }

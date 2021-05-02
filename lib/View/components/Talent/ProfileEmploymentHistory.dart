@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Models/UserData.dart';
 import 'package:upwork/View/components/Talent/PlusIcon.dart';
 
 import '../../../constanse.dart';
 import 'ProfileEmploymentItem.dart';
 
 class ProfileEmploymentHistory extends StatefulWidget {
+  final UserDataModel user;
+  ProfileEmploymentHistory(this.user);
   @override
   _ProfileEmploymentHistoryState createState() =>
       _ProfileEmploymentHistoryState();
@@ -52,10 +55,10 @@ class _ProfileEmploymentHistoryState extends State<ProfileEmploymentHistory> {
                   ],
                 ),
               ),
-              for (var i = 0; i < 3; i++)
+              for (var i = 0; i < 1; i++)
                 Container(
                   width: MediaQuery.of(context).size.width * 0.92,
-                  decoration: i != 2
+                  decoration: i != 0
                       ? BoxDecoration(
                           border: Border(
                             bottom: BorderSide(
@@ -66,8 +69,8 @@ class _ProfileEmploymentHistoryState extends State<ProfileEmploymentHistory> {
                         )
                       : null,
                   child: ProfileEmploymentItem(
-                    "Freelancer",
-                    "WordPress Developer",
+                    widget.user.company["companyName"],
+                    widget.user.company["jobTitile"],
                     "March 2019 - Present",
                     description:
                         "Professional Freelancer as a Frontend Developer",

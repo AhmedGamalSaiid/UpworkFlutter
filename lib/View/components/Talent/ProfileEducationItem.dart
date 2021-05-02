@@ -21,21 +21,24 @@ class _ProfileEducationItemState extends State<ProfileEducationItem> {
       alignment: Alignment.centerLeft,
       child: Column(
         children: [
-          Row(
-            children: [
-              Text(
-                widget.school,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Row(
+              children: [
+                Text(
+                  widget.school,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 12, right: 12),
-                child: EditIcon(),
-              ),
-              DeleteIcon(),
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(left: 12, right: 12),
+                  child: EditIcon(),
+                ),
+                DeleteIcon(),
+              ],
+            ),
           ),
           Container(
             alignment: Alignment.centerLeft,

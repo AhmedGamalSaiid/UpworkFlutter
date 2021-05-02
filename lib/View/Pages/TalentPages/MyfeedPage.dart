@@ -34,18 +34,19 @@ class _MyFeedPageState extends State<MyFeedPage> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 textAlign: TextAlign.start,
               )),
-             DropDown(),
-             const Divider(
+          DropDown(),
+          const Divider(
             height: 20,
             thickness: 1,
             indent: 0,
             endIndent: 0,
           ),
-        RoundedButton(borderColor: Colors.grey[350],color: Colors.white,text:"There are new jobs.See them",textColor: bgUpwork) ,
-        JobCard(),
-        
-             
-         
+          RoundedButton(
+              borderColor: Colors.grey[350],
+              color: Colors.white,
+              text: "There are new jobs.See them",
+              textColor: bgUpwork),
+          JobCard(),
         ],
       ),
     );
