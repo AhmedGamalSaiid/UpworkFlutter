@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/Models/UserData.dart';
-
 import 'PlusIcon.dart';
 import 'ProfileEducationItem.dart';
 
