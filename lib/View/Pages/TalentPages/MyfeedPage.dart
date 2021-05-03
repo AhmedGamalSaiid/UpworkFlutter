@@ -4,12 +4,6 @@ import 'package:upwork/View/components/Talent/SelectDropDown.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
 
-// class MyFeedPage extends StatelessWidget {
-//   const MyFeedPage({Key key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-
 class MyFeedPage extends StatefulWidget {
   @override
   _MyFeedPageState createState() => _MyFeedPageState();
@@ -34,12 +28,15 @@ class _MyFeedPageState extends State<MyFeedPage> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 textAlign: TextAlign.start,
               )),
-            // DropDown(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SelectDropDown(["Feed","Best Matches"],isExpand: true,),
+          // DropDown(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SelectDropDown(
+              ["Feed", "Best Matches"],
+              isExpand: true,
             ),
-             const Divider(
+          ),
+          const Divider(
             height: 20,
             thickness: 1,
             indent: 0,

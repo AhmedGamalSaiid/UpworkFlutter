@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
+import 'package:upwork/View/Pages/TalentPages/Messages.dart';
 import 'View/Pages/TalentPages/Contracts.dart';
 import 'View/Pages/TalentPages/HomePage.dart';
 import 'View/Pages/TalentPages/Proposals.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         '/jobs': (context) => HomePage(),
         '/proposals': (context) => ProposalsPage(),
         '/contracts': (context) => Contracts(),
-        // '/messages': (context) => (),
+         '/messages': (context) => Messages(),
         // '/alerts': (context) => (),
         '/reports': (context) => ReportsPage(),
       },

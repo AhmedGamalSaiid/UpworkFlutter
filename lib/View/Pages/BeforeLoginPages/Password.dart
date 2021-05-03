@@ -41,6 +41,7 @@ class _PasswordPageState extends State<PasswordPage> {
             ),
             SizedBox(height: size.height * 0.03),
             RoundedInputField(
+              passInput: true,
               icon: Icons.lock,
               err: "Oops! Password is incorrect",
               hintText: "Password",

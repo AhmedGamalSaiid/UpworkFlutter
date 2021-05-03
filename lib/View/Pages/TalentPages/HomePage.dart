@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/View/Pages/TalentPages/MyfeedPage.dart';
+import 'package:upwork/View/Pages/TalentPages/SavedJobs.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/BottomNav.dart';
@@ -58,7 +59,7 @@ class _HomePageState extends State<HomePage> {
         body: TabBarView(
           children: <Widget>[
             MyFeedPage(),
-            MyFeedPage(),
+            SavedJobs(),
             MyFeedPage(),
           ],
         ),
