@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/View/components/Shared/DropDawn.dart';
 import 'package:upwork/View/components/Talent/JobCard.dart';
 import 'package:upwork/View/components/Talent/SelectDropDown.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
@@ -46,11 +45,12 @@ class _MyFeedPageState extends State<MyFeedPage> {
             indent: 0,
             endIndent: 0,
           ),
-        RoundedButton(borderColor: Colors.grey[350],color: Colors.white,text:"There are new jobs.See them",textColor: bgUpwork) ,
-        JobCard(),
-        
-             
-         
+          RoundedButton(
+              borderColor: Colors.grey[350],
+              color: Colors.white,
+              text: "There are new jobs.See them",
+              textColor: bgUpwork),
+          JobCard(),
         ],
       ),
     );

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Services/authService.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/welcome.dart';
 import 'package:upwork/View/Pages/TalentPages/MyStats.dart';
 import 'package:upwork/View/Pages/TalentPages/Profile.dart';
 import 'package:upwork/View/Pages/TalentPages/Reports.dart';
 import 'package:upwork/View/Pages/TalentPages/Settings.dart';
-
 import '../../../constanse.dart';
 import 'CustomListTile.dart';
 
@@ -19,7 +20,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
       child: Container(
         color: bgUpworkDark,
         child: ListView(
-          children: <Widget>[
+          children: [
             ListTile(
               contentPadding: EdgeInsets.only(top: 25, bottom: 20, left: 15),
               onTap: () {
@@ -124,6 +125,20 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 // Update the state of the app.
               },
               secondIcon: true,
+            ),
+            CustomListTile(
+              firstIcon: Icon(
+                Icons.logout,
+                color: Colors.white,
+              ),
+              text: "Log Out",
+              onTap: () {
+                AuthService().signOut();
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return Welcome();
+                }));
+              },
+              secondIcon: false,
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20),

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-
+import 'package:upwork/Models/UserData.dart';
 import '../../../constanse.dart';
 import 'DotsIcon.dart';
 import 'ProfileCompletedJob.dart';
 
 class ProfileWorkHistory extends StatefulWidget {
-  ProfileWorkHistory({Key key}) : super(key: key);
+  final UserDataModel user;
+  ProfileWorkHistory(this.user);
 
   @override
   _ProfileWorkHistoryState createState() => _ProfileWorkHistoryState();
