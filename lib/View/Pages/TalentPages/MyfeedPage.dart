@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/View/components/Shared/DropDawn.dart';
 import 'package:upwork/View/components/Talent/JobCard.dart';
+import 'package:upwork/View/components/Talent/SelectDropDown.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
 
@@ -34,7 +35,11 @@ class _MyFeedPageState extends State<MyFeedPage> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 textAlign: TextAlign.start,
               )),
-             DropDown(),
+            // DropDown(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SelectDropDown(["Feed","Best Matches"],isExpand: true,),
+            ),
              const Divider(
             height: 20,
             thickness: 1,

@@ -11,19 +11,19 @@ class _DropDownState extends State<DropDown> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
      return Container(
-      margin: EdgeInsets.symmetric(vertical: 5),
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0.05),
-      height: size.height * 0.08,
+      margin: EdgeInsets.symmetric(vertical: 3),
+      padding: EdgeInsets.symmetric(horizontal: 1, vertical: 0.5),
+      height: size.height * 0.07,
       width: size.width * 0.9,
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color: Colors.grey[350], width: 1.5),
+       // border: Border.all(color: Colors.grey[350], width: 1.5),
         borderRadius: BorderRadius.circular(8),
       ),
       child: DropdownButton<String>(
         value: dropdownValue,
-        icon: const Icon(Icons.arrow_drop_down),
-        iconSize: 28,
+        // icon: const Icon(Icons.arrow_drop_down),
+        // iconSize: 28,
         onChanged: (newValue) {
           setState(() {
             dropdownValue = newValue;
