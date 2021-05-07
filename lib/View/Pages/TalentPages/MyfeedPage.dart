@@ -8,8 +8,6 @@ import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
 
 class MyFeedPage extends StatefulWidget {
-  final List<JobDataModel> jobs;
-  MyFeedPage(this.jobs);
   @override
   _MyFeedPageState createState() => _MyFeedPageState();
 }
