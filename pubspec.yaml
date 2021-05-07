@@ -28,6 +28,7 @@ dependencies:
   accordion: ^1.0.4
   flutter_button: ^0.0.4
   flutter_text_anchor: ^0.0.1
+
   
 
 
@@ -35,14 +36,15 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_svg: ^0.19.1
+  flutter_statusbar_manager: ^2.0.0
   email_validator: ^2.0.1
   custom_navigation_bar: ^0.8.1
+  intl: ^0.17.0
+  flutter_rating_bar: ^4.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

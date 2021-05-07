@@ -29,9 +29,8 @@ class _ProfileTotalEarningState extends State<ProfileTotalEarning> {
                   children: <Widget>[
                     Row(
                       children: [
-                        Icon(Icons.attach_money),
                         Text(
-                          "50+",
+                          "\$50+",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,

@@ -15,7 +15,7 @@ class ActiveBody extends StatelessWidget {
         child: Accordion(
           maxOpenSections: 1,
           headerTextStyle: TextStyle(
-              color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
+              color: Colors.black, fontSize: 23, fontWeight: FontWeight.bold),
           headerBackgroundColor: Colors.white,
           headerPadding: EdgeInsets.all(10.0),
           paddingBetweenClosedSections: 15.0,
