@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     FlutterStatusbarManager.setColor(Colors.white, animated: true);
     var login = auth.currentUser;
+    print(login);
     return MaterialApp(
       title: 'Upwork',
       debugShowCheckedModeBanner: false,
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         '/jobs': (context) => HomePage(),
         '/proposals': (context) => ProposalsPage(),
         '/contracts': (context) => Contracts(),
-         '/messages': (context) => Messages(),
+        '/messages': (context) => Messages(),
         // '/alerts': (context) => (),
         '/reports': (context) => ReportsPage(),
       },

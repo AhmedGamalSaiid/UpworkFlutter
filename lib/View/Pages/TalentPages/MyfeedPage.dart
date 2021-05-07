@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Models/JobDataModel.dart';
 import 'package:upwork/View/components/Talent/JobCard.dart';
 import 'package:upwork/View/components/Talent/SelectDropDown.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
 
 class MyFeedPage extends StatefulWidget {
+  final List<JobDataModel> jobs;
+  MyFeedPage(this.jobs);
   @override
   _MyFeedPageState createState() => _MyFeedPageState();
 }
@@ -48,6 +51,15 @@ class _MyFeedPageState extends State<MyFeedPage> {
               text: "There are new jobs.See them",
               textColor: bgUpwork),
           JobCard(),
+          ListView.builder(
+            itemCount: widget.jobs.length,
+            itemBuilder: (BuildContext context, int index) {
+                return Text(
+                   widget.jobs[index].jobTitle,
+                
+                );
+            }
+          )
         ],
       ),
     );

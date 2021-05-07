@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Models/JobDataModel.dart';
+import 'package:upwork/Services/JobDataService.dart';
 import 'package:upwork/View/Pages/TalentPages/MyfeedPage.dart';
 import 'package:upwork/View/Pages/TalentPages/SavedJobs.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
@@ -12,8 +14,19 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<JobDataModel> jobs = [];
   Widget child;
+  getJobData() async {
+    jobs = await JobDataService().getJobData();
+    setState(() {});
+  }
+
   @override
+  void initState() {
+    super.initState();
+    getJobData();
+  }
+
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
@@ -58,9 +71,9 @@ class _HomePageState extends State<HomePage> {
         ),
         body: TabBarView(
           children: <Widget>[
-            MyFeedPage(),
+            MyFeedPage(jobs),
             SavedJobs(),
-            MyFeedPage(),
+            MyFeedPage(jobs),
           ],
         ),
         bottomNavigationBar: BottomNav(),
