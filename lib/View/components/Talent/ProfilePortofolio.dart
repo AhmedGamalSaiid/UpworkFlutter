@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import 'package:upwork/View/components/Talent/PortofolioItem.dart';
-
 import '../../../constanse.dart';
-import 'DotsIcon.dart';
-import 'PlusIcon.dart';
 
 class ProfilePortofolio extends StatefulWidget {
   ProfilePortofolio({Key key}) : super(key: key);
@@ -46,9 +44,9 @@ class _ProfilePortofolioState extends State<ProfilePortofolio> {
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 15.0),
-                child: DotsIcon(),
+                child: CustomIcon(Icons.more_horiz),
               ),
-              PlusIcon(),
+              CustomIcon(Icons.add),
             ],
           ),
           Wrap(

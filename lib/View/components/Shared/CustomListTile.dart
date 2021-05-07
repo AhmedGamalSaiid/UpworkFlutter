@@ -16,6 +16,7 @@ class _CustomListTileState extends State<CustomListTile> {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
       child: ListTile(
+        enableFeedback: true,
         title: Row(
           children: [
             widget.firstIcon,

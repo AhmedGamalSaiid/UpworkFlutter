@@ -10,7 +10,6 @@ class _InReviewPageState extends State<InReviewPage> {
   @override
   Widget build(BuildContext context) {
     // Size size = MediaQuery.of(context).size;
-
     return Scaffold(
         appBar: AppBar(
           title: Center(

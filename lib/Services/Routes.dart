@@ -11,7 +11,6 @@ class _MainRouteState extends State<MainRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNav(),
-      
     );
   }
 }

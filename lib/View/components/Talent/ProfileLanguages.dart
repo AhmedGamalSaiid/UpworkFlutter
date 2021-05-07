@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-
-import 'EditIcon.dart';
-import 'PlusIcon.dart';
+import 'package:upwork/Models/UserData.dart';
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 
 class ProfileLanguages extends StatefulWidget {
-  final String english;
-  final String arabic;
-  ProfileLanguages(this.english, {this.arabic});
+  final UserDataModel user;
+  ProfileLanguages(this.user);
   @override
   _ProfileLanguagesState createState() => _ProfileLanguagesState();
 }
@@ -35,10 +33,10 @@ class _ProfileLanguagesState extends State<ProfileLanguages> {
                   ),
                 ),
               ),
-              EditIcon(),
+              CustomIcon(Icons.mode_edit),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0),
-                child: PlusIcon(),
+                child: CustomIcon(Icons.add),
               ),
             ],
           ),
@@ -59,7 +57,7 @@ class _ProfileLanguagesState extends State<ProfileLanguages> {
                         ),
                       ),
                       Text(
-                        widget.english,
+                        widget.user.englishProficiency,
                         style: TextStyle(
                           fontSize: 14,
                         ),
@@ -67,28 +65,28 @@ class _ProfileLanguagesState extends State<ProfileLanguages> {
                     ],
                   ),
                 ),
-                widget.arabic != null
-                    ? Padding(
-                        padding: const EdgeInsets.only(top: 12.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              "Arabic: ",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                            Text(
-                              widget.arabic,
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    : Text(""),
+                // widget.arabic != null
+                //     ? Padding(
+                //         padding: const EdgeInsets.only(top: 12.0),
+                //         child: Row(
+                //           children: [
+                //             Text(
+                //               "Arabic: ",
+                //               style: TextStyle(
+                //                 fontWeight: FontWeight.bold,
+                //                 fontSize: 16,
+                //               ),
+                //             ),
+                //             Text(
+                //               widget.arabic,
+                //               style: TextStyle(
+                //                 fontSize: 14,
+                //               ),
+                //             ),
+                //           ],
+                //         ),
+                //       )
+                //     : Text(""),
               ],
             ),
           ),

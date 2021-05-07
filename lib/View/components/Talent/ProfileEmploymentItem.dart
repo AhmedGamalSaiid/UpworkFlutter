@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/View/components/Talent/DeleteIcon.dart';
-import 'package:upwork/View/components/Talent/EditIcon.dart';
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 
 class ProfileEmploymentItem extends StatefulWidget {
   final String company;
@@ -32,9 +31,9 @@ class _ProfileEmploymentItemState extends State<ProfileEmploymentItem> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 30, right: 15),
-                child: EditIcon(),
+                child: CustomIcon(Icons.mode_edit),
               ),
-              DeleteIcon(),
+              CustomIcon(Icons.delete),
             ],
           ),
           Padding(

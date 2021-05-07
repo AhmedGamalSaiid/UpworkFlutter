@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/View/components/Talent/EditIcon.dart';
-
+import 'package:intl/intl.dart';
+import 'package:upwork/Models/UserData.dart';
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import '../../../constanse.dart';
 
 class ProfileHeadSection extends StatefulWidget {
-  ProfileHeadSection({Key key}) : super(key: key);
-
+  final dateFormart = new DateFormat('kk:mm:a');
+  final UserDataModel user;
+  ProfileHeadSection(this.user);
   @override
   _ProfileHeadSectionState createState() => _ProfileHeadSectionState();
 }
@@ -26,16 +28,20 @@ class _ProfileHeadSectionState extends State<ProfileHeadSection> {
               Expanded(
                 flex: 1,
                 child: Stack(
-                  children: <Widget>[
+                  children: [
                     Positioned(
+                      // child: Image.network(
+                      //   widget.user.profilePhoto,
+                      // ),
                       child: CircleAvatar(
                         radius: 40,
-                        backgroundImage: ExactAssetImage("assets/img/06.jpg"),
+                        backgroundImage:
+                            ExactAssetImage("assets/img/default-avatar.jpg"),
                       ),
                     ),
                     Positioned(
                       left: 0,
-                      child: EditIcon(),
+                      child: CustomIcon(Icons.mode_edit),
                     ),
                     Positioned(
                       right: 25,
@@ -58,9 +64,10 @@ class _ProfileHeadSectionState extends State<ProfileHeadSection> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(5.0),
+                      padding: const EdgeInsets.only(top: 5.0, bottom: 5),
                       child: Text(
-                        "Freelancer Name",
+                        widget.user.firstName + " " + widget.user.lastName,
+                        // "sdsd",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -77,7 +84,10 @@ class _ProfileHeadSectionState extends State<ProfileHeadSection> {
                             size: 15,
                           ),
                           Text(
-                            "Freelancer Lacation",
+                            " " +
+                                widget.user.location["city"] +
+                                ", " +
+                                widget.user.location["country"],
                           ),
                         ],
                       ),
@@ -85,7 +95,7 @@ class _ProfileHeadSectionState extends State<ProfileHeadSection> {
                     Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: Text(
-                        "Local Time",
+                        widget.dateFormart.format(new DateTime.now()),
                       ),
                     ),
                     Padding(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-
-import 'PlusIcon.dart';
+import 'package:upwork/Models/UserData.dart';
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import 'ProfileEducationItem.dart';
 
 class ProfileEducation extends StatefulWidget {
-  ProfileEducation({Key key}) : super(key: key);
-
+  final UserDataModel user;
+  ProfileEducation(this.user);
   @override
   _ProfileEducationState createState() => _ProfileEducationState();
 }
@@ -34,24 +34,15 @@ class _ProfileEducationState extends State<ProfileEducation> {
                   ),
                 ),
               ),
-              PlusIcon(),
+              CustomIcon(Icons.add),
             ],
           ),
-          ProfileEducationItem(
-            "ITI - Information Technology Institute",
-            duration: "2020-2021",
-            fieldofStudy: "Frontend And Cross-Platform Mobile",
-          ),
-          ProfileEducationItem(
-            "ITI - Information Technology Institute",
-            duration: "2020-2021",
-            fieldofStudy: "Frontend And Cross-Platform Mobile",
-          ),
-          ProfileEducationItem(
-            "ITI - Information Technology Institute",
-            duration: "2020-2021",
-            fieldofStudy: "Frontend And Cross-Platform Mobile",
-          ),
+          for (var i = 0; i < 1; i++)
+            ProfileEducationItem(
+              widget.user.school,
+              duration: "2020-2021",
+              fieldofStudy: "Frontend And Cross-Platform Mobile",
+            ),
         ],
       ),
     );

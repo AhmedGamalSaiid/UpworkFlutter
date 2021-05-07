@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/View/components/Talent/EditIcon.dart';
-import 'package:upwork/View/components/Talent/LinkIcon.dart';
-
+import 'package:upwork/Models/UserData.dart';
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import '../../../constanse.dart';
 import 'SelectDropDown.dart';
 
 class ProfileViewProfile extends StatefulWidget {
+  final UserDataModel user;
+  ProfileViewProfile(this.user);
   @override
   _ProfileViewProfileState createState() => _ProfileViewProfileState();
 }
@@ -32,7 +33,7 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
                 ),
               ),
             ),
-            EditIcon(),
+            CustomIcon(Icons.mode_edit),
           ],
         ),
         Container(
@@ -61,19 +62,18 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
                 bottom: 15,
               ),
               child: Text(
-                "Web Developer",
+                widget.user.title,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
               ),
             ),
-            EditIcon(),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.5,
-              alignment: Alignment.centerRight,
-              child: LinkIcon(),
+            Padding(
+              padding: const EdgeInsets.only(right: 12.0),
+              child: CustomIcon(Icons.mode_edit),
             ),
+            CustomIcon(Icons.link),
           ],
         ),
         Padding(
@@ -81,7 +81,7 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
           child: Row(
             children: [
               Text(
-                "\$20.00/hr",
+                "\$" + widget.user.hourlyRate + "/hr",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
@@ -89,7 +89,7 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 18.0),
-                child: EditIcon(),
+                child: CustomIcon(Icons.mode_edit),
               ),
             ],
           ),
@@ -114,7 +114,7 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: Text(
-                    "I am a Professional Freelancer Developer. I have developed a wide range of websites using HTML/CSS, Javascript, jQuery, Bootstrap and WordPress. As a highly creative Frontend and WordPress Developer.",
+                    widget.user.overview,
                     style: TextStyle(
                       fontSize: 14,
                     ),
@@ -123,7 +123,7 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 18.0),
-                child: EditIcon(),
+                child: CustomIcon(Icons.mode_edit),
               ),
             ],
           ),

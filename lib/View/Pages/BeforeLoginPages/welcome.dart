@@ -16,7 +16,7 @@ class _WelcomeState extends State<Welcome> {
       backgroundColor: bgUpworkDark,
       body: Container(
           width: 500,
-          height: 500,
+          height: 650,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage("assets/img/1.jpg"),
