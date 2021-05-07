@@ -97,7 +97,7 @@ class _SignupState extends State<Signup> {
                           //     "package:upwork/View/Pages/BeforeLoginPages/Login.dart");
                         },
                         child: Text(
-                          "LogIn",
+                          "Log In",
                           style: TextStyle(
                               color: Color(0XFF37a000),
                               fontWeight: FontWeight.w600),
