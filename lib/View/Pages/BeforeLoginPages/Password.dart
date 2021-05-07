@@ -35,10 +35,11 @@ class _PasswordPageState extends State<PasswordPage> {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
             ),
             SizedBox(height: size.height * 0.03),
-            Text(
-              widget.emailVal,
-              style: TextStyle(fontSize: 15),
-            ),
+            if (widget.emailVal != null)
+              Text(
+                widget.emailVal,
+                style: TextStyle(fontSize: 15),
+              ),
             SizedBox(height: size.height * 0.03),
             RoundedInputField(
               passInput: true,

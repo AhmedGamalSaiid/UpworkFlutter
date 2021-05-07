@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:upwork/Models/UserData.dart';
 import 'package:upwork/firebaseApp.dart';
-
 import 'authService.dart';
 
-class UserData {
+class UserDataService {
   Future<UserDataModel> getUserData() async {
     UserDataModel user;
     try {

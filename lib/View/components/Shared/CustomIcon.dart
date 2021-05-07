@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ShareIcon extends StatelessWidget {
+class CustomIcon extends StatefulWidget {
+  final IconData icon;
+  CustomIcon(this.icon);
+  @override
+  _CustomIconState createState() => _CustomIconState();
+}
+
+class _CustomIconState extends State<CustomIcon> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,7 +20,7 @@ class ShareIcon extends StatelessWidget {
         ),
       ),
       child: Icon(
-        Icons.share,
+        widget.icon,
         color: Color(0xff656565),
       ),
     );

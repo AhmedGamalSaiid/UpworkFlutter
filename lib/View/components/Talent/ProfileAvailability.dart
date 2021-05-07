@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import '../../../constanse.dart';
-import 'EditIcon.dart';
 
 class ProfileAvailability extends StatefulWidget {
   final String availability;
@@ -42,7 +41,7 @@ class _ProfileAvailabilityState extends State<ProfileAvailability> {
                   ),
                 ),
               ),
-              EditIcon(),
+              CustomIcon(Icons.mode_edit),
             ],
           ),
           Container(

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'DeleteIcon.dart';
-import 'EditIcon.dart';
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 
 class ProfileOtherExperienceItem extends StatefulWidget {
   final String subject;
@@ -32,9 +30,9 @@ class _ProfileOtherExperienceItemState
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 30, right: 15),
-                child: EditIcon(),
+                child: CustomIcon(Icons.mode_edit),
               ),
-              DeleteIcon(),
+              CustomIcon(Icons.delete),
             ],
           ),
           Text(widget.description),

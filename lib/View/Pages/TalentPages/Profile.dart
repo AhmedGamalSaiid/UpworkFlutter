@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/Models/UserData.dart';
 import 'package:upwork/Services/UserDataService.dart';
+import 'package:upwork/View/components/Shared/CustomLoader.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/ProfileAvailability.dart';
 import 'package:upwork/View/components/Talent/ProfileEducation.dart';
@@ -23,7 +24,7 @@ class _ProfileState extends State<Profile> {
   UserDataModel user;
 
   getData() async {
-    user = await UserData().getUserData();
+    user = await UserDataService().getUserData();
     setState(() {});
   }
 
@@ -66,7 +67,7 @@ class _ProfileState extends State<Profile> {
                   ProfileOtherExperience(),
                 ],
               )
-            : Text(""),
+            : CustomLoader(),
       ),
     );
   }

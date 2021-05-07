@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/Models/UserData.dart';
-
-import 'EditIcon.dart';
-import 'PlusIcon.dart';
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 
 class ProfileLanguages extends StatefulWidget {
   final UserDataModel user;
@@ -35,10 +33,10 @@ class _ProfileLanguagesState extends State<ProfileLanguages> {
                   ),
                 ),
               ),
-              EditIcon(),
+              CustomIcon(Icons.mode_edit),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0),
-                child: PlusIcon(),
+                child: CustomIcon(Icons.add),
               ),
             ],
           ),
