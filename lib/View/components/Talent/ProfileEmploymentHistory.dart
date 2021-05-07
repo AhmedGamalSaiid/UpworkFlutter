@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/Models/UserData.dart';
-import 'package:upwork/View/components/Talent/PlusIcon.dart';
-
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import '../../../constanse.dart';
 import 'ProfileEmploymentItem.dart';
 
@@ -50,7 +49,7 @@ class _ProfileEmploymentHistoryState extends State<ProfileEmploymentHistory> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 15.0),
-                      child: PlusIcon(),
+                      child: CustomIcon(Icons.add),
                     ),
                   ],
                 ),

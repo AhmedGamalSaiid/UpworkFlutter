@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import '../../../constanse.dart';
-import 'DeleteIcon.dart';
-import 'EditIcon.dart';
 
 class PortfolioItem extends StatefulWidget {
   final String imgUrl;
@@ -29,12 +27,12 @@ class _PortfolioItemState extends State<PortfolioItem> {
               Positioned(
                 top: 40,
                 left: 100,
-                child: EditIcon(),
+                child: CustomIcon(Icons.mode_edit),
               ),
               Positioned(
                 top: 40,
                 right: 100,
-                child: DeleteIcon(),
+                child: CustomIcon(Icons.delete),
               ),
             ],
           ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import '../../../constanse.dart';
-import 'EditIcon.dart';
 
 class ProfileSkills extends StatefulWidget {
   @override
@@ -40,7 +39,7 @@ class _ProfileSkillsState extends State<ProfileSkills> {
                   ),
                 ),
               ),
-              EditIcon(),
+              CustomIcon(Icons.mode_edit),
             ],
           ),
           Wrap(

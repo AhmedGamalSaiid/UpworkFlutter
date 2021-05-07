@@ -14,13 +14,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<JobDataModel> jobs = [];
-  Widget child;
-  getJobData() async {
-    jobs = await JobDataService().getJobData();
-    setState(() {});
-  }
-
   @override
   void initState() {
     super.initState();
@@ -31,7 +24,6 @@ class _HomePageState extends State<HomePage> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        //backgroundColor: Colors.grey[100],
         drawer: CustomDrawer(),
         appBar: AppBar(
           leading: Builder(

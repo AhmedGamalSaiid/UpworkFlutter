@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import '../../../constanse.dart';
-import 'PlusIcon.dart';
 import 'ProfileOtherExperienceItem.dart';
 
 class ProfileOtherExperience extends StatefulWidget {
@@ -46,7 +45,7 @@ class _ProfileOtherExperienceState extends State<ProfileOtherExperience> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 15.0),
-                      child: PlusIcon(),
+                      child: CustomIcon(Icons.add),
                     ),
                   ],
                 ),

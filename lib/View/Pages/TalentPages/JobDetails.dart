@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Models/JobData.dart';
 
 class JobDetails extends StatefulWidget {
+  final JobDataModel job;
+  JobDetails({this.job});
   @override
   _JobDetailsState createState() => _JobDetailsState();
 }

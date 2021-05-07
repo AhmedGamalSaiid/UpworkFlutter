@@ -49,14 +49,16 @@ class _LoginBodyState extends State<LoginBody> {
               borderColor: Color(0x00000000),
               press: () {
                 print(widget.emailVal);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) {
-                    return new PasswordPage(
-                      emailVal: widget.emailVal,
-                    );
-                  }),
-                );
+                if (widget.emailVal != null) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      return PasswordPage(
+                        emailVal: widget.emailVal,
+                      );
+                    }),
+                  );
+                }
               },
             ),
             OrDivider(
