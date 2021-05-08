@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Login.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/Signup.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
 
@@ -25,26 +26,7 @@ class _WelcomeState extends State<Welcome> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Text(
-                "Never miss an opportunity.",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 10, bottom: 20),
-                width: 250,
-                child: Text(
-                  "Easily find work, chat, and collaborate on the go.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-              // SizedBox(height: 10),
+              SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.all(0.0),
                 child: RoundedButton(
@@ -64,14 +46,21 @@ class _WelcomeState extends State<Welcome> {
                   },
                 ),
               ),
-              // SizedBox(height: 10),
+              SizedBox(height: 10),
               InkWell(
                   child: new Text(
                     'New to Upwork ? Sign Up',
                     style:
                         TextStyle(color: bgUpwork, fontWeight: FontWeight.bold),
                   ),
-                  onTap: () => {}),
+                  onTap: () => {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return Signup(
+                              // emailVal: widget.emailVal,
+                              );
+                        }))
+                      }),
             ],
           )),
     );
