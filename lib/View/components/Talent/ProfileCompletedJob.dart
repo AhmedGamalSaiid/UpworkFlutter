@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import '../../../constanse.dart';
-import 'ShareIcon.dart';
 
 class ProfileCompletedJob extends StatefulWidget {
   final String jobName;
@@ -71,7 +70,7 @@ class _ProfileCompletedJobState extends State<ProfileCompletedJob> {
                   widget.duration,
                 ),
               ),
-              ShareIcon(),
+              CustomIcon(Icons.share),
             ],
           ),
           Container(

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:upwork/Models/UserData.dart';
-import 'package:upwork/View/components/Talent/EditIcon.dart';
-
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import '../../../constanse.dart';
 
 class ProfileHeadSection extends StatefulWidget {
@@ -42,7 +41,7 @@ class _ProfileHeadSectionState extends State<ProfileHeadSection> {
                     ),
                     Positioned(
                       left: 0,
-                      child: EditIcon(),
+                      child: CustomIcon(Icons.mode_edit),
                     ),
                     Positioned(
                       right: 25,

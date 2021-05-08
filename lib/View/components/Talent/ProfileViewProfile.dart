@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/Models/UserData.dart';
-import 'package:upwork/View/components/Talent/EditIcon.dart';
-import 'package:upwork/View/components/Talent/LinkIcon.dart';
-
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import '../../../constanse.dart';
 import 'SelectDropDown.dart';
 
@@ -35,7 +33,7 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
                 ),
               ),
             ),
-            EditIcon(),
+            CustomIcon(Icons.mode_edit),
           ],
         ),
         Container(
@@ -73,9 +71,9 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
             ),
             Padding(
               padding: const EdgeInsets.only(right: 12.0),
-              child: EditIcon(),
+              child: CustomIcon(Icons.mode_edit),
             ),
-            LinkIcon(),
+            CustomIcon(Icons.link),
           ],
         ),
         Padding(
@@ -91,7 +89,7 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 18.0),
-                child: EditIcon(),
+                child: CustomIcon(Icons.mode_edit),
               ),
             ],
           ),
@@ -125,7 +123,7 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 18.0),
-                child: EditIcon(),
+                child: CustomIcon(Icons.mode_edit),
               ),
             ],
           ),

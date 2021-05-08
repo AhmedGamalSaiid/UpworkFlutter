@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/Models/UserData.dart';
-import 'PlusIcon.dart';
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import 'ProfileEducationItem.dart';
 
 class ProfileEducation extends StatefulWidget {
@@ -34,7 +34,7 @@ class _ProfileEducationState extends State<ProfileEducation> {
                   ),
                 ),
               ),
-              PlusIcon(),
+              CustomIcon(Icons.add),
             ],
           ),
           for (var i = 0; i < 1; i++)

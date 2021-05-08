@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/Models/UserData.dart';
+import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import '../../../constanse.dart';
-import 'DotsIcon.dart';
 import 'ProfileCompletedJob.dart';
 
 class ProfileWorkHistory extends StatefulWidget {
@@ -34,7 +34,7 @@ class _ProfileWorkHistoryState extends State<ProfileWorkHistory> {
                 ),
               ),
             ),
-            DotsIcon(),
+            CustomIcon(Icons.more_horiz),
           ],
         ),
         Container(
