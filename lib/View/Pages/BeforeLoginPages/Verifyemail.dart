@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/SignupDetails.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/CreateProfile.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
-import 'package:upwork/constanse.dart';
 
 class Verifyemail extends StatefulWidget {
   @override
@@ -124,9 +123,7 @@ class _VerifyemailState extends State<Verifyemail> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
-                        return SignupDetails(
-                            // emailVal: widget.emailVal,
-                            );
+                        return Createprofile();
                       }),
                     );
                   },

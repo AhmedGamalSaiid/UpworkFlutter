@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
 import 'package:upwork/View/Pages/TalentPages/Messages.dart';
+import 'View/Pages/BeforeLoginPages/CreateProfile.dart';
 import 'View/Pages/TalentPages/Contracts.dart';
 import 'View/Pages/TalentPages/HomePage.dart';
 import 'View/Pages/TalentPages/Proposals.dart';
 import 'View/Pages/BeforeLoginPages/Verifyemail.dart';
 import 'View/Pages/TalentPages/myreports.dart';
 import 'View/Pages/BeforeLoginPages/welcome.dart';
+import 'View/components/Shared/DropDawn.dart';
 import 'constanse.dart';
 import 'firebaseApp.dart';
 
@@ -29,7 +31,8 @@ class MyApp extends StatelessWidget {
         primaryColor: bgUpworkDark,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: Verifyemail(),
+      home: Createprofile(),
+      //Verifyemail(),
     );
     // initialRoute: '/',
     // routes: {
