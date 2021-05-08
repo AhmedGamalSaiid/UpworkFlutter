@@ -20,7 +20,7 @@ class _SavedJobsState extends State<SavedJobs> {
         ),
         Text(
           "Keep track of jobs you're interested in. Select the heart icon on a job post to save it for later.",
-          style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
         )
       ],
     );
