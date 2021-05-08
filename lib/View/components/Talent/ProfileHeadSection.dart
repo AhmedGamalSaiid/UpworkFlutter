@@ -35,8 +35,7 @@ class _ProfileHeadSectionState extends State<ProfileHeadSection> {
                       // ),
                       child: CircleAvatar(
                         radius: 40,
-                        backgroundImage:
-                            ExactAssetImage("assets/img/default-avatar.jpg"),
+                        backgroundImage: NetworkImage(widget.user.profilePhoto),
                       ),
                     ),
                     Positioned(
