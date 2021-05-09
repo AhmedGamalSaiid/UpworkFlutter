@@ -13,9 +13,17 @@ class Expertise extends StatefulWidget {
 }
 
 class _ExpertiseState extends State<Expertise> {
+  bool _selected = false;
+  bool _selected1 = false;
+  bool _selected2 = false;
+  bool _selected3 = false;
+  bool _selected4 = false;
+  bool _selected5 = false;
+  bool _selected6 = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -59,58 +67,55 @@ class _ExpertiseState extends State<Expertise> {
                       spacing: 15,
                       runSpacing: 5,
                       children: [
-                        Chip(
-                          label: Text("Visual Commmunication"),
-                          avatar: Icon(Icons.add),
-                        ),
-                        Chip(
-                          label: Text("Figma"),
-                          avatar: Icon(Icons.add),
-                        ),
-                        Chip(
-                          label: Text("User Interface Design"),
-                          avatar: Icon(Icons.add),
-                        ),
-                        Chip(
-                          label: Text("Axure Rp"),
-                          avatar: Icon(Icons.add),
-                        ),
-                        Chip(
-                          label: Text("Web Design"),
-                          avatar: Icon(Icons.add),
-                        ),
-                        Chip(
-                          label: Text("Usability Testing"),
-                          avatar: Icon(Icons.add),
-                        ),
-                        Chip(
-                          label: Text("Webflow"),
-                          avatar: Icon(Icons.add),
-                        ),
-                        Chip(
-                          label: Text("Mobile App Design"),
-                          avatar: Icon(Icons.add),
-                        ),
-                        Chip(
-                          label: Text("Adobe XD"),
-                          avatar: Icon(Icons.add),
-                        ),
-                        Chip(
-                          label: Text("Competitive Analysis"),
-                          avatar: Icon(Icons.add),
-                        ),
-                        Chip(
-                          label: Text("Game Design"),
-                          avatar: Icon(Icons.add),
-                        ),
-                        Chip(
-                          label: Text("Software Design"),
-                          avatar: Icon(Icons.add),
-                        ),
-                        Chip(
-                          label: Text("User Experience Design"),
-                          avatar: Icon(Icons.add),
-                        ),
+                        FilterChip(
+                            selected: _selected,
+                            label: Text("Visual Commmunication"),
+                            avatar: Icon(Icons.add),
+                            onSelected: (val) {
+                              setState(() => _selected = val);
+                            }),
+                        FilterChip(
+                            label: Text("Figma"),
+                            selected: _selected1,
+                            avatar: Icon(Icons.add),
+                            onSelected: (val) {
+                              setState(() => _selected1 = val);
+                            }),
+                        FilterChip(
+                            label: Text("User Interface Design"),
+                            avatar: Icon(Icons.add),
+                            selected: _selected2,
+                            onSelected: (val) {
+                              setState(() => _selected2 = val);
+                            }),
+                        FilterChip(
+                            label: Text("Axure Rp"),
+                            avatar: Icon(Icons.add),
+                            selected: _selected3,
+                            onSelected: (val) {
+                              setState(() => _selected3 = val);
+                            }),
+                        FilterChip(
+                            selected: _selected4,
+                            label: Text("Web Design"),
+                            avatar: Icon(Icons.add),
+                            onSelected: (val) {
+                              setState(() => _selected4 = val);
+                            }),
+                        FilterChip(
+                            selected: _selected5,
+                            label: Text("Usability Testing"),
+                            avatar: Icon(Icons.add),
+                            onSelected: (val) {
+                              setState(() => _selected5 = val);
+                            }),
+                        FilterChip(
+                            selected: _selected6,
+                            label: Text("Webflow"),
+                            avatar: Icon(Icons.add),
+                            onSelected: (val) {
+                              setState(() => _selected6 = val);
+                            }),
                       ],
                     ),
                     SizedBox(height: size.height * 0.03),
@@ -128,6 +133,7 @@ class _ExpertiseState extends State<Expertise> {
                       onChanged: (value) {
                         widget.skillsVal = value;
                       },
+                      icon: null,
                     ),
                   ],
                 ),
