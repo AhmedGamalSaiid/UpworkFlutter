@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
 import 'package:upwork/View/Pages/TalentPages/Messages.dart';
-import 'View/Pages/BeforeLoginPages/CreateProfile.dart';
-import 'View/Pages/BeforeLoginPages/Expertise.dart';
+
 import 'View/Pages/TalentPages/Contracts.dart';
 import 'View/Pages/TalentPages/HomePage.dart';
 import 'View/Pages/TalentPages/Proposals.dart';
-import 'View/Pages/BeforeLoginPages/Verifyemail.dart';
+
 import 'View/Pages/TalentPages/myreports.dart';
 import 'View/Pages/BeforeLoginPages/welcome.dart';
-import 'View/components/Shared/DropDawn.dart';
+
 import 'constanse.dart';
 import 'firebaseApp.dart';
 
@@ -26,27 +25,21 @@ class MyApp extends StatelessWidget {
     FlutterStatusbarManager.setColor(Colors.white, animated: true);
     var login = auth.currentUser;
     return MaterialApp(
-      title: 'Upwork',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: bgUpworkDark,
-        scaffoldBackgroundColor: Colors.white,
-      ),
-      home: Expertise(),
-      //Createprofile(),
-      //Verifyemail(),
-      // ReportsPage(),
-      //ProposalsPage(),
-    );
-    // initialRoute: '/',
-    // routes: {
-    //   '/': (context) => login != null ? HomePage() : Welcome(),
-    //   '/jobs': (context) => HomePage(),
-    //   '/proposals': (context) => ProposalsPage(),
-    //   '/contracts': (context) => Contracts(),
-    //   '/messages': (context) => Messages(),
-    //   // '/alerts': (context) => (),
-    //   '/reports': (context) => ReportsPage(),
-    // });
+        title: 'Upwork',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: bgUpworkDark,
+          scaffoldBackgroundColor: Colors.white,
+        ),
+        initialRoute: '/',
+        routes: {
+          '/': (context) => login != null ? HomePage() : Welcome(),
+          '/jobs': (context) => HomePage(),
+          '/proposals': (context) => ProposalsPage(),
+          '/contracts': (context) => Contracts(),
+          '/messages': (context) => Messages(),
+          // '/alerts': (context) => (),
+          '/reports': (context) => ReportsPage(),
+        });
   }
 }
