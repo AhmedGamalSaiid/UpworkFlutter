@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/Expertise.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Verifyemail.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
@@ -99,12 +100,18 @@ class _CreateprofileState extends State<Createprofile> {
                 padding: const EdgeInsets.all(10),
                 child: SelectDropDown(
                   [
-                    "Select the Subcatagory",
-                    "Database Administration",
-                    "ERP/CRM Software",
-                    "Information Security",
-                    "Network & System Administration",
-                    "Other - IT & Networking",
+                    "Select the SubCatagory",
+                    " Desktop Software Development",
+                    "Ecommerce Development",
+                    "Game Development",
+                    "Mobile Development",
+                    "Other - Software Development",
+                    "Product Management",
+                    "QA & Testing",
+                    "Scripts & Utilities",
+                    "Web & Mobile Design",
+                    "selected",
+                    "Web Development",
                   ],
                   isExpand: true,
                 )),
@@ -141,7 +148,9 @@ class _CreateprofileState extends State<Createprofile> {
                         press: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) {}),
+                            MaterialPageRoute(builder: (context) {
+                              return Expertise();
+                            }),
                           );
                         },
                       ),
