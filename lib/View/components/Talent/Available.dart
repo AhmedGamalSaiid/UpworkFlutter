@@ -11,7 +11,7 @@ class AvailablePage extends StatefulWidget {
 class _AvailablePageState extends State<AvailablePage> {
   @override
   Widget build(BuildContext context) {
-    // Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
           title: Center(
@@ -33,7 +33,7 @@ class _AvailablePageState extends State<AvailablePage> {
                 Padding(
                   padding: const EdgeInsets.only(left: 15.0, top: 15.0),
                   child: Text(
-                    'you earned it!Where should we deliver your balance ? ',
+                    'you earned it ! Where should we deliver your balance ? ',
                     style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
@@ -41,9 +41,7 @@ class _AvailablePageState extends State<AvailablePage> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 40,
-                ),
+                SizedBox(height: size.height * 0.04),
                 Align(
                   alignment: Alignment.center,
                   child: Button3D(
@@ -59,9 +57,7 @@ class _AvailablePageState extends State<AvailablePage> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: size.height * 0.03),
                 Align(
                   alignment: Alignment.center,
                   child: Text(
@@ -73,9 +69,7 @@ class _AvailablePageState extends State<AvailablePage> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 50,
-                ),
+                SizedBox(height: size.height * 0.05),
                 Align(
                     alignment: Alignment.center,
                     child: TextAnchor(
@@ -89,9 +83,7 @@ class _AvailablePageState extends State<AvailablePage> {
                         print(link);
                       },
                     )),
-                SizedBox(
-                  height: 40,
-                ),
+                SizedBox(height: size.height * 0.04),
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: Text(

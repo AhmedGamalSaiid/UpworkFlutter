@@ -8,6 +8,7 @@ class ArchivedBody extends StatefulWidget {
 class _ArchivedBodyState extends State<ArchivedBody> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Container(
         margin: EdgeInsets.all(10.0),
         color: Color(0xFFFFFFFF),
@@ -43,9 +44,7 @@ class _ArchivedBodyState extends State<ArchivedBody> {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 30,
-                  ),
+                  SizedBox(height: size.height * 0.03),
                   Padding(
                     padding: const EdgeInsets.only(left: 15.0),
                     child: Text(
@@ -58,16 +57,14 @@ class _ArchivedBodyState extends State<ArchivedBody> {
                       textAlign: TextAlign.left,
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  SizedBox(height: size.height * 0.02),
                   Padding(
                     padding: const EdgeInsets.only(left: 15.0),
                     child: Text(
                       '8 days ago',
                       style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w100,
+                        color: Colors.black54,
+                        fontWeight: FontWeight.normal,
                         fontSize: 15,
                       ),
                     ),
@@ -89,16 +86,14 @@ class _ArchivedBodyState extends State<ArchivedBody> {
                     child: Text(
                       'Web Design ',
                       style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w100,
+                        color: Colors.black54,
+                        fontWeight: FontWeight.normal,
                         fontSize: 15,
                       ),
                       textAlign: TextAlign.left,
                     ),
                   ),
-                  SizedBox(
-                    height: 30,
-                  ),
+                  SizedBox(height: size.height * 0.03),
                 ]),
           ),
         ));

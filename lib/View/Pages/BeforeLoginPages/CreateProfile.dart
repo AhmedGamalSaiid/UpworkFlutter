@@ -14,6 +14,7 @@ class Createprofile extends StatefulWidget {
 class _CreateprofileState extends State<Createprofile> {
   @override
   Widget build(BuildContext context) {
+  Size size = MediaQuery.of(context).size;
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -70,9 +71,7 @@ class _CreateprofileState extends State<Createprofile> {
                         ),
                       ),
                     ])),
-            SizedBox(
-              height: 20,
-            ),
+             SizedBox(height: size.height * 0.03),
             Padding(
                 padding: const EdgeInsets.all(10),
                 child: SelectDropDown(
@@ -93,9 +92,7 @@ class _CreateprofileState extends State<Createprofile> {
                   ],
                   isExpand: true,
                 )),
-            SizedBox(
-              height: 30,
-            ),
+             SizedBox(height: size.height * 0.03),
             Padding(
                 padding: const EdgeInsets.all(10),
                 child: SelectDropDown(
@@ -115,9 +112,7 @@ class _CreateprofileState extends State<Createprofile> {
                   ],
                   isExpand: true,
                 )),
-            SizedBox(
-              height: 40,
-            ),
+             SizedBox(height: size.height * 0.04),
             Padding(
                 padding: const EdgeInsets.all(5),
                 child: Row(

@@ -35,6 +35,8 @@ class MyApp extends StatelessWidget {
       home: Expertise(),
       //Createprofile(),
       //Verifyemail(),
+      // ReportsPage(),
+      //ProposalsPage(),
     );
     // initialRoute: '/',
     // routes: {

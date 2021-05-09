@@ -13,6 +13,7 @@ class Verifyemail extends StatefulWidget {
 class _VerifyemailState extends State<Verifyemail> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -47,9 +48,7 @@ class _VerifyemailState extends State<Verifyemail> {
                   width: 150,
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: size.height * 0.02),
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: Text(
@@ -83,9 +82,7 @@ class _VerifyemailState extends State<Verifyemail> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: size.height * 0.02),
               Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Column(children: <Widget>[
@@ -109,9 +106,7 @@ class _VerifyemailState extends State<Verifyemail> {
                       ),
                     ),
                   ])),
-              SizedBox(
-                height: 20,
-              ),
+              SizedBox(height: size.height * 0.02),
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: RoundedButton(
