@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Models/UserData.dart';
+import 'package:upwork/Services/UserDataService.dart';
 import 'package:upwork/Services/authService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/welcome.dart';
 import 'package:upwork/View/Pages/TalentPages/MyStats.dart';
 import 'package:upwork/View/Pages/TalentPages/Profile.dart';
-import 'package:upwork/View/Pages/TalentPages/Reports.dart';
 import 'package:upwork/View/Pages/TalentPages/Settings.dart';
+import 'package:upwork/View/Pages/TalentPages/myreports.dart';
+import 'package:upwork/View/components/Shared/CustomCircleAvatar.dart';
 import '../../../constanse.dart';
 import 'CustomListTile.dart';
 
@@ -14,6 +17,19 @@ class CustomDrawer extends StatefulWidget {
 }
 
 class _CustomDrawerState extends State<CustomDrawer> {
+  UserDataModel user;
+
+  getData() async {
+    user = await UserDataService().getUserData();
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -32,15 +48,14 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     padding: EdgeInsets.only(right: 10),
                     width: 60,
                     height: 60,
-                    child: CircleAvatar(
-                      radius: 50,
-                      backgroundImage: ExactAssetImage("assets/img/06.jpg"),
-                    ),
+                    child: CustomCircleAvatar(),
                   ),
-                  Text(
-                    'Freelancer Name',
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  user != null
+                      ? Text(
+                          user.firstName + " " + user.lastName,
+                          style: TextStyle(color: Colors.white),
+                        )
+                      : Text(""),
                 ],
               ),
             ),
@@ -84,7 +99,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Reports(),
+                      builder: (context) => ReportsPage(),
                     ));
               },
               secondIcon: false,
