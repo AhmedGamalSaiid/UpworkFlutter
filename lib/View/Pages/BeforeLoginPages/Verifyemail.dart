@@ -72,7 +72,7 @@ class _VerifyemailState extends State<Verifyemail> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 20),
+                padding: const EdgeInsets.only(bottom: 2),
                 child: Text(
                   'habidal984@httptuan.com ',
                   style: TextStyle(
@@ -84,7 +84,7 @@ class _VerifyemailState extends State<Verifyemail> {
               ),
               SizedBox(height: size.height * 0.02),
               Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
+                  padding: const EdgeInsets.only(bottom: 2),
                   child: Column(children: <Widget>[
                     Text(
                       'Please check your email and click on the line ',
@@ -108,10 +108,27 @@ class _VerifyemailState extends State<Verifyemail> {
                   ])),
               SizedBox(height: size.height * 0.02),
               Padding(
-                padding: const EdgeInsets.only(bottom: 20),
+                padding: const EdgeInsets.only(bottom: 1),
                 child: RoundedButton(
                   color: Color(0XFF37a000),
                   text: "Resend Verification Email",
+                  textColor: Colors.white,
+                  borderColor: Color(0x00000000),
+                  press: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) {
+                    //     return Createprofile();
+                    //   }),
+                    // );
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: RoundedButton(
+                  color: Color(0XFF37a000),
+                  text: "Continue",
                   textColor: Colors.white,
                   borderColor: Color(0x00000000),
                   press: () {
