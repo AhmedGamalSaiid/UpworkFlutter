@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/EducationDetails.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/Pages/TalentPages/Messages.dart';
 
 import 'View/Pages/TalentPages/Contracts.dart';
@@ -25,21 +27,23 @@ class MyApp extends StatelessWidget {
     FlutterStatusbarManager.setColor(Colors.white, animated: true);
     var login = auth.currentUser;
     return MaterialApp(
-        title: 'Upwork',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: bgUpworkDark,
-          scaffoldBackgroundColor: Colors.white,
-        ),
-        initialRoute: '/',
-        routes: {
-          '/': (context) => login != null ? HomePage() : Welcome(),
-          '/jobs': (context) => HomePage(),
-          '/proposals': (context) => ProposalsPage(),
-          '/contracts': (context) => Contracts(),
-          '/messages': (context) => Messages(),
-          // '/alerts': (context) => (),
-          '/reports': (context) => ReportsPage(),
-        });
+      title: 'Upwork',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: bgUpworkDark,
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      home: Eduction(),
+    );
+    // initialRoute: '/',
+    // routes: {
+    //   '/': (context) => login != null ? HomePage() : Welcome(),
+    //   '/jobs': (context) => HomePage(),
+    //   '/proposals': (context) => ProposalsPage(),
+    //   '/contracts': (context) => Contracts(),
+    //   '/messages': (context) => Messages(),
+    //   // '/alerts': (context) => (),
+    //   '/reports': (context) => ReportsPage(),
+    // });
   }
 }
