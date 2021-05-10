@@ -55,7 +55,8 @@ class _EductionState extends State<Eduction> {
                         ),
                         SizedBox(height: size.height * 0.03),
                         Container(
-                          width: 200,
+                          height: size.height * 0.07,
+                          width: size.width * 0.9,
                           child: OutlinedButton.icon(
                             label: Text(
                               'Add Education',

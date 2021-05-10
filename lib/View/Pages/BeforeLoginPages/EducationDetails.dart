@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
+import 'package:upwork/View/components/Shared/TextFieldContainer.dart';
 
 class EducationDetails extends StatefulWidget {
   String schoolVal;
@@ -46,6 +47,60 @@ class _EducationDetailsState extends State<EducationDetails> {
                             ),
                           ),
                           SizedBox(height: size.height * 0.01),
+                          TextFieldContainer(
+                            borderColor: Colors.white,
+                            child: Text(
+                              'Ex:Northwestern University',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: size.height * 0.03),
+                          Text(
+                            'Area of study (Optional)',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                          SizedBox(height: size.height * 0.01),
+                          TextFieldContainer(
+                            borderColor: Colors.white,
+                            child: Text(
+                              'Ex:Computer Science',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: size.height * 0.03),
+                          Text(
+                            'Degree (Optional)',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                          SizedBox(height: size.height * 0.01),
+                          TextFieldContainer(
+                            borderColor: Colors.white,
+                            child: Text(
+                              'Ex:Bachelor',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ),
+                            SizedBox(height: size.height * 0.03),
                         ]))
               ]),
             )));
