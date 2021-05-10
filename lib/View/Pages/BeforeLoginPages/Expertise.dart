@@ -5,6 +5,8 @@ import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
+import 'CreateProfileEperience.dart';
+
 // ignore: must_be_immutable
 class Expertise extends StatefulWidget {
   String skillsVal;
@@ -170,7 +172,9 @@ class _ExpertiseState extends State<Expertise> {
                           press: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) {}),
+                              MaterialPageRoute(builder: (context) {
+                                return CreateProfileEperience();
+                              }),
                             );
                           },
                         ),

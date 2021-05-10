@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class JobDataModel {
   JobDataModel({
     this.authID,
@@ -29,17 +27,17 @@ class JobDataModel {
   String jobVisibility;
 
   factory JobDataModel.fromJson(Map<String, dynamic> json) => JobDataModel(
-     authID:json["authID"],
-   freelancerNeed:json["freelancerNeed"],
-   jobBudged:json["jobBudged"],
-   jobCategory:json["jobCategory"],
-   jobDescription:json["jobDescription"],
-   jobDuration:json["jobDuration"],
-   jobExperienceLevel:json["jobExperienceLevel"],
-   jobImages:json["jobImages"],
-   jobPaymentType:json["jobPaymentType"],
-   jobTitle:json["jobTitle"],
-   jobType:json["jobType"],
-   jobVisibility:json["jobVisibility"],
-  );
+        authID: json["authID"],
+        freelancerNeed: json["freelancerNeed"],
+        jobBudged: json["jobBudged"],
+        jobCategory: json["jobCategory"],
+        jobDescription: json["jobDescription"],
+        jobDuration: json["jobDuration"],
+        jobExperienceLevel: json["jobExperienceLevel"],
+        jobImages: json["jobImages"],
+        jobPaymentType: json["jobPaymentType"],
+        jobTitle: json["jobTitle"],
+        jobType: json["jobType"],
+        jobVisibility: json["jobVisibility"],
+      );
 }
