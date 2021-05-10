@@ -10,7 +10,7 @@ class SignupDetails extends StatefulWidget {
 class _SignupDetailsState extends State<SignupDetails> {
   bool valuefirst = false;
   bool valuesecond = false;
-  String dropdownValue = 'One';
+  String dropdownValue = 'Select a Country';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +80,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                         hint: dropdownValue == null
                             ? Text('Dropdown')
                             : Text(
-                                "Select a country",
+                                dropdownValue,
                                 style: TextStyle(color: Colors.grey),
                               ),
                         isExpanded: true,
@@ -95,6 +95,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                           },
                         ).toList(),
                         onChanged: (val) {
+                          print(val);
                           setState(
                             () {
                               dropdownValue = val;

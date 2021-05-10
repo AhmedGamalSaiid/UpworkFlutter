@@ -17,9 +17,7 @@ class _MyFeedPageState extends State<MyFeedPage> {
 
   getData() async {
     jobs = await JobDataService().getJobsData();
-    jobs.forEach((element) {
-      print(element.authID);
-    });
+    // jobs.forEach((element) {});
     setState(() {});
   }
 

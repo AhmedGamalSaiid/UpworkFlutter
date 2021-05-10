@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+import 'package:upwork/Models/JobData.dart';
+import 'package:upwork/Services/JobDataService.dart';
 import 'package:upwork/View/components/Talent/JobCard.dart';
 import 'package:upwork/constanse.dart';
 
@@ -10,6 +12,23 @@ class SearchPage extends StatefulWidget {
 
 class _SearchPageState extends State<SearchPage> {
   static const historyLength = 5;
+  String selectedTerm;
+  List<JobDataModel> jobs;
+
+  getData() async {
+    if (selectedTerm != null) {
+      jobs = await JobDataService().getJobsSearch(selectedTerm);
+      print(jobs);
+      setState(() {});
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    controller = FloatingSearchBarController();
+    filteredSearchHistory = filterSearchTerms(filter: null);
+  }
 
   List<String> _searchHistory = [
     'html',
@@ -19,8 +38,6 @@ class _SearchPageState extends State<SearchPage> {
   ];
 
   List<String> filteredSearchHistory;
-
-  String selectedTerm;
 
   List<String> filterSearchTerms({
     @required String filter,
@@ -61,13 +78,6 @@ class _SearchPageState extends State<SearchPage> {
   FloatingSearchBarController controller;
 
   @override
-  void initState() {
-    super.initState();
-    controller = FloatingSearchBarController();
-    filteredSearchHistory = filterSearchTerms(filter: null);
-  }
-
-  @override
   void dispose() {
     controller.dispose();
     super.dispose();
@@ -81,6 +91,7 @@ class _SearchPageState extends State<SearchPage> {
         body: FloatingSearchBarScrollNotifier(
           child: SearchResultsListView(
             searchTerm: selectedTerm,
+            jobs: jobs,
           ),
         ),
         transition: CircularFloatingSearchBarTransition(),
@@ -100,6 +111,8 @@ class _SearchPageState extends State<SearchPage> {
           setState(() {
             addSearchTerm(query);
             selectedTerm = query;
+            print(selectedTerm);
+            getData();
           });
           controller.close();
         },
@@ -133,6 +146,7 @@ class _SearchPageState extends State<SearchPage> {
                           addSearchTerm(controller.query);
                           selectedTerm = controller.query;
                         });
+                        getData();
                         controller.close();
                       },
                     );
@@ -161,6 +175,7 @@ class _SearchPageState extends State<SearchPage> {
                                 setState(() {
                                   putSearchTermFirst(term);
                                   selectedTerm = term;
+                                  getData();
                                 });
                                 controller.close();
                               },
@@ -179,17 +194,18 @@ class _SearchPageState extends State<SearchPage> {
   }
 }
 
-class SearchResultsListView extends StatelessWidget {
+class SearchResultsListView extends StatefulWidget {
   final String searchTerm;
+  final List<JobDataModel> jobs;
+  SearchResultsListView({this.searchTerm, this.jobs});
+  @override
+  _SearchResultsListViewState createState() => _SearchResultsListViewState();
+}
 
-  const SearchResultsListView({
-    Key key,
-    @required this.searchTerm,
-  }) : super(key: key);
-
+class _SearchResultsListViewState extends State<SearchResultsListView> {
   @override
   Widget build(BuildContext context) {
-    if (searchTerm == null) {
+    if (widget.searchTerm == null) {
       return Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -208,14 +224,22 @@ class SearchResultsListView extends StatelessWidget {
 
     return ListView(
       padding: EdgeInsets.only(top: fsb.height + fsb.margins.vertical),
-      children: List.generate(
-        50,
-        (index) => ListTile(
-          // JobCard($searchTerm),
-          title: Text('$searchTerm search result'),
-          subtitle: Text(index.toString()),
-        ),
-      ),
+      // children: List.generate(
+      //   50,
+      //   (index) => ListTile(
+      //     // JobCard($searchTerm),
+      //     title: Text('$searchTerm search result'),
+      //     subtitle: Text(index.toString()),
+      //   ),
+      // ),
+      children: widget.jobs != null
+          ? [
+              for (var i = 0; i < widget.jobs.length; i++)
+                JobCard(
+                  job: widget.jobs[i],
+                ),
+            ]
+          : [],
     );
   }
 }
