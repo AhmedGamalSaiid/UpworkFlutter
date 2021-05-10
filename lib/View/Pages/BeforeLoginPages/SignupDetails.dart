@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
+import 'Verifyemail.dart';
+
 class SignupDetails extends StatefulWidget {
+  final String emailVal;
+  SignupDetails({this.emailVal});
   @override
   _SignupDetailsState createState() => _SignupDetailsState();
 }
@@ -35,7 +39,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                   ),
                 ),
                 Center(
-                  child: Text('abcde@gmail.com'),
+                  child: Text(widget.emailVal),
                 ),
                 RoundedInputField(
                   icon: Icons.person,
@@ -195,9 +199,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
-                        return SignupDetails(
-                            // emailVal: widget.emailVal,
-                            );
+                        return Verifyemail();
                       }),
                     );
                   },
