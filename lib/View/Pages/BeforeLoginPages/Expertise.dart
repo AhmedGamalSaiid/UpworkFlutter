@@ -5,6 +5,7 @@ import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
+// ignore: must_be_immutable
 class Expertise extends StatefulWidget {
   String skillsVal;
   Expertise({this.skillsVal});
