@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         primaryColor: bgUpworkDark,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: Eduction(),
+      home: EducationDetails(),
     );
     // initialRoute: '/',
     // routes: {
