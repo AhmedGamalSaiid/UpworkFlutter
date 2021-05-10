@@ -9,7 +9,7 @@ class WorkInProgressPage extends StatefulWidget {
 class _WorkInProgressPageState extends State<WorkInProgressPage> {
   @override
   Widget build(BuildContext context) {
-    // Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
           title: Center(
@@ -39,9 +39,7 @@ class _WorkInProgressPageState extends State<WorkInProgressPage> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 40,
-                ),
+                SizedBox(height: size.height * 0.04),
                 Align(
                   alignment: Alignment.center,
                   child: Text(
@@ -53,9 +51,7 @@ class _WorkInProgressPageState extends State<WorkInProgressPage> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 50,
-                ),
+                SizedBox(height: size.height * 0.05),
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: Text(

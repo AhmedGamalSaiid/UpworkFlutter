@@ -5,8 +5,8 @@ import 'package:upwork/Services/authService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/welcome.dart';
 import 'package:upwork/View/Pages/TalentPages/MyStats.dart';
 import 'package:upwork/View/Pages/TalentPages/Profile.dart';
-import 'package:upwork/View/Pages/TalentPages/Reports.dart';
 import 'package:upwork/View/Pages/TalentPages/Settings.dart';
+import 'package:upwork/View/Pages/TalentPages/myreports.dart';
 import 'package:upwork/View/components/Shared/CustomCircleAvatar.dart';
 import '../../../constanse.dart';
 import 'CustomListTile.dart';
@@ -99,7 +99,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Reports(),
+                      builder: (context) => ReportsPage(),
                     ));
               },
               secondIcon: false,

@@ -48,36 +48,33 @@ class _ReportsPageState extends State<ReportsPage> {
                                     fontSize: 25,
                                   ),
                                 ),
-                                Icon(
-                                  Icons.arrow_forward_ios_outlined,
-                                  color: Color(0xFF8ACC5E),
-                                  size: 20,
-                                ),
+                                InkWell(
+                                    hoverColor: Colors.black,
+                                    child: Icon(
+                                      Icons.arrow_forward_ios_outlined,
+                                      color: Color(0xFF8ACC5E),
+                                      size: 20,
+                                    ),
+                                    onTap: () => {
+                                          Navigator.push(context,
+                                              MaterialPageRoute(
+                                            builder: (context) {
+                                              return WorkInProgressPage();
+                                            },
+                                          )),
+                                        }),
                               ]),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.only(left: 15.0, bottom: 15.0),
                           child: Row(
-                            children: [
-                              InkWell(
-                                hoverColor: Colors.black,
-                                child: Text(r'$0.00',
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold)),
-                                onTap: () => {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return WorkInProgressPage();
-                                      },
-                                    ),
-                                  )
-                                },
-                              ),
+                            children: <Widget>[
+                              Text(r'$0.00',
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold)),
                             ],
                           ),
                         ),
@@ -104,36 +101,33 @@ class _ReportsPageState extends State<ReportsPage> {
                                     fontSize: 25,
                                   ),
                                 ),
-                                Icon(
-                                  Icons.arrow_forward_ios_outlined,
-                                  color: Color(0xFF8ACC5E),
-                                  size: 20,
-                                ),
+                                InkWell(
+                                    hoverColor: Colors.black,
+                                    child: Icon(
+                                      Icons.arrow_forward_ios_outlined,
+                                      color: Color(0xFF8ACC5E),
+                                      size: 20,
+                                    ),
+                                    onTap: () => {
+                                          Navigator.push(context,
+                                              MaterialPageRoute(
+                                            builder: (context) {
+                                              return InReviewPage();
+                                            },
+                                          )),
+                                        }),
                               ]),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.only(left: 15.0, bottom: 15.0),
                           child: Row(
-                            children: [
-                              InkWell(
-                                hoverColor: Colors.black,
-                                child: Text(r'$0.00',
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold)),
-                                onTap: () => {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return InReviewPage();
-                                      },
-                                    ),
-                                  )
-                                },
-                              ),
+                            children: <Widget>[
+                              Text(r'$0.00',
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold)),
                             ],
                           ),
                         ),
@@ -160,36 +154,33 @@ class _ReportsPageState extends State<ReportsPage> {
                                     fontSize: 25,
                                   ),
                                 ),
-                                Icon(
-                                  Icons.arrow_forward_ios_outlined,
-                                  color: Color(0xFF8ACC5E),
-                                  size: 20,
-                                ),
+                                InkWell(
+                                    hoverColor: Colors.black,
+                                    child: Icon(
+                                      Icons.arrow_forward_ios_outlined,
+                                      color: Color(0xFF8ACC5E),
+                                      size: 20,
+                                    ),
+                                    onTap: () => {
+                                          Navigator.push(context,
+                                              MaterialPageRoute(
+                                            builder: (context) {
+                                              return PendingPage();
+                                            },
+                                          )),
+                                        }),
                               ]),
                         ),
                         Padding(
                             padding:
                                 const EdgeInsets.only(left: 15.0, bottom: 15.0),
                             child: Row(
-                              children: [
-                                InkWell(
-                                  hoverColor: Colors.black,
-                                  child: Text(r'$0.00',
-                                      style: TextStyle(
-                                          fontSize: 25,
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold)),
-                                  onTap: () => {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) {
-                                          return PendingPage();
-                                        },
-                                      ),
-                                    )
-                                  },
-                                ),
+                              children: <Widget>[
+                                Text(r'$0.00',
+                                    style: TextStyle(
+                                        fontSize: 25,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold)),
                               ],
                             )),
                         Divider(
@@ -215,36 +206,33 @@ class _ReportsPageState extends State<ReportsPage> {
                                     fontSize: 25,
                                   ),
                                 ),
-                                Icon(
-                                  Icons.arrow_forward_ios_outlined,
-                                  color: Color(0xFF8ACC5E),
-                                  size: 20,
-                                ),
+                                InkWell(
+                                    hoverColor: Colors.black,
+                                    child: Icon(
+                                      Icons.arrow_forward_ios_outlined,
+                                      color: Color(0xFF8ACC5E),
+                                      size: 20,
+                                    ),
+                                    onTap: () => {
+                                          Navigator.push(context,
+                                              MaterialPageRoute(
+                                            builder: (context) {
+                                              return AvailablePage();
+                                            },
+                                          )),
+                                        }),
                               ]),
                         ),
                         Padding(
                           padding:
                               const EdgeInsets.only(left: 15.0, bottom: 15.0),
                           child: Row(
-                            children: [
-                              InkWell(
-                                hoverColor: Colors.black,
-                                child: Text(r'$0.00',
-                                    style: TextStyle(
-                                        fontSize: 25,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold)),
-                                onTap: () => {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return AvailablePage();
-                                      },
-                                    ),
-                                  )
-                                },
-                              ),
+                            children: <Widget>[
+                              Text(r'$0.00',
+                                  style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold)),
                             ],
                           ),
                         ),
