@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/EducationDetails.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/Employment.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/EmploymentDetails.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Expertise.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
-class Education extends StatefulWidget {
+class Employement extends StatefulWidget {
   @override
-  _EducationState createState() => _EducationState();
+  _EmployementState createState() => _EmployementState();
 }
 
-class _EducationState extends State<Education> {
+class _EmployementState extends State<Employement> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -46,11 +46,24 @@ class _EducationState extends State<Education> {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Add your past work experience ',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 17,
+                                ),
+                              ),
+                            ]),
+                        SizedBox(height: size.height * 0.01),
                         Text(
-                          'Add your Schools you attended,areas of study, and degrees earned ',
+                          'Build your credibility by showcasing the projects or jobs you have completed.',
                           style: TextStyle(
                             color: Colors.black,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.normal,
                             fontSize: 15,
                           ),
                         ),
@@ -60,7 +73,7 @@ class _EducationState extends State<Education> {
                           width: size.width * 0.9,
                           child: OutlinedButton.icon(
                             label: Text(
-                              'Add Education',
+                              'Add Employement',
                               style: TextStyle(
                                 color: Color(0XFF37a000),
                                 fontWeight: FontWeight.bold,
@@ -76,7 +89,7 @@ class _EducationState extends State<Education> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) {
-                                    return EducationDetails();
+                                    return EmployementDetails();
                                   },
                                 ),
                               )
@@ -102,9 +115,7 @@ class _EducationState extends State<Education> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) {
-                                      return Employement();
-                                    },
+                                    builder: (context) {},
                                   ),
                                 )
                               },
@@ -129,7 +140,7 @@ class _EducationState extends State<Education> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) {
-                                                return Expertise();
+                                                return Education();
                                               },
                                             ),
                                           )
@@ -143,7 +154,7 @@ class _EducationState extends State<Education> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(builder: (context) {
-                                        return EducationDetails();
+                                        return EmployementDetails();
                                       }),
                                     );
                                   },

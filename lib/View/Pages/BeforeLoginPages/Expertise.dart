@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/CreateProfile.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
@@ -21,6 +22,10 @@ class _ExpertiseState extends State<Expertise> {
   bool _selected4 = false;
   bool _selected5 = false;
   bool _selected6 = false;
+  bool _selected7 = false;
+  bool _selected8 = false;
+  bool _selected9 = false;
+  bool _selected10 = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -56,14 +61,18 @@ class _ExpertiseState extends State<Expertise> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      'Select your skills',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'Select your skills',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ]),
                     Wrap(
                       spacing: 15,
                       runSpacing: 5,
@@ -117,17 +126,49 @@ class _ExpertiseState extends State<Expertise> {
                             onSelected: (val) {
                               setState(() => _selected6 = val);
                             }),
+                        FilterChip(
+                            selected: _selected7,
+                            label: Text("I phone UI Design "),
+                            avatar: Icon(Icons.add),
+                            onSelected: (val) {
+                              setState(() => _selected7 = val);
+                            }),
+                        FilterChip(
+                            selected: _selected8,
+                            label: Text("Adobe Photoshop"),
+                            avatar: Icon(Icons.add),
+                            onSelected: (val) {
+                              setState(() => _selected8 = val);
+                            }),
+                        FilterChip(
+                            selected: _selected9,
+                            label: Text("Figma"),
+                            avatar: Icon(Icons.add),
+                            onSelected: (val) {
+                              setState(() => _selected9 = val);
+                            }),
+                        FilterChip(
+                            selected: _selected10,
+                            label: Text("Game Design"),
+                            avatar: Icon(Icons.add),
+                            onSelected: (val) {
+                              setState(() => _selected10 = val);
+                            }),
                       ],
                     ),
                     SizedBox(height: size.height * 0.03),
-                    Text(
-                      'No what you are looking for ?',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'No what you are looking for ?',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ]),
                     RoundedInputField(
                       err: "Oops! this skills is not found",
                       hintText: "Start typing to search for skills ..... ",
@@ -170,7 +211,9 @@ class _ExpertiseState extends State<Expertise> {
                           press: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) {}),
+                              MaterialPageRoute(builder: (context) {
+                                Education();
+                              }),
                             );
                           },
                         ),

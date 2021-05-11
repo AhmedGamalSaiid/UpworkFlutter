@@ -4,15 +4,15 @@ import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/SelectDropDown.dart';
 
-class EducationDetails extends StatefulWidget {
+class EmployementDetails extends StatefulWidget {
   String schoolVal;
 
-  EducationDetails({this.schoolVal});
+  EmployementDetails({this.schoolVal});
   @override
-  _EducationDetailsState createState() => _EducationDetailsState();
+  _EmployementDetailsState createState() => _EmployementDetailsState();
 }
 
-class _EducationDetailsState extends State<EducationDetails> {
+class _EmployementDetailsState extends State<EmployementDetails> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -23,7 +23,7 @@ class _EducationDetailsState extends State<EducationDetails> {
           appBar: AppBar(
             title: Center(
               child: Text(
-                "Add Education",
+                "Add Employment",
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -42,7 +42,7 @@ class _EducationDetailsState extends State<EducationDetails> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              'School',
+                              'Company',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -59,10 +59,9 @@ class _EducationDetailsState extends State<EducationDetails> {
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400),
                             border: OutlineInputBorder(),
-                            hintText: "Ex:Northwestern University",
                             // onChanged: (value) {
-                            //   widget.school = value;
-                            //   print(widget.school);
+                            //   widget.company = value;
+                            //   print(widget.company);
                             // },
                           ),
                         ),
@@ -72,18 +71,10 @@ class _EducationDetailsState extends State<EducationDetails> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              'Area of study',
+                              'Location',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                              ),
-                            ),
-                            Text(
-                              '(Optional)',
-                              style: TextStyle(
-                                color: Colors.black54,
-                                fontWeight: FontWeight.normal,
                                 fontSize: 15,
                               ),
                             ),
@@ -97,10 +88,10 @@ class _EducationDetailsState extends State<EducationDetails> {
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400),
                             border: OutlineInputBorder(),
-                            hintText: "Ex:Computer Science",
+                            hintText: "City",
                             // onChanged: (value) {
-                            //   widget.areaofstudy = value;
-                            //   print(widget.areaofstudy);
+                            //   widget.location = value;
+                            //   print(widget.location);
                             // },
                           ),
                         ),
@@ -230,13 +221,14 @@ class _EducationDetailsState extends State<EducationDetails> {
             Padding(
               padding: const EdgeInsets.all(6),
               child: TextField(
-                maxLines: 4,
+                maxLines: 2,
                 decoration: InputDecoration(
                   hintStyle: TextStyle(
                       color: Color(0xff6D6D6D),
                       fontSize: 14,
                       fontWeight: FontWeight.w400),
                   border: OutlineInputBorder(),
+                  hintText: 'Describe your studies ,awards,etc..',
                   // onChanged: (value) {
                   //   widget.description = value;
                   //   print(widget.description);
