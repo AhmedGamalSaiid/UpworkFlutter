@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/Phone.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/SelectDropDown.dart';
@@ -15,6 +16,14 @@ class Location extends StatefulWidget {
 }
 
 class _LocationState extends State<Location> {
+  bool _validate = false;
+  bool _validate1 = false;
+  bool _validate2 = false;
+  bool _validate3 = false;
+  final _text = TextEditingController();
+  final _text1 = TextEditingController();
+  final _text2 = TextEditingController();
+  final _text3 = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -174,6 +183,7 @@ class _LocationState extends State<Location> {
                         const EdgeInsets.only(left: 10, right: 10, top: 10),
                     child: Column(children: <Widget>[
                       TextField(
+                        controller: _text,
                         decoration: InputDecoration(
                           hintStyle: TextStyle(
                               color: Color(0xff6D6D6D),
@@ -184,6 +194,8 @@ class _LocationState extends State<Location> {
                             borderSide: const BorderSide(
                                 color: Color(0XFF0F8E0F), width: 2.0),
                           ),
+                          errorText:
+                              _validate ? 'This field is required' : null,
                         ),
                         onChanged: (value) {
                           widget.addressstree = value;
@@ -197,17 +209,21 @@ class _LocationState extends State<Location> {
                           const EdgeInsets.only(left: 10, right: 10, top: 10),
                       child: Column(children: <Widget>[
                         TextField(
+                          controller: _text1,
                           decoration: InputDecoration(
-                              hintStyle: TextStyle(
-                                  color: Color(0xff6D6D6D),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400),
-                              border: OutlineInputBorder(),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Color(0XFF0F8E0F), width: 2.0),
-                              ),
-                              hintText: 'Apt/Suite'),
+                            hintStyle: TextStyle(
+                                color: Color(0xff6D6D6D),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400),
+                            border: OutlineInputBorder(),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: Color(0XFF0F8E0F), width: 2.0),
+                            ),
+                            hintText: 'Apt/Suite',
+                            errorText:
+                                _validate1 ? 'This field is required' : null,
+                          ),
                           onChanged: (value) {
                             widget.addressstree2 = value;
                             print(widget.addressstree2);
@@ -232,6 +248,7 @@ class _LocationState extends State<Location> {
                           const EdgeInsets.only(left: 10, right: 10, top: 10),
                       child: Column(children: <Widget>[
                         TextField(
+                          controller: _text2,
                           decoration: InputDecoration(
                             hintStyle: TextStyle(
                                 color: Color(0xff6D6D6D),
@@ -242,6 +259,8 @@ class _LocationState extends State<Location> {
                               borderSide: const BorderSide(
                                   color: Color(0XFF0F8E0F), width: 2.0),
                             ),
+                            errorText:
+                                _validate2 ? 'This field is required' : null,
                             hintText: 'Start typing your City',
                             prefixIcon: Icon(Icons.search),
                           ),
@@ -269,6 +288,7 @@ class _LocationState extends State<Location> {
                           const EdgeInsets.only(left: 10, right: 10, top: 10),
                       child: Column(children: <Widget>[
                         TextField(
+                          controller: _text3,
                           decoration: InputDecoration(
                             hintStyle: TextStyle(
                                 color: Color(0xff6D6D6D),
@@ -279,6 +299,8 @@ class _LocationState extends State<Location> {
                               borderSide: const BorderSide(
                                   color: Color(0XFF0F8E0F), width: 2.0),
                             ),
+                            errorText:
+                                _validate3 ? 'This field is required' : null,
                           ),
                           onChanged: (value) {
                             widget.ZIP = value;
@@ -303,7 +325,7 @@ class _LocationState extends State<Location> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(50)),
                                   child: Text(
-                                    "Cancel",
+                                    "Back",
                                     style: TextStyle(
                                       color: Color(0xFF15A800),
                                       fontWeight: FontWeight.bold,
@@ -321,18 +343,40 @@ class _LocationState extends State<Location> {
                                 ),
                                 child: FlatButton(
                                   color: Color(0xFF15A800),
-                                  onPressed: () => {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) {},
-                                      ),
-                                    )
+                                  onPressed: () {
+                                    setState(() {
+                                      _text.text.isEmpty
+                                          ? _validate = true
+                                          : _validate = false;
+                                    });
+                                    setState(() {
+                                      _text1.text.isEmpty
+                                          ? _validate1 = true
+                                          : _validate1 = false;
+                                    });
+                                    setState(() {
+                                      _text2.text.isEmpty
+                                          ? _validate2 = true
+                                          : _validate2 = false;
+                                    });
+                                    setState(() {
+                                      _text3.text.isEmpty
+                                          ? _validate3 = true
+                                          : _validate3 = false;
+                                    });
+                                    // Navigator.push(
+                                    //   context,
+                                    //   MaterialPageRoute(
+                                    //     builder: (context) {
+                                    //       Phone();
+                                    //     },
+                                    //   ),
+                                    // );
                                   },
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(50)),
                                   child: Text(
-                                    "Save",
+                                    "Next",
                                     style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
