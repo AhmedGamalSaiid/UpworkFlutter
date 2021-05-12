@@ -5,9 +5,13 @@ import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/SelectDropDown.dart';
 
 class EducationDetails extends StatefulWidget {
-  String schoolVal;
+  String school;
+  String degree;
+  String areaofstudy;
+  String Description;
 
-  EducationDetails({this.schoolVal});
+  EducationDetails(
+      {this.school, this.degree, this.areaofstudy, this.Description});
   @override
   _EducationDetailsState createState() => _EducationDetailsState();
 }
@@ -60,11 +64,11 @@ class _EducationDetailsState extends State<EducationDetails> {
                                 fontWeight: FontWeight.w400),
                             border: OutlineInputBorder(),
                             hintText: "Ex:Northwestern University",
-                            // onChanged: (value) {
-                            //   widget.school = value;
-                            //   print(widget.school);
-                            // },
                           ),
+                          onChanged: (value) {
+                            widget.school = value;
+                            print(widget.school);
+                          },
                         ),
                       ),
                       SizedBox(height: size.height * 0.03),
@@ -98,11 +102,11 @@ class _EducationDetailsState extends State<EducationDetails> {
                                 fontWeight: FontWeight.w400),
                             border: OutlineInputBorder(),
                             hintText: "Ex:Computer Science",
-                            // onChanged: (value) {
-                            //   widget.areaofstudy = value;
-                            //   print(widget.areaofstudy);
-                            // },
                           ),
+                          onChanged: (value) {
+                            widget.areaofstudy = value;
+                            print(widget.areaofstudy);
+                          },
                         ),
                       ),
                       SizedBox(height: size.height * 0.03),
@@ -136,11 +140,11 @@ class _EducationDetailsState extends State<EducationDetails> {
                                 fontWeight: FontWeight.w400),
                             border: OutlineInputBorder(),
                             hintText: 'Ex:Bachelor',
-                            // onChanged: (value) {
-                            //   widget.degree= value;
-                            //   print(widget.degree);
-                            // },
                           ),
+                          onChanged: (value) {
+                            widget.degree = value;
+                            print(widget.degree);
+                          },
                         ),
                       ),
                       SizedBox(height: size.height * 0.03),
@@ -237,11 +241,11 @@ class _EducationDetailsState extends State<EducationDetails> {
                       fontSize: 14,
                       fontWeight: FontWeight.w400),
                   border: OutlineInputBorder(),
-                  // onChanged: (value) {
-                  //   widget.description = value;
-                  //   print(widget.description);
-                  // },
                 ),
+                onChanged: (value) {
+                  widget.Description = value;
+                  print(widget.Description);
+                },
               ),
             ),
             SizedBox(height: size.height * 0.03),

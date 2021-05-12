@@ -29,23 +29,23 @@ class MyApp extends StatelessWidget {
     var login = auth.currentUser;
     print(login);
     return MaterialApp(
-      title: 'Upwork',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: bgUpworkDark,
-        scaffoldBackgroundColor: Colors.white,
-      ),
-      home: EmployementDetails(),
-    );
-    // initialRoute: '/',
-    // routes: {
-    //   '/': (context) => login != null ? HomePage() : Welcome(),
-    //   '/jobs': (context) => HomePage(),
-    //   '/proposals': (context) => ProposalsPage(),
-    //   '/contracts': (context) => Contracts(),
-    //   '/messages': (context) => Messages(),
-    //   // '/alerts': (context) => (),
-    //   '/reports': (context) => ReportsPage(),
-    // });
+        title: 'Upwork',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: bgUpworkDark,
+          scaffoldBackgroundColor: Colors.white,
+        ),
+        //   home: EducationDetails(),
+        // );
+        initialRoute: '/',
+        routes: {
+          '/': (context) => login != null ? HomePage() : Welcome(),
+          '/jobs': (context) => HomePage(),
+          '/proposals': (context) => ProposalsPage(),
+          '/contracts': (context) => Contracts(),
+          '/messages': (context) => Messages(),
+          // '/alerts': (context) => (),
+          '/reports': (context) => ReportsPage(),
+        });
   }
 }
