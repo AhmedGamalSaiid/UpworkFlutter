@@ -6,6 +6,8 @@ import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/EmploymentDetails.dart';
 import 'package:upwork/View/Pages/TalentPages/Messages.dart';
 
+import 'View/Pages/BeforeLoginPages/Location.dart';
+import 'View/Pages/BeforeLoginPages/Phone.dart';
 import 'View/Pages/TalentPages/Contracts.dart';
 import 'View/Pages/TalentPages/HomePage.dart';
 import 'View/Pages/TalentPages/Proposals.dart';
@@ -29,23 +31,26 @@ class MyApp extends StatelessWidget {
     var login = auth.currentUser;
     print(login);
     return MaterialApp(
-        title: 'Upwork',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: bgUpworkDark,
-          scaffoldBackgroundColor: Colors.white,
-        ),
-        //   home: EducationDetails(),
-        // );
-        initialRoute: '/',
-        routes: {
-          '/': (context) => login != null ? HomePage() : Welcome(),
-          '/jobs': (context) => HomePage(),
-          '/proposals': (context) => ProposalsPage(),
-          '/contracts': (context) => Contracts(),
-          '/messages': (context) => Messages(),
-          // '/alerts': (context) => (),
-          '/reports': (context) => ReportsPage(),
-        });
+      title: 'Upwork',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: bgUpworkDark,
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      home: //EmployementDetails(),
+          //Location(),
+          EducationDetails(),
+      //Phone(),
+    );
+    // initialRoute: '/',
+    // routes: {
+    //   '/': (context) => login != null ? HomePage() : Welcome(),
+    //   '/jobs': (context) => HomePage(),
+    //   '/proposals': (context) => ProposalsPage(),
+    //   '/contracts': (context) => Contracts(),
+    //   '/messages': (context) => Messages(),
+    //   // '/alerts': (context) => (),
+    //   '/reports': (context) => ReportsPage(),
+    // });
   }
 }

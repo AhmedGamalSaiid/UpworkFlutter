@@ -64,6 +64,10 @@ class _EducationDetailsState extends State<EducationDetails> {
                                 fontWeight: FontWeight.w400),
                             border: OutlineInputBorder(),
                             hintText: "Ex:Northwestern University",
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: Color(0XFF0F8E0F), width: 2.0),
+                            ),
                           ),
                           onChanged: (value) {
                             widget.school = value;
@@ -102,6 +106,10 @@ class _EducationDetailsState extends State<EducationDetails> {
                                 fontWeight: FontWeight.w400),
                             border: OutlineInputBorder(),
                             hintText: "Ex:Computer Science",
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: Color(0XFF0F8E0F), width: 2.0),
+                            ),
                           ),
                           onChanged: (value) {
                             widget.areaofstudy = value;
@@ -140,6 +148,10 @@ class _EducationDetailsState extends State<EducationDetails> {
                                 fontWeight: FontWeight.w400),
                             border: OutlineInputBorder(),
                             hintText: 'Ex:Bachelor',
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: Color(0XFF0F8E0F), width: 2.0),
+                            ),
                           ),
                           onChanged: (value) {
                             widget.degree = value;
@@ -241,6 +253,10 @@ class _EducationDetailsState extends State<EducationDetails> {
                       fontSize: 14,
                       fontWeight: FontWeight.w400),
                   border: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: Color(0XFF0F8E0F), width: 2.0),
+                  ),
                 ),
                 onChanged: (value) {
                   widget.Description = value;

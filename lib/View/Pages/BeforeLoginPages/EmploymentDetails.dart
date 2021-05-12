@@ -59,11 +59,16 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                         padding: const EdgeInsets.all(6),
                         child: TextField(
                           decoration: InputDecoration(
-                              hintStyle: TextStyle(
-                                  color: Color(0xff6D6D6D),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400),
-                              border: OutlineInputBorder()),
+                            hintStyle: TextStyle(
+                                color: Color(0xff6D6D6D),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400),
+                            border: OutlineInputBorder(),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: Color(0XFF0F8E0F), width: 2.0),
+                            ),
+                          ),
                           onChanged: (value) {
                             widget.company = value;
                             print(widget.company);
@@ -94,6 +99,10 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400),
                                 border: OutlineInputBorder(),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Color(0XFF0F8E0F), width: 2.0),
+                                ),
                                 hintText: "City",
                               ),
                               onChanged: (value) {
@@ -108,12 +117,12 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                                 child: SelectDropDown(
                                   [
                                     "Afghanistan",
-                                    "Albania"
-                                        "Algeria",
+                                    "Albania",
+                                    "Algeria",
                                     "American Samoa",
-                                    "Australia"
-                                        "Austria"
-                                        "Bahrain",
+                                    "Australia",
+                                    "Austria",
+                                    "Bahrain",
                                     "Bangladesh",
                                     "Brazil",
                                     "British Virgin Islands",
@@ -191,11 +200,16 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                         padding: const EdgeInsets.all(6),
                         child: TextField(
                           decoration: InputDecoration(
-                              hintStyle: TextStyle(
-                                  color: Color(0xff6D6D6D),
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400),
-                              border: OutlineInputBorder()),
+                            hintStyle: TextStyle(
+                                color: Color(0xff6D6D6D),
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400),
+                            border: OutlineInputBorder(),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: Color(0XFF0F8E0F), width: 2.0),
+                            ),
+                          ),
                           onChanged: (value) {
                             widget.title = value;
                             print(widget.title);
@@ -388,11 +402,15 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                       fontSize: 14,
                       fontWeight: FontWeight.w400),
                   border: OutlineInputBorder(),
-                  // onChanged: (value) {
-                  //   widget.description = value;
-                  //   print(widget.description);
-                  // },
+                  focusedBorder: OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: Color(0XFF0F8E0F), width: 2.0),
+                  ),
                 ),
+                onChanged: (value) {
+                  widget.description = value;
+                  print(widget.description);
+                },
               ),
             ),
             SizedBox(height: size.height * 0.03),
