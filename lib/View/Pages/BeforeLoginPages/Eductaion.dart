@@ -143,7 +143,7 @@ class _EducationState extends State<Education> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(builder: (context) {
-                                        return EducationDetails();
+                                        return Employement();
                                       }),
                                     );
                                   },

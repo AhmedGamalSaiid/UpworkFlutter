@@ -125,6 +125,7 @@ class _ExpertiseState extends State<Expertise> {
                             avatar: Icon(Icons.add),
                             onSelected: (val) {
                               setState(() => _selected6 = val);
+                              print(val);
                             }),
                         FilterChip(
                             selected: _selected7,
@@ -174,6 +175,7 @@ class _ExpertiseState extends State<Expertise> {
                       hintText: "Start typing to search for skills ..... ",
                       onChanged: (value) {
                         widget.skillsVal = value;
+                        // print(widget.skillsVal);
                       },
                       icon: null,
                     ),
@@ -212,7 +214,7 @@ class _ExpertiseState extends State<Expertise> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) {
-                                Education();
+                                return Education();
                               }),
                             );
                           },

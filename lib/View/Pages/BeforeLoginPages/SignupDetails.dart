@@ -198,7 +198,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                       context,
                       MaterialPageRoute(builder: (context) {
                         return Verifyemail(
-                            // emailVal: widget.emailVal,
+                             emailVal: widget.emailVal,
                             );
                       }),
                     );

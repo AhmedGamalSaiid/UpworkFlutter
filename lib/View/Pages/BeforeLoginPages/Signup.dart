@@ -67,8 +67,8 @@ class _SignupState extends State<Signup> {
                   context,
                   MaterialPageRoute(builder: (context) {
                     return SignupDetails(
-                        emailVal: widget.emailVal,
-                        );
+                      emailVal: widget.emailVal,
+                    );
                   }),
                 );
               },
