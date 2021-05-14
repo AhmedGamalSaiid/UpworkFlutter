@@ -62,7 +62,6 @@ class _PhoneState extends State<Phone> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            //Text('CountryPickerDropdown (sorted by isoCode)'),
                             ListTile(
                                 title: _buildCountryPickerDropdown(
                                     sortedByIsoCode: true)),
@@ -168,9 +167,9 @@ class _PhoneState extends State<Phone> {
       itemBuilder: (Country country) {
         return Row(
           children: <Widget>[
-            SizedBox(width: 8.0),
+            SizedBox(width: 3.0),
             CountryPickerUtils.getDefaultFlagImage(country),
-            SizedBox(width: 8.0),
+            SizedBox(width: 4.0),
             Expanded(child: Text(country.name)),
           ],
         );

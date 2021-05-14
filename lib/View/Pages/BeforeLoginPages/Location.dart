@@ -9,8 +9,10 @@ class Location extends StatefulWidget {
   String addressstree;
   String addressstree2;
   String city;
+  String State;
 
-  Location({this.ZIP, this.addressstree, this.addressstree2, this.city});
+  Location(
+      {this.ZIP, this.addressstree, this.addressstree2, this.city, this.State});
   @override
   _LocationState createState() => _LocationState();
 }
@@ -20,10 +22,12 @@ class _LocationState extends State<Location> {
   bool _validate1 = false;
   bool _validate2 = false;
   bool _validate3 = false;
+  bool _validate4 = false;
   final _text = TextEditingController();
   final _text1 = TextEditingController();
   final _text2 = TextEditingController();
   final _text3 = TextEditingController();
+  final _text4 = TextEditingController();
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -275,6 +279,45 @@ class _LocationState extends State<Location> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Text(
+                          'State/Province',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ]),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 10, right: 10, top: 10),
+                    child: Column(children: <Widget>[
+                      TextField(
+                        controller: _text4,
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(
+                              color: Color(0xff6D6D6D),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400),
+                          border: OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                color: Color(0XFF0F8E0F), width: 2.0),
+                          ),
+                          errorText:
+                              _validate4 ? 'This field is required' : null,
+                        ),
+                        onChanged: (value) {
+                          widget.State = value;
+                          print(widget.State);
+                        },
+                      ),
+                    ]),
+                  ),
+                  SizedBox(height: size.height * 0.03),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
                           'ZIP/Postal code',
                           style: TextStyle(
                             color: Colors.black,
@@ -302,6 +345,7 @@ class _LocationState extends State<Location> {
                             errorText:
                                 _validate3 ? 'This field is required' : null,
                           ),
+                          keyboardType: TextInputType.number,
                           onChanged: (value) {
                             widget.ZIP = value;
                             print(widget.ZIP);
@@ -364,14 +408,14 @@ class _LocationState extends State<Location> {
                                           ? _validate3 = true
                                           : _validate3 = false;
                                     });
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(
-                                    //     builder: (context) {
-                                    //       Phone();
-                                    //     },
-                                    //   ),
-                                    // );
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) {
+                                          return Phone();
+                                        },
+                                      ),
+                                    );
                                   },
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(50)),

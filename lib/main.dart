@@ -39,9 +39,9 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
       home: //EmployementDetails(),
-          //Location(),
-          //EducationDetails(),
-          Phone(),
+          Location(),
+      //EducationDetails(),
+      //Phone(),
       //DemoPage(),
     );
     // initialRoute: '/',
