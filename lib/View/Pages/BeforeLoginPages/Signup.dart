@@ -8,8 +8,6 @@ import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/View/components/beforeLogin/googleBtn.dart';
 
 class Signup extends StatefulWidget {
-  String emailVal;
-  Signup({this.emailVal});
   @override
   _SignupState createState() => _SignupState();
 }
@@ -17,6 +15,7 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
+    String emailVal;
     return Scaffold(
         body: Center(
       child: SingleChildScrollView(
@@ -52,8 +51,8 @@ class _SignupState extends State<Signup> {
               err: "Oops! Email is incorrect",
               hintText: "work email address",
               onChanged: (value) {
-                widget.emailVal = value;
-                print(widget.emailVal);
+                emailVal = value;
+                print(emailVal);
               },
             ),
             RoundedButton(
@@ -67,7 +66,7 @@ class _SignupState extends State<Signup> {
                   context,
                   MaterialPageRoute(builder: (context) {
                     return SignupDetails(
-                      emailVal: widget.emailVal,
+                      emailVal: emailVal,
                     );
                   }),
                 );

@@ -3,6 +3,8 @@ import 'package:upwork/View/Pages/BeforeLoginPages/Verifyemail.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
+import 'Verifyemail.dart';
+
 class SignupDetails extends StatefulWidget {
   final String emailVal;
   SignupDetails({this.emailVal});
@@ -198,8 +200,8 @@ class _SignupDetailsState extends State<SignupDetails> {
                       context,
                       MaterialPageRoute(builder: (context) {
                         return Verifyemail(
-                             emailVal: widget.emailVal,
-                            );
+                          emailVal: widget.emailVal,
+                        );
                       }),
                     );
                   },

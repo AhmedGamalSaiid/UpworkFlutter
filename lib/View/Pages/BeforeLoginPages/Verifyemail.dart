@@ -74,7 +74,7 @@ class _VerifyemailState extends State<Verifyemail> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 20),
+                padding: const EdgeInsets.only(bottom: 2),
                 child: Text(
                   widget.emailVal,
                   style: TextStyle(
@@ -86,7 +86,7 @@ class _VerifyemailState extends State<Verifyemail> {
               ),
               SizedBox(height: size.height * 0.02),
               Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
+                  padding: const EdgeInsets.only(bottom: 2),
                   child: Column(children: <Widget>[
                     Text(
                       'Please check your email and click on the line ',
