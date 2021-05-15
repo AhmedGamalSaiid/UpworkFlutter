@@ -97,17 +97,17 @@ class _CreateprofileState extends State<Createprofile> {
                       value: dropdownValue,
                       style: TextStyle(color: Colors.black),
                       items: [
+                        "Web, Mobile & Software Dev",
+                        "IT & Networking",
                         "Accounting & Consulting",
                         "Admin Support",
                         "Customer Service",
                         "Data Science & Analytics",
                         "Design & Creative",
                         "Engineering & Architecture",
-                        "IT & Networking",
                         "Legal",
                         "Sales & Marketing",
                         "Translation",
-                        "Web, Mobile & Software Dev",
                         "Writing",
                       ].map(
                         (val) {
