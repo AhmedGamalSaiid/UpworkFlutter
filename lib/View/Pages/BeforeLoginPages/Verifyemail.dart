@@ -6,6 +6,8 @@ import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
 class Verifyemail extends StatefulWidget {
+  final String emailVal;
+  Verifyemail({this.emailVal});
   @override
   _VerifyemailState createState() => _VerifyemailState();
 }
@@ -74,7 +76,7 @@ class _VerifyemailState extends State<Verifyemail> {
               Padding(
                 padding: const EdgeInsets.only(bottom: 2),
                 child: Text(
-                  'habidal984@httptuan.com ',
+                  widget.emailVal,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.normal,
@@ -107,23 +109,6 @@ class _VerifyemailState extends State<Verifyemail> {
                     ),
                   ])),
               SizedBox(height: size.height * 0.02),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 1),
-                child: RoundedButton(
-                  color: Color(0XFF37a000),
-                  text: "Resend Verification Email",
-                  textColor: Colors.white,
-                  borderColor: Color(0x00000000),
-                  press: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) {
-                    //     return Createprofile();
-                    //   }),
-                    // );
-                  },
-                ),
-              ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: RoundedButton(
