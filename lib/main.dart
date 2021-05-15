@@ -1,22 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/CreateProfile.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/EducationDetails.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/EmploymentDetails.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/Expertise.dart';
 import 'package:upwork/View/Pages/TalentPages/Messages.dart';
-
-import 'View/Pages/BeforeLoginPages/Location.dart';
-import 'View/Pages/BeforeLoginPages/Phone.dart';
 import 'View/Pages/TalentPages/Contracts.dart';
 import 'View/Pages/TalentPages/HomePage.dart';
 import 'View/Pages/TalentPages/Proposals.dart';
-
 import 'View/Pages/TalentPages/myreports.dart';
 import 'View/Pages/BeforeLoginPages/welcome.dart';
-
 import 'constanse.dart';
 import 'firebaseApp.dart';
 
@@ -48,6 +38,7 @@ class MyApp extends StatelessWidget {
           '/messages': (context) => Messages(),
           // '/alerts': (context) => (),
           '/reports': (context) => ReportsPage(),
-        });
+        }
+    );
   }
 }

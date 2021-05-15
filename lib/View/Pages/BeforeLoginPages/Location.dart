@@ -5,14 +5,14 @@ import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:country_list_pick/country_list_pick.dart';
 
 class Location extends StatefulWidget {
-  String ZIP;
+  String zip;
   String addressstree;
   String addressstree2;
   String city;
-  String State;
+  String state;
 
   Location(
-      {this.ZIP, this.addressstree, this.addressstree2, this.city, this.State});
+      {this.zip, this.addressstree, this.addressstree2, this.city, this.state});
   @override
   _LocationState createState() => _LocationState();
 }
@@ -253,8 +253,8 @@ class _LocationState extends State<Location> {
                               _validate4 ? 'This field is required' : null,
                         ),
                         onChanged: (value) {
-                          widget.State = value;
-                          print(widget.State);
+                          widget.state = value;
+                          print(widget.state);
                         },
                       ),
                     ]),
@@ -264,7 +264,7 @@ class _LocationState extends State<Location> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          'ZIP/Postal code',
+                          'zip/Postal code',
                           style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -293,8 +293,8 @@ class _LocationState extends State<Location> {
                           ),
                           keyboardType: TextInputType.number,
                           onChanged: (value) {
-                            widget.ZIP = value;
-                            print(widget.ZIP);
+                            widget.zip = value;
+                            print(widget.zip);
                           },
                         ),
                         SizedBox(height: size.height * 0.03),

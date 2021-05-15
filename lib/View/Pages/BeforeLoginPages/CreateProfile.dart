@@ -11,7 +11,8 @@ class Createprofile extends StatefulWidget {
 }
 
 class _CreateprofileState extends State<Createprofile> {
-  String dropdownValue = 'One';
+  String dropdownValue;
+  String dropdownValue1;
   List<String> subcatagory = [];
 
   @override
@@ -87,28 +88,26 @@ class _CreateprofileState extends State<Createprofile> {
                 ),
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton(
-                      hint: dropdownValue == null
-                          ? Text('Dropdown')
-                          : Text(
-                              "Select Catagory",
-                              style: TextStyle(color: Colors.black),
-                            ),
+                      hint: Text(
+                        "Select Catagory",
+                        style: TextStyle(color: Colors.black),
+                      ),
                       isExpanded: true,
                       iconSize: 30.0,
                       value: dropdownValue,
                       style: TextStyle(color: Colors.black),
                       items: [
+                        "Web, Mobile & Software Dev",
+                        "IT & Networking",
                         "Accounting & Consulting",
                         "Admin Support",
                         "Customer Service",
                         "Data Science & Analytics",
                         "Design & Creative",
                         "Engineering & Architecture",
-                        "IT & Networking",
                         "Legal",
                         "Sales & Marketing",
                         "Translation",
-                        "Web, Mobile & Software Dev",
                         "Writing",
                       ].map(
                         (val) {
@@ -187,14 +186,13 @@ class _CreateprofileState extends State<Createprofile> {
                 ),
                 child: DropdownButtonHideUnderline(
                   child: DropdownButton(
-                      hint: dropdownValue == null
-                          ? Text('Dropdown')
-                          : Text(
-                              "Select SubCatagory",
-                              style: TextStyle(color: Colors.black),
-                            ),
+                      hint: Text(
+                        "Select SubCatagory",
+                        style: TextStyle(color: Colors.black),
+                      ),
                       isExpanded: true,
                       iconSize: 30.0,
+                      value: dropdownValue1,
                       style: TextStyle(color: Colors.black),
                       items: subcatagory.map(
                         (val) {
@@ -206,7 +204,7 @@ class _CreateprofileState extends State<Createprofile> {
                       ).toList(),
                       onChanged: (val) {
                         setState(() {
-                          dropdownValue = val;
+                          dropdownValue1 = val;
                         });
                       }),
                 ),
