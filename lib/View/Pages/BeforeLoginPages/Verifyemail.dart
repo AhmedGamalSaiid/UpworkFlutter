@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/CreateProfile.dart';
+import 'package:upwork/View/components/Shared/CustomCircleAvatar.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
@@ -21,10 +22,7 @@ class _VerifyemailState extends State<Verifyemail> {
             appBar: AppBar(
               leading: Builder(
                 builder: (context) => IconButton(
-                  icon: CircleAvatar(
-                    radius: 50,
-                    backgroundImage: ExactAssetImage("assets/img/06.jpg"),
-                  ),
+                  icon:CustomCircleAvatar(),
                   onPressed: () => Scaffold.of(context).openDrawer(),
                 ),
               ),
