@@ -61,6 +61,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                   // },
                 ),
                 RoundedInputField(
+                  passInput: true,
                   icon: Icons.lock,
                   err: "Please enter more than 8 character",
                   hintText: "Create a password",

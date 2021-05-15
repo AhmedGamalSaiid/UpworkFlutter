@@ -8,10 +8,10 @@ class EducationDetails extends StatefulWidget {
   String school;
   String degree;
   String areaofstudy;
-  String Description;
+  String description;
 
   EducationDetails(
-      {this.school, this.degree, this.areaofstudy, this.Description});
+      {this.school, this.degree, this.areaofstudy, this.description});
   @override
   _EducationDetailsState createState() => _EducationDetailsState();
 }
@@ -257,7 +257,7 @@ class _EducationDetailsState extends State<EducationDetails> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              'Description',
+                              'description',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -293,8 +293,8 @@ class _EducationDetailsState extends State<EducationDetails> {
                                 ),
                               ),
                               onChanged: (value) {
-                                widget.Description = value;
-                                //print(widget.Description);
+                                widget.description = value;
+                                //print(widget.description);
                               },
                             ),
                           )),

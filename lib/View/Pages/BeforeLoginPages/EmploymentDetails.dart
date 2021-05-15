@@ -364,6 +364,7 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                 onChanged: (bool value) {
                   setState(() {
                     this.valuesecond = value;
+                    print(value);
                   });
                 },
               ),
