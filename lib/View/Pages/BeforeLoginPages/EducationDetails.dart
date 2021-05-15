@@ -56,23 +56,30 @@ class _EducationDetailsState extends State<EducationDetails> {
                           ]),
                       Padding(
                         padding: const EdgeInsets.all(6),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintStyle: TextStyle(
-                                color: Color(0xff6D6D6D),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400),
-                            border: OutlineInputBorder(),
-                            hintText: "Ex:Northwestern University",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Color(0XFF0F8E0F), width: 2.0),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 0.05),
+                          height: size.height * 0.07,
+                          width: size.width * 0.9,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintStyle: TextStyle(
+                                  color: Color(0xff6D6D6D),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400),
+                              border: OutlineInputBorder(),
+                              hintText: "Ex:Northwestern University",
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: Color(0XFF0F8E0F), width: 2.0),
+                              ),
                             ),
+                            onChanged: (value) {
+                              widget.school = value;
+                              //print(widget.school);
+                            },
                           ),
-                          onChanged: (value) {
-                            widget.school = value;
-                            print(widget.school);
-                          },
                         ),
                       ),
                       SizedBox(height: size.height * 0.03),
@@ -97,26 +104,32 @@ class _EducationDetailsState extends State<EducationDetails> {
                             ),
                           ]),
                       Padding(
-                        padding: const EdgeInsets.all(6),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintStyle: TextStyle(
-                                color: Color(0xff6D6D6D),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400),
-                            border: OutlineInputBorder(),
-                            hintText: "Ex:Computer Science",
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Color(0XFF0F8E0F), width: 2.0),
+                          padding: const EdgeInsets.all(6),
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 10),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 0.05),
+                            height: size.height * 0.07,
+                            width: size.width * 0.9,
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintStyle: TextStyle(
+                                    color: Color(0xff6D6D6D),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400),
+                                border: OutlineInputBorder(),
+                                hintText: "Ex:Computer Science",
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Color(0XFF0F8E0F), width: 2.0),
+                                ),
+                              ),
+                              onChanged: (value) {
+                                widget.areaofstudy = value;
+                                //print(widget.areaofstudy);
+                              },
                             ),
-                          ),
-                          onChanged: (value) {
-                            widget.areaofstudy = value;
-                            print(widget.areaofstudy);
-                          },
-                        ),
-                      ),
+                          )),
                       SizedBox(height: size.height * 0.03),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -139,26 +152,32 @@ class _EducationDetailsState extends State<EducationDetails> {
                             ),
                           ]),
                       Padding(
-                        padding: const EdgeInsets.all(6),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintStyle: TextStyle(
-                                color: Color(0xff6D6D6D),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400),
-                            border: OutlineInputBorder(),
-                            hintText: 'Ex:Bachelor',
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Color(0XFF0F8E0F), width: 2.0),
+                          padding: const EdgeInsets.all(6),
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 10),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 0.05),
+                            height: size.height * 0.07,
+                            width: size.width * 0.9,
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintStyle: TextStyle(
+                                    color: Color(0xff6D6D6D),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400),
+                                border: OutlineInputBorder(),
+                                hintText: 'Ex:Bachelor',
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Color(0XFF0F8E0F), width: 2.0),
+                                ),
+                              ),
+                              onChanged: (value) {
+                                widget.degree = value;
+                                //print(widget.degree);
+                              },
                             ),
-                          ),
-                          onChanged: (value) {
-                            widget.degree = value;
-                            print(widget.degree);
-                          },
-                        ),
-                      ),
+                          )),
                       SizedBox(height: size.height * 0.03),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.start,
@@ -181,89 +200,105 @@ class _EducationDetailsState extends State<EducationDetails> {
                             ),
                           ]),
                       Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, top: 10),
-                          child: SelectDropDown(
-                            [
-                              "From",
-                              "2021",
-                              "2020",
-                              "2019",
-                              "2018",
-                              "2017",
-                              "2016",
-                              "2015",
-                              "2014",
-                              "2013",
-                              "2012",
-                              "2011",
-                              "2010",
-                            ],
-                            isExpand: true,
-                          )),
+                        padding:
+                            const EdgeInsets.only(left: 10, right: 10, top: 10),
+                        child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 10),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 0.05),
+                            child: SelectDropDown(
+                              [
+                                "From",
+                                "2021",
+                                "2020",
+                                "2019",
+                                "2018",
+                                "2017",
+                                "2016",
+                                "2015",
+                                "2014",
+                                "2013",
+                                "2012",
+                                "2011",
+                                "2010",
+                              ],
+                              isExpand: true,
+                            )),
+                      ),
                       SizedBox(height: size.height * 0.03),
                       Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, top: 10),
-                          child: SelectDropDown(
-                            [
-                              "To(or expected graduation year)",
-                              "2028",
-                              "2027",
-                              "2026",
-                              "2025",
-                              "2024",
-                              "2023",
-                              "2022",
-                              "2021",
-                              "2020",
-                              "2019",
-                              "2018",
-                              "2017",
-                            ],
-                            isExpand: true,
+                        padding:
+                            const EdgeInsets.only(left: 10, right: 10, top: 10),
+                        child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 10),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 0.05),
+                            child: SelectDropDown(
+                              [
+                                "To(or expected graduation year)",
+                                "2028",
+                                "2027",
+                                "2026",
+                                "2025",
+                                "2024",
+                                "2023",
+                                "2022",
+                                "2021",
+                                "2020",
+                                "2019",
+                                "2018",
+                                "2017",
+                              ],
+                              isExpand: true,
+                            )),
+                      ),
+                      SizedBox(height: size.height * 0.03),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'Description',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                            Text(
+                              '(Optional)',
+                              style: TextStyle(
+                                color: Colors.black54,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ]),
+                      Padding(
+                          padding: const EdgeInsets.all(6),
+                          child: Container(
+                            margin: EdgeInsets.symmetric(vertical: 10),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 0.05),
+                            child: TextField(
+                              maxLines: 4,
+                              decoration: InputDecoration(
+                                hintStyle: TextStyle(
+                                    color: Color(0xff6D6D6D),
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400),
+                                border: OutlineInputBorder(),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Color(0XFF0F8E0F), width: 2.0),
+                                ),
+                              ),
+                              onChanged: (value) {
+                                widget.Description = value;
+                                //print(widget.Description);
+                              },
+                            ),
                           )),
                     ])),
-            SizedBox(height: size.height * 0.03),
-            Row(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
-              Text(
-                'Description',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                ),
-              ),
-              Text(
-                '(Optional)',
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontWeight: FontWeight.normal,
-                  fontSize: 15,
-                ),
-              ),
-            ]),
-            Padding(
-              padding: const EdgeInsets.all(6),
-              child: TextField(
-                maxLines: 4,
-                decoration: InputDecoration(
-                  hintStyle: TextStyle(
-                      color: Color(0xff6D6D6D),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400),
-                  border: OutlineInputBorder(),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        const BorderSide(color: Color(0XFF0F8E0F), width: 2.0),
-                  ),
-                ),
-                onChanged: (value) {
-                  widget.Description = value;
-                  print(widget.Description);
-                },
-              ),
-            ),
             SizedBox(height: size.height * 0.03),
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Phone.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
-import 'package:upwork/View/components/Talent/SelectDropDown.dart';
+import 'package:country_list_pick/country_list_pick.dart';
 
 class Location extends StatefulWidget {
   String ZIP;
@@ -99,76 +99,22 @@ class _LocationState extends State<Location> {
                         ),
                       ]),
                   Padding(
-                      padding:
-                          const EdgeInsets.only(left: 10, right: 10, top: 10),
-                      child: SelectDropDown(
-                        [
-                          "Afghanistan",
-                          "Albania",
-                          "Algeria",
-                          "American Samoa",
-                          "Australia",
-                          "Austria",
-                          "Bahrain",
-                          "Bangladesh",
-                          "Brazil",
-                          "British Virgin Islands",
-                          "Canada",
-                          "China",
-                          "Costa Rica",
-                          "Egypt",
-                          "France",
-                          "Georgia",
-                          "Germany",
-                          "Greenland",
-                          "Kuwait",
-                          "Lebanon",
-                          "Lesotho",
-                          "Liberia",
-                          "Libya",
-                          "South Africa",
-                          "Sudan",
-                          "Suriname",
-                          "Svalbard and Jan Mayen",
-                          "Swaziland",
-                          "Sweden",
-                          "Switzerland",
-                          "Syria",
-                          "Taiwan",
-                          "Tajikistan",
-                          "Tanzania",
-                          "Thailand",
-                          "Timor-Leste",
-                          "Togo",
-                          "Tokelau",
-                          "Tonga",
-                          "Trinidad and Tobago",
-                          "Tunisia",
-                          "Turkey",
-                          "Turkmenistan",
-                          "Turks and Caicos Islands",
-                          "Tuvalu",
-                          "Uganda",
-                          "Ukraine",
-                          "United Arab Emirates",
-                          "United Kingdom",
-                          "United States",
-                          "United States Minor Outlying Islands",
-                          "United States Virgin Islands",
-                          "Uruguay",
-                          "Uzbekistan",
-                          "Vanuatu",
-                          "Venezuela",
-                          "Vietnam",
-                          "Wallis and Futuna",
-                          "Western Sahara",
-                          "Yemen",
-                          "Yugoslavia",
-                          "Zambia",
-                          "Zimbabwe",
-                        ],
-                        isExpand: true,
-                      )),
+                      padding: const EdgeInsets.only(right: 10, top: 10),
+                      child: Container(
+                          alignment: Alignment.topLeft,
+                          child: CountryListPick(
+                            theme: CountryTheme(
+                              isShowFlag: true,
+                              isShowTitle: true,
+                              isShowCode: false,
+                              isDownIcon: true,
+                              showEnglishName: true,
+                            ),
+                            initialSelection: '+62',
+                            onChanged: (CountryCode code) {
+                              print(code.name);
+                            },
+                          ))),
                   SizedBox(height: size.height * 0.03),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.start,

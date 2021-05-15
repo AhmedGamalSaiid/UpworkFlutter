@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:country_pickers/country_pickers.dart';
 
 class Phone extends StatefulWidget {
+  String phone;
   @override
   _PhoneState createState() => _PhoneState();
 }
@@ -154,7 +155,7 @@ class _PhoneState extends State<Phone> {
   _buildCountryPickerDropdownSoloExpanded() {
     return CountryPickerDropdown(
       underline: Container(
-        height: 2,
+        height: 1,
         color: Colors.red,
       ),
       //show'em (the text fields) you're in charge now
@@ -167,9 +168,9 @@ class _PhoneState extends State<Phone> {
       itemBuilder: (Country country) {
         return Row(
           children: <Widget>[
-            SizedBox(width: 3.0),
+            //SizedBox(width: 3.0),
             CountryPickerUtils.getDefaultFlagImage(country),
-            SizedBox(width: 4.0),
+            //SizedBox(width: 4.0),
             Expanded(child: Text(country.name)),
           ],
         );
@@ -186,12 +187,12 @@ class _PhoneState extends State<Phone> {
       SizedBox(
           width: dropdownItemWidth,
           child: Padding(
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.only(left: 5.0, bottom: 5.0, top: 5.0),
               child: Row(
                 children: <Widget>[
                   CountryPickerUtils.getDefaultFlagImage(country),
                   SizedBox(
-                    width: 8.0,
+                    width: 5.0,
                   ),
                   Expanded(
                       child: Text(
@@ -206,12 +207,12 @@ class _PhoneState extends State<Phone> {
       SizedBox(
         width: dropdownItemWidth,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(left: 5.0, bottom: 5.0, top: 5.0),
           child: Row(
             children: <Widget>[
               CountryPickerUtils.getDefaultFlagImage(country),
               SizedBox(
-                width: 8.0,
+                width: 5.0,
               ),
               Expanded(child: Text("${country.name}")),
             ],
@@ -225,7 +226,7 @@ class _PhoneState extends State<Phone> {
           children: <Widget>[
             CountryPickerUtils.getDefaultFlagImage(country),
             SizedBox(
-              width: 8.0,
+              width: 5.0,
             ),
             Expanded(child: Text("+${country.phoneCode}(${country.isoCode})")),
           ],
@@ -288,9 +289,9 @@ class _PhoneState extends State<Phone> {
             },
           ),
         ),
-        SizedBox(
-          width: 8.0,
-        ),
+        // SizedBox(
+        //   width: 8.0,
+        // ),
         Expanded(
           child: TextField(
             decoration: InputDecoration(
@@ -299,6 +300,10 @@ class _PhoneState extends State<Phone> {
               contentPadding: EdgeInsets.zero,
             ),
             keyboardType: TextInputType.number,
+            onChanged: (value) {
+              widget.phone = value;
+              //print(widget.phone);
+            },
           ),
         )
       ],

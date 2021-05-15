@@ -3,6 +3,7 @@ import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/SelectDropDown.dart';
+import 'package:country_list_pick/country_list_pick.dart';
 
 class EmployementDetails extends StatefulWidget {
   String company;
@@ -57,22 +58,29 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                           ]),
                       Padding(
                         padding: const EdgeInsets.all(6),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintStyle: TextStyle(
-                                color: Color(0xff6D6D6D),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400),
-                            border: OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Color(0XFF0F8E0F), width: 2.0),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 0.05),
+                          height: size.height * 0.07,
+                          width: size.width * 0.9,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintStyle: TextStyle(
+                                  color: Color(0xff6D6D6D),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400),
+                              border: OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: Color(0XFF0F8E0F), width: 2.0),
+                              ),
                             ),
+                            onChanged: (value) {
+                              widget.company = value;
+                              //print(widget.company);
+                            },
                           ),
-                          onChanged: (value) {
-                            widget.company = value;
-                            print(widget.company);
-                          },
                         ),
                       ),
                       SizedBox(height: size.height * 0.03),
@@ -92,96 +100,50 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                           padding: const EdgeInsets.only(
                               left: 10, right: 10, top: 10),
                           child: Column(children: <Widget>[
-                            TextField(
-                              decoration: InputDecoration(
-                                hintStyle: TextStyle(
-                                    color: Color(0xff6D6D6D),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400),
-                                border: OutlineInputBorder(),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Color(0XFF0F8E0F), width: 2.0),
+                            Container(
+                              margin: EdgeInsets.symmetric(vertical: 10),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 0.05),
+                              height: size.height * 0.07,
+                              width: size.width * 0.9,
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  hintStyle: TextStyle(
+                                      color: Color(0xff6D6D6D),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400),
+                                  border: OutlineInputBorder(),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: Color(0XFF0F8E0F), width: 2.0),
+                                  ),
+                                  hintText: "City",
                                 ),
-                                hintText: "City",
+                                onChanged: (value) {
+                                  widget.location = value;
+                                  //print(widget.location);
+                                },
                               ),
-                              onChanged: (value) {
-                                widget.location = value;
-                                print(widget.location);
-                              },
                             ),
                             SizedBox(height: size.height * 0.03),
                             Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 10, right: 10, top: 10),
-                                child: SelectDropDown(
-                                  [
-                                    "Afghanistan",
-                                    "Albania",
-                                    "Algeria",
-                                    "American Samoa",
-                                    "Australia",
-                                    "Austria",
-                                    "Bahrain",
-                                    "Bangladesh",
-                                    "Brazil",
-                                    "British Virgin Islands",
-                                    "Canada",
-                                    "China",
-                                    "Costa Rica",
-                                    "Egypt",
-                                    "France",
-                                    "Georgia",
-                                    "Germany",
-                                    "Greenland",
-                                    "Kuwait",
-                                    "Lebanon",
-                                    "Lesotho",
-                                    "Liberia",
-                                    "Libya",
-                                    "South Africa",
-                                    "Sudan",
-                                    "Suriname",
-                                    "Svalbard and Jan Mayen",
-                                    "Swaziland",
-                                    "Sweden",
-                                    "Switzerland",
-                                    "Syria",
-                                    "Taiwan",
-                                    "Tajikistan",
-                                    "Tanzania",
-                                    "Thailand",
-                                    "Timor-Leste",
-                                    "Togo",
-                                    "Tokelau",
-                                    "Tonga",
-                                    "Trinidad and Tobago",
-                                    "Tunisia",
-                                    "Turkey",
-                                    "Turkmenistan",
-                                    "Turks and Caicos Islands",
-                                    "Tuvalu",
-                                    "Uganda",
-                                    "Ukraine",
-                                    "United Arab Emirates",
-                                    "United Kingdom",
-                                    "United States",
-                                    "United States Minor Outlying Islands",
-                                    "United States Virgin Islands",
-                                    "Uruguay",
-                                    "Uzbekistan",
-                                    "Vanuatu",
-                                    "Venezuela",
-                                    "Vietnam",
-                                    "Wallis and Futuna",
-                                    "Western Sahara",
-                                    "Yemen",
-                                    "Yugoslavia",
-                                    "Zambia",
-                                    "Zimbabwe",
-                                  ],
-                                  isExpand: true,
-                                )),
+                                padding:
+                                    const EdgeInsets.only(right: 10, top: 10),
+                                child: Container(
+                                    alignment: Alignment.topLeft,
+                                    child: CountryListPick(
+                                      theme: CountryTheme(
+                                        isShowFlag: true,
+                                        isShowTitle: true,
+                                        isShowCode: false,
+                                        isDownIcon: true,
+                                        showEnglishName: true,
+                                      ),
+                                      initialSelection: '+62',
+                                      onChanged: (CountryCode code) {
+                                        //print(code.name);
+                                      },
+                                    ))),
                           ])),
                       SizedBox(height: size.height * 0.03),
                       Row(
@@ -198,22 +160,29 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                           ]),
                       Padding(
                         padding: const EdgeInsets.all(6),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintStyle: TextStyle(
-                                color: Color(0xff6D6D6D),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400),
-                            border: OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Color(0XFF0F8E0F), width: 2.0),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 0.05),
+                          height: size.height * 0.07,
+                          width: size.width * 0.9,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              hintStyle: TextStyle(
+                                  color: Color(0xff6D6D6D),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w400),
+                              border: OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    color: Color(0XFF0F8E0F), width: 2.0),
+                              ),
                             ),
+                            onChanged: (value) {
+                              widget.title = value;
+                              // print(widget.title);
+                            },
                           ),
-                          onChanged: (value) {
-                            widget.title = value;
-                            print(widget.title);
-                          },
                         ),
                       ),
                       SizedBox(height: size.height * 0.03),
@@ -234,28 +203,33 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                               left: 10, right: 10, top: 10),
                           child: Column(
                             children: <Widget>[
-                              SelectDropDown(
-                                [
-                                  "Month ",
-                                  "January",
-                                  "February",
-                                  "March",
-                                  "April",
-                                  "May",
-                                  "June",
-                                  "July",
-                                  "August",
-                                  "September",
-                                  "October",
-                                  "November",
-                                  "December",
-                                ],
-                                isExpand: true,
+                              Container(
+                                margin: EdgeInsets.symmetric(vertical: 10),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 0.05),
+                                child: SelectDropDown(
+                                  [
+                                    "Month ",
+                                    "January",
+                                    "February",
+                                    "March",
+                                    "April",
+                                    "May",
+                                    "June",
+                                    "July",
+                                    "August",
+                                    "September",
+                                    "October",
+                                    "November",
+                                    "December",
+                                  ],
+                                  isExpand: true,
+                                ),
                               ),
                               SizedBox(height: size.height * 0.03),
                               Padding(
                                   padding: const EdgeInsets.only(
-                                      left: 10, right: 10, top: 10),
+                                      left: 10, right: 10, top: 10, bottom: 10),
                                   child: SelectDropDown(
                                     [
                                       "year",
@@ -287,77 +261,90 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                                     isExpand: true,
                                   )),
                             ],
-                          ))
+                          )),
+                      SizedBox(height: size.height * 0.03),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'through',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ]),
+                      Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10, right: 10, top: 10),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                margin: EdgeInsets.symmetric(vertical: 10),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 0.05),
+                                child: SelectDropDown(
+                                  [
+                                    "Month ",
+                                    "January",
+                                    "February",
+                                    "March",
+                                    "April",
+                                    "May",
+                                    "June",
+                                    "July",
+                                    "August",
+                                    "September",
+                                    "October",
+                                    "November",
+                                    "December",
+                                  ],
+                                  isExpand: true,
+                                ),
+                              ),
+                              SizedBox(height: size.height * 0.03),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 10, right: 10, top: 10),
+                                child: Container(
+                                    margin: EdgeInsets.symmetric(vertical: 10),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 0.05),
+                                    child: SelectDropDown(
+                                      [
+                                        "year",
+                                        "2021",
+                                        "2020",
+                                        "2019",
+                                        "2018",
+                                        "2017",
+                                        "2016",
+                                        "2015",
+                                        "2014",
+                                        "2013",
+                                        "2012",
+                                        "2011",
+                                        "2010",
+                                        "2009",
+                                        "2008",
+                                        "2007",
+                                        "2006",
+                                        "2005",
+                                        "2004",
+                                        "2003",
+                                        "2002",
+                                        "2001",
+                                        "2000",
+                                        "1999",
+                                        "1998",
+                                      ],
+                                      isExpand: true,
+                                    )),
+                              )
+                            ],
+                          )),
                     ])),
-            SizedBox(height: size.height * 0.03),
-            Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-              Text(
-                'through',
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontWeight: FontWeight.normal,
-                  fontSize: 15,
-                ),
-              ),
-            ]),
-            Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
-                child: Column(
-                  children: <Widget>[
-                    SelectDropDown(
-                      [
-                        "Month ",
-                        "January",
-                        "February",
-                        "March",
-                        "April",
-                        "May",
-                        "June",
-                        "July",
-                        "August",
-                        "September",
-                        "October",
-                        "November",
-                        "December",
-                      ],
-                      isExpand: true,
-                    ),
-                    SizedBox(height: size.height * 0.03),
-                    Padding(
-                        padding:
-                            const EdgeInsets.only(left: 10, right: 10, top: 10),
-                        child: SelectDropDown(
-                          [
-                            "year",
-                            "2021",
-                            "2020",
-                            "2019",
-                            "2018",
-                            "2017",
-                            "2016",
-                            "2015",
-                            "2014",
-                            "2013",
-                            "2012",
-                            "2011",
-                            "2010",
-                            "2009",
-                            "2008",
-                            "2007",
-                            "2006",
-                            "2005",
-                            "2004",
-                            "2003",
-                            "2002",
-                            "2001",
-                            "2000",
-                            "1999",
-                            "1998",
-                          ],
-                          isExpand: true,
-                        )),
-                  ],
-                )),
             SizedBox(height: size.height * 0.03),
             ListTileTheme(
               contentPadding: EdgeInsets.zero,
@@ -394,23 +381,29 @@ class _EmployementDetailsState extends State<EmployementDetails> {
             ]),
             Padding(
               padding: const EdgeInsets.all(6),
-              child: TextField(
-                maxLines: 3,
-                decoration: InputDecoration(
-                  hintStyle: TextStyle(
-                      color: Color(0xff6D6D6D),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400),
-                  border: OutlineInputBorder(),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        const BorderSide(color: Color(0XFF0F8E0F), width: 2.0),
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0.05),
+                // height: size.height * 0.07,
+                // width: size.width * 0.9,
+                child: TextField(
+                  maxLines: 3,
+                  decoration: InputDecoration(
+                    hintStyle: TextStyle(
+                        color: Color(0xff6D6D6D),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400),
+                    border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color(0XFF0F8E0F), width: 2.0),
+                    ),
                   ),
+                  onChanged: (value) {
+                    widget.description = value;
+                    // print(widget.description);
+                  },
                 ),
-                onChanged: (value) {
-                  widget.description = value;
-                  print(widget.description);
-                },
               ),
             ),
             SizedBox(height: size.height * 0.03),

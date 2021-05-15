@@ -6,9 +6,6 @@ import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
-import 'CreateProfileEperience.dart';
-
-// ignore: must_be_immutable
 class Expertise extends StatefulWidget {
   String skillsVal;
   Expertise({this.skillsVal});
@@ -17,17 +14,18 @@ class Expertise extends StatefulWidget {
 }
 
 class _ExpertiseState extends State<Expertise> {
-  bool _selected = false;
-  bool _selected1 = false;
-  bool _selected2 = false;
-  bool _selected3 = false;
-  bool _selected4 = false;
-  bool _selected5 = false;
-  bool _selected6 = false;
-  bool _selected7 = false;
-  bool _selected8 = false;
-  bool _selected9 = false;
-  bool _selected10 = false;
+  List<String> skills = [];
+  // bool _selected = false;
+  // bool _selected1 = false;
+  // bool _selected2 = false;
+  // bool _selected3 = false;
+  // bool _selected4 = false;
+  // bool _selected5 = false;
+  // bool _selected6 = false;
+  // bool _selected7 = false;
+  // bool _selected8 = false;
+  // bool _selected9 = false;
+  // bool _selected10 = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -75,96 +73,11 @@ class _ExpertiseState extends State<Expertise> {
                             ),
                           ),
                         ]),
-                    Wrap(
-                      spacing: 15,
-                      runSpacing: 5,
-                      children: [
-                        FilterChip(
-                            selected: _selected,
-                            label: Text("Visual Commmunication"),
-                            avatar: Icon(Icons.add),
-                            onSelected: (val) {
-                              setState(() => _selected = val);
-                            }),
-                        FilterChip(
-                            label: Text("Figma"),
-                            selected: _selected1,
-                            avatar: Icon(Icons.add),
-                            onSelected: (val) {
-                              setState(() => _selected1 = val);
-                            }),
-                        FilterChip(
-                            label: Text("User Interface Design"),
-                            avatar: Icon(Icons.add),
-                            selected: _selected2,
-                            onSelected: (val) {
-                              setState(() => _selected2 = val);
-                            }),
-                        FilterChip(
-                            label: Text("Axure Rp"),
-                            avatar: Icon(Icons.add),
-                            selected: _selected3,
-                            onSelected: (val) {
-                              setState(() => _selected3 = val);
-                            }),
-                        FilterChip(
-                            selected: _selected4,
-                            label: Text("Web Design"),
-                            avatar: Icon(Icons.add),
-                            onSelected: (val) {
-                              setState(() => _selected4 = val);
-                            }),
-                        FilterChip(
-                            selected: _selected5,
-                            label: Text("Usability Testing"),
-                            avatar: Icon(Icons.add),
-                            onSelected: (val) {
-                              setState(() => _selected5 = val);
-                            }),
-                        FilterChip(
-                            selected: _selected6,
-                            label: Text("Webflow"),
-                            avatar: Icon(Icons.add),
-                            onSelected: (val) {
-                              setState(() => _selected6 = val);
-                              print(val);
-                            }),
-                        FilterChip(
-                            selected: _selected7,
-                            label: Text("I phone UI Design "),
-                            avatar: Icon(Icons.add),
-                            onSelected: (val) {
-                              setState(() => _selected7 = val);
-                            }),
-                        FilterChip(
-                            selected: _selected8,
-                            label: Text("Adobe Photoshop"),
-                            avatar: Icon(Icons.add),
-                            onSelected: (val) {
-                              setState(() => _selected8 = val);
-                            }),
-                        FilterChip(
-                            selected: _selected9,
-                            label: Text("Figma"),
-                            avatar: Icon(Icons.add),
-                            onSelected: (val) {
-                              setState(() => _selected9 = val);
-                            }),
-                        FilterChip(
-                            selected: _selected10,
-                            label: Text("Game Design"),
-                            avatar: Icon(Icons.add),
-                            onSelected: (val) {
-                              setState(() => _selected10 = val);
-                            }),
-                      ],
-                    ),
-                    SizedBox(height: size.height * 0.03),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'No what you are looking for ?',
+                            'Now what you are looking for ?',
                             style: TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
@@ -177,14 +90,56 @@ class _ExpertiseState extends State<Expertise> {
                       hintText: "Start typing to search for skills ..... ",
                       onChanged: (value) {
                         widget.skillsVal = value;
-                        // print(widget.skillsVal);
                       },
                       icon: null,
                     ),
                   ],
                 ),
               ),
+              Container(
+                height: size.height * 0.07,
+                width: size.width * 0.4,
+                margin: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: FlatButton(
+                  color: Color(0xFF15A800),
+                  onPressed: () => {
+                    setState(() {
+                      skills.add(widget.skillsVal);
+                    }),
+                    // print(skills),
+                    // print(skills.length),
+                  },
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)),
+                  child: Text(
+                    "Add Skills",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
               SizedBox(height: size.height * 0.02),
+              Wrap(
+                spacing: 15,
+                runSpacing: 5,
+                children: [
+                  for (var i in skills)
+                    FilterChip(
+                        //selected: _selected,
+                        label: Text(i),
+                        avatar: Icon(Icons.add),
+                        onSelected: (val) {
+                          // setState(() => _selected = val);
+                        }),
+                ],
+              ),
+              SizedBox(height: size.height * 0.03),
               Padding(
                   padding: const EdgeInsets.all(5),
                   child: Row(
