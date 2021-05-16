@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/SelectDropDown.dart';
 import 'package:country_list_pick/country_list_pick.dart';
+import 'package:upwork/firebaseApp.dart';
 
 class EmployementDetails extends StatefulWidget {
   String company;
@@ -444,6 +446,15 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                     child: FlatButton(
                       color: Color(0xFF15A800),
                       onPressed: () => {
+                        DatabaseService().updateDocument('talent', auth.currentUser.uid, {
+                          'company':{
+                            'companyName':widget.company,
+                            'jobTitile':widget.title,
+                            'stillWork':valuesecond,
+                            'companyLocation':widget.location,
+                            
+                          }
+                        }),
                         Navigator.push(
                           context,
                           MaterialPageRoute(

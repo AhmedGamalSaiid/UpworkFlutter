@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/SelectDropDown.dart';
+import 'package:upwork/firebaseApp.dart';
 
 class EducationDetails extends StatefulWidget {
   String school;
@@ -336,6 +338,13 @@ class _EducationDetailsState extends State<EducationDetails> {
                     child: FlatButton(
                       color: Color(0xFF15A800),
                       onPressed: () => {
+                        DatabaseService().updateDocument('talent', auth.currentUser.uid, {
+                          'education':{
+                            'school':widget.school,
+                            'degree':widget.degree,
+                            'areaOfStudy':widget.areaofstudy,
+                          }
+                        }),
                         Navigator.push(
                           context,
                           MaterialPageRoute(
