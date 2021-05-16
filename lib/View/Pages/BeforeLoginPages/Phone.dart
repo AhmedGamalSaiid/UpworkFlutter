@@ -8,6 +8,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:country_pickers/country_pickers.dart';
 import 'package:upwork/firebaseApp.dart';
 
+import 'CreateProfilePreviewBeforeSubmit.dart';
+
 class Phone extends StatefulWidget {
   String phone;
   String code;
@@ -134,14 +136,14 @@ class _PhoneState extends State<Phone> {
                                         'mobileNumber':
                                             "+${widget.code} ${widget.phone} "
                                       }),
-                                      // Navigator.push(
-                                      //   context,
-                                      //   MaterialPageRoute(
-                                      //     builder: (context) {
-                                      //       return Location();
-                                      //     },
-                                      //   ),
-                                      // )
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return CreateProfilePreviewBeforeSubmit();
+                                          },
+                                        ),
+                                      )
                                     },
                                     shape: RoundedRectangleBorder(
                                         borderRadius:

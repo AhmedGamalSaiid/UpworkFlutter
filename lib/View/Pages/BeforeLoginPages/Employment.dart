@@ -6,6 +6,8 @@ import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
+import 'CreateProfileSetHourlyRate.dart';
+
 class Employement extends StatefulWidget {
   @override
   _EmployementState createState() => _EmployementState();
@@ -140,7 +142,7 @@ class _EmployementState extends State<Employement> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) {
-                                                return Education();
+                                                return CreateProfileSetHourlyRate();
                                               },
                                             ),
                                           )
