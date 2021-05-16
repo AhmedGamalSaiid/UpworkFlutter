@@ -35,6 +35,7 @@ class _LoginBodyState extends State<LoginBody> {
             ),
             SizedBox(height: size.height * 0.03),
             RoundedInputField(
+              textInputType: TextInputType.emailAddress,
               icon: Icons.person,
               err: "Oops! Email is incorrect",
               hintText: "Username or Email",

@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Services/DatabaseService.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
+import 'package:upwork/View/components/Shared/CustomCircleAvatar.dart';
 
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
+import 'package:upwork/firebaseApp.dart';
 
 import 'CreateProfileSetHourlyRate.dart';
 import 'Expertise.dart';
@@ -14,6 +18,7 @@ class CreateProfileEperience extends StatefulWidget {
 }
 
 class _CreateProfileEperienceState extends State<CreateProfileEperience> {
+  String selectedVal;
   int selectedRadio;
   @override
   void initState() {
@@ -37,10 +42,7 @@ class _CreateProfileEperienceState extends State<CreateProfileEperience> {
           appBar: AppBar(
             leading: Builder(
               builder: (context) => IconButton(
-                icon: CircleAvatar(
-                  radius: 50,
-                  backgroundImage: ExactAssetImage("assets/img/06.jpg"),
-                ),
+                icon: CustomCircleAvatar(),
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
             ),
@@ -211,10 +213,28 @@ class _CreateProfileEperienceState extends State<CreateProfileEperience> {
                           textColor: Colors.white,
                           borderColor: Color(0x00000000),
                           press: () {
+                            switch (selectedRadio) {
+                              case 1:
+                                selectedVal = "Entry level";
+                                break;
+                              case 2:
+                                selectedVal = "Intermediate";
+                                break;
+                              case 3:
+                                selectedVal = "Expert";
+                                break;
+                              default:
+                                print(selectedVal);
+                                break;
+                            }
+                            DatabaseService().updateDocument(
+                                'talent', auth.currentUser.uid, {
+                              'expertiseLevel': selectedVal,
+                            });
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) {
-                                return CreateProfileSetHourlyRate();
+                                return Education();
                               }),
                             );
                           },
