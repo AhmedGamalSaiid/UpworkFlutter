@@ -7,6 +7,17 @@ import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
 class Education extends StatefulWidget {
+  final String emailVal;
+  String firstName;
+  String lastName;
+  String password;
+  String school;
+  Education(
+      {this.emailVal,
+      this.firstName,
+      this.lastName,
+      this.password,
+      this.school});
   @override
   _EducationState createState() => _EducationState();
 }
@@ -76,7 +87,12 @@ class _EducationState extends State<Education> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) {
-                                    return EducationDetails();
+                                    return EducationDetails(
+                                      emailVal: widget.emailVal,
+                                      firstName: widget.firstName,
+                                      lastName: widget.lastName,
+                                      password: widget.password,
+                                    );
                                   },
                                 ),
                               )
@@ -103,7 +119,12 @@ class _EducationState extends State<Education> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      return Employement();
+                                      return Employement(
+                                        emailVal: widget.emailVal,
+                                        firstName: widget.firstName,
+                                        lastName: widget.lastName,
+                                        password: widget.password,
+                                      );
                                     },
                                   ),
                                 )
@@ -143,7 +164,13 @@ class _EducationState extends State<Education> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(builder: (context) {
-                                        return Employement();
+                                        return Employement(
+                                          emailVal: widget.emailVal,
+                                          firstName: widget.firstName,
+                                          lastName: widget.lastName,
+                                          password: widget.password,
+                                          school: widget.school,
+                                        );
                                       }),
                                     );
                                   },

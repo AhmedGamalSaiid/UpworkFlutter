@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:upwork/Models/UserData.dart';
+import 'package:upwork/Services/UserDataService.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/ClientMessage.dart';
 import 'package:upwork/View/components/Talent/TalentMessage.dart';
@@ -11,6 +13,9 @@ class Message extends StatefulWidget {
 
 class _MessageState extends State<Message> {
   List<ClientMessage> messages = [];
+  UserDataService userservice = new UserDataService();
+  Future<UserDataModel> get user => userservice.getUserData();
+
   @override
   Widget build(BuildContext context) {
     String now = DateFormat().add_jm().format(DateTime.now());
@@ -90,6 +95,9 @@ class _MessageState extends State<Message> {
                                   hintText: "Write message...",
                                   hintStyle: TextStyle(color: Colors.black54),
                                   border: InputBorder.none),
+                              onChanged: (value) => {
+                                print(user),
+                              },
                             ),
                           ),
                           Padding(

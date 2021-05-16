@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/Employment.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/SelectDropDown.dart';
@@ -10,9 +10,22 @@ class EmployementDetails extends StatefulWidget {
   String location;
   String title;
   String description;
+  final String emailVal;
+  String firstName;
+  String lastName;
+  String password;
+  String school;
 
   EmployementDetails(
-      {this.company, this.location, this.description, this.title});
+      {this.company,
+      this.location,
+      this.description,
+      this.title,
+      this.emailVal,
+      this.firstName,
+      this.lastName,
+      this.password,
+      this.school});
   @override
   _EmployementDetailsState createState() => _EmployementDetailsState();
 }
@@ -448,7 +461,14 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return Education();
+                              return Employement(
+                                emailVal: widget.emailVal,
+                                firstName: widget.firstName,
+                                lastName: widget.lastName,
+                                password: widget.password,
+                                school: widget.school,
+                                company: widget.company,
+                              );
                             },
                           ),
                         )

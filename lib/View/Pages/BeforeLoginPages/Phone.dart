@@ -1,3 +1,4 @@
+import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Location.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
@@ -5,9 +6,28 @@ import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:country_pickers/country.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:country_pickers/country_pickers.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Phone extends StatefulWidget {
   String phone;
+  String code;
+  final String emailVal;
+  String firstName;
+  String lastName;
+  String password;
+  String school;
+  String company;
+  String location;
+  Phone(
+      {this.code,
+      this.phone,
+      this.emailVal,
+      this.company,
+      this.firstName,
+      this.lastName,
+      this.password,
+      this.school,
+      this.location});
   @override
   _PhoneState createState() => _PhoneState();
 }
@@ -125,11 +145,24 @@ class _PhoneState extends State<Phone> {
                                   child: FlatButton(
                                     color: Color(0xFF15A800),
                                     onPressed: () => {
+                                      FirebaseFirestore.instance
+                                          .collection('talent')
+                                          .add({
+                                        'firstName': widget.firstName,
+                                        'lastName': widget.lastName,
+                                        'email': widget.emailVal,
+                                        'password': widget.password,
+                                        'school': widget.school,
+                                        'company': widget.company,
+                                        'location': widget.location,
+                                        'phone Number':
+                                            '+' + widget.code + widget.phone
+                                      }),
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) {
-                                            return Location();
+                                            //return Location();
                                           },
                                         ),
                                       )
@@ -250,18 +283,13 @@ class _PhoneState extends State<Phone> {
               height: 2,
               color: Colors.red,
             ),*/
-            //show'em (the text fields) you're in charge now
+
             onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
-            //if you have menu items of varying size, itemHeight being null respects
-            //that, IntrinsicHeight under the hood ;).
+
             itemHeight: null,
-            //itemHeight being null and isDense being true doesn't play along
-            //well together. One is trying to limit size and other is saying
-            //limit is the sky, therefore conflicts.
-            //false is default but still keep that in mind.
+
             isDense: false,
-            //if you want your dropdown button's selected item UI to be different
-            //than itemBuilder's(dropdown menu item UI), then provide this selectedItemBuilder.
+
             selectedItemBuilder: hasSelectedItemBuilder == true
                 ? (Country country) => _buildDropdownSelectedItemBuilder(
                     country, dropdownSelectedItemWidth)
@@ -286,6 +314,8 @@ class _PhoneState extends State<Phone> {
                 : null,
             onValuePicked: (Country country) {
               print("${country.name}");
+              widget.code = country.phoneCode;
+              print(widget.code);
             },
           ),
         ),

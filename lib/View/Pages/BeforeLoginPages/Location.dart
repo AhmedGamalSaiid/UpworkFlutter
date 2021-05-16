@@ -10,9 +10,28 @@ class Location extends StatefulWidget {
   String addressstree2;
   String city;
   String state;
+  String country;
+  final String emailVal;
+  String firstName;
+  String lastName;
+  String password;
+  String school;
+  String company;
 
-  Location(
-      {this.zip, this.addressstree, this.addressstree2, this.city, this.state});
+  Location({
+    this.zip,
+    this.addressstree,
+    this.addressstree2,
+    this.city,
+    this.state,
+    this.country,
+    this.emailVal,
+    this.firstName,
+    this.lastName,
+    this.password,
+    this.school,
+    this.company,
+  });
   @override
   _LocationState createState() => _LocationState();
 }
@@ -28,6 +47,7 @@ class _LocationState extends State<Location> {
   final _text2 = TextEditingController();
   final _text3 = TextEditingController();
   final _text4 = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -112,6 +132,7 @@ class _LocationState extends State<Location> {
                             ),
                             initialSelection: '+62',
                             onChanged: (CountryCode code) {
+                              widget.country = code.name;
                               print(code.name);
                             },
                           ))),
@@ -354,11 +375,20 @@ class _LocationState extends State<Location> {
                                           ? _validate3 = true
                                           : _validate3 = false;
                                     });
+
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return Phone();
+                                          return Phone(
+                                            emailVal: widget.emailVal,
+                                            firstName: widget.firstName,
+                                            lastName: widget.lastName,
+                                            password: widget.password,
+                                            school: widget.school,
+                                            company: widget.company,
+                                            location: widget.country,
+                                          );
                                         },
                                       ),
                                     );

@@ -6,10 +6,20 @@ import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Expertise extends StatefulWidget {
   String skillsVal;
-  Expertise({this.skillsVal});
+  final String emailVal;
+  String firstName;
+  String lastName;
+  String password;
+  Expertise(
+      {this.skillsVal,
+      this.firstName,
+      this.emailVal,
+      this.lastName,
+      this.password});
   @override
   _ExpertiseState createState() => _ExpertiseState();
 }
@@ -38,7 +48,7 @@ class _ExpertiseState extends State<Expertise> {
           appBar: AppBar(
             leading: Builder(
               builder: (context) => IconButton(
-                icon:CustomCircleAvatar(),
+                icon: CustomCircleAvatar(),
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
             ),
@@ -166,10 +176,16 @@ class _ExpertiseState extends State<Expertise> {
                           textColor: Colors.white,
                           borderColor: Color(0x00000000),
                           press: () {
+                        
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) {
-                                return Education();
+                                return Education(
+                                  emailVal: widget.emailVal,
+                                  firstName: widget.firstName,
+                                  lastName: widget.lastName,
+                                  password: widget.password,
+                                );
                               }),
                             );
                           },

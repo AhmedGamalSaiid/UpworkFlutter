@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/EmploymentDetails.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/Location.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
 class Employement extends StatefulWidget {
+  final String emailVal;
+  String firstName;
+  String lastName;
+  String password;
+  String school;
+  String company;
+
+  Employement(
+      {this.emailVal,
+      this.firstName,
+      this.lastName,
+      this.password,
+      this.school,
+      this.company});
   @override
   _EmployementState createState() => _EmployementState();
 }
@@ -88,7 +103,13 @@ class _EmployementState extends State<Employement> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) {
-                                    return EmployementDetails();
+                                    return EmployementDetails(
+                                      emailVal: widget.emailVal,
+                                      firstName: widget.firstName,
+                                      lastName: widget.lastName,
+                                      password: widget.password,
+                                      school: widget.school,
+                                    );
                                   },
                                 ),
                               )
@@ -114,7 +135,15 @@ class _EmployementState extends State<Employement> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) {},
+                                    builder: (context) {
+                                      return Location(
+                                        emailVal: widget.emailVal,
+                                        firstName: widget.firstName,
+                                        lastName: widget.lastName,
+                                        password: widget.password,
+                                        school: widget.school,
+                                      );
+                                    },
                                   ),
                                 )
                               },
@@ -153,7 +182,14 @@ class _EmployementState extends State<Employement> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(builder: (context) {
-                                        return EmployementDetails();
+                                        return Location(
+                                          emailVal: widget.emailVal,
+                                          firstName: widget.firstName,
+                                          lastName: widget.lastName,
+                                          password: widget.password,
+                                          school: widget.school,
+                                          company: widget.company,
+                                        );
                                       }),
                                     );
                                   },

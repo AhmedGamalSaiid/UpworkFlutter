@@ -6,6 +6,12 @@ import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
 class Createprofile extends StatefulWidget {
+  final String emailVal;
+  String firstName;
+  String lastName;
+  String password;
+
+  Createprofile({this.emailVal, this.firstName, this.lastName, this.password});
   @override
   _CreateprofileState createState() => _CreateprofileState();
 }
@@ -242,7 +248,12 @@ class _CreateprofileState extends State<Createprofile> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) {
-                              return Expertise();
+                              return Expertise(
+                                emailVal: widget.emailVal,
+                                firstName: widget.firstName,
+                                lastName: widget.lastName,
+                                password: widget.password,
+                              );
                             }),
                           );
                         },

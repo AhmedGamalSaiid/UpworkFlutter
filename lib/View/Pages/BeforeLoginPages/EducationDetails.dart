@@ -3,15 +3,27 @@ import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/SelectDropDown.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EducationDetails extends StatefulWidget {
   String school;
   String degree;
   String areaofstudy;
   String description;
+  final String emailVal;
+  String firstName;
+  String lastName;
+  String password;
 
   EducationDetails(
-      {this.school, this.degree, this.areaofstudy, this.description});
+      {this.school,
+      this.degree,
+      this.areaofstudy,
+      this.description,
+      this.firstName,
+      this.emailVal,
+      this.lastName,
+      this.password});
   @override
   _EducationDetailsState createState() => _EducationDetailsState();
 }
@@ -336,11 +348,18 @@ class _EducationDetailsState extends State<EducationDetails> {
                     child: FlatButton(
                       color: Color(0xFF15A800),
                       onPressed: () => {
+                      
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return Education();
+                              return Education(
+                                emailVal: widget.emailVal,
+                                      firstName: widget.firstName,
+                                      lastName: widget.lastName,
+                                      password: widget.password,
+                                      school:widget.school,
+                              );
                             },
                           ),
                         )

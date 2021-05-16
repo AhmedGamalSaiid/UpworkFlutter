@@ -7,7 +7,17 @@ import 'Verifyemail.dart';
 
 class SignupDetails extends StatefulWidget {
   final String emailVal;
-  SignupDetails({this.emailVal});
+  String firstName;
+  String lastName;
+  String password;
+  String country;
+  String userName;
+  SignupDetails(
+      {this.emailVal,
+      this.country,
+      this.firstName,
+      this.lastName,
+      this.password});
   @override
   _SignupDetailsState createState() => _SignupDetailsState();
 }
@@ -15,7 +25,7 @@ class SignupDetails extends StatefulWidget {
 class _SignupDetailsState extends State<SignupDetails> {
   bool valuefirst = false;
   bool valuesecond = false;
-  String dropdownValue = 'One';
+  String dropdownValue;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,29 +56,29 @@ class _SignupDetailsState extends State<SignupDetails> {
                   icon: Icons.person,
                   err: "Oops! name is incorrect",
                   hintText: "First name",
-                  // onChanged: (value) {
-                  //   widget.emailVal = value;
-                  //   print(widget.emailVal);
-                  // },
+                  onChanged: (value) {
+                    widget.firstName = value;
+                    print(widget.firstName);
+                  },
                 ),
                 RoundedInputField(
                   icon: Icons.person,
                   err: "Oops! name is incorrect",
                   hintText: "Last name",
-                  // onChanged: (value) {
-                  //   widget.emailVal = value;
-                  //   print(widget.emailVal);
-                  // },
+                  onChanged: (value) {
+                    widget.lastName = value;
+                    print(widget.lastName);
+                  },
                 ),
                 RoundedInputField(
                   passInput: true,
                   icon: Icons.lock,
                   err: "Please enter more than 8 character",
                   hintText: "Create a password",
-                  // onChanged: (value) {
-                  //   widget.emailVal = value;
-                  //   print(widget.emailVal);
-                  // },
+                  onChanged: (value) {
+                    widget.password = value;
+                    print(widget.password);
+                  },
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 8, bottom: 8),
@@ -83,12 +93,11 @@ class _SignupDetailsState extends State<SignupDetails> {
                     ),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton(
-                        hint: dropdownValue == null
-                            ? Text('Dropdown')
-                            : Text(
-                                "Select a country",
-                                style: TextStyle(color: Colors.grey),
-                              ),
+                        hint: Text(
+                          "Select a country",
+                          style: TextStyle(color: Colors.grey),
+                        ),
+                        value: dropdownValue,
                         isExpanded: true,
                         iconSize: 30.0,
                         style: TextStyle(color: Colors.grey),
@@ -115,10 +124,10 @@ class _SignupDetailsState extends State<SignupDetails> {
                   icon: Icons.account_box_outlined,
                   err: "Invalid username",
                   hintText: "Username",
-                  // onChanged: (value) {
-                  //   widget.emailVal = value;
-                  //   print(widget.emailVal);
-                  // },
+                  onChanged: (value) {
+                    widget.userName = value;
+                    print(widget.userName);
+                  },
                 ),
                 Container(
                     width: MediaQuery.of(context).size.width * 0.95,
@@ -196,12 +205,14 @@ class _SignupDetailsState extends State<SignupDetails> {
                   textColor: Colors.white,
                   borderColor: Color(0x00000000),
                   press: () {
-                    // print(widget.emailVal);
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
                         return Verifyemail(
                           emailVal: widget.emailVal,
+                          firstName: widget.firstName,
+                          lastName: widget.lastName,
+                          password: widget.password,
                         );
                       }),
                     );
