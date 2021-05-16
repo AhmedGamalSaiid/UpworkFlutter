@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/Services/DatabaseService.dart';
-import 'package:upwork/Services/UserDataService.dart';
 import 'package:upwork/Services/authService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Verifyemail.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
