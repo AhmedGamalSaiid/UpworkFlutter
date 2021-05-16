@@ -115,7 +115,7 @@ class _CreateProfilePreviewBeforeSubmitState
                     ),
                   ),
                   Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+                      padding: const EdgeInsets.fromLTRB(15, 0, 10, 10),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -533,7 +533,7 @@ class _CreateProfilePreviewBeforeSubmitState
           Container(
             color: bgUpworkSection,
             child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+                padding: const EdgeInsets.fromLTRB(15, 0, 10, 10),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
