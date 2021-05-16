@@ -5,6 +5,7 @@ import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
 
+import 'CreateProfileSetHourlyRate.dart';
 import 'Expertise.dart';
 
 class CreateProfileEperience extends StatefulWidget {
@@ -210,12 +211,12 @@ class _CreateProfileEperienceState extends State<CreateProfileEperience> {
                           textColor: Colors.white,
                           borderColor: Color(0x00000000),
                           press: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(builder: (context) {
-                            //     return CreateProfileEperience();
-                            //   }),
-                            // );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return CreateProfileSetHourlyRate();
+                              }),
+                            );
                           },
                         ),
                       ]))
