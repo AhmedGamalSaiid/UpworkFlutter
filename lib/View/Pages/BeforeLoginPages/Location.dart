@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Phone.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:country_list_pick/country_list_pick.dart';
+import 'package:upwork/firebaseApp.dart';
 
 class Location extends StatefulWidget {
   String zip;
   String addressstree;
-  String addressstree2;
   String city;
   String state;
+  String country;
 
   Location(
-      {this.zip, this.addressstree, this.addressstree2, this.city, this.state});
+      {this.zip,
+      this.addressstree,
+      this.city,
+      this.state,
+      this.country});
   @override
   _LocationState createState() => _LocationState();
 }
 
 class _LocationState extends State<Location> {
   bool _validate = false;
-  bool _validate1 = false;
   bool _validate2 = false;
-  bool _validate3 = false;
   bool _validate4 = false;
   final _text = TextEditingController();
-  final _text1 = TextEditingController();
   final _text2 = TextEditingController();
-  final _text3 = TextEditingController();
   final _text4 = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -101,7 +103,7 @@ class _LocationState extends State<Location> {
                   Padding(
                       padding: const EdgeInsets.only(right: 10, top: 10),
                       child: Container(
-                          alignment: Alignment.topLeft,
+                          alignment: Alignment.center,
                           child: CountryListPick(
                             theme: CountryTheme(
                               isShowFlag: true,
@@ -112,7 +114,7 @@ class _LocationState extends State<Location> {
                             ),
                             initialSelection: '+62',
                             onChanged: (CountryCode code) {
-                              print(code.name);
+                              widget.country = code.name;
                             },
                           ))),
                   SizedBox(height: size.height * 0.03),
@@ -154,32 +156,6 @@ class _LocationState extends State<Location> {
                       ),
                     ]),
                   ),
-                  Padding(
-                      padding:
-                          const EdgeInsets.only(left: 10, right: 10, top: 10),
-                      child: Column(children: <Widget>[
-                        TextField(
-                          controller: _text1,
-                          decoration: InputDecoration(
-                            hintStyle: TextStyle(
-                                color: Color(0xff6D6D6D),
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400),
-                            border: OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Color(0XFF0F8E0F), width: 2.0),
-                            ),
-                            hintText: 'Apt/Suite',
-                            errorText:
-                                _validate1 ? 'This field is required' : null,
-                          ),
-                          onChanged: (value) {
-                            widget.addressstree2 = value;
-                            print(widget.addressstree2);
-                          },
-                        ),
-                      ])),
                   SizedBox(height: size.height * 0.03),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -277,7 +253,7 @@ class _LocationState extends State<Location> {
                           const EdgeInsets.only(left: 10, right: 10, top: 10),
                       child: Column(children: <Widget>[
                         TextField(
-                          controller: _text3,
+                          // controller: _text3,
                           decoration: InputDecoration(
                             hintStyle: TextStyle(
                                 color: Color(0xff6D6D6D),
@@ -288,8 +264,6 @@ class _LocationState extends State<Location> {
                               borderSide: const BorderSide(
                                   color: Color(0XFF0F8E0F), width: 2.0),
                             ),
-                            errorText:
-                                _validate3 ? 'This field is required' : null,
                           ),
                           keyboardType: TextInputType.number,
                           onChanged: (value) {
@@ -339,20 +313,20 @@ class _LocationState extends State<Location> {
                                           ? _validate = true
                                           : _validate = false;
                                     });
-                                    setState(() {
-                                      _text1.text.isEmpty
-                                          ? _validate1 = true
-                                          : _validate1 = false;
-                                    });
+
                                     setState(() {
                                       _text2.text.isEmpty
                                           ? _validate2 = true
                                           : _validate2 = false;
                                     });
-                                    setState(() {
-                                      _text3.text.isEmpty
-                                          ? _validate3 = true
-                                          : _validate3 = false;
+                                    DatabaseService().updateDocument(
+                                        "talent", auth.currentUser.uid, {
+                                      'location': {
+                                        'city': widget.city,
+                                        'country':widget.country,
+                                        'street':widget.addressstree,
+                                        'zip':widget.zip,
+                                      }
                                     });
                                     Navigator.push(
                                       context,

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Location.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:country_pickers/country.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:country_pickers/country_pickers.dart';
+import 'package:upwork/firebaseApp.dart';
 
 class Phone extends StatefulWidget {
   String phone;
+  String code;
+
   @override
   _PhoneState createState() => _PhoneState();
 }
@@ -125,14 +129,19 @@ class _PhoneState extends State<Phone> {
                                   child: FlatButton(
                                     color: Color(0xFF15A800),
                                     onPressed: () => {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) {
-                                            return Location();
-                                          },
-                                        ),
-                                      )
+                                      DatabaseService().updateDocument(
+                                          'talent', auth.currentUser.uid, {
+                                        'mobileNumber':
+                                            "+${widget.code} ${widget.phone} "
+                                      }),
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //     builder: (context) {
+                                      //       return Location();
+                                      //     },
+                                      //   ),
+                                      // )
                                     },
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
@@ -163,7 +172,9 @@ class _PhoneState extends State<Phone> {
       //if you want your dropdown button's selected item UI to be different
       //than itemBuilder's(dropdown menu item UI), then provide this selectedItemBuilder.
       onValuePicked: (Country country) {
-        print("${country.name}");
+        // print("${country.phoneCode}");
+        widget.code = country.phoneCode;
+        //print(country.isoCode);
       },
       itemBuilder: (Country country) {
         return Row(
@@ -285,7 +296,8 @@ class _PhoneState extends State<Phone> {
                 ? (Country a, Country b) => a.isoCode.compareTo(b.isoCode)
                 : null,
             onValuePicked: (Country country) {
-              print("${country.name}");
+              print("${country.phoneCode}");
+              widget.code = country.phoneCode;
             },
           ),
         ),
@@ -302,6 +314,7 @@ class _PhoneState extends State<Phone> {
             keyboardType: TextInputType.number,
             onChanged: (value) {
               widget.phone = value;
+
               //print(widget.phone);
             },
           ),

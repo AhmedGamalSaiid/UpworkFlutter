@@ -4,6 +4,7 @@ import 'package:upwork/firebaseApp.dart';
 import 'authService.dart';
 
 class UserDataService {
+  
   Future<UserDataModel> getUserData() async {
     UserDataModel user;
     try {
@@ -36,4 +37,17 @@ class UserDataService {
     }
     return users;
   }
+
+//update user Data
+// Future<void> updateUser(Map<String, dynamic> userData ) async{
+//    String uid =
+//           await AuthService().getCurrentUserUid().then((value) => value);
+//   return database.collection("talent")
+//     .doc(uid)
+//     .update(userData)
+//     .then((value) => print("User Updated"))
+//     .catchError((error) => print("Failed to update user: $error"));
+// }
+
+
 }
