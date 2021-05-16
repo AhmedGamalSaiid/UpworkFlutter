@@ -1,28 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/SelectDropDown.dart';
+import 'package:upwork/firebaseApp.dart';
 
 class EducationDetails extends StatefulWidget {
   String school;
   String degree;
   String areaofstudy;
   String description;
-  final String emailVal;
-  String firstName;
-  String lastName;
-  String password;
 
-  EducationDetails(
-      {this.school,
-      this.degree,
-      this.areaofstudy,
-      this.description,
-      this.firstName,
-      this.emailVal,
-      this.lastName,
-      this.password});
+  EducationDetails({
+    this.school,
+    this.degree,
+    this.areaofstudy,
+    this.description,
+  });
   @override
   _EducationDetailsState createState() => _EducationDetailsState();
 }
@@ -347,18 +342,19 @@ class _EducationDetailsState extends State<EducationDetails> {
                     child: FlatButton(
                       color: Color(0xFF15A800),
                       onPressed: () => {
-                      
+                        DatabaseService()
+                            .updateDocument('talent', auth.currentUser.uid, {
+                          'education': {
+                            'school': widget.school,
+                            'degree': widget.degree,
+                            'areaOfStudy': widget.areaofstudy,
+                          }
+                        }),
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return Education(
-                                emailVal: widget.emailVal,
-                                      firstName: widget.firstName,
-                                      lastName: widget.lastName,
-                                      password: widget.password,
-                                      school:widget.school,
-                              );
+                              return Education();
                             },
                           ),
                         )

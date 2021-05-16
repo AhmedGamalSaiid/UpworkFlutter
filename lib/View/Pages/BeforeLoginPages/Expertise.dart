@@ -1,42 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/CreateProfile.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/CreateProfileEperience.dart';
 import 'package:upwork/View/components/Shared/CustomCircleAvatar.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:upwork/firebaseApp.dart';
 
 class Expertise extends StatefulWidget {
   String skillsVal;
-  final String emailVal;
-  String firstName;
-  String lastName;
-  String password;
-  Expertise(
-      {this.skillsVal,
-      this.firstName,
-      this.emailVal,
-      this.lastName,
-      this.password});
+
+  Expertise({
+    this.skillsVal,
+  });
   @override
   _ExpertiseState createState() => _ExpertiseState();
 }
 
 class _ExpertiseState extends State<Expertise> {
   List<String> skills = [];
-  // bool _selected = false;
-  // bool _selected1 = false;
-  // bool _selected2 = false;
-  // bool _selected3 = false;
-  // bool _selected4 = false;
-  // bool _selected5 = false;
-  // bool _selected6 = false;
-  // bool _selected7 = false;
-  // bool _selected8 = false;
-  // bool _selected9 = false;
-  // bool _selected10 = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -176,16 +160,12 @@ class _ExpertiseState extends State<Expertise> {
                           textColor: Colors.white,
                           borderColor: Color(0x00000000),
                           press: () {
-                        
+                            DatabaseService().updateDocument("talent",
+                                auth.currentUser.uid, {'skills': skills});
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) {
-                                return Education(
-                                  emailVal: widget.emailVal,
-                                  firstName: widget.firstName,
-                                  lastName: widget.lastName,
-                                  password: widget.password,
-                                );
+                                return CreateProfileEperience();
                               }),
                             );
                           },

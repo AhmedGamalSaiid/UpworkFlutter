@@ -8,11 +8,8 @@ import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
 class Verifyemail extends StatefulWidget {
   final String emailVal;
-  String firstName;
-  String lastName;
-  String password;
 
-  Verifyemail({this.emailVal, this.firstName, this.lastName, this.password});
+  Verifyemail({this.emailVal});
   @override
   _VerifyemailState createState() => _VerifyemailState();
 }
@@ -119,16 +116,10 @@ class _VerifyemailState extends State<Verifyemail> {
                   textColor: Colors.white,
                   borderColor: Color(0x00000000),
                   press: () {
-                
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
-                        return Createprofile(
-                          emailVal: widget.emailVal,
-                          firstName: widget.firstName,
-                          lastName: widget.lastName,
-                          password: widget.password, 
-                        );
+                        return Createprofile();
                       }),
                     );
                   },

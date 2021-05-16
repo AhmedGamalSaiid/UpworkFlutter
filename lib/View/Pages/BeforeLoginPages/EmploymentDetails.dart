@@ -1,31 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Employment.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/SelectDropDown.dart';
 import 'package:country_list_pick/country_list_pick.dart';
+import 'package:upwork/firebaseApp.dart';
 
 class EmployementDetails extends StatefulWidget {
   String company;
   String location;
   String title;
   String description;
-  final String emailVal;
-  String firstName;
-  String lastName;
-  String password;
-  String school;
 
-  EmployementDetails(
-      {this.company,
-      this.location,
-      this.description,
-      this.title,
-      this.emailVal,
-      this.firstName,
-      this.lastName,
-      this.password,
-      this.school});
+  EmployementDetails({
+    this.company,
+    this.location,
+    this.description,
+    this.title,
+  });
   @override
   _EmployementDetailsState createState() => _EmployementDetailsState();
 }
@@ -457,18 +450,20 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                     child: FlatButton(
                       color: Color(0xFF15A800),
                       onPressed: () => {
+                        DatabaseService()
+                            .updateDocument('talent', auth.currentUser.uid, {
+                          'company': {
+                            'companyName': widget.company,
+                            'jobTitile': widget.title,
+                            'stillWork': valuesecond,
+                            'companyLocation': widget.location,
+                          }
+                        }),
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return Employement(
-                                emailVal: widget.emailVal,
-                                firstName: widget.firstName,
-                                lastName: widget.lastName,
-                                password: widget.password,
-                                school: widget.school,
-                                company: widget.company,
-                              );
+                              return Employement();
                             },
                           ),
                         )

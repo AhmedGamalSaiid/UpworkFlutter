@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Expertise.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Verifyemail.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
+import 'package:upwork/firebaseApp.dart';
 
 class Createprofile extends StatefulWidget {
   final String emailVal;
@@ -18,7 +20,7 @@ class Createprofile extends StatefulWidget {
 
 class _CreateprofileState extends State<Createprofile> {
   String dropdownValue;
-  String dropdownValue1;
+  String dropdownValueSubCat;
   List<String> subcatagory = [];
 
   @override
@@ -198,7 +200,7 @@ class _CreateprofileState extends State<Createprofile> {
                       ),
                       isExpanded: true,
                       iconSize: 30.0,
-                      value: dropdownValue1,
+                      value: dropdownValueSubCat,
                       style: TextStyle(color: Colors.black),
                       items: subcatagory.map(
                         (val) {
@@ -210,7 +212,7 @@ class _CreateprofileState extends State<Createprofile> {
                       ).toList(),
                       onChanged: (val) {
                         setState(() {
-                          dropdownValue1 = val;
+                          dropdownValueSubCat = val;
                         });
                       }),
                 ),
@@ -245,14 +247,16 @@ class _CreateprofileState extends State<Createprofile> {
                         textColor: Colors.white,
                         borderColor: Color(0x00000000),
                         press: () {
+                          print(dropdownValueSubCat);
+                          DatabaseService().updateDocument(
+                              "talent",
+                              auth.currentUser.uid,
+                              {'jobCategory': dropdownValueSubCat});
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) {
                               return Expertise(
-                                emailVal: widget.emailVal,
-                                firstName: widget.firstName,
-                                lastName: widget.lastName,
-                                password: widget.password,
+                            
                               );
                             }),
                           );
