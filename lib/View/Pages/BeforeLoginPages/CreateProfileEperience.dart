@@ -5,6 +5,7 @@ import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'Expertise.dart';
 
@@ -37,7 +38,7 @@ class _CreateProfileEperienceState extends State<CreateProfileEperience> {
           appBar: AppBar(
             leading: Builder(
               builder: (context) => IconButton(
-                icon:CustomCircleAvatar(),
+                icon: CustomCircleAvatar(),
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
             ),
@@ -208,12 +209,16 @@ class _CreateProfileEperienceState extends State<CreateProfileEperience> {
                           textColor: Colors.white,
                           borderColor: Color(0x00000000),
                           press: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(builder: (context) {
-                            //     return CreateProfileEperience();
-                            //   }),
-                            // );
+                            FirebaseFirestore.instance
+                                .collection('talent')
+                                .add({'expertiseLevel': selectedRadio});
+
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return CreateProfileEperience();
+                              }),
+                            );
                           },
                         ),
                       ]))

@@ -1,4 +1,3 @@
-import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Location.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
@@ -162,7 +161,7 @@ class _PhoneState extends State<Phone> {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) {
-                                            //return Location();
+                                            return Location();
                                           },
                                         ),
                                       )

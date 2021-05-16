@@ -3,7 +3,6 @@ import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/SelectDropDown.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EducationDetails extends StatefulWidget {
   String school;
