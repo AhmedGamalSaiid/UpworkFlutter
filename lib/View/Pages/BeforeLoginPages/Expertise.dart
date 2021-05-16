@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/CreateProfile.dart';
+import 'package:upwork/View/components/Shared/CustomCircleAvatar.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
-// ignore: must_be_immutable
 class Expertise extends StatefulWidget {
   String skillsVal;
   Expertise({this.skillsVal});
@@ -14,13 +15,18 @@ class Expertise extends StatefulWidget {
 }
 
 class _ExpertiseState extends State<Expertise> {
-  bool _selected = false;
-  bool _selected1 = false;
-  bool _selected2 = false;
-  bool _selected3 = false;
-  bool _selected4 = false;
-  bool _selected5 = false;
-  bool _selected6 = false;
+  List<String> skills = [];
+  // bool _selected = false;
+  // bool _selected1 = false;
+  // bool _selected2 = false;
+  // bool _selected3 = false;
+  // bool _selected4 = false;
+  // bool _selected5 = false;
+  // bool _selected6 = false;
+  // bool _selected7 = false;
+  // bool _selected8 = false;
+  // bool _selected9 = false;
+  // bool _selected10 = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -32,10 +38,7 @@ class _ExpertiseState extends State<Expertise> {
           appBar: AppBar(
             leading: Builder(
               builder: (context) => IconButton(
-                icon: CircleAvatar(
-                  radius: 50,
-                  backgroundImage: ExactAssetImage("assets/img/06.jpg"),
-                ),
+                icon:CustomCircleAvatar(),
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
             ),
@@ -56,78 +59,30 @@ class _ExpertiseState extends State<Expertise> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Text(
-                      'Select your skills',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Wrap(
-                      spacing: 15,
-                      runSpacing: 5,
-                      children: [
-                        FilterChip(
-                            selected: _selected,
-                            label: Text("Visual Commmunication"),
-                            avatar: Icon(Icons.add),
-                            onSelected: (val) {
-                              setState(() => _selected = val);
-                            }),
-                        FilterChip(
-                            label: Text("Figma"),
-                            selected: _selected1,
-                            avatar: Icon(Icons.add),
-                            onSelected: (val) {
-                              setState(() => _selected1 = val);
-                            }),
-                        FilterChip(
-                            label: Text("User Interface Design"),
-                            avatar: Icon(Icons.add),
-                            selected: _selected2,
-                            onSelected: (val) {
-                              setState(() => _selected2 = val);
-                            }),
-                        FilterChip(
-                            label: Text("Axure Rp"),
-                            avatar: Icon(Icons.add),
-                            selected: _selected3,
-                            onSelected: (val) {
-                              setState(() => _selected3 = val);
-                            }),
-                        FilterChip(
-                            selected: _selected4,
-                            label: Text("Web Design"),
-                            avatar: Icon(Icons.add),
-                            onSelected: (val) {
-                              setState(() => _selected4 = val);
-                            }),
-                        FilterChip(
-                            selected: _selected5,
-                            label: Text("Usability Testing"),
-                            avatar: Icon(Icons.add),
-                            onSelected: (val) {
-                              setState(() => _selected5 = val);
-                            }),
-                        FilterChip(
-                            selected: _selected6,
-                            label: Text("Webflow"),
-                            avatar: Icon(Icons.add),
-                            onSelected: (val) {
-                              setState(() => _selected6 = val);
-                            }),
-                      ],
-                    ),
-                    SizedBox(height: size.height * 0.03),
-                    Text(
-                      'No what you are looking for ?',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'Select your skills',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ]),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'Now what you are looking for ?',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ]),
                     RoundedInputField(
                       err: "Oops! this skills is not found",
                       hintText: "Start typing to search for skills ..... ",
@@ -139,7 +94,50 @@ class _ExpertiseState extends State<Expertise> {
                   ],
                 ),
               ),
+              Container(
+                height: size.height * 0.07,
+                width: size.width * 0.4,
+                margin: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: FlatButton(
+                  color: Color(0xFF15A800),
+                  onPressed: () => {
+                    setState(() {
+                      skills.add(widget.skillsVal);
+                    }),
+                    // print(skills),
+                    // print(skills.length),
+                  },
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)),
+                  child: Text(
+                    "Add Skills",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
               SizedBox(height: size.height * 0.02),
+              Wrap(
+                spacing: 15,
+                runSpacing: 5,
+                children: [
+                  for (var i in skills)
+                    FilterChip(
+                        //selected: _selected,
+                        label: Text(i),
+                        avatar: Icon(Icons.add),
+                        onSelected: (val) {
+                          // setState(() => _selected = val);
+                        }),
+                ],
+              ),
+              SizedBox(height: size.height * 0.03),
               Padding(
                   padding: const EdgeInsets.all(5),
                   child: Row(
@@ -170,7 +168,9 @@ class _ExpertiseState extends State<Expertise> {
                           press: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) {}),
+                              MaterialPageRoute(builder: (context) {
+                                return Education();
+                              }),
                             );
                           },
                         ),

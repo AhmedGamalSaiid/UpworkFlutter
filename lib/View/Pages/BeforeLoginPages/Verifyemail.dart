@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/CreateProfile.dart';
+import 'package:upwork/View/components/Shared/CustomCircleAvatar.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
 class Verifyemail extends StatefulWidget {
+  final String emailVal;
+  Verifyemail({this.emailVal});
   @override
   _VerifyemailState createState() => _VerifyemailState();
 }
@@ -21,10 +24,7 @@ class _VerifyemailState extends State<Verifyemail> {
             appBar: AppBar(
               leading: Builder(
                 builder: (context) => IconButton(
-                  icon: CircleAvatar(
-                    radius: 50,
-                    backgroundImage: ExactAssetImage("assets/img/06.jpg"),
-                  ),
+                  icon:CustomCircleAvatar(),
                   onPressed: () => Scaffold.of(context).openDrawer(),
                 ),
               ),
@@ -72,9 +72,9 @@ class _VerifyemailState extends State<Verifyemail> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 20),
+                padding: const EdgeInsets.only(bottom: 2),
                 child: Text(
-                  'habidal984@httptuan.com ',
+                  widget.emailVal,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.normal,
@@ -84,7 +84,7 @@ class _VerifyemailState extends State<Verifyemail> {
               ),
               SizedBox(height: size.height * 0.02),
               Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
+                  padding: const EdgeInsets.only(bottom: 2),
                   child: Column(children: <Widget>[
                     Text(
                       'Please check your email and click on the line ',
@@ -111,7 +111,7 @@ class _VerifyemailState extends State<Verifyemail> {
                 padding: const EdgeInsets.only(bottom: 20),
                 child: RoundedButton(
                   color: Color(0XFF37a000),
-                  text: "Resend Verification Email",
+                  text: "Continue",
                   textColor: Colors.white,
                   borderColor: Color(0x00000000),
                   press: () {
