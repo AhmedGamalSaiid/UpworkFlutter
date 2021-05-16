@@ -14,7 +14,7 @@ class SignupDetails extends StatefulWidget {
   String passWord;
   String firstName;
   String lastName;
-  SignupDetails({this.emailVal, this.passWord,this.firstName,this.lastName);
+  SignupDetails({this.emailVal, this.passWord});
   @override
   _SignupDetailsState createState() => _SignupDetailsState();
 }
@@ -22,7 +22,7 @@ class SignupDetails extends StatefulWidget {
 class _SignupDetailsState extends State<SignupDetails> {
   bool valuefirst = false;
   bool valuesecond = false;
-  String dropdownValue;
+  String dropdownValue = 'One';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,11 +91,12 @@ class _SignupDetailsState extends State<SignupDetails> {
                     ),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton(
-                        hint: Text(
-                          "Select a country",
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                        value: dropdownValue,
+                        hint: dropdownValue == null
+                            ? Text('Dropdown')
+                            : Text(
+                                "Select a country",
+                                style: TextStyle(color: Colors.grey),
+                              ),
                         isExpanded: true,
                         iconSize: 30.0,
                         style: TextStyle(color: Colors.grey),
@@ -217,6 +218,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                     if (auth.currentUser != null) {
                       auth.currentUser.sendEmailVerification();
                     }
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
