@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:upwork/Models/UserData.dart';
-import 'package:upwork/Services/UserDataService.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/ClientMessage.dart';
 import 'package:upwork/View/components/Talent/TalentMessage.dart';
 
+
 class Message extends StatefulWidget {
+  String message;
+  Message({this.message});
   @override
   _MessageState createState() => _MessageState();
 }
 
 class _MessageState extends State<Message> {
   List<ClientMessage> messages = [];
-  UserDataService userservice = new UserDataService();
-  Future<UserDataModel> get user => userservice.getUserData();
+  TextEditingController messageController = TextEditingController();
+  ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -91,27 +92,47 @@ class _MessageState extends State<Message> {
                           ),
                           Expanded(
                             child: TextField(
+                              controller: messageController,
                               decoration: InputDecoration(
                                   hintText: "Write message...",
                                   hintStyle: TextStyle(color: Colors.black54),
                                   border: InputBorder.none),
-                              onChanged: (value) => {
-                                print(user),
-                              },
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.send,
-                              color: Color(0xff10A712),
-                              size: 30,
-                            ),
-                          ),
+                            child: IconButton(
+                                icon: Icon(
+                                  Icons.send,
+                                  color: Color(0xff10A712),
+                                  size: 30,
+                                ),
+                                onPressed: () => {}),
+                          )
                         ],
                       ),
                     )))
           ],
         ));
   }
+
+//   Future<void> sendChat() async {
+//     if (messageController.text.length > 0) {
+//       await database.collection("messages").add({
+//         'clientAuthID': '',
+//         'messages': [
+//           {
+//             'index': messages.length,
+//             'Msg': messageController.text,
+//             'time': FieldValue.serverTimestamp(),
+//           }
+//         ],
+//         'talentAuthID': auth.currentUser.uid,
+//       });
+//       messageController.clear();
+//       //scrollController.animateTo(scrollController.position.maxScrollExtent,
+//       //duration: Duration(milliseconds: 300), curve: Curves.easeOut);
+//     }
+//   }
+// }
 }
