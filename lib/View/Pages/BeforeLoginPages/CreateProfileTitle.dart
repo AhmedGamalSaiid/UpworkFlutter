@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upwork/Services/DatabaseService.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/Location.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
@@ -151,13 +152,22 @@ class _CreateProfileTitleState extends State<CreateProfileTitle> {
                   padding: const EdgeInsets.fromLTRB(8, 12, 8, 2),
                   child: Divider(color: Colors.black54),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
-                  child: Text("Skip this step",
-                      style: TextStyle(
-                          color: bgUpwork,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold)),
+                InkWell(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),
+                    child: Text("Skip this step",
+                        style: TextStyle(
+                            color: bgUpwork,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return Location();
+                      },
+                    ));
+                  },
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(8, 2, 8, 2),

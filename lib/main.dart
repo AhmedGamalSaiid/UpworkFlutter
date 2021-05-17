@@ -28,15 +28,6 @@ class MyApp extends StatelessWidget {
           primaryColor: bgUpworkDark,
           scaffoldBackgroundColor: Colors.white,
         ),
-        // home:
-        //Phone(),
-        //Location(),
-        //EmployementDetails(),
-        //EducationDetails(),
-        //Education(),
-        //Expertise(),
-        //Createprofile(),
-        // );
         initialRoute: '/',
         routes: {
           '/': (context) => login != null ? HomePage() : Welcome(),
@@ -46,7 +37,6 @@ class MyApp extends StatelessWidget {
           '/messages': (context) => Messages(),
           // '/alerts': (context) => (),
           '/reports': (context) => ReportsPage(),
-        }
-    );
+        });
   }
 }
