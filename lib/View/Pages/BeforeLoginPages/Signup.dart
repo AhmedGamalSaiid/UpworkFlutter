@@ -47,6 +47,7 @@ class _SignupState extends State<Signup> {
               text: "or",
             ),
             RoundedInputField(
+              textInputType: TextInputType.emailAddress,
               icon: Icons.email,
               err: "Oops! Email is incorrect",
               hintText: "work email address",

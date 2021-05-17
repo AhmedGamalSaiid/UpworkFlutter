@@ -1,4 +1,3 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'TextFieldContainer.dart';
 
@@ -8,6 +7,7 @@ class RoundedInputField extends StatelessWidget {
   final String err;
   final bool validate;
   final bool passInput;
+  final TextInputType textInputType;
 
   final ValueChanged<String> onChanged;
   const RoundedInputField({
@@ -15,8 +15,9 @@ class RoundedInputField extends StatelessWidget {
     this.hintText,
     this.icon = Icons.person,
     this.onChanged,
+    this.textInputType,
     this.err = "invalid",
-    this.validate = true,
+    this.validate = false,
     this.passInput = false,
   }) : super(key: key);
 
@@ -25,8 +26,8 @@ class RoundedInputField extends StatelessWidget {
     return TextFieldContainer(
         child: Form(
       child: TextFormField(
+        keyboardType: textInputType,
         obscureText: passInput,
-        validator: (value) => EmailValidator.validate(value) ? null : "etc",
         onChanged: onChanged,
         cursorColor: Colors.black,
         decoration: InputDecoration(

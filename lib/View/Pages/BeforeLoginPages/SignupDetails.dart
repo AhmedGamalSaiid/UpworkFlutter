@@ -1,13 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:upwork/Services/authService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Verifyemail.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
-
+import 'package:upwork/firebaseApp.dart';
 import 'Verifyemail.dart';
 
 class SignupDetails extends StatefulWidget {
   final String emailVal;
-  SignupDetails({this.emailVal});
+  String passWord;
+  String firstName;
+  String lastName;
+  SignupDetails({this.emailVal, this.passWord});
   @override
   _SignupDetailsState createState() => _SignupDetailsState();
 }
@@ -42,33 +47,35 @@ class _SignupDetailsState extends State<SignupDetails> {
                 Center(
                   child: Text("widget.emailVal"),
                 ),
+                //Fname
                 RoundedInputField(
                   icon: Icons.person,
                   err: "Oops! name is incorrect",
                   hintText: "First name",
-                  // onChanged: (value) {
-                  //   widget.emailVal = value;
-                  //   print(widget.emailVal);
-                  // },
+                  onChanged: (value) {
+                    widget.firstName = value;
+                  },
                 ),
+                //Lastname
                 RoundedInputField(
                   icon: Icons.person,
                   err: "Oops! name is incorrect",
                   hintText: "Last name",
-                  // onChanged: (value) {
-                  //   widget.emailVal = value;
-                  //   print(widget.emailVal);
-                  // },
+                  onChanged: (value) {
+                    widget.lastName = value;
+                  },
                 ),
+                //Password
                 RoundedInputField(
+                  textInputType: TextInputType.visiblePassword,
                   passInput: true,
                   icon: Icons.lock,
                   err: "Please enter more than 8 character",
                   hintText: "Create a password",
-                  // onChanged: (value) {
-                  //   widget.emailVal = value;
-                  //   print(widget.emailVal);
-                  // },
+                  onChanged: (value) {
+                    widget.passWord = value;
+                    print(widget.passWord);
+                  },
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 8, bottom: 8),
@@ -110,15 +117,6 @@ class _SignupDetailsState extends State<SignupDetails> {
                       ),
                     ),
                   ),
-                ),
-                RoundedInputField(
-                  icon: Icons.account_box_outlined,
-                  err: "Invalid username",
-                  hintText: "Username",
-                  // onChanged: (value) {
-                  //   widget.emailVal = value;
-                  //   print(widget.emailVal);
-                  // },
                 ),
                 Container(
                     width: MediaQuery.of(context).size.width * 0.95,
@@ -195,8 +193,35 @@ class _SignupDetailsState extends State<SignupDetails> {
                   text: "Create My account",
                   textColor: Colors.white,
                   borderColor: Color(0x00000000),
-                  press: () {
-                    // print(widget.emailVal);
+                  press: () async {
+                    AuthService().signUp(widget.emailVal, widget.passWord, {
+                      'firstName': widget.firstName,
+                      'lastName': widget.lastName,
+                      'email': widget.emailVal,
+                      'password': widget.passWord,
+                      'userType': 'talent',
+                      'totalJobs': 0,
+                      'totalEarnings': 0,
+                      'totalHours': 0,
+                      'badge': {
+                        'none': "",
+                        'risingTalent': "Rising Talent",
+                        'topRated': "Top Rated",
+                        'expert': "Expert-Vetted"
+                      },
+                      'jobHistory': [],
+                      'portfolio': [],
+                      'skills': [],
+                      'connects': 20
+                    });
+                   
+                    // if (!auth.currentUser.emailVerified) {
+                    //    await auth.currentUser.sendEmailVerification();
+                    // }
+                    ////////////
+                    // auth.currentUser.uid != null
+                    //     ? auth.currentUser.sendEmailVerification()
+                    //     : print("no id eeeeeeeeeeeeeee");
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
