@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/EmploymentDetails.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/Location.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/LanguageProficiency.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
-
-import 'CreateProfileSetHourlyRate.dart';
 
 class Employement extends StatefulWidget {
   @override
@@ -141,7 +140,7 @@ class _EmployementState extends State<Employement> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) {
-                                                return CreateProfileSetHourlyRate();
+                                                return Education();
                                               },
                                             ),
                                           )
@@ -155,7 +154,7 @@ class _EmployementState extends State<Employement> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(builder: (context) {
-                                        return CreateProfileSetHourlyRate();
+                                        return LanguageProficiency();
                                       }),
                                     );
                                   },

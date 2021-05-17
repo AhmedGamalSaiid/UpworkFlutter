@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/EducationDetails.dart';
+import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Employment.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Expertise.dart';
-import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/AddLanguage.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/CreateProfileSetHourlyRate.dart';
+import 'package:upwork/firebaseApp.dart';
 
 class LanguageProficiency extends StatefulWidget {
   @override
@@ -241,7 +242,7 @@ class _LanguageProficiencyState extends State<LanguageProficiency> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) {
-                                    return Expertise();
+                                    return Employement();
                                   },
                                 ),
                               )
@@ -252,7 +253,14 @@ class _LanguageProficiencyState extends State<LanguageProficiency> {
                       textColor: Colors.white,
                       borderColor: Color(0x00000000),
                       press: () {
-                        print(languages);
+                        DatabaseService().updateDocument('talent',
+                            auth.currentUser.uid, {'languages': languages});
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return CreateProfileSetHourlyRate();
+                          }),
+                        );
                       },
                     ),
                   ]),
