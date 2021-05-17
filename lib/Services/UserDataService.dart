@@ -4,23 +4,48 @@ import 'package:upwork/firebaseApp.dart';
 import 'authService.dart';
 
 class UserDataService {
-  
+  // Future<UserDataModel> getUserData() async {
+  //   UserDataModel user;
+  //   try {
+  //     String uid =
+  //         await AuthService().getCurrentUserUid().then((value) => value);
+  //     // String uid = FirebaseAuth.instance.currentUser.uid;
+  //     await database
+  //         .collection('talent')
+  //         .where("authID", isEqualTo: uid)
+  //         .get()
+  //         .then((QuerySnapshot res) {
+  //       user = UserDataModel.fromJson(res.docs[0].data());
+  //     });
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  //   return user;
+  // }
+
   Future<UserDataModel> getUserData() async {
     UserDataModel user;
     try {
       String uid =
           await AuthService().getCurrentUserUid().then((value) => value);
       // String uid = FirebaseAuth.instance.currentUser.uid;
-      await database
+      await FirebaseFirestore.instance
           .collection('talent')
-          .where("authID", isEqualTo: uid)
+          .doc(uid)
           .get()
-          .then((QuerySnapshot res) {
-        user = UserDataModel.fromJson(res.docs[0].data());
-      });
+         .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        print('Document exists on the database');
+       // print(documentSnapshot.data());
+     // user = UserDataModel.fromJson(documentSnapshot.data());
+
+      }
+    });
+      
     } catch (e) {
       print(e);
     }
+    //print(user);
     return user;
   }
 
@@ -48,6 +73,5 @@ class UserDataService {
 //     .then((value) => print("User Updated"))
 //     .catchError((error) => print("Failed to update user: $error"));
 // }
-
 
 }

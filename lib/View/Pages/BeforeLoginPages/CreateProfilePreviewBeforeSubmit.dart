@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:upwork/Models/UserData.dart';
+import 'package:upwork/Services/UserDataService.dart';
 import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
@@ -14,6 +16,18 @@ class CreateProfilePreviewBeforeSubmit extends StatefulWidget {
 
 class _CreateProfilePreviewBeforeSubmitState
     extends State<CreateProfilePreviewBeforeSubmit> {
+  UserDataModel user;
+
+  getData() async {
+    user = await UserDataService().getUserData();
+    setState(() {});
+  }
+
+  void initState() {
+    super.initState();
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +105,7 @@ class _CreateProfilePreviewBeforeSubmitState
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text("Looking good, Tamer!",
+                          Text("Looking good, ${user?.firstName}",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,

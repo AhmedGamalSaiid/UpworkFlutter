@@ -5,6 +5,7 @@ import 'package:upwork/View/components/Shared/CustomCircleAvatar.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
+import 'package:upwork/firebaseApp.dart';
 
 class Verifyemail extends StatefulWidget {
   final String emailVal;
@@ -15,6 +16,9 @@ class Verifyemail extends StatefulWidget {
 
 class _VerifyemailState extends State<Verifyemail> {
   @override
+ 
+
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return DefaultTabController(
@@ -24,7 +28,7 @@ class _VerifyemailState extends State<Verifyemail> {
             appBar: AppBar(
               leading: Builder(
                 builder: (context) => IconButton(
-                  icon:CustomCircleAvatar(),
+                  icon: CustomCircleAvatar(),
                   onPressed: () => Scaffold.of(context).openDrawer(),
                 ),
               ),

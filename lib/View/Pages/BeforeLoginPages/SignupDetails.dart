@@ -1,10 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:upwork/Services/authService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Verifyemail.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/firebaseApp.dart';
-
 import 'Verifyemail.dart';
 
 class SignupDetails extends StatefulWidget {
@@ -67,6 +67,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                 ),
                 //Password
                 RoundedInputField(
+                  textInputType: TextInputType.visiblePassword,
                   passInput: true,
                   icon: Icons.lock,
                   err: "Please enter more than 8 character",
@@ -213,10 +214,14 @@ class _SignupDetailsState extends State<SignupDetails> {
                       'skills': [],
                       'connects': 20
                     });
-                    if (auth.currentUser != null) {
-                      auth.currentUser.sendEmailVerification();
-                    }
-
+                   
+                    // if (!auth.currentUser.emailVerified) {
+                    //    await auth.currentUser.sendEmailVerification();
+                    // }
+                    ////////////
+                    // auth.currentUser.uid != null
+                    //     ? auth.currentUser.sendEmailVerification()
+                    //     : print("no id eeeeeeeeeeeeeee");
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {

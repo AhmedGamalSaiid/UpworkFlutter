@@ -8,8 +8,6 @@ import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
 import 'package:upwork/firebaseApp.dart';
-
-import 'CreateProfileSetHourlyRate.dart';
 import 'Expertise.dart';
 
 class CreateProfileEperience extends StatefulWidget {
