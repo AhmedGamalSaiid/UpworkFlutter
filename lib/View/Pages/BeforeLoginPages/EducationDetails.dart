@@ -12,8 +12,12 @@ class EducationDetails extends StatefulWidget {
   String areaofstudy;
   String description;
 
-  EducationDetails(
-      {this.school, this.degree, this.areaofstudy, this.description});
+  EducationDetails({
+    this.school,
+    this.degree,
+    this.areaofstudy,
+    this.description,
+  });
   @override
   _EducationDetailsState createState() => _EducationDetailsState();
 }
@@ -338,11 +342,12 @@ class _EducationDetailsState extends State<EducationDetails> {
                     child: FlatButton(
                       color: Color(0xFF15A800),
                       onPressed: () => {
-                        DatabaseService().updateDocument('talent', auth.currentUser.uid, {
-                          'education':{
-                            'school':widget.school,
-                            'degree':widget.degree,
-                            'areaOfStudy':widget.areaofstudy,
+                        DatabaseService()
+                            .updateDocument('talent', auth.currentUser.uid, {
+                          'education': {
+                            'school': widget.school,
+                            'degree': widget.degree,
+                            'areaOfStudy': widget.areaofstudy,
                           }
                         }),
                         Navigator.push(

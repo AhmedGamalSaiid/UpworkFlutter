@@ -13,8 +13,12 @@ class EmployementDetails extends StatefulWidget {
   String title;
   String description;
 
-  EmployementDetails(
-      {this.company, this.location, this.description, this.title});
+  EmployementDetails({
+    this.company,
+    this.location,
+    this.description,
+    this.title,
+  });
   @override
   _EmployementDetailsState createState() => _EmployementDetailsState();
 }

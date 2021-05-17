@@ -4,13 +4,19 @@ import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/ClientMessage.dart';
 import 'package:upwork/View/components/Talent/TalentMessage.dart';
 
+
 class Message extends StatefulWidget {
+  String message;
+  Message({this.message});
   @override
   _MessageState createState() => _MessageState();
 }
 
 class _MessageState extends State<Message> {
   List<ClientMessage> messages = [];
+  TextEditingController messageController = TextEditingController();
+  ScrollController scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     String now = DateFormat().add_jm().format(DateTime.now());
@@ -86,6 +92,7 @@ class _MessageState extends State<Message> {
                           ),
                           Expanded(
                             child: TextField(
+                              controller: messageController,
                               decoration: InputDecoration(
                                   hintText: "Write message...",
                                   hintStyle: TextStyle(color: Colors.black54),
@@ -94,16 +101,38 @@ class _MessageState extends State<Message> {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.send,
-                              color: Color(0xff10A712),
-                              size: 30,
-                            ),
-                          ),
+                            child: IconButton(
+                                icon: Icon(
+                                  Icons.send,
+                                  color: Color(0xff10A712),
+                                  size: 30,
+                                ),
+                                onPressed: () => {}),
+                          )
                         ],
                       ),
                     )))
           ],
         ));
   }
+
+//   Future<void> sendChat() async {
+//     if (messageController.text.length > 0) {
+//       await database.collection("messages").add({
+//         'clientAuthID': '',
+//         'messages': [
+//           {
+//             'index': messages.length,
+//             'Msg': messageController.text,
+//             'time': FieldValue.serverTimestamp(),
+//           }
+//         ],
+//         'talentAuthID': auth.currentUser.uid,
+//       });
+//       messageController.clear();
+//       //scrollController.animateTo(scrollController.position.maxScrollExtent,
+//       //duration: Duration(milliseconds: 300), curve: Curves.easeOut);
+//     }
+//   }
+// }
 }

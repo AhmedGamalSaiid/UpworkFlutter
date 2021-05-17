@@ -9,6 +9,7 @@ import 'package:upwork/firebaseApp.dart';
 
 class Verifyemail extends StatefulWidget {
   final String emailVal;
+
   Verifyemail({this.emailVal});
   @override
   _VerifyemailState createState() => _VerifyemailState();

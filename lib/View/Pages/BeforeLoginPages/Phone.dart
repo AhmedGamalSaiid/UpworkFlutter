@@ -12,7 +12,6 @@ import 'CreateProfilePreviewBeforeSubmit.dart';
 class Phone extends StatefulWidget {
   String phone;
   String code;
-
   @override
   _PhoneState createState() => _PhoneState();
 }
@@ -231,18 +230,13 @@ class _PhoneState extends State<Phone> {
               height: 2,
               color: Colors.red,
             ),*/
-            //show'em (the text fields) you're in charge now
+
             onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
-            //if you have menu items of varying size, itemHeight being null respects
-            //that, IntrinsicHeight under the hood ;).
+
             itemHeight: null,
-            //itemHeight being null and isDense being true doesn't play along
-            //well together. One is trying to limit size and other is saying
-            //limit is the sky, therefore conflicts.
-            //false is default but still keep that in mind.
+
             isDense: false,
-            //if you want your dropdown button's selected item UI to be different
-            //than itemBuilder's(dropdown menu item UI), then provide this selectedItemBuilder.
+
             selectedItemBuilder: hasSelectedItemBuilder == true
                 ? (Country country) => _buildDropdownSelectedItemBuilder(
                     country, dropdownSelectedItemWidth)
@@ -284,7 +278,6 @@ class _PhoneState extends State<Phone> {
             keyboardType: TextInputType.number,
             onChanged: (value) {
               widget.phone = value;
-
               //print(widget.phone);
             },
           ),
