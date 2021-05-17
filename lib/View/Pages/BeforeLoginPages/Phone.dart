@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/Services/DatabaseService.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/Location.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:country_pickers/country.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:country_pickers/country_pickers.dart';
 import 'package:upwork/firebaseApp.dart';
+
+import 'CreateProfilePreviewBeforeSubmit.dart';
 
 class Phone extends StatefulWidget {
   String phone;
@@ -133,14 +134,14 @@ class _PhoneState extends State<Phone> {
                                         'mobileNumber':
                                             "+${widget.code} ${widget.phone} "
                                       }),
-                                      // Navigator.push(
-                                      //   context,
-                                      //   MaterialPageRoute(
-                                      //     builder: (context) {
-                                      //       return Location();
-                                      //     },
-                                      //   ),
-                                      // )
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return CreateProfilePreviewBeforeSubmit();
+                                          },
+                                        ),
+                                      )
                                     },
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
@@ -160,37 +161,6 @@ class _PhoneState extends State<Phone> {
             ]))));
   }
 
-  _buildCountryPickerDropdownSoloExpanded() {
-    return CountryPickerDropdown(
-      underline: Container(
-        height: 1,
-        color: Colors.red,
-      ),
-      //show'em (the text fields) you're in charge now
-      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
-      //if you want your dropdown button's selected item UI to be different
-      //than itemBuilder's(dropdown menu item UI), then provide this selectedItemBuilder.
-      onValuePicked: (Country country) {
-        // print("${country.phoneCode}");
-        widget.code = country.phoneCode;
-        //print(country.isoCode);
-      },
-      itemBuilder: (Country country) {
-        return Row(
-          children: <Widget>[
-            //SizedBox(width: 3.0),
-            CountryPickerUtils.getDefaultFlagImage(country),
-            //SizedBox(width: 4.0),
-            Expanded(child: Text(country.name)),
-          ],
-        );
-      },
-      itemHeight: null,
-      isExpanded: true,
-      //initialValue: 'TR',
-      icon: Icon(Icons.arrow_downward),
-    );
-  }
 
   Widget _buildDropdownSelectedItemBuilder(
           Country country, double dropdownItemWidth) =>
