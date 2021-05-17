@@ -181,10 +181,7 @@ class _CreateProfilePreviewBeforeSubmitState
                                           ExactAssetImage("assets/img/06.jpg"),
                                     ),
                                   ),
-                                  Positioned(
-                                    left: 0,
-                                    child: CustomIcon(Icons.mode_edit),
-                                  ),
+                                  
                                 ],
                               ),
                             ),
@@ -257,7 +254,7 @@ class _CreateProfilePreviewBeforeSubmitState
                               bottom: 15,
                             ),
                             child: Text(
-                              "Web Developer",
+                              "${user.title} ",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
@@ -275,7 +272,7 @@ class _CreateProfilePreviewBeforeSubmitState
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.8,
                                 child: Text(
-                                  "loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum loremipsum",
+                                  "${user.overview}"
                                 ),
                               ),
                             ),
@@ -288,7 +285,7 @@ class _CreateProfilePreviewBeforeSubmitState
                           child: Row(
                             children: [
                               Text(
-                                "\$30.00",
+                                "\$${user.hourlyRate}",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
@@ -335,25 +332,54 @@ class _CreateProfilePreviewBeforeSubmitState
                           ),
                         ),
                       ),
-                      Container(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              top: 3.0, left: 20, bottom: 10),
-                          child: Row(
-                            children: [
-                              Text(
-                                "English: ",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                "Native or Bilingual",
-                                style: TextStyle(
-                                    color: Colors.black54, fontSize: 14),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      // Container(
+                      //                       height: 200,
+                      //                       child: ListView.builder(
+                      //                         itemCount: user.lan.length,
+                      //                         itemBuilder:
+                      //                             (BuildContext context,
+                      //                                 int index) {
+                      //                           return Padding(
+                      //                             padding:
+                      //                                 const EdgeInsets.only(
+                      //                                     top: 8),
+                      //                             child: Row(
+                      //                               mainAxisAlignment:
+                      //                                   MainAxisAlignment
+                      //                                       .spaceBetween,
+                      //                               children: [
+                      //                                 Row(
+                      //                                   children: [
+                      //                                     Text(
+                      //                                       languages[index][
+                      //                                               "language"] +
+                      //                                           " : ",
+                      //                                       style: TextStyle(
+                      //                                           fontWeight:
+                      //                                               FontWeight
+                      //                                                   .bold),
+                      //                                     ),
+                      //                                     Text(languages[index]
+                      //                                         ["langProf"]),
+                      //                                   ],
+                      //                                 ),
+                      //                                 InkWell(
+                      //                                   child: CustomIcon(
+                      //                                       Icons.delete),
+                      //                                   onTap: () {
+                      //                                     setState(() {
+                      //                                       languages.removeAt(
+                      //                                           index);
+                      //                                     });
+                      //                                   },
+                      //                                 )
+                      //                               ],
+                      //                             ),
+                      //                           );
+                      //                         },
+                      //                       ),
+                      //                   )
+                                        
                     ],
                   ),
                   Container(
