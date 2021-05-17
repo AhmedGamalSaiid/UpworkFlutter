@@ -244,7 +244,7 @@ class _CreateProfileSetHourlyRateState
                             press: () {
                               DatabaseService().updateDocument(
                                   'talent', auth.currentUser.uid, {
-                                'hourlyRate': hourlyRate,
+                                'hourlyRate': hourlyRate.toString(),
                               });
                               Navigator.push(
                                 context,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:upwork/Models/UserData.dart';
 import 'package:upwork/Services/UserDataService.dart';
+import 'package:upwork/View/Pages/TalentPages/HomePage.dart';
 import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
@@ -26,6 +27,7 @@ class _CreateProfilePreviewBeforeSubmitState
   void initState() {
     super.initState();
     getData();
+    print(user);
   }
 
   @override
@@ -139,12 +141,13 @@ class _CreateProfilePreviewBeforeSubmitState
                               textColor: Colors.white,
                               borderColor: Color(0x00000000),
                               press: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(builder: (context) {
-                                //     return CreateProfilePreviewBeforeSubmit();
-                                //   }),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) {
+                                    return CreateProfilePreviewBeforeSubmit();
+                                    // return HomePage();
+                                  }),
+                                );
                               },
                             ),
                           ]))
@@ -188,7 +191,7 @@ class _CreateProfilePreviewBeforeSubmitState
                           Padding(
                             padding: const EdgeInsets.only(top: 5.0),
                             child: Text(
-                              "Romany Mounir",
+                              "${user.firstName} ${user.lastName}",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -204,7 +207,11 @@ class _CreateProfilePreviewBeforeSubmitState
                                   Icons.room,
                                   size: 15,
                                 ),
-                                Text("Sohag, Egypt"),
+                                //Text("${user?.location['city']}, Egypt"),
+                                Text(" " +
+                                user?.location["city"] +
+                                ", " +
+                              user?.location["country"],)
                               ],
                             ),
                           ),
@@ -557,12 +564,12 @@ class _CreateProfilePreviewBeforeSubmitState
                         textColor: Colors.white,
                         borderColor: Color(0x00000000),
                         press: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(builder: (context) {
-                          //     return CreateProfilePreviewBeforeSubmit();
-                          //   }),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) {
+                              return HomePage();
+                            }),
+                          );
                         },
                       ),
                     ])),

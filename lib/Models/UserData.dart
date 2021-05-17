@@ -17,11 +17,20 @@ class UserDataModel {
     this.school,
     this.title,
     this.userType,
+    this.badged,
+    this.connects,
+    this.skills,
+    this.totalEarnings,
+    this.totalHours,
+    this.totalJobs,
+    this.connectsHistory,
+    this.profileCompletion,
   });
 
   String authID;
   Map company;
   Map location;
+  Map badged;
   String email;
   String englishProficiency;
   String expertiseLevel;
@@ -36,6 +45,13 @@ class UserDataModel {
   String school;
   String title;
   String userType;
+  int connects;
+  List skills;
+  int totalEarnings;
+  int totalHours;
+  int totalJobs;
+  List connectsHistory;
+  int profileCompletion;
 
   factory UserDataModel.fromJson(Map<String, dynamic> json) => UserDataModel(
         authID: json["authID"],
@@ -55,5 +71,12 @@ class UserDataModel {
         school: json["school"],
         title: json["title"],
         userType: json["userType"],
+        connects: json["connects"],
+        skills: json["skills"],
+        totalEarnings: json["totalEarnings"],
+        totalHours: json["totalHours"],
+        totalJobs: json["totalJobs"],
+        connectsHistory: json["connectsHistory"],
+        profileCompletion: json["profileCompletion"],
       );
 }

@@ -37,7 +37,7 @@ class UserDataService {
       if (documentSnapshot.exists) {
         print('Document exists on the database');
        // print(documentSnapshot.data());
-     // user = UserDataModel.fromJson(documentSnapshot.data());
+      user = UserDataModel.fromJson(documentSnapshot.data());
 
       }
     });
