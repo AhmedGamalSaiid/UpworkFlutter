@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
+import 'package:upwork/firebaseApp.dart';
 import 'CreateProfilePreviewBeforeSubmit.dart';
 import 'CreateProfileSetHourlyRate.dart';
 
@@ -14,6 +16,8 @@ class CreateProfileTitle extends StatefulWidget {
 
 class _CreateProfileTitleState extends State<CreateProfileTitle> {
   double hourlyRate = 0;
+  String title;
+  String overView;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -89,6 +93,7 @@ class _CreateProfileTitleState extends State<CreateProfileTitle> {
                             height: 40,
                             width: 300,
                             child: TextField(
+                              onChanged: (value) => {title = value},
                               maxLines: 1,
                               decoration: InputDecoration(
                                 labelText:
@@ -127,6 +132,9 @@ class _CreateProfileTitleState extends State<CreateProfileTitle> {
                           SizedBox(
                             width: 300,
                             child: TextField(
+                              onChanged: (value) => {
+                                overView = value,
+                              },
                               maxLines: 10,
                               textAlignVertical: TextAlignVertical.top,
                               decoration: InputDecoration(
@@ -183,6 +191,11 @@ class _CreateProfileTitleState extends State<CreateProfileTitle> {
                             textColor: Colors.white,
                             borderColor: Color(0x00000000),
                             press: () {
+                              DatabaseService().updateDocument(
+                                  'talent', auth.currentUser.uid, {
+                                'title': title,
+                                'overview': overView,
+                              });
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) {

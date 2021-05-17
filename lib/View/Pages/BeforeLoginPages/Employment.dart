@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/EmploymentDetails.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Location.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
@@ -114,12 +113,12 @@ class _EmployementState extends State<Employement> {
                                 ),
                               ),
                               onPressed: () => {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) {},
-                                  ),
-                                )
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) {},
+                                //   ),
+                                // )
                               },
                             ),
                           ),
@@ -156,7 +155,7 @@ class _EmployementState extends State<Employement> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(builder: (context) {
-                                        return Location();
+                                        return CreateProfileSetHourlyRate();
                                       }),
                                     );
                                   },

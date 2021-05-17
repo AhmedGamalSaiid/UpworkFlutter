@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
+import 'package:upwork/firebaseApp.dart';
 import 'CreateProfileTitle.dart';
 import 'Expertise.dart';
 
@@ -92,6 +94,7 @@ class _CreateProfileSetHourlyRateState
                                   setState(() {
                                     hourlyRate = double.parse(value);
                                   });
+                                  print(hourlyRate);
                                 }),
                           ),
                           Text(" /hr"),
@@ -228,7 +231,7 @@ class _CreateProfileSetHourlyRateState
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return Expertise();
+                                          return CreateProfileTitle();
                                         },
                                       ),
                                     )
@@ -239,6 +242,10 @@ class _CreateProfileSetHourlyRateState
                             textColor: Colors.white,
                             borderColor: Color(0x00000000),
                             press: () {
+                              DatabaseService().updateDocument(
+                                  'talent', auth.currentUser.uid, {
+                                'hourlyRate': hourlyRate,
+                              });
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) {

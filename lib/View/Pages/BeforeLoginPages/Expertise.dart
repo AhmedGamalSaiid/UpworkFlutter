@@ -3,7 +3,6 @@ import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/CreateProfile.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/CreateProfileEperience.dart';
 import 'package:upwork/View/components/Shared/CustomCircleAvatar.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
