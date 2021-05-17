@@ -38,7 +38,6 @@ class MyApp extends StatelessWidget {
           '/messages': (context) => Messages(),
           // '/alerts': (context) => (),
           '/reports': (context) => ReportsPage(),
-        }
-    );
+        });
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/Services/DatabaseService.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/CreateProfilePreviewBeforeSubmit.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Phone.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
@@ -332,7 +333,7 @@ class _LocationState extends State<Location> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return Phone();
+                                          return CreateProfilePreviewBeforeSubmit();
                                         },
                                       ),
                                     );

@@ -5,7 +5,6 @@ import 'package:upwork/View/components/Shared/CustomCircleAvatar.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
-import 'package:upwork/firebaseApp.dart';
 
 class Verifyemail extends StatefulWidget {
   final String emailVal;

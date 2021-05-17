@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/CreateProfileTitle.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/EmploymentDetails.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/LanguageProficiency.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/CreateProfileSetHourlyRate.dart';
-
-
 
 class Employement extends StatefulWidget {
   @override
@@ -114,12 +112,14 @@ class _EmployementState extends State<Employement> {
                                 ),
                               ),
                               onPressed: () => {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) {},
-                                //   ),
-                                // )
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) {
+                                      return LanguageProficiency();
+                                    },
+                                  ),
+                                )
                               },
                             ),
                           ),
@@ -142,7 +142,7 @@ class _EmployementState extends State<Employement> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) {
-                                                return CreateProfileTitle();
+                                                return Education();
                                               },
                                             ),
                                           )
@@ -156,7 +156,7 @@ class _EmployementState extends State<Employement> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(builder: (context) {
-                                        return CreateProfileSetHourlyRate();
+                                        return LanguageProficiency();
                                       }),
                                     );
                                   },

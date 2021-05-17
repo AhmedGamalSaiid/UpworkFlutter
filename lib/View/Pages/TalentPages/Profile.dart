@@ -67,7 +67,7 @@ class _ProfileState extends State<Profile> {
                   ProfileOtherExperience(),
                 ],
               )
-            : Text("ss"),
+            : CustomLoader(),
       ),
     );
   }
