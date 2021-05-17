@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:upwork/firebaseApp.dart';
 
 class AuthService {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
   Future<bool> signIn(String email, String password) async {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
@@ -44,5 +46,9 @@ class AuthService {
     } catch (e) {
       print(e);
     }
+  }
+
+  Future<String> getCurrentUserEmail() async {
+    return auth.currentUser.email;
   }
 }

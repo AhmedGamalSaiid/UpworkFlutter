@@ -14,12 +14,7 @@ class Location extends StatefulWidget {
   String state;
   String country;
 
-  Location(
-      {this.zip,
-      this.addressstree,
-      this.city,
-      this.state,
-      this.country});
+  Location({this.zip, this.addressstree, this.city, this.state, this.country});
   @override
   _LocationState createState() => _LocationState();
 }
@@ -31,6 +26,7 @@ class _LocationState extends State<Location> {
   final _text = TextEditingController();
   final _text2 = TextEditingController();
   final _text4 = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -324,11 +320,12 @@ class _LocationState extends State<Location> {
                                         "talent", auth.currentUser.uid, {
                                       'location': {
                                         'city': widget.city,
-                                        'country':widget.country,
-                                        'street':widget.addressstree,
-                                        'zip':widget.zip,
+                                        'country': widget.country,
+                                        'street': widget.addressstree,
+                                        'zip': widget.zip,
                                       }
                                     });
+
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(

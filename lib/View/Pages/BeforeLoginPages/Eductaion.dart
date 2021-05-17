@@ -7,6 +7,8 @@ import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
 class Education extends StatefulWidget {
+  
+ 
   @override
   _EducationState createState() => _EducationState();
 }
@@ -76,7 +78,9 @@ class _EducationState extends State<Education> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) {
-                                    return EducationDetails();
+                                    return EducationDetails(
+                                    
+                                    );
                                   },
                                 ),
                               )
@@ -103,7 +107,9 @@ class _EducationState extends State<Education> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
-                                      return Employement();
+                                      return Employement(
+                                     
+                                      );
                                     },
                                   ),
                                 )
@@ -143,7 +149,9 @@ class _EducationState extends State<Education> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(builder: (context) {
-                                        return Employement();
+                                        return Employement(
+                                        
+                                        );
                                       }),
                                     );
                                   },

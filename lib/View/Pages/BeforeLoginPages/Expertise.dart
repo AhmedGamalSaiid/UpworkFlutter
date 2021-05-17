@@ -11,7 +11,10 @@ import 'package:upwork/firebaseApp.dart';
 
 class Expertise extends StatefulWidget {
   String skillsVal;
-  Expertise({this.skillsVal});
+
+  Expertise({
+    this.skillsVal,
+  });
   @override
   _ExpertiseState createState() => _ExpertiseState();
 }
@@ -157,10 +160,8 @@ class _ExpertiseState extends State<Expertise> {
                           textColor: Colors.white,
                           borderColor: Color(0x00000000),
                           press: () {
-                            DatabaseService().updateDocument(
-                                "talent",
-                                auth.currentUser.uid,
-                                {'skills': skills});
+                            DatabaseService().updateDocument("talent",
+                                auth.currentUser.uid, {'skills': skills});
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) {
