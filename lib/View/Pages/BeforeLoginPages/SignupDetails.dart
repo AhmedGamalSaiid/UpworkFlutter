@@ -15,7 +15,7 @@ class SignupDetails extends StatefulWidget {
 class _SignupDetailsState extends State<SignupDetails> {
   bool valuefirst = false;
   bool valuesecond = false;
-  String dropdownValue = 'One';
+  String dropdownValue;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +40,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                   ),
                 ),
                 Center(
-                  child: Text(widget.emailVal),
+                  child: Text("widget.emailVal"),
                 ),
                 RoundedInputField(
                   icon: Icons.person,
@@ -84,9 +84,9 @@ class _SignupDetailsState extends State<SignupDetails> {
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton(
                         hint: dropdownValue == null
-                            ? Text('Dropdown')
+                            ? Text('select a country')
                             : Text(
-                                "Select a country",
+                                dropdownValue,
                                 style: TextStyle(color: Colors.grey),
                               ),
                         isExpanded: true,
