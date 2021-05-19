@@ -3,7 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/ClientMessage.dart';
 import 'package:upwork/View/components/Talent/TalentMessage.dart';
-
+import 'package:upwork/firebaseApp.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Message extends StatefulWidget {
   String message;
@@ -116,23 +117,22 @@ class _MessageState extends State<Message> {
         ));
   }
 
-//   Future<void> sendChat() async {
-//     if (messageController.text.length > 0) {
-//       await database.collection("messages").add({
-//         'clientAuthID': '',
-//         'messages': [
-//           {
-//             'index': messages.length,
-//             'Msg': messageController.text,
-//             'time': FieldValue.serverTimestamp(),
-//           }
-//         ],
-//         'talentAuthID': auth.currentUser.uid,
-//       });
-//       messageController.clear();
-//       //scrollController.animateTo(scrollController.position.maxScrollExtent,
-//       //duration: Duration(milliseconds: 300), curve: Curves.easeOut);
-//     }
-//   }
-// }
+  Future<void> sendChat() async {
+    if (messageController.text.length > 0) {
+      await database.collection("messages").doc(auth.currentUser.uid).update({
+        'talentAuthID': auth.currentUser?.uid,
+        'messages': [
+          ...messages,
+          {
+            'Msg': messageController.text,
+            'time': FieldValue.serverTimestamp(),
+            'uid': auth.currentUser?.uid
+          }
+        ]
+      });
+      messageController.clear();
+      //scrollController.animateTo(scrollController.position.maxScrollExtent,
+      //duration: Duration(milliseconds: 300), curve: Curves.easeOut);
+    }
+  }
 }

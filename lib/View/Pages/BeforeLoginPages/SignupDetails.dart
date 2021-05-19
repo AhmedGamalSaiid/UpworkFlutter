@@ -76,6 +76,11 @@ class _SignupDetailsState extends State<SignupDetails> {
                     widget.passWord = value;
                     print(widget.passWord);
                   },
+                    validator: Validators.compose([
+              Validators.required('Password is required'),
+              Validators.patternString(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$', 'Invalid Password')
+            ]),
+
                 ),
                 Container(
                   margin: const EdgeInsets.only(top: 8, bottom: 8),
