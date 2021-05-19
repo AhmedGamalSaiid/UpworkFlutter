@@ -10,6 +10,7 @@ import 'package:upwork/View/Pages/TalentPages/Proposals.dart';
 import 'package:upwork/View/Pages/TalentPages/myreports.dart';
 import 'constanse.dart';
 import 'firebaseApp.dart';
+import 'View/Pages/BeforeLoginPages/createprofilephoto.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

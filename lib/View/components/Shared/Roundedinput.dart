@@ -8,8 +8,8 @@ class RoundedInputField extends StatelessWidget {
   final bool validate;
   final bool passInput;
   final TextInputType textInputType;
-
   final ValueChanged<String> onChanged;
+
   const RoundedInputField({
     Key key,
     this.hintText,

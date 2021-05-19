@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:upwork/Services/authService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Verifyemail.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
+import 'package:upwork/firebaseApp.dart';
 import 'Verifyemail.dart';
 
 class SignupDetails extends StatefulWidget {
@@ -43,7 +45,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                   ),
                 ),
                 Center(
-                  child: Text(widget.emailVal),
+                  child: Text("widget.emailVal"),
                 ),
                 //Fname
                 RoundedInputField(
@@ -205,17 +207,14 @@ class _SignupDetailsState extends State<SignupDetails> {
                         'none': "",
                         'risingTalent': "Rising Talent",
                         'topRated': "Top Rated",
-                        'expert': "Expert-Vetted",
+                        'expert': "Expert-Vetted"
                       },
                       'jobHistory': [],
                       'portfolio': [],
                       'skills': [],
-                      'connects': 20,
-                      'connectsHistory':[],
-                      'profileCompletion':0,
-
+                      'connects': 20
                     });
-                   
+
                     // if (!auth.currentUser.emailVerified) {
                     //    await auth.currentUser.sendEmailVerification();
                     // }
