@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Location.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/createprofilephoto.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
@@ -164,7 +165,7 @@ class _CreateProfileTitleState extends State<CreateProfileTitle> {
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(
                       builder: (context) {
-                        return Location();
+                        return CreateProfilePhoto();
                       },
                     ));
                   },
@@ -209,7 +210,7 @@ class _CreateProfileTitleState extends State<CreateProfileTitle> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) {
-                                  return CreateProfilePreviewBeforeSubmit();
+                                  return CreateProfilePhoto();
                                 }),
                               );
                             },

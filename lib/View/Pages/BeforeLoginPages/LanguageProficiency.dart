@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Employment.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/Expertise.dart';
 import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/AddLanguage.dart';
@@ -254,7 +253,10 @@ class _LanguageProficiencyState extends State<LanguageProficiency> {
                       borderColor: Color(0x00000000),
                       press: () {
                         DatabaseService().updateDocument('talent',
-                            auth.currentUser.uid, {'languages': languages});
+                            auth.currentUser.uid, {
+                              'languages': languages
+                              }
+                        );
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) {

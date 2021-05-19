@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/Services/DatabaseService.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/Employment.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/LanguageProficiency.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/SelectDropDown.dart';
@@ -463,7 +463,7 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return Employement();
+                              return LanguageProficiency();
                             },
                           ),
                         )
