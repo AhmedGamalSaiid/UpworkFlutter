@@ -330,7 +330,7 @@ class _LocationState extends State<Location> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return CreateProfilePreviewBeforeSubmit();
+                                          return Phone();
                                         },
                                       ),
                                     );
