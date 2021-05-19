@@ -117,22 +117,23 @@ class _MessageState extends State<Message> {
         ));
   }
 
-  Future<void> sendChat() async {
-    if (messageController.text.length > 0) {
-      await database.collection("messages").doc(auth.currentUser.uid).update({
-        'talentAuthID': auth.currentUser?.uid,
-        'messages': [
-          ...messages,
-          {
-            'Msg': messageController.text,
-            'time': FieldValue.serverTimestamp(),
-            'uid': auth.currentUser?.uid
-          }
-        ]
-      });
-      messageController.clear();
-      //scrollController.animateTo(scrollController.position.maxScrollExtent,
-      //duration: Duration(milliseconds: 300), curve: Curves.easeOut);
-    }
-  }
+//   Future<void> sendChat() async {
+//     if (messageController.text.length > 0) {
+//       await database.collection("messages").doc('2xp4wE9tlSNFfvJ').update({
+//         'talentAuthID': auth.currentUser?.uid,
+//         'messages': [
+//           ...messages,
+//           {
+//             'Msg': messageController.text,
+//             //'time': FieldValue.serverTimestamp(),
+//             'uid': auth.currentUser?.uid
+//           }
+//         ],
+//         'clientAuthID': '',
+//       });
+//       messageController.clear();
+//       //scrollController.animateTo(scrollController.position.maxScrollExtent,
+//       //duration: Duration(milliseconds: 300), curve: Curves.easeOut);
+//     }
+//   }
 }

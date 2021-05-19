@@ -47,8 +47,4 @@ class AuthService {
       print(e);
     }
   }
-
-  Future<String> getCurrentUserEmail() async {
-    return auth.currentUser.email;
-  }
 }
