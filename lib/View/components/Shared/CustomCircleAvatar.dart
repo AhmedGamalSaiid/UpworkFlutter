@@ -25,7 +25,7 @@ class _CustomCircleAvatarState extends State<CustomCircleAvatar> {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: 50,
-      backgroundImage: user != null
+      backgroundImage: user?.profilePhoto != null
           ? NetworkImage(user.profilePhoto)
           : ExactAssetImage("assets/img/default-avatar.jpg"),
     );

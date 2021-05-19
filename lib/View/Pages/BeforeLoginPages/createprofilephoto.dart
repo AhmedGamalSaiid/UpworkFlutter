@@ -1,7 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:upwork/Services/DatabaseService.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/Location.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
-import 'package:file_picker/file_picker.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:path/path.dart';
+import 'package:upwork/firebaseApp.dart';
+import 'package:upwork/View/components/Shared/CustomLoader.dart';
+
 
 class CreateProfilePhoto extends StatefulWidget {
   @override
@@ -9,12 +18,54 @@ class CreateProfilePhoto extends StatefulWidget {
 }
 
 class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
+  File _imageFile;
+  String imageUrl;
+  bool loading=false;
+
+  ///NOTE: Only supported on Android & iOS
+  ///Needs image_picker plugin {https://pub.dev/packages/image_picker}
+  final picker = ImagePicker();
+
+  Future pickImageGallary() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      _imageFile = File(pickedFile.path);
+    });
+  }
+
+  Future pickImageCamera() async {
+    final pickedFile = await picker.getImage(source: ImageSource.camera);
+
+    setState(() {
+      _imageFile = File(pickedFile.path);
+    });
+  }
+
+  Future uploadImageToFirebase(BuildContext context) async {
+    String fileName = basename(_imageFile.path);
+    FirebaseStorage storage = FirebaseStorage.instance;
+
+    Reference firebaseStorageRef = storage.ref().child('images/$fileName');
+    UploadTask uploadTask = firebaseStorageRef.putFile(_imageFile);
+    uploadTask.then((res) {
+      res.ref.getDownloadURL().then((url) => {
+            imageUrl = url,
+            url != null
+                ? DatabaseService().updateDocument(
+                    'talent', auth.currentUser.uid, {'profilePhoto': imageUrl})
+                : loading=true,
+          });
+      print(imageUrl);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return DefaultTabController(
         length: 2,
-        child: Scaffold(
+        child:Scaffold(
             drawer: CustomDrawer(),
             appBar: AppBar(
               title: Center(
@@ -27,7 +78,8 @@ class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
                 CustomMenuButton(),
               ],
             ),
-            body: SingleChildScrollView(
+            body: !loading?
+            SingleChildScrollView(
                 child: Column(children: <Widget>[
               Padding(
                   padding: const EdgeInsets.only(left: 10, top: 30, bottom: 30),
@@ -36,8 +88,20 @@ class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
                       children: <Widget>[
                         Center(
                           child: CircleAvatar(
-                            backgroundImage: ExactAssetImage(
-                                "assets/img/default-avatar.jpg"),
+                            backgroundColor: Colors.black,
+                            child: CircleAvatar(
+                              minRadius: 48,
+                              maxRadius: 72,
+                              child: ClipOval(
+                                child: (_imageFile != null)
+                                    ? Image.file(_imageFile)
+                                    : Image.asset(
+                                       'assets/img/default-avatar.jpg',
+                                       fit: BoxFit.fill,
+                                      ),
+                              ),
+                              backgroundColor: Colors.white,
+                            ),
                             minRadius: 50,
                             maxRadius: 75,
                           ),
@@ -47,29 +111,41 @@ class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
                             height: size.height * 0.07,
                             width: size.width * 0.9,
                             child: OutlinedButton(
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(30.0))),
-                              ),
-                              child: Text(
-                                'Select Profile Image',
-                                style: TextStyle(
-                                  color: Color(0XFF37a000),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
+                                style: ButtonStyle(
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(30.0))),
                                 ),
-                              ),
-                              onPressed: () async {
-                                var picked =
-                                    await FilePicker.platform.pickFiles();
-
-                                if (picked != null) {
-                                  print(picked.files.first.name);
-                                }
-                              },
-                            )),
+                                child: Text(
+                                  'Select Profile Image',
+                                  style: TextStyle(
+                                    color: Color(0XFF37a000),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                onPressed: pickImageGallary)),
+                        SizedBox(height: size.height * 0.03),
+                        Container(
+                            height: size.height * 0.07,
+                            width: size.width * 0.9,
+                            child: OutlinedButton(
+                                style: ButtonStyle(
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(30.0))),
+                                ),
+                                child: Text(
+                                  'Take image ',
+                                  style: TextStyle(
+                                    color: Color(0XFF37a000),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                onPressed: pickImageCamera)),
                         SizedBox(height: size.height * 0.04),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -208,13 +284,16 @@ class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
                                 ),
                                 child: FlatButton(
                                   color: Color(0xFF15A800),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) {},
-                                      ),
-                                    );
+                                  onPressed: ()  {
+                                     uploadImageToFirebase(context);
+                                    // await Navigator.push(
+                                    //   context,
+                                    //   MaterialPageRoute(
+                                    //     builder: (context) {
+                                    //       return Location();
+                                    //     },
+                                    //   ),
+                                    // );
                                   },
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(50)),
@@ -229,6 +308,12 @@ class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
                               ),
                             ]),
                       ]))
-            ]))));
+            ]
+            )
+            )
+            :CustomLoader(),
+            )
+            );
+  
   }
 }

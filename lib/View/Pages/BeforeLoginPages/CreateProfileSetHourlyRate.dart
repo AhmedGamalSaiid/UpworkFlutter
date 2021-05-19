@@ -6,7 +6,9 @@ import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
 import 'package:upwork/firebaseApp.dart';
 import 'CreateProfileTitle.dart';
-import 'Expertise.dart';
+import 'package:upwork/View/Pages/BeforeLoginPages/LanguageProficiency.dart';
+
+
 
 class CreateProfileSetHourlyRate extends StatefulWidget {
   @override
@@ -231,7 +233,7 @@ class _CreateProfileSetHourlyRateState
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) {
-                                          return CreateProfileTitle();
+                                          return LanguageProficiency();
                                         },
                                       ),
                                     )
@@ -244,7 +246,7 @@ class _CreateProfileSetHourlyRateState
                             press: () {
                               DatabaseService().updateDocument(
                                   'talent', auth.currentUser.uid, {
-                                'hourlyRate': hourlyRate,
+                                'hourlyRate': hourlyRate.toString(),
                               });
                               Navigator.push(
                                 context,
