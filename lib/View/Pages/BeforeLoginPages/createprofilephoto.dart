@@ -289,14 +289,14 @@ class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
                                       onPressed: () {
                                         print(auth.currentUser.displayName);
                                         uploadImageToFirebase(context);
-                                        // await Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //     builder: (context) {
-                                        //       return Location();
-                                        //     },
-                                        //   ),
-                                        // );
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) {
+                                              return Location();
+                                            },
+                                          ),
+                                        );
                                       },
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
