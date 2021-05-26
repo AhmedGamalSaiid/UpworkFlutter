@@ -14,6 +14,22 @@ class JobDataService {
     } catch (e) {
       print(e);
     }
+    return jobs;
+  }
+
+  Future<List<JobDataModel>> getJobsSearch(val) async {
+    List<JobDataModel> jobs = [];
+    try {
+      await database.collection('job').get().then((QuerySnapshot res) {
+        res.docs.forEach((doc) {
+          if (doc.data()["jobTitle"].contains(val)) {
+            jobs.add(JobDataModel.fromJson(doc.data()));
+          }
+        });
+      });
+    } catch (e) {
+      print(e);
+    }
     print(jobs);
     return jobs;
   }
