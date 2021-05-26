@@ -1,10 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:upwork/Services/authService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Verifyemail.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
-import 'package:upwork/firebaseApp.dart';
 import 'Verifyemail.dart';
 
 class SignupDetails extends StatefulWidget {
@@ -108,6 +106,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                           },
                         ).toList(),
                         onChanged: (val) {
+                          print(val);
                           setState(
                             () {
                               dropdownValue = val;
