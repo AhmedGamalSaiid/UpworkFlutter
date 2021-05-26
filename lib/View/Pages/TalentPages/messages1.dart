@@ -26,8 +26,6 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-
-    //widget.auth.getCurrentUserEmail().then((email) {
     setState(() {
       String email = auth.currentUser.email;
       final String userEmail = email;

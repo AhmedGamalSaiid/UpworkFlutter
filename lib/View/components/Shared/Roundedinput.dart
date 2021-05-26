@@ -9,10 +9,13 @@ class RoundedInputField extends StatelessWidget {
   final bool passInput;
   final TextInputType textInputType;
   final ValueChanged<String> onChanged;
+    final TextEditingController messageController ;
+
 
   const RoundedInputField({
     Key key,
     this.hintText,
+    this.messageController,
     this.icon = Icons.person,
     this.onChanged,
     this.textInputType,
@@ -26,6 +29,7 @@ class RoundedInputField extends StatelessWidget {
     return TextFieldContainer(
         child: Form(
       child: TextFormField(
+        controller: messageController,
         keyboardType: textInputType,
         obscureText: passInput,
         onChanged: onChanged,
