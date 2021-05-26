@@ -20,10 +20,13 @@ class Expertise extends StatefulWidget {
 }
 
 class _ExpertiseState extends State<Expertise> {
+
   List<String> skills = [];
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+      TextEditingController messageController = TextEditingController();
+
 
     return DefaultTabController(
       length: 2,
@@ -78,6 +81,7 @@ class _ExpertiseState extends State<Expertise> {
                           ),
                         ]),
                     RoundedInputField(
+                    messageController: messageController,
                       err: "Oops! this skills is not found",
                       hintText: "Start typing to search for skills ..... ",
                       onChanged: (value) {
@@ -99,6 +103,7 @@ class _ExpertiseState extends State<Expertise> {
                 child: FlatButton(
                   color: Color(0xFF15A800),
                   onPressed: () => {
+                    messageController.clear(),
                     setState(() {
                       skills.add(widget.skillsVal);
                     }),

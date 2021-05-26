@@ -213,7 +213,11 @@ class _SignupDetailsState extends State<SignupDetails> {
                       'portfolio': [],
                       'skills': [],
                       'connects': 20
-                    });
+                    }).then(
+                      (res) => {
+                        auth.currentUser.updateProfile(displayName: 'talent'),
+                      }
+                      );
 
                     // if (!auth.currentUser.emailVerified) {
                     //    await auth.currentUser.sendEmailVerification();
