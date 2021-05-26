@@ -21,6 +21,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
   getData() async {
     user = await UserDataService().getUserData();
+    if (user!=null) {print("object");}
     setState(() {});
   }
 
