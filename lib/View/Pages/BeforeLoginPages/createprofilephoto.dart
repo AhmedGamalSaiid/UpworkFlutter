@@ -288,14 +288,14 @@ class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
                                       color: Color(0xFF15A800),
                                       onPressed: () {
                                         uploadImageToFirebase(context);
-                                        // await Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //     builder: (context) {
-                                        //       return Location();
-                                        //     },
-                                        //   ),
-                                        // );
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) {
+                                              return Location();
+                                            },
+                                          ),
+                                        );
                                       },
                                       shape: RoundedRectangleBorder(
                                           borderRadius:

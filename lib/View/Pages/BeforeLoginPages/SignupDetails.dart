@@ -45,7 +45,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                   ),
                 ),
                 Center(
-                  child: Text("widget.emailVal"),
+                  child: Text(widget.emailVal),
                 ),
                 //Fname
                 RoundedInputField(
@@ -209,6 +209,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                         'topRated': "Top Rated",
                         'expert': "Expert-Vetted"
                       },
+                      'profileCompletion': 0,
                       'jobHistory': [],
                       'portfolio': [],
                       'skills': [],
@@ -222,6 +223,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                     // auth.currentUser.uid != null
                     //     ? auth.currentUser.sendEmailVerification()
                     //     : print("no id eeeeeeeeeeeeeee");
+
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
