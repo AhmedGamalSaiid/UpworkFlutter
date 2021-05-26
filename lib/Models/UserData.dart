@@ -1,82 +1,129 @@
 class UserDataModel {
-  UserDataModel({
-    this.authID,
-    this.company,
-    this.location,
-    this.email,
-    this.englishProficiency,
-    this.expertiseLevel,
-    this.firstName,
-    this.lastName,
-    this.hourlyRate,
-    this.jobCategory,
-    this.overview,
-    this.password,
-    this.phoneNumber,
-    this.profilePhoto,
-    this.school,
-    this.title,
-    this.userType,
-    this.badged,
-    this.connects,
-    this.skills,
-    this.totalEarnings,
-    this.totalHours,
-    this.totalJobs,
-    this.connectsHistory,
-    this.profileCompletion,
-  });
+  UserDataModel(
+      {this.authID,
+      this.profilePhoto,
+      this.badge,
+      this.expert,
+      this.none,
+      this.risingTalent,
+      this.topRated,
+      this.company,
+      this.companyLocation,
+      this.companyName,
+      this.jobTitile,
+      this.stillWork,
+      this.connects,
+      this.education,
+      this.areaOfStudy,
+      this.degree,
+      this.school,
+      this.email,
+      this.expertiseLevel,
+      this.firstName,
+      this.hourlyRate,
+      this.jobCategory,
+      this.jobHistory,
+      this.languages,
+      this.langProf,
+      this.language,
+      this.location,
+      this.city,
+      this.country,
+      this.street,
+      this.zip,
+      this.overview,
+      this.password,
+      this.portfolio,
+      this.skills,
+      this.title,
+      this.totalEarnings,
+      this.totalHours,
+      this.totalJobs,
+      this.userType,
+      this.englishProficiency});
 
+  Map badge;
   String authID;
+  String profilePhoto;
+  String expert;
+  String none;
+  String risingTalent;
+  String topRated;
   Map company;
-  Map location;
-  Map badged;
+  String companyLocation;
+  String companyName;
+  String jobTitile;
+  bool stillWork;
+  int connects;
+  Map education;
+  String areaOfStudy;
+  String degree;
+  String school;
   String email;
-  String englishProficiency;
   String expertiseLevel;
   String firstName;
-  String lastName;
   String hourlyRate;
   String jobCategory;
+  List jobHistory;
+  List languages;
+  String langProf;
+  String language;
+  String lastName;
+  Map location;
+  String city;
+  String country;
+  String street;
+  String zip;
+  String mobileNumber;
   String overview;
   String password;
-  String phoneNumber;
-  String profilePhoto;
-  String school;
+  List portfolio;
+  Map skills;
   String title;
-  String userType;
-  int connects;
-  List skills;
   int totalEarnings;
   int totalHours;
-  int totalJobs;
-  List connectsHistory;
-  int profileCompletion;
-
+  String totalJobs;
+  String userType;
+  String englishProficiency;
   factory UserDataModel.fromJson(Map<String, dynamic> json) => UserDataModel(
-        authID: json["authID"],
+        badge: json["badge"],
+        expert: json["expert"],
+        none: json["none"],
+        risingTalent: json["risingTalent"],
+        topRated: json["topRated"],
         company: json["company"],
-        location: json["location"],
+        companyLocation: json["companyLocation"],
+        companyName: json["companyName"],
+        jobTitile: json["jobTitile"],
+        stillWork: json["stillWork"],
+        connects: json["connects"],
+        education: json["education"],
+        areaOfStudy: json["areaOfStudy"],
+        degree: json["degree"],
+        school: json["school"],
         email: json["email"],
-        englishProficiency: json["englishProficiency"],
         expertiseLevel: json["expertiseLevel"],
         firstName: json["firstName"],
-        lastName: json["lastName"],
         hourlyRate: json["hourlyRate"],
-        jobCategory: json["jobCategory"],
+        jobHistory: json["jobHistory"],
+        languages: json["languages"],
+        langProf: json["langProf"],
+        language: json["language"],
+        location: json["location"],
+        city: json["city"],
+        country: json["country"],
+        street: json["street"],
+        zip: json["zip"],
         overview: json["overview"],
         password: json["password"],
-        phoneNumber: json["authID"],
-        profilePhoto: json["profilePhoto"],
-        school: json["school"],
-        title: json["title"],
-        userType: json["userType"],
-        connects: json["connects"],
+        portfolio: json["portfolio"],
         skills: json["skills"],
+        title: json["title"],
         totalEarnings: json["totalEarnings"],
         totalHours: json["totalHours"],
         totalJobs: json["totalJobs"],
-        connectsHistory: json["connectsHistory"],
-        profileCompletion: json["profileCompletion"],
+        userType: json["userType"],
+        profilePhoto: json["profilePhoto"],
+        englishProficiency: json["englishProficiency"],
       );
 }
