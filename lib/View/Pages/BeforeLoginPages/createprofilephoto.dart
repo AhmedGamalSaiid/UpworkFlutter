@@ -54,7 +54,7 @@ class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
                     'talent', auth.currentUser.uid, {'profilePhoto': imageUrl})
                 : loading = true,
           });
-      print(imageUrl);
+      // print(imageUrl);
     });
   }
 
@@ -287,6 +287,7 @@ class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
                                     child: FlatButton(
                                       color: Color(0xFF15A800),
                                       onPressed: () {
+                                        print(auth.currentUser.displayName);
                                         uploadImageToFirebase(context);
                                         Navigator.push(
                                           context,
