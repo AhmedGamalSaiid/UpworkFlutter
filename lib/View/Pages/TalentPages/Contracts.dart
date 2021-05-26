@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:upwork/View/components/Shared/CustomCircleAvatar.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/ActiveContracts.dart';
@@ -18,10 +19,7 @@ class _ContractsState extends State<Contracts> {
       appBar: AppBar(
         leading: Builder(
           builder: (context) => IconButton(
-            icon: CircleAvatar(
-              radius: 50,
-              backgroundImage: ExactAssetImage("assets/img/06.jpg"),
-            ),
+            icon: CustomCircleAvatar(),
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/View/Pages/TalentPages/Message.dart';
+import 'package:upwork/View/Pages/TalentPages/messages1.dart';
+import 'package:upwork/View/components/Shared/CustomCircleAvatar.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/BottomNav.dart';
@@ -19,10 +20,7 @@ class _MessagesState extends State<Messages> {
       appBar: AppBar(
         leading: Builder(
           builder: (context) => IconButton(
-            icon: CircleAvatar(
-              radius: 50,
-              backgroundImage: ExactAssetImage("assets/img/06.jpg"),
-            ),
+            icon: CustomCircleAvatar(),
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
@@ -40,7 +38,8 @@ class _MessagesState extends State<Messages> {
               InkWell(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return Message();
+                    return ChatScreen();
+                    //Message();
                   }));
                 },
                 child: MsgView("client name",

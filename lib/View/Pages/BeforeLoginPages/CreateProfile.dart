@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Expertise.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Verifyemail.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
-import 'package:upwork/View/components/Talent/SelectDropDown.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
+import 'package:upwork/firebaseApp.dart';
 
 class Createprofile extends StatefulWidget {
+  final String emailVal;
+  String firstName;
+  String lastName;
+  String password;
+
+  Createprofile({this.emailVal, this.firstName, this.lastName, this.password});
   @override
   _CreateprofileState createState() => _CreateprofileState();
 }
 
 class _CreateprofileState extends State<Createprofile> {
+  String dropdownValue;
+  String dropdownValueSubCat;
+  List<String> subcatagory = [];
+
   @override
   Widget build(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
+    Size size = MediaQuery.of(context).size;
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -71,48 +82,143 @@ class _CreateprofileState extends State<Createprofile> {
                         ),
                       ),
                     ])),
-             SizedBox(height: size.height * 0.03),
-            Padding(
-                padding: const EdgeInsets.all(10),
-                child: SelectDropDown(
-                  [
-                    "Select the catagory",
-                    "Accounting & Consulting",
-                    "Admin Support",
-                    "Customer Service",
-                    "Data Science & Analytics",
-                    "Design & Creative",
-                    "Engineering & Architecture",
-                    "IT & Networking",
-                    "Legal",
-                    "Sales & Marketing",
-                    "Translation",
-                    "Web, Mobile & Software Dev",
-                    "Writing",
-                  ],
-                  isExpand: true,
-                )),
-             SizedBox(height: size.height * 0.03),
-            Padding(
-                padding: const EdgeInsets.all(10),
-                child: SelectDropDown(
-                  [
-                    "Select the SubCatagory",
-                    " Desktop Software Development",
-                    "Ecommerce Development",
-                    "Game Development",
-                    "Mobile Development",
-                    "Other - Software Development",
-                    "Product Management",
-                    "QA & Testing",
-                    "Scripts & Utilities",
-                    "Web & Mobile Design",
-                    "selected",
-                    "Web Development",
-                  ],
-                  isExpand: true,
-                )),
-             SizedBox(height: size.height * 0.04),
+            SizedBox(height: size.height * 0.03),
+            Container(
+              margin: const EdgeInsets.only(top: 8, bottom: 8),
+              width: MediaQuery.of(context).size.width * 0.9,
+              height: 37,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Color(0XFF0F8E0F)),
+                  borderRadius: BorderRadius.circular(5)),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: 10,
+                ),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton(
+                      hint: Text(
+                        "Select Catagory",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      isExpanded: true,
+                      iconSize: 30.0,
+                      value: dropdownValue,
+                      style: TextStyle(color: Colors.black),
+                      items: [
+                        "Web, Mobile & Software Dev",
+                        "IT & Networking",
+                        "Accounting & Consulting",
+                        "Admin Support",
+                        "Customer Service",
+                        "Data Science & Analytics",
+                        "Design & Creative",
+                        "Engineering & Architecture",
+                        "Legal",
+                        "Sales & Marketing",
+                        "Translation",
+                        "Writing",
+                      ].map(
+                        (val) {
+                          return DropdownMenuItem<String>(
+                            value: val,
+                            child: Text(val),
+                          );
+                        },
+                      ).toList(),
+                      onChanged: (val) {
+                        switch (val) {
+                          case 'Web, Mobile & Software Dev':
+                            {
+                              setState(
+                                () {
+                                  dropdownValue = val;
+                                  print(dropdownValue);
+                                  subcatagory = [
+                                    "Desktop Software Development",
+                                    "Ecommerce Development",
+                                    "Game Development",
+                                    "Mobile Development",
+                                    "Other - Software Development",
+                                    "Product Management",
+                                    "QA & Testing",
+                                    "Scripts & Utilities",
+                                    "Web & Mobile Design",
+                                    "Web Development",
+                                  ];
+                                },
+                              );
+                            }
+                            break;
+                          case 'IT & Networking':
+                            {
+                              setState(
+                                () {
+                                  dropdownValue = val;
+                                  print(dropdownValue);
+                                  subcatagory = [
+                                    "Database Administration",
+                                    "ERP/CRM Software",
+                                    "Information Security",
+                                    "Network & System Administration",
+                                    "Other - IT & Networking",
+                                  ];
+                                },
+                              );
+                            }
+                            break;
+                          default:
+                            {
+                              setState(() {
+                                dropdownValue = val;
+                                print(dropdownValue);
+                                subcatagory = [];
+                              });
+                            }
+                            break;
+                        }
+                      }),
+                ),
+              ),
+            ),
+            SizedBox(height: size.height * 0.03),
+            Container(
+              margin: const EdgeInsets.only(top: 8, bottom: 8),
+              width: MediaQuery.of(context).size.width * 0.9,
+              height: 37,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Color(0XFF0F8E0F)),
+                  borderRadius: BorderRadius.circular(5)),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  left: 10,
+                ),
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton(
+                      hint: Text(
+                        "Select SubCatagory",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                      isExpanded: true,
+                      iconSize: 30.0,
+                      value: dropdownValueSubCat,
+                      style: TextStyle(color: Colors.black),
+                      items: subcatagory.map(
+                        (val) {
+                          return DropdownMenuItem<String>(
+                            value: val,
+                            child: Text(val),
+                          );
+                        },
+                      ).toList(),
+                      onChanged: (val) {
+                        setState(() {
+                          dropdownValueSubCat = val;
+                        });
+                      }),
+                ),
+              ),
+            ),
+            SizedBox(height: size.height * 0.04),
             Padding(
                 padding: const EdgeInsets.all(5),
                 child: Row(
@@ -141,10 +247,17 @@ class _CreateprofileState extends State<Createprofile> {
                         textColor: Colors.white,
                         borderColor: Color(0x00000000),
                         press: () {
+                          print(dropdownValueSubCat);
+                          DatabaseService().updateDocument(
+                              "talent",
+                              auth.currentUser.uid,
+                              {'jobCategory': dropdownValueSubCat});
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) {
-                              return Expertise();
+                              return Expertise(
+                            
+                              );
                             }),
                           );
                         },
