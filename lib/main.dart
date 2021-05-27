@@ -21,7 +21,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarManager.setColor(Colors.white, animated: true);
+    // FlutterStatusbarManager.setColor(Colors.white, animated: true);
     var login = auth.currentUser;
     return MaterialApp(
         title: 'Upwork',
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
         ),
         //home:CreateProfilePhoto(),
-    
+
         initialRoute: '/',
         routes: {
           '/': (context) => login != null ? HomePage() : Welcome(),
@@ -41,7 +41,6 @@ class MyApp extends StatelessWidget {
           '/messages': (context) => Messages(),
           // '/alerts': (context) => (),
           '/reports': (context) => ReportsPage(),
-        }
-    );
+        });
   }
 }

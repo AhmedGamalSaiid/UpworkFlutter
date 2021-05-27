@@ -8,13 +8,13 @@ import 'package:country_list_pick/country_list_pick.dart';
 import 'package:upwork/firebaseApp.dart';
 
 class EmployementDetails extends StatefulWidget {
-  String company;
+  //String company;
   String location;
   String title;
   String description;
 
   EmployementDetails({
-    this.company,
+    //this.company,
     this.location,
     this.description,
     this.title,
@@ -83,7 +83,7 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                               ),
                             ),
                             onChanged: (value) {
-                              widget.company = value;
+                              // widget.company = value;
                               //print(widget.company);
                             },
                           ),
@@ -452,12 +452,12 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                       onPressed: () => {
                         DatabaseService()
                             .updateDocument('talent', auth.currentUser.uid, {
-                          'company': {
-                            'companyName': widget.company,
+                          'company':[ {
+                            // 'companyName': widget.company,
                             'jobTitile': widget.title,
                             'stillWork': valuesecond,
                             'companyLocation': widget.location,
-                          }
+                          }]
                         }),
                         Navigator.push(
                           context,
