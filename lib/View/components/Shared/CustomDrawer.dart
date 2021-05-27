@@ -21,7 +21,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
   getData() async {
     user = await UserDataService().getUserData();
-    if (user!=null) {print("object");}
+    print(user);
     setState(() {});
   }
 
@@ -53,7 +53,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                   ),
                   user != null
                       ? Text(
-                          user.firstName + " " + user.lastName,
+                          "user.firstName + " "  + user.lastName",
                           style: TextStyle(color: Colors.white),
                         )
                       : Text(""),

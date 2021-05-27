@@ -15,6 +15,8 @@ class ProfileHeadSection extends StatefulWidget {
 class _ProfileHeadSectionState extends State<ProfileHeadSection> {
   @override
   Widget build(BuildContext context) {
+    print(widget.user.lastName);
+
     return Container(
       color: bgUpworkSection,
       padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
@@ -30,21 +32,19 @@ class _ProfileHeadSectionState extends State<ProfileHeadSection> {
                 child: Stack(
                   children: [
                     Positioned(
-                      // child: Image.network(
-                      //   widget.user.profilePhoto,
-                      // ),
                       child: CircleAvatar(
                         radius: 40,
                         backgroundImage: NetworkImage(widget.user.profilePhoto),
                       ),
                     ),
                     Positioned(
-                      left: 0,
+                       top: -2,
+                      left: -2,
                       child: CustomIcon(Icons.mode_edit),
                     ),
                     Positioned(
-                      right: 25,
-                      bottom: 5,
+                      right:8,
+                      bottom: 3,
                       child: Container(
                         width: 15,
                         height: 15,
@@ -65,8 +65,7 @@ class _ProfileHeadSectionState extends State<ProfileHeadSection> {
                     Padding(
                       padding: const EdgeInsets.only(top: 5.0, bottom: 5),
                       child: Text(
-                        widget.user.firstName + " " + widget.user.lastName,
-                        // "sdsd",
+                        "${widget.user.firstName} ${widget.user.lastName[0]}.",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,

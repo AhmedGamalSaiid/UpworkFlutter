@@ -54,27 +54,25 @@ class _ProfileEmploymentHistoryState extends State<ProfileEmploymentHistory> {
                   ],
                 ),
               ),
-              for (var i = 0; i < 1; i++)
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.92,
-                  decoration: i != 0
-                      ? BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              width: 1.5,
-                              color: bgUpworkSection,
-                            ),
-                          ),
-                        )
-                      : null,
-                  child: ProfileEmploymentItem(
-                    widget.user.company["companyName"],
-                    widget.user.company["jobTitile"],
-                    "March 2019 - Present",
-                    description:
-                        "Professional Freelancer as a Frontend Developer",
-                  ),
-                ),
+              // for (var i = 0; i < 1; i++)
+                // Container(
+                //   width: MediaQuery.of(context).size.width * 0.92,
+                //   decoration: i != 0
+                //       ? BoxDecoration(
+                //           border: Border(
+                //             bottom: BorderSide(
+                //               width: 1.5,
+                //               color: bgUpworkSection,
+                //             ),
+                //           ),
+                //         )
+                //       : null,
+                //   // child: ProfileEmploymentItem(
+                //   //   // widget.user.company["companyName"],
+                //   //   // widget.user.company["jobTitile"],
+                //   //   "as","sad",description: "fdfd",
+                //   // ),
+                // ),
             ],
           ),
         ),

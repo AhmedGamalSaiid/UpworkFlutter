@@ -14,7 +14,9 @@ class ProfileViewProfile extends StatefulWidget {
 class _ProfileViewProfileState extends State<ProfileViewProfile> {
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return 
+    
+    Column(
       children: [
         Row(
           children: [
@@ -33,25 +35,25 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
                 ),
               ),
             ),
-            CustomIcon(Icons.mode_edit),
+            // CustomIcon(Icons.mode_edit),
           ],
         ),
-        Container(
-          padding: const EdgeInsets.only(
-            left: 20,
-            right: 20,
-            top: 0,
-            bottom: 10,
-          ),
-          child: SelectDropDown(
-            [
-              "All Work",
-              "CMS Development",
-              "Frontend Development",
-            ],
-            isExpand: true,
-          ),
-        ),
+        // Container(
+        //   padding: const EdgeInsets.only(
+        //     left: 20,
+        //     right: 20,
+        //     top: 0,
+        //     bottom: 10,
+        //   ),
+        //   child: SelectDropDown(
+        //     [
+        //       "All Work",
+        //       "CMS Development",
+        //       "Frontend Development",
+        //     ],
+        //     isExpand: true,
+        //   ),
+        // ),
         Row(
           children: [
             Padding(
@@ -73,7 +75,7 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
               padding: const EdgeInsets.only(right: 12.0),
               child: CustomIcon(Icons.mode_edit),
             ),
-            CustomIcon(Icons.link),
+            // CustomIcon(Icons.link),
           ],
         ),
         Padding(
@@ -94,40 +96,24 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
             ],
           ),
         ),
-        Container(
-          padding: const EdgeInsets.only(bottom: 18.0),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                width: 1.5,
-                color: bgUpworkSection,
-              ),
-            ),
-          ),
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 20.0,
-                  top: 15,
-                ),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: Text(
+        
+        Align(
+      alignment: Alignment.topLeft,
+      child: SafeArea(
+        left: true,
+        top: true,
+        right: true,
+        bottom: true,
+        minimum: const EdgeInsets.all(16.0),
+        child: Text(
                     widget.user.overview,
                     style: TextStyle(
                       fontSize: 14,
                     ),
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 18.0),
-                child: CustomIcon(Icons.mode_edit),
-              ),
-            ],
-          ),
-        ),
+      ),
+    ),
+      
       ],
     );
   }
