@@ -19,6 +19,19 @@ class DatabaseService {
         .catchError((error) => print("Failed to update Document: $error"));
   }
 
+<<<<<<< HEAD
+  Future<void> updateSubCollectionDocument(
+      String collectionName, subCollectionName, docID, data) {
+    CollectionReference collection = database.collection(collectionName);
+
+    return collection
+        .doc(docID)
+        .collection(subCollectionName)
+        .add(data)
+        .then((res) => print("Document Updated"))
+        .catchError((error) => print("Failed to update Document: $error"));
+  }
+=======
   Future<void> addSubCollection(String collectionName, docID, subCollectionName, subCollectionDoc, data) {
     CollectionReference collection = database.collection(collectionName);
     return collection
@@ -27,6 +40,7 @@ class DatabaseService {
         .doc(subCollectionDoc)
         .set(data);
     }
+>>>>>>> c8a85f944a76283ed3cce04d4a27401c828bc54d
 
   Future<void> deleteDocument(String collectionName, docID) {
     CollectionReference collection = database.collection(collectionName);
