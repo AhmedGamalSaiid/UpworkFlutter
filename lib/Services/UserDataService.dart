@@ -1,34 +1,14 @@
+  
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:upwork/Models/UserData.dart';
 import 'package:upwork/firebaseApp.dart';
 import 'authService.dart';
 
 class UserDataService {
-  // Future<UserDataModel> getUserData() async {
-  //   UserDataModel user;
-  //   try {
-  //     String uid =
-  //         await AuthService().getCurrentUserUid().then((value) => value);
-  //     // String uid = FirebaseAuth.instance.currentUser.uid;
-  //     await database
-  //         .collection('talent')
-  //         .where("authID", isEqualTo: uid)
-  //         .get()
-  //         .then((QuerySnapshot res) {
-  //       user = UserDataModel.fromJson(res.docs[0].data());
-  //     });
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  //   return user;
-  // }
-
   Future<UserDataModel> getUserData() async {
     UserDataModel user;
     try {
-      String uid =
-          await AuthService().getCurrentUserUid().then((value) => value);
-      // String uid = FirebaseAuth.instance.currentUser.uid;
+      String uid =await AuthService().getCurrentUserUid().then((value) => value);
       await FirebaseFirestore.instance
           .collection('talent')
           .doc(uid)
@@ -36,7 +16,6 @@ class UserDataService {
          .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
         print('Document exists on the database');
-        // print(documentSnapshot.data());
       user = UserDataModel.fromJson(documentSnapshot.data());
 
       }
@@ -45,7 +24,6 @@ class UserDataService {
     } catch (e) {
       print(e);
     }
-    //print(user);
     return user;
   }
 
@@ -65,19 +43,4 @@ class UserDataService {
     return users;
   }
 
-//update user Data
-// Future<void> updateUser(Map<String, dynamic> userData ) async{
-//    String uid =
-//           await AuthService().getCurrentUserUid().then((value) => value);
-//   return database.collection("talent")
-//     .doc(uid)
-//     .update(userData)
-//     .then((value) => print("User Updated"))
-//     .catchError((error) => print("Failed to update user: $error"));
-// }
-
 }
-
-
-
-
