@@ -83,6 +83,7 @@ class _CreateProfileSetHourlyRateState
                             height: 40,
                             width: 220,
                             child: TextField(
+                              keyboardType: TextInputType.number,
                                 maxLines: 1,
                                 textAlignVertical: TextAlignVertical.top,
                                 decoration: InputDecoration(

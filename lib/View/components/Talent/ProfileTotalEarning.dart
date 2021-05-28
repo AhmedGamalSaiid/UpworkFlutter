@@ -31,7 +31,8 @@ class _ProfileTotalEarningState extends State<ProfileTotalEarning> {
                     Row(
                       children: [
                         Text(
-                          "\$50+",
+
+                          widget.user.totalEarnings.toString(),
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,

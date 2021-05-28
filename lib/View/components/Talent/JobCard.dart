@@ -34,42 +34,13 @@ class _JobCardState extends State<JobCard> {
                 SizedBox(
                   height: size.height * 0.05,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      widget.job.jobTitle,
-                      textAlign: TextAlign.end,
-                      style: TextStyle(
-                        color: bgUpwork1,
-                        fontSize: 17,
-                      ),
-                    ),
-                    Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(30)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Icon(
-                            Icons.thumb_down_outlined,
-                            color: Colors.grey[700],
-                          ),
-                        )),
-                    Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(30)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Icon(
-                            Icons.favorite_border_outlined,
-                            color: Colors.grey[700],
-                          ),
-                        ))
-                  ],
+                Text(
+                  widget.job.jobTitle,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    color: bgUpwork1,
+                    fontSize: 17,
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),

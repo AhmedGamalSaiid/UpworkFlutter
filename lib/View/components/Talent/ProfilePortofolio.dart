@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Models/UserData.dart';
 import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import 'package:upwork/View/components/Talent/PortofolioItem.dart';
 import '../../../constanse.dart';
 
 class ProfilePortofolio extends StatefulWidget {
-  ProfilePortofolio({Key key}) : super(key: key);
+  UserDataModel user;
+  ProfilePortofolio(this.user);
+  // ProfilePortofolio({Key key}) : super(key: key);
 
   @override
   _ProfilePortofolioState createState() => _ProfilePortofolioState();
@@ -42,24 +45,28 @@ class _ProfilePortofolioState extends State<ProfilePortofolio> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 15.0),
-                child: CustomIcon(Icons.more_horiz),
-              ),
+              
               CustomIcon(Icons.add),
             ],
           ),
-          Wrap(
-            spacing: 15,
-            runSpacing: 20,
-            children: [
-              for (var i = 0; i < 5; i++)
-                PortfolioItem(
-                  "assets/img/image.png",
-                  "Forera Website For Food Delivery",
-                )
-            ],
-          ),
+          // Wrap(
+          //   spacing: 15,
+          //   runSpacing: 20,
+          //   children: [
+          //   widget.user!=null?
+          //     for (var i = 0; i < widget.user.portfolio.length; i++)
+          //       PortfolioItem(
+          //         widget.user.portfolio[i].image,
+          //          widget.user.portfolio[i].imagetitle,
+          //       ),
+              
+                
+          //     :
+          //     Text("")
+  
+              
+          //   ],
+          // ),
         ],
       ),
     );

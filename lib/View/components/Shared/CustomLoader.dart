@@ -10,6 +10,7 @@ class CustomLoader extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       child: Center(
         child: CircularProgressIndicator(
+          backgroundColor: bgUpworkDark,
           valueColor: AlwaysStoppedAnimation(upWorkText),
         ),
       ),
