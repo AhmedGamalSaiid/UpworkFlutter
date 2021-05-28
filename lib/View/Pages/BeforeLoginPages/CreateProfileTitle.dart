@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:upwork/Services/DatabaseService.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/Location.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/createprofilephoto.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/constanse.dart';
 import 'package:upwork/firebaseApp.dart';
-import 'CreateProfilePreviewBeforeSubmit.dart';
 import 'CreateProfileSetHourlyRate.dart';
 
 class CreateProfileTitle extends StatefulWidget {
