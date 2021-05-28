@@ -3,19 +3,9 @@ class UserDataModel {
       {this.authID,
       this.profilePhoto,
       this.badge,
-      this.expert,
-      this.none,
-      this.risingTalent,
-      this.topRated,
-      this.company,
-      this.companyLocation,
-      this.companyName,
-      this.jobTitile,
-      this.stillWork,
       this.connects,
+      this.connectsHistory,
       this.education,
-      this.areaOfStudy,
-      this.degree,
       this.school,
       this.email,
       this.expertiseLevel,
@@ -40,25 +30,25 @@ class UserDataModel {
       this.totalHours,
       this.totalJobs,
       this.userType,
+      this.savedJobs,
+      this.otherLanguages,
+      this.employmentHistory,
+      this.profileCompletion,
+      this.searchHistory,
+      this.company,
+      this.lastName,
       this.englishProficiency});
 
-  Map badge;
   String authID;
-  String profilePhoto;
-  String expert;
-  String none;
-  String risingTalent;
-  String topRated;
-  Map company;
-  String companyLocation;
-  String companyName;
-  String jobTitile;
-  bool stillWork;
+  Map badge;
   int connects;
-  Map education;
-  String areaOfStudy;
-  String degree;
+  List connectsHistory;
+  List education;
+  List employmentHistory;
+  String profilePhoto;
   String school;
+  List company;
+  List otherLanguages;
   String email;
   String expertiseLevel;
   String firstName;
@@ -76,41 +66,41 @@ class UserDataModel {
   String zip;
   String mobileNumber;
   String overview;
+  List searchHistory;
   String password;
   List portfolio;
-  Map skills;
+  List savedJobs;
+  List skills;
   String title;
+  int profileCompletion;
   int totalEarnings;
   int totalHours;
-  String totalJobs;
+  int totalJobs;
   String userType;
   String englishProficiency;
   factory UserDataModel.fromJson(Map<String, dynamic> json) => UserDataModel(
         badge: json["badge"],
-        expert: json["expert"],
-        none: json["none"],
-        risingTalent: json["risingTalent"],
-        topRated: json["topRated"],
-        company: json["company"],
-        companyLocation: json["companyLocation"],
-        companyName: json["companyName"],
-        jobTitile: json["jobTitile"],
-        stillWork: json["stillWork"],
         connects: json["connects"],
         education: json["education"],
-        areaOfStudy: json["areaOfStudy"],
-        degree: json["degree"],
+        company:json["company"],
         school: json["school"],
         email: json["email"],
         expertiseLevel: json["expertiseLevel"],
         firstName: json["firstName"],
         hourlyRate: json["hourlyRate"],
         jobHistory: json["jobHistory"],
+        savedJobs: json["savedJobs"],
+        lastName:json["lastName"],  
+        searchHistory: json["searchHistory"],
+        employmentHistory: json["employmentHistory"],
         languages: json["languages"],
         langProf: json["langProf"],
         language: json["language"],
+        profileCompletion: json["profileCompletion"],
         location: json["location"],
+        connectsHistory: json["connectsHistory"],
         city: json["city"],
+        otherLanguages: json["otherLanguages"],
         country: json["country"],
         street: json["street"],
         zip: json["zip"],

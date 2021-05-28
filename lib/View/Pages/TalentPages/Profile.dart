@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:upwork/Models/UserData.dart';
 import 'package:upwork/Services/UserDataService.dart';
@@ -25,7 +27,8 @@ class _ProfileState extends State<Profile> {
 
   getData() async {
     user = await UserDataService().getUserData();
-    setState(() {});
+   
+   if(this.mounted) setState(() {});
   }
 
   @override
@@ -33,6 +36,12 @@ class _ProfileState extends State<Profile> {
     super.initState();
     getData();
   }
+
+  // @override
+  // void dispose() {
+  //   getData().dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +64,8 @@ class _ProfileState extends State<Profile> {
                   ProfileHeadSection(user),
                   ProfileTotalEarning(user),
                   ProfileViewProfile(user),
-                  ProfileWorkHistory(user),
-                  ProfilePortofolio(),
+                  // ProfileWorkHistory(user),
+                  ProfilePortofolio(user),
                   ProfileSkills(),
                   ProfileAvailability(
                     "As Needed - Open to Offers",

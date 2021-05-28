@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/Models/JobData.dart';
+import 'package:upwork/View/Pages/TalentPages/SubmitProposal.dart';
 
 class JobDetails extends StatefulWidget {
   final JobDataModel job;
@@ -202,12 +203,22 @@ class _JobDetailsState extends State<JobDetails> {
                   child: Center(
                       child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Text(
-                      "Submit a Proposal",
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
+                    child: InkWell(
+                      child: Text(
+                        "Submit a Proposal",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return SubmitProposal();
+                          }),
+                        );
+                      },
                     ),
                   )),
                 ),

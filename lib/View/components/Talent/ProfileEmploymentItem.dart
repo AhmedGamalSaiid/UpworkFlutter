@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:upwork/View/components/Shared/CustomIcon.dart';
 
 class ProfileEmploymentItem extends StatefulWidget {
-  final String company;
+  // final String company;
   final String title;
   final String period;
   final String description;
-  ProfileEmploymentItem(this.company, this.title, this.period,
+  ProfileEmploymentItem( this.title, this.period,
       {this.description});
   @override
   _ProfileEmploymentItemState createState() => _ProfileEmploymentItemState();
@@ -23,7 +23,7 @@ class _ProfileEmploymentItemState extends State<ProfileEmploymentItem> {
           Row(
             children: [
               Text(
-                widget.title + " | " + widget.company,
+                "widget.title" + " | " + "widget.company",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,

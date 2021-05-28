@@ -12,6 +12,7 @@ import 'constanse.dart';
 import 'firebaseApp.dart';
 import 'View/Pages/BeforeLoginPages/createprofilephoto.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -21,7 +22,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarManager.setColor(Colors.white, animated: true);
     var login = auth.currentUser;
     return MaterialApp(
         title: 'Upwork',
@@ -30,8 +30,6 @@ class MyApp extends StatelessWidget {
           primaryColor: bgUpworkDark,
           scaffoldBackgroundColor: Colors.white,
         ),
-        //home:CreateProfilePhoto(),
-    
         initialRoute: '/',
         routes: {
           '/': (context) => login != null ? HomePage() : Welcome(),
@@ -41,7 +39,7 @@ class MyApp extends StatelessWidget {
           '/messages': (context) => Messages(),
           // '/alerts': (context) => (),
           '/reports': (context) => ReportsPage(),
-        }
+        },
     );
   }
 }
