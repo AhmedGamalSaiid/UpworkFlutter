@@ -1,5 +1,6 @@
 class JobDataModel {
   JobDataModel({
+    this.jobID,
     this.authID,
     this.jobBudged,
     this.freelancerNeed,
@@ -13,6 +14,7 @@ class JobDataModel {
     this.jobTitle,
     this.jobType,
   });
+  String jobID;
   String authID;
   String freelancerNeed;
   String jobBudged;
@@ -27,6 +29,7 @@ class JobDataModel {
   String jobVisibility;
 
   factory JobDataModel.fromJson(Map<String, dynamic> json) => JobDataModel(
+        jobID: json["jobID"],
         authID: json["authID"],
         freelancerNeed: json["freelancerNeed"],
         jobBudged: json["jobBudged"],

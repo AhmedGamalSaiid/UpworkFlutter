@@ -1,12 +1,16 @@
 import 'package:accordion/accordion.dart';
 import 'package:flutter/material.dart';
-import 'package:upwork/View/Pages/TalentPages/JobDetails.dart';
+import 'package:upwork/Models/JobData.dart';
+import 'package:upwork/View/Pages/TalentPages/JobDetailsWithoutClient.dart';
 
 class ActiveBody extends StatelessWidget {
-  const ActiveBody({Key key}) : super(key: key);
+  // const ActiveBody({Key key}) : super(key: key);
+  // final JobDataModel job;
 
   @override
   Widget build(BuildContext context) {
+    JobDataModel job;
+
     return Container(
         decoration: BoxDecoration(
             color: Color(0xFFF1F2F4),
@@ -45,7 +49,7 @@ class ActiveBody extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(builder: (context) {
-                                return JobDetails();
+                                return JobDetailsWithoutClient(job);
                               }),
                             );
                           },
@@ -130,7 +134,7 @@ class ActiveBody extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) {
-                              return JobDetails();
+                              return JobDetailsWithoutClient(job);
                             }),
                           );
                         },
@@ -203,7 +207,7 @@ class ActiveBody extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) {
-                              return JobDetails();
+                              return JobDetailsWithoutClient(job);
                             }),
                           );
                         },

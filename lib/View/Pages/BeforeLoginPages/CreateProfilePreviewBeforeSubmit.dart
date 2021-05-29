@@ -31,6 +31,7 @@ class _CreateProfilePreviewBeforeSubmitState
   void initState() {
     super.initState();
     getData();
+    
   }
 
   @override
@@ -57,7 +58,7 @@ class _CreateProfilePreviewBeforeSubmitState
         ],
       ),
       body: SingleChildScrollView(
-        child: user != null
+        child: 'user' != null
             ? Column(
                 children: [
                   Container(
@@ -111,7 +112,9 @@ class _CreateProfilePreviewBeforeSubmitState
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text("Looking good, ${user?.firstName}",
+                                  Text(
+                                    // 'j',
+                                      "Looking good, ${user.firstName}",
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 18,
@@ -181,7 +184,6 @@ class _CreateProfilePreviewBeforeSubmitState
                                           ExactAssetImage("assets/img/06.jpg"),
                                     ),
                                   ),
-                                  
                                 ],
                               ),
                             ),
@@ -210,13 +212,7 @@ class _CreateProfilePreviewBeforeSubmitState
                                           Icons.room,
                                           size: 15,
                                         ),
-                                        //Text("${user?.location['city']}, Egypt"),
-                                        Text(
-                                          " " +
-                                              user?.location["city"] +
-                                              ", " +
-                                              user?.location["country"],
-                                        )
+                                        Text("${user?.location['city']}, Egypt"),
                                       ],
                                     ),
                                   ),
@@ -351,7 +347,7 @@ class _CreateProfilePreviewBeforeSubmitState
                       //                                 Row(
                       //                                   children: [
                       //                                     Text(
-                      //                                       languages[index][
+                      //                                       user.skills[index][
                       //                                               "language"] +
                       //                                           " : ",
                       //                                       style: TextStyle(
@@ -359,7 +355,7 @@ class _CreateProfilePreviewBeforeSubmitState
                       //                                               FontWeight
                       //                                                   .bold),
                       //                                     ),
-                      //                                     Text(languages[index]
+                      //                                     Text(user.skills[index]
                       //                                         ["langProf"]),
                       //                                   ],
                       //                                 ),
@@ -368,7 +364,7 @@ class _CreateProfilePreviewBeforeSubmitState
                       //                                       Icons.delete),
                       //                                   onTap: () {
                       //                                     setState(() {
-                      //                                       languages.removeAt(
+                      //                                       user.skills.removeAt(
                       //                                           index);
                       //                                     });
                       //                                   },
@@ -379,7 +375,6 @@ class _CreateProfilePreviewBeforeSubmitState
                       //                         },
                       //                       ),
                       //                   )
-                                        
                     ],
                   ),
                   Container(
@@ -421,61 +416,69 @@ class _CreateProfilePreviewBeforeSubmitState
                                 ],
                               ),
                             ),
-                            Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(12.0),
-                                  child: Wrap(
-                                    spacing: 15,
-                                    runSpacing: 5,
-                                    children: [
+                          Container(
+                             height: 200,
+                                            child: ListView.builder(
+                                              itemCount: user.skills.length,
+                                              itemBuilder:
+                                                  (BuildContext context,
+                                                      int index) {
+                                                return Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 8),
+                                                  child:
+                                                   Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .start,
+                                                    children: [
+                                   
                                       Chip(
-                                        label: Text("HTML"),
+                                        label: Text(user.skills[index]),
                                       ),
-                                      Chip(
-                                        label: Text("CSS"),
-                                      ),
-                                      Chip(
-                                        label: Text("JS"),
-                                      ),
-                                      Chip(
-                                        label: Text("jQuery"),
-                                      ),
-                                      Chip(
-                                        label: Text("Bootstrap"),
-                                      ),
-                                      Chip(
-                                        label: Text("React.js"),
-                                      ),
-                                      Chip(
-                                        label: Text("Angular"),
-                                      ),
-                                      Chip(
-                                        label: Text("C#"),
-                                      ),
-                                      Chip(
-                                        label: Text("Flutter"),
-                                      ),
-                                      Chip(
-                                        label: Text("C++"),
-                                      ),
-                                      Chip(
-                                        label: Text("TypeScript"),
-                                      ),
-                                      Chip(
-                                        label: Text("PHP"),
-                                      ),
-                                      Chip(
-                                        label: Text("C"),
-                                      ),
-                                      Chip(
-                                        label: Text("sass"),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                                  
+                                       ],
+                                                  ),
+                                                
+                                                );
+                                              },
+                                            ),
+                          )
+                            // Column(
+                            //   children: [
+                            //     Padding(
+                            //       padding: const EdgeInsets.all(12.0),
+                            //       child:ListView.builder(
+                            //                   itemCount: user.skills.length,
+                            //                   itemBuilder:
+                            //                       (BuildContext context,
+                            //                           int index) {
+                            //                     return Padding(
+                            //                       padding:
+                            //                           const EdgeInsets.only(
+                            //                               top: 8),
+                            //                               child: Text(user.skills[index]),
+                            //                     );
+                            //                   },
+                            //                 ),
+                            //       // Wrap(
+                            //       //   spacing: 15,
+                            //       //   runSpacing: 5,
+                            //       //   children: [
+                            //       //     Chip(
+                            //       //       label: Text("HTML"),
+                            //       //     ),
+                            //       //     Chip(
+                            //       //       label: Text("CSS"),
+                            //       //     ),
+                            //       //   ],
+                            //       // ),
+                                
+                            //     ),
+                            //   ],
+                            // ),
+                         
                           ],
                         ),
                       ),
