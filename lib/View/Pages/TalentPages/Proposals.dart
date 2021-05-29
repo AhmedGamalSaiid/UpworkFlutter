@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/Models/JobDataModel.dart';
+// import 'package:upwork/Models/JobData.dart';
 import 'package:upwork/View/components/Shared/CustomCircleAvatar.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';

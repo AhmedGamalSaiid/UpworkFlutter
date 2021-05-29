@@ -15,6 +15,7 @@ class JobDataModel {
     this.jobTitle,
     this.jobType,
     this.jobVisibility,
+    this.skills,
     this.postTime,
   });
   String jobID;
@@ -31,21 +32,21 @@ class JobDataModel {
   String jobTitle;
   String jobType;
   String jobVisibility;
+  List skills;
 
   factory JobDataModel.fromJson(Map<String, dynamic> json) => JobDataModel(
-        jobID: json["jobID"],
-        authID: json["authID"],
-        freelancerNeed: json["freelancerNeed"],
-        jobBudget: json["jobBudget"],
-        jobCategory: json["jobCategory"],
-        jobDescription: json["jobDescription"],
-        jobDuration: json["jobDuration"],
-        jobExperienceLevel: json["jobExperienceLevel"],
-        jobImages: json["jobImages"],
-        jobPaymentType: json["jobPaymentType"],
-        jobTitle: json["jobTitle"],
-        jobType: json["jobType"],
-        jobVisibility: json["jobVisibility"],
-        postTime: json["postTime"],
-      );
+      authID: json["authID"],
+      freelancerNeed: json["freelancerNeed"],
+      jobBudget: json["jobBudget"],
+      jobCategory: json["jobCategory"],
+      jobDescription: json["jobDescription"],
+      jobDuration: json["jobDuration"],
+      jobExperienceLevel: json["jobExperienceLevel"],
+      jobImages: json["jobImages"],
+      jobPaymentType: json["jobPaymentType"],
+      jobTitle: json["jobTitle"],
+      jobType: json["jobType"],
+      jobVisibility: json["jobVisibility"],
+      skills: json["skills"],
+      postTime: json["postTime"]);
 }
