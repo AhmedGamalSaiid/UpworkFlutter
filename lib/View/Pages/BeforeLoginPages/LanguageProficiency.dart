@@ -254,6 +254,7 @@ class _LanguageProficiencyState extends State<LanguageProficiency> {
                       press: () {
                         DatabaseService().updateDocument('talent',
                             auth.currentUser.uid, {
+                              'englishProficiency':dropdownValue,
                               'languages': languages
                               }
                         );

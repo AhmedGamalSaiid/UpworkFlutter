@@ -7,6 +7,7 @@ import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart';
+import 'package:upwork/constanse.dart';
 import 'package:upwork/firebaseApp.dart';
 import 'package:upwork/View/components/Shared/CustomLoader.dart';
 
@@ -87,7 +88,7 @@ class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
                           children: <Widget>[
                             Center(
                               child: CircleAvatar(
-                                backgroundColor: Colors.black,
+                                backgroundColor: bgUpwork,
                                 child: CircleAvatar(
                                   minRadius: 48,
                                   maxRadius: 72,
@@ -166,7 +167,7 @@ class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
                                     height: 15.0,
                                     width: 15.0,
                                     decoration: new BoxDecoration(
-                                      color: Colors.black,
+                                      color: bgUpwork,
                                       shape: BoxShape.circle,
                                     ),
                                   ),
@@ -187,7 +188,7 @@ class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
                                     height: 15.0,
                                     width: 15.0,
                                     decoration: new BoxDecoration(
-                                      color: Colors.black,
+                                      color: bgUpwork,
                                       shape: BoxShape.circle,
                                     ),
                                   ),
@@ -208,7 +209,7 @@ class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
                                     height: 15.0,
                                     width: 15.0,
                                     decoration: new BoxDecoration(
-                                      color: Colors.black,
+                                      color: bgUpwork,
                                       shape: BoxShape.circle,
                                     ),
                                   ),
@@ -229,7 +230,7 @@ class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
                                     height: 15.0,
                                     width: 15.0,
                                     decoration: new BoxDecoration(
-                                      color: Colors.black,
+                                      color: bgUpwork,
                                       shape: BoxShape.circle,
                                     ),
                                   ),

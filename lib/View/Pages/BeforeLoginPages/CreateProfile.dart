@@ -251,7 +251,10 @@ class _CreateprofileState extends State<Createprofile> {
                           DatabaseService().updateDocument(
                               "talent",
                               auth.currentUser.uid,
-                              {'jobCategory': dropdownValueSubCat});
+                              {'jobCategory': dropdownValueSubCat,
+                              'authID':auth.currentUser.uid
+                              }
+                          );
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) {
