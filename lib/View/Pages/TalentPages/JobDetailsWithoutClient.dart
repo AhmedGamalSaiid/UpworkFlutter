@@ -3,15 +3,16 @@ import 'package:upwork/Models/JobData.dart';
 import 'package:upwork/View/Pages/TalentPages/SubmitProposal.dart';
 import 'package:intl/intl.dart';
 
-class JobDetails extends StatefulWidget {
+class JobDetailsWithoutClient extends StatefulWidget {
   final dateFormart = new DateFormat('kk:mm:a');
   final JobDataModel job;
-  JobDetails(this.job);
+  JobDetailsWithoutClient(this.job);
   @override
-  _JobDetailsState createState() => _JobDetailsState();
+  _JobDetailsWithoutClientState createState() =>
+      _JobDetailsWithoutClientState();
 }
 
-class _JobDetailsState extends State<JobDetails> {
+class _JobDetailsWithoutClientState extends State<JobDetailsWithoutClient> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

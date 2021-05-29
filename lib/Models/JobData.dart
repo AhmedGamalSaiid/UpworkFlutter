@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class JobDataModel {
   JobDataModel({
+    this.jobID,
     this.authID,
     this.freelancerNeed,
     this.jobBudget,
@@ -16,7 +17,7 @@ class JobDataModel {
     this.jobVisibility,
     this.postTime,
   });
-
+  String jobID;
   String authID;
   Timestamp postTime;
   String freelancerNeed;
@@ -32,6 +33,7 @@ class JobDataModel {
   String jobVisibility;
 
   factory JobDataModel.fromJson(Map<String, dynamic> json) => JobDataModel(
+        jobID: json["jobID"],
         authID: json["authID"],
         freelancerNeed: json["freelancerNeed"],
         jobBudget: json["jobBudget"],
@@ -44,6 +46,6 @@ class JobDataModel {
         jobTitle: json["jobTitle"],
         jobType: json["jobType"],
         jobVisibility: json["jobVisibility"],
-        postTime:json["postTime"],
+        postTime: json["postTime"],
       );
 }

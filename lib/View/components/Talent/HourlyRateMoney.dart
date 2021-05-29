@@ -1,25 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/Models/JobData.dart';
 
 import '../../../constanse.dart';
 
 class HourlyRateMoney extends StatefulWidget {
-  final JobDataModel job;
-
-  HourlyRateMoney({this.job});
+  double hourlyRate = 0;
+  HourlyRateMoney(this.hourlyRate);
   @override
   _HourlyRateMoneyState createState() => _HourlyRateMoneyState();
 }
 
 class _HourlyRateMoneyState extends State<HourlyRateMoney> {
-  double hourlyRate = 0;
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Card(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+    return Card(
+        child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
       Padding(
         padding: const EdgeInsets.only(
             left: 14.0, right: 14.0, top: 10.0, bottom: 5.0),
@@ -92,9 +86,8 @@ class _HourlyRateMoneyState extends State<HourlyRateMoney> {
                                 ),
                                 onChanged: (value) {
                                   setState(() {
-                                    hourlyRate = double.parse(value);
+                                    widget.hourlyRate = double.parse(value);
                                   });
-                                  print(hourlyRate);
                                 }),
                           ),
                           Text(" /hr"),
@@ -147,7 +140,7 @@ class _HourlyRateMoneyState extends State<HourlyRateMoney> {
                                 Icons.attach_money,
                                 color: bgUpwork,
                               ),
-                              Text((hourlyRate * 20 / 100).toString())
+                              Text((widget.hourlyRate * 20 / 100).toString())
                             ]),
                           ),
                           Text(" /hr"),
@@ -191,7 +184,7 @@ class _HourlyRateMoneyState extends State<HourlyRateMoney> {
                                 Icons.attach_money,
                                 color: bgUpwork,
                               ),
-                              Text((hourlyRate * 80 / 100).toString())
+                              Text((widget.hourlyRate * 80 / 100).toString())
                             ]),
                           ),
                           Text(" /hr"),
@@ -201,6 +194,6 @@ class _HourlyRateMoneyState extends State<HourlyRateMoney> {
               ],
             ),
           )),
-    ])));
+    ]));
   }
 }

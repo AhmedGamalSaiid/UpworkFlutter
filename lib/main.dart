@@ -12,7 +12,6 @@ import 'constanse.dart';
 import 'firebaseApp.dart';
 import 'View/Pages/BeforeLoginPages/createprofilephoto.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -24,22 +23,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var login = auth.currentUser;
     return MaterialApp(
-        title: 'Upwork',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: bgUpworkDark,
-          scaffoldBackgroundColor: Colors.white,
-        ),
-        initialRoute: '/',
-        routes: {
-          '/': (context) => login != null ? HomePage() : Welcome(),
-          '/jobs': (context) => HomePage(),
-          '/proposals': (context) => ProposalsPage(),
-          '/contracts': (context) => Contracts(),
-          '/messages': (context) => Messages(),
-          // '/alerts': (context) => (),
-          '/reports': (context) => ReportsPage(),
-        },
+      title: 'Upwork',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: bgUpworkDark,
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => login != null ? HomePage() : Welcome(),
+        '/jobs': (context) => HomePage(),
+        '/proposals': (context) => ProposalsPage(),
+        '/contracts': (context) => Contracts(),
+        '/messages': (context) => Messages(),
+        // '/alerts': (context) => (),
+        '/reports': (context) => ReportsPage(),
+      },
     );
   }
 }
