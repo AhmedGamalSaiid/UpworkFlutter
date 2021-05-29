@@ -31,14 +31,6 @@ class DatabaseService {
         .catchError((error) => print("Failed to update Document: $error"));
   }
 
-  Future<void> addSubCollection(String collectionName, docID, subCollectionName, subCollectionDoc, data) {
-    CollectionReference collection = database.collection(collectionName);
-    return collection
-        .doc(docID)
-        .collection(subCollectionName)
-        .doc(subCollectionDoc)
-        .set(data);
-    }
 
   Future<void> deleteDocument(String collectionName, docID) {
     CollectionReference collection = database.collection(collectionName);

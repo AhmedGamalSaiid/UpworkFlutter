@@ -345,11 +345,12 @@ class _EducationDetailsState extends State<EducationDetails> {
                       onPressed: () => {
                         DatabaseService()
                             .updateDocument('talent', auth.currentUser.uid, {
-                          'education': {
+                            'school': widget.school,
+                          'education': [{
                             'school': widget.school,
                             'degree': widget.degree,
                             'areaOfStudy': widget.areaofstudy,
-                          }
+                          }]
                         }),
                         Navigator.push(
                           context,

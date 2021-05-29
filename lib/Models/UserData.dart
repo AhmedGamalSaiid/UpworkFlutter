@@ -43,7 +43,7 @@ class UserDataModel {
   Map badge;
   int connects;
   List connectsHistory;
-  Map education;
+  List education;
   List employmentHistory;
   String profilePhoto;
   String school;

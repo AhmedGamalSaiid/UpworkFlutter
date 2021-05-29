@@ -7,11 +7,14 @@ class JobDetails extends StatefulWidget {
   final dateFormart = new DateFormat('kk:mm:a');
   final JobDataModel job;
   JobDetails(this.job);
+  
+
   @override
   _JobDetailsState createState() => _JobDetailsState();
 }
 
 class _JobDetailsState extends State<JobDetails> {
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
