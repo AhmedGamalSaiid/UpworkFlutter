@@ -1,10 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class JobDataModel {
   JobDataModel({
     this.authID,
     this.freelancerNeed,
     this.jobBudget,
     this.jobCategory,
-    this.jobDecription,
+    this.jobDescription,
     this.jobDuration,
     this.jobExperienceLevel,
     this.jobImages,
@@ -12,13 +14,15 @@ class JobDataModel {
     this.jobTitle,
     this.jobType,
     this.jobVisibility,
+    this.postTime,
   });
 
   String authID;
+  Timestamp postTime;
   String freelancerNeed;
   String jobBudget;
   String jobCategory;
-  String jobDecription;
+  String jobDescription;
   String jobDuration;
   String jobExperienceLevel;
   List jobImages;
@@ -32,7 +36,7 @@ class JobDataModel {
         freelancerNeed: json["freelancerNeed"],
         jobBudget: json["jobBudget"],
         jobCategory: json["jobCategory"],
-        jobDecription: json["jobDecription"],
+        jobDescription: json["jobDescription"],
         jobDuration: json["jobDuration"],
         jobExperienceLevel: json["jobExperienceLevel"],
         jobImages: json["jobImages"],
@@ -40,5 +44,6 @@ class JobDataModel {
         jobTitle: json["jobTitle"],
         jobType: json["jobType"],
         jobVisibility: json["jobVisibility"],
+        postTime:json["postTime"],
       );
 }

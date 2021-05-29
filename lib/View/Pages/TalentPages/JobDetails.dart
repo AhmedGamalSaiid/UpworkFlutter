@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/Models/JobData.dart';
 import 'package:upwork/View/Pages/TalentPages/SubmitProposal.dart';
+import 'package:intl/intl.dart';
 
 class JobDetails extends StatefulWidget {
+  final dateFormart = new DateFormat('kk:mm:a');
   final JobDataModel job;
-  JobDetails({this.job});
+  JobDetails(this.job);
   @override
   _JobDetailsState createState() => _JobDetailsState();
 }
@@ -33,7 +35,7 @@ class _JobDetailsState extends State<JobDetails> {
                 Padding(
                   padding: const EdgeInsets.only(
                       left: 14.0, right: 14.0, top: 10.0, bottom: 5.0),
-                  child: Text("Make an HTML dropout menu for our website",
+                  child: Text("${widget.job.jobTitle}",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 ),
@@ -51,7 +53,7 @@ class _JobDetailsState extends State<JobDetails> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 5.0),
                           child: Text(
-                            "Front-end Development",
+                            "${widget.job.jobCategory}",
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -61,7 +63,7 @@ class _JobDetailsState extends State<JobDetails> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 5.0),
-                          child: Text("Posted 7 minutes ago",
+                          child: Text("Posted 7 hours ago",
                               style:
                                   TextStyle(fontSize: 16, color: Colors.grey)),
                         ),
@@ -112,7 +114,7 @@ class _JobDetailsState extends State<JobDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Hello, \n It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. \n\n The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use .\n\n Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. ",
+                            "${widget.job.jobDescription}",
                             style: TextStyle(fontSize: 16),
                           )
                         ],
@@ -136,7 +138,7 @@ class _JobDetailsState extends State<JobDetails> {
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    "100\$",
+                                    "${widget.job.jobBudget}\$",
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),
@@ -147,7 +149,7 @@ class _JobDetailsState extends State<JobDetails> {
                                   child: Align(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      "Fixed-Price",
+                                      "${widget.job.jobPaymentType}",
                                       style: TextStyle(
                                           fontSize: 16, color: Colors.grey),
                                     ),
@@ -163,7 +165,7 @@ class _JobDetailsState extends State<JobDetails> {
                                 Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    "Intermediate",
+                                    "${widget.job.jobExperienceLevel}",
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold),

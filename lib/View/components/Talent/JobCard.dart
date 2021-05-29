@@ -19,7 +19,7 @@ class _JobCardState extends State<JobCard> {
       child: InkWell(
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return JobDetails();
+            return JobDetails(widget.job);
           }));
         },
         child: Container(
