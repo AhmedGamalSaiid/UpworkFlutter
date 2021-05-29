@@ -9,6 +9,8 @@ import 'package:path/path.dart';
 import 'package:upwork/firebaseApp.dart';
 import 'package:upwork/View/components/Shared/CustomLoader.dart';
 
+import 'Location.dart';
+
 class CreateProfilePhoto extends StatefulWidget {
   @override
   _CreateProfilePhotoState createState() => _CreateProfilePhotoState();
