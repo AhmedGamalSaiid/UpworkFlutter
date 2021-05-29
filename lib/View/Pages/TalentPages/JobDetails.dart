@@ -4,12 +4,12 @@ import 'package:upwork/Models/JobData.dart';
 import 'package:upwork/Models/clientData.Dart';
 import 'package:upwork/Services/clientDataService.dart';
 import 'package:upwork/View/Pages/TalentPages/SubmitProposal.dart';
+import 'package:intl/intl.dart';
 
 class JobDetails extends StatefulWidget {
+  final dateFormart = new DateFormat('kk:mm:a');
   final JobDataModel job;
-  // ClientDataModel client;
   JobDetails(this.job);
-  List arr = ["aa", "bb", "cc"];
   @override
   _JobDetailsState createState() => _JobDetailsState();
 }
@@ -627,7 +627,7 @@ class _JobDetailsState extends State<JobDetails> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) {
-                            return SubmitProposal();
+                            return SubmitProposal(widget.job);
                           }),
                         );
                       },

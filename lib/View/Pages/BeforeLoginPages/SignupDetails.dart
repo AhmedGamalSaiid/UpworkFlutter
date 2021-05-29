@@ -220,15 +220,6 @@ class _SignupDetailsState extends State<SignupDetails> {
                         auth.currentUser.sendEmailVerification()
                       }
                       );
-
-                    // if (!auth.currentUser.emailVerified) {
-                    //    await auth.currentUser.sendEmailVerification();
-                    // }
-                    ////////////
-                    // auth.currentUser.uid != null
-                    //     ? auth.currentUser.sendEmailVerification()
-                    //     : print("no id eeeeeeeeeeeeeee");
-
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) {
