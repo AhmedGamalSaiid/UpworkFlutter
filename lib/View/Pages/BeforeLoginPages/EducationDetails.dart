@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/Services/DatabaseService.dart';
-import 'package:upwork/View/Pages/BeforeLoginPages/Eductaion.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Employment.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
@@ -242,7 +241,7 @@ class _EducationDetailsState extends State<EducationDetails> {
                                 horizontal: 10, vertical: 0.05),
                             child: SelectDropDown(
                               [
-                                "To(or expected graduation year)",
+                                "To(expected graduation year)",
                                 "2028",
                                 "2027",
                                 "2026",
@@ -257,7 +256,9 @@ class _EducationDetailsState extends State<EducationDetails> {
                                 "2017",
                               ],
                               isExpand: true,
-                            )),
+                              
+                            )
+                        ),
                       ),
                       SizedBox(height: size.height * 0.03),
                       Row(
@@ -349,6 +350,7 @@ class _EducationDetailsState extends State<EducationDetails> {
                             'school': widget.school,
                             'degree': widget.degree,
                             'areaOfStudy': widget.areaofstudy,
+                            // 'gradYear':
                           }
                         }),
                         Navigator.push(

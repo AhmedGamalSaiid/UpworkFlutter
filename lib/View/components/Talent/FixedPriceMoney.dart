@@ -4,7 +4,8 @@ import '../../../constanse.dart';
 
 class FixedPriceMoney extends StatefulWidget {
   double hourlyRate = 0;
-  FixedPriceMoney(this.hourlyRate);
+  Function sendRate;
+  FixedPriceMoney(this.sendRate);
   @override
   _FixedPriceMoneyState createState() => _FixedPriceMoneyState();
 }
@@ -81,7 +82,7 @@ class _FixedPriceMoneyState extends State<FixedPriceMoney> {
                                 ),
                                 onChanged: (value) {
                                   setState(() {
-                                    widget.hourlyRate = double.parse(value);
+                                    widget.sendRate( double.parse(value));
                                   });
                                 }),
                           ),

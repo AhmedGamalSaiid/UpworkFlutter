@@ -34,7 +34,7 @@ class _LanguageProficiencyState extends State<LanguageProficiency> {
             builder: (context) => IconButton(
               icon: CircleAvatar(
                 radius: 50,
-                backgroundImage: ExactAssetImage("assets/img/06.jpg"),
+                backgroundImage: ExactAssetImage("assets/img/default-avatar.jpg"),
               ),
               onPressed: () => Scaffold.of(context).openDrawer(),
             ),
@@ -255,7 +255,7 @@ class _LanguageProficiencyState extends State<LanguageProficiency> {
                         DatabaseService().updateDocument('talent',
                             auth.currentUser.uid, {
                               'englishProficiency':dropdownValue,
-                              'languages': languages
+                              'otherLanguages': languages
                               }
                         );
                         Navigator.push(

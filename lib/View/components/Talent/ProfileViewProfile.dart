@@ -64,7 +64,7 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
           child: Row(
             children: [
               Text(
-                "\$" + widget.user.hourlyRate + "/hr",
+                "\$" + widget.user.hourlyRate.toString() + "/hr",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,

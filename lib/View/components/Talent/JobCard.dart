@@ -47,7 +47,7 @@ class _JobCardState extends State<JobCard> {
                   child: Text(
                     widget.job.jobPaymentType +
                         ": " +
-                        widget.job.jobBudget +
+                        widget.job.jobBudget.toString() +
                         "\$ -posted 1h ago",
                     textAlign: TextAlign.justify,
                     style: TextStyle(

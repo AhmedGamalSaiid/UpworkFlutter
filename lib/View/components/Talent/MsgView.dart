@@ -25,7 +25,7 @@ class _MsgViewState extends State<MsgView> {
             Stack(children: [
               ClipOval(
                   child: Image(
-                      image: AssetImage("assets/img/06.jpg"),
+                      image: AssetImage("assets/img/default-avatar.jpg"),
                       width: 80,
                       fit: BoxFit.fill)),
               Positioned(

@@ -89,23 +89,20 @@ class _CreateProfilePhotoState extends State<CreateProfilePhoto> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             Center(
-                              child: CircleAvatar(
-                                backgroundColor: bgUpwork,
-                                child: CircleAvatar(
-                                  minRadius: 48,
-                                  maxRadius: 72,
-                                  child: ClipOval(
-                                    child: (_imageFile != null)
-                                        ? Image.file(_imageFile)
-                                        : Image.asset(
-                                            'assets/img/default-avatar.jpg',
-                                            fit: BoxFit.fill,
-                                          ),
+                              child:Container(
+                                width: 150,
+                                height: 150,
+                                decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  image: (_imageFile !=null)?
+                                  FileImage(_imageFile):
+                                  AssetImage(
+                                    'assets/img/default-avatar.jpg',
                                   ),
-                                  backgroundColor: Colors.white,
+                                  fit: BoxFit.cover
                                 ),
-                                minRadius: 50,
-                                maxRadius: 75,
+                                ),
                               ),
                             ),
                             SizedBox(height: size.height * 0.03),

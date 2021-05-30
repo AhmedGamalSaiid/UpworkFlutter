@@ -17,12 +17,15 @@ class JobDataModel {
     this.jobVisibility,
     this.skills,
     this.postTime,
+    this.dueDate,
+    this.hired,
+    this.status,
   });
   String jobID;
   String authID;
   Timestamp postTime;
   String freelancerNeed;
-  String jobBudget;
+  int jobBudget;
   String jobCategory;
   String jobDescription;
   String jobDuration;
@@ -33,8 +36,12 @@ class JobDataModel {
   String jobType;
   String jobVisibility;
   List skills;
+  String dueDate;
+  int hired;
+  String status;
 
   factory JobDataModel.fromJson(Map<String, dynamic> json) => JobDataModel(
+      jobID: json["jobID"],
       authID: json["authID"],
       freelancerNeed: json["freelancerNeed"],
       jobBudget: json["jobBudget"],
@@ -48,5 +55,10 @@ class JobDataModel {
       jobType: json["jobType"],
       jobVisibility: json["jobVisibility"],
       skills: json["skills"],
-      postTime: json["postTime"]);
+      postTime: json["postTime"],
+      dueDate: json["dueDate"],
+      hired: json["hired"],
+      status: json["status"],
+      
+  );
 }

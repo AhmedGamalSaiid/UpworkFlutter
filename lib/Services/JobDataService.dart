@@ -10,6 +10,7 @@ class JobDataService {
         res.docs.forEach((doc) {
           jobs.add(JobDataModel.fromJson(doc.data()));
         });
+        print(jobs.length);
       });
     } catch (e) {
       print(e);
