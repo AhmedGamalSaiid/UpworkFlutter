@@ -31,7 +31,6 @@ class _ProfileTotalEarningState extends State<ProfileTotalEarning> {
                     Row(
                       children: [
                         Text(
-
                           widget.user.totalEarnings.toString(),
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -59,7 +58,7 @@ class _ProfileTotalEarningState extends State<ProfileTotalEarning> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Text(
-                      "3",
+                      widget.user.totalJobs.toString(),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 20,

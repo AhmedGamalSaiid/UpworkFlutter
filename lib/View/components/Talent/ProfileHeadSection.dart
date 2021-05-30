@@ -34,16 +34,19 @@ class _ProfileHeadSectionState extends State<ProfileHeadSection> {
                     Positioned(
                       child: CircleAvatar(
                         radius: 40,
-                        backgroundImage: NetworkImage(widget.user.profilePhoto),
+                        backgroundImage: widget.user.profilePhoto != null
+                            ? NetworkImage(widget.user.profilePhoto)
+                            : NetworkImage(
+                                "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"),
                       ),
                     ),
                     Positioned(
-                       top: -2,
+                      top: -2,
                       left: -2,
                       child: CustomIcon(Icons.mode_edit),
                     ),
                     Positioned(
-                      right:8,
+                      right: 8,
                       bottom: 3,
                       child: Container(
                         width: 15,

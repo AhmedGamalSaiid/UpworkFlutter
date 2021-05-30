@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:upwork/Models/UserData.dart';
 import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import '../../../constanse.dart';
 
 class ProfileSkills extends StatefulWidget {
+  final UserDataModel user;
+  ProfileSkills(this.user);
   @override
   _ProfileSkillsState createState() => _ProfileSkillsState();
 }
@@ -46,48 +49,10 @@ class _ProfileSkillsState extends State<ProfileSkills> {
             spacing: 15,
             runSpacing: 5,
             children: [
-              Chip(
-                label: Text("HTML"),
-              ),
-              Chip(
-                label: Text("CSS"),
-              ),
-              Chip(
-                label: Text("JS"),
-              ),
-              Chip(
-                label: Text("jQuery"),
-              ),
-              Chip(
-                label: Text("Bootstrap"),
-              ),
-              Chip(
-                label: Text("React.js"),
-              ),
-              Chip(
-                label: Text("Angular"),
-              ),
-              Chip(
-                label: Text("C#"),
-              ),
-              Chip(
-                label: Text("Flutter"),
-              ),
-              Chip(
-                label: Text("C++"),
-              ),
-              Chip(
-                label: Text("TypeScript"),
-              ),
-              Chip(
-                label: Text("PHP"),
-              ),
-              Chip(
-                label: Text("C"),
-              ),
-              Chip(
-                label: Text("sass"),
-              ),
+              for (var i = 0; i < widget.user.skills.length; i++)
+                Chip(
+                  label: Text(widget.user.skills[i]),
+                ),
             ],
           ),
         ],
