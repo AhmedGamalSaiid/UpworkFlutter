@@ -139,7 +139,7 @@ class _PhoneState extends State<Phone> {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) {
-                                            return HomePage();
+                                            return CreateProfilePreviewBeforeSubmit();
                                           },
                                         ),
                                       )

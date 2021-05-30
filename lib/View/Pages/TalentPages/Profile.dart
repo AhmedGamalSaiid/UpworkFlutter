@@ -27,8 +27,8 @@ class _ProfileState extends State<Profile> {
 
   getData() async {
     user = await UserDataService().getUserData();
-   
-   if(this.mounted) setState(() {});
+
+    if (this.mounted) setState(() {});
   }
 
   @override
@@ -66,14 +66,13 @@ class _ProfileState extends State<Profile> {
                   ProfileViewProfile(user),
                   // ProfileWorkHistory(user),
                   ProfilePortofolio(user),
-                  ProfileSkills(),
+                  ProfileSkills(user),
                   ProfileAvailability(
                     "As Needed - Open to Offers",
                   ),
                   ProfileLanguages(user),
                   ProfileEducation(user),
                   ProfileEmploymentHistory(user),
-                  ProfileOtherExperience(),
                 ],
               )
             : CustomLoader(),

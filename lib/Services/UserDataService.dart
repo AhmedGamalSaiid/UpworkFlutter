@@ -1,4 +1,3 @@
-  
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:upwork/Models/UserData.dart';
 import 'package:upwork/firebaseApp.dart';
@@ -8,26 +7,24 @@ class UserDataService {
   Future<UserDataModel> getUserData() async {
     UserDataModel user;
     try {
-      String uid =await AuthService().getCurrentUserUid().then((value) => value);
+      String uid =
+          await AuthService().getCurrentUserUid().then((value) => value);
       await FirebaseFirestore.instance
           .collection('talent')
           .doc(uid)
           .get()
-         .then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        print('Document exists on the database');
-      user = UserDataModel.fromJson(documentSnapshot.data());
-
-      }
-    });
-      
+          .then((DocumentSnapshot documentSnapshot) {
+        if (documentSnapshot.exists) {
+          print('Document exists on the database');
+          user = UserDataModel.fromJson(documentSnapshot.data());
+        }
+      });
     } catch (e) {
       print(e);
     }
+    print(user);
     return user;
   }
-
-  
 
   Future<List<UserDataModel>> getUsersData() async {
     List<UserDataModel> users = [];
@@ -42,5 +39,4 @@ class UserDataService {
     }
     return users;
   }
-
 }

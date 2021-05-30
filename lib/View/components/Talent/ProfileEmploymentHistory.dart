@@ -38,41 +38,77 @@ class _ProfileEmploymentHistoryState extends State<ProfileEmploymentHistory> {
                     ),
                   ),
                 ),
-                child: Row(
+                child: Column(
                   children: [
-                    Text(
-                      "Employment History",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Employment History",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 15.0),
-                      child: CustomIcon(Icons.add),
+                    Wrap(
+                      spacing: 15,
+                      runSpacing: 5,
+                      children: [
+                        for (var i = 0; i < widget.user.company.length; i++)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8, bottom: 8),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(top: 8, bottom: 8),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        "companyName : ",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      Text(
+                                        widget.user.company[i]["companyName"],
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(top: 8, bottom: 8),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        "jobTitile : ",
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Text(
+                                        widget.user.company[i]["jobTitile"],
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                      ],
                     ),
                   ],
                 ),
               ),
-              // for (var i = 0; i < 1; i++)
-                // Container(
-                //   width: MediaQuery.of(context).size.width * 0.92,
-                //   decoration: i != 0
-                //       ? BoxDecoration(
-                //           border: Border(
-                //             bottom: BorderSide(
-                //               width: 1.5,
-                //               color: bgUpworkSection,
-                //             ),
-                //           ),
-                //         )
-                //       : null,
-                //   // child: ProfileEmploymentItem(
-                //   //   // widget.user.company["companyName"],
-                //   //   // widget.user.company["jobTitile"],
-                //   //   "as","sad",description: "fdfd",
-                //   // ),
-                // ),
             ],
           ),
         ),

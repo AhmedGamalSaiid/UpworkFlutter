@@ -31,7 +31,6 @@ class _CreateProfilePreviewBeforeSubmitState
   void initState() {
     super.initState();
     getData();
-    
   }
 
   @override
@@ -58,7 +57,7 @@ class _CreateProfilePreviewBeforeSubmitState
         ],
       ),
       body: SingleChildScrollView(
-        child: 'user' != null
+        child: user != null
             ? Column(
                 children: [
                   Container(
@@ -113,7 +112,7 @@ class _CreateProfilePreviewBeforeSubmitState
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Text(
-                                    // 'j',
+                                      // 'j',
                                       "Looking good, ${user.firstName}",
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,
@@ -180,8 +179,10 @@ class _CreateProfilePreviewBeforeSubmitState
                                   Positioned(
                                     child: CircleAvatar(
                                       radius: 40,
-                                      backgroundImage:
-                                          ExactAssetImage("assets/img/06.jpg"),
+                                      backgroundImage: user.profilePhoto != null
+                                          ? NetworkImage(user.profilePhoto)
+                                          : NetworkImage(
+                                              "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"),
                                     ),
                                   ),
                                 ],
@@ -212,7 +213,8 @@ class _CreateProfilePreviewBeforeSubmitState
                                           Icons.room,
                                           size: 15,
                                         ),
-                                        Text("${user?.location['city']}, Egypt"),
+                                        Text(
+                                            "${user?.location['city']}, Egypt"),
                                       ],
                                     ),
                                   ),
@@ -226,13 +228,7 @@ class _CreateProfilePreviewBeforeSubmitState
                                 ],
                               ),
                             ),
-                            Expanded(
-                              flex: 1,
-                              child: Padding(
-                                padding: const EdgeInsets.only(right: 30),
-                                child: CustomIcon(Icons.mode_edit),
-                              ),
-                            ),
+                            CustomIcon(Icons.mode_edit),
                           ],
                         ),
                       ),
@@ -267,9 +263,7 @@ class _CreateProfilePreviewBeforeSubmitState
                               padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.8,
-                                child: Text(
-                                  "${user.overview}"
-                                ),
+                                child: Text("${user.overview}"),
                               ),
                             ),
                           ],
@@ -312,69 +306,78 @@ class _CreateProfilePreviewBeforeSubmitState
                         ),
                       ),
                       Container(
+                        width: MediaQuery.of(context).size.width * 0.9,
                         child: Padding(
-                          padding: const EdgeInsets.only(
-                              top: 8.0, left: 20, bottom: 10),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Languages",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
+                          padding: const EdgeInsets.only(top: 8.0, bottom: 10),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.only(
+                                      top: 15.0, bottom: 15.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "Languages",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                      CustomIcon(Icons.mode_edit),
+                                    ],
+                                  ),
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      bottom: BorderSide(
+                                        width: 1.5,
+                                        color: bgUpworkSection,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ],
+                                Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Wrap(
+                                          direction: Axis.horizontal,
+                                          children: [
+                                            for (var i = 0;
+                                                i < user?.languages.length;
+                                                i++)
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(4),
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      color: Color(0xffCDCECB),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              25)),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      user.languages[i]
+                                                          ["language"],
+                                                      style: TextStyle(
+                                                          fontSize: 12),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                          ]),
+                                    ))
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                      // Container(
-                      //                       height: 200,
-                      //                       child: ListView.builder(
-                      //                         itemCount: user.lan.length,
-                      //                         itemBuilder:
-                      //                             (BuildContext context,
-                      //                                 int index) {
-                      //                           return Padding(
-                      //                             padding:
-                      //                                 const EdgeInsets.only(
-                      //                                     top: 8),
-                      //                             child: Row(
-                      //                               mainAxisAlignment:
-                      //                                   MainAxisAlignment
-                      //                                       .spaceBetween,
-                      //                               children: [
-                      //                                 Row(
-                      //                                   children: [
-                      //                                     Text(
-                      //                                       user.skills[index][
-                      //                                               "language"] +
-                      //                                           " : ",
-                      //                                       style: TextStyle(
-                      //                                           fontWeight:
-                      //                                               FontWeight
-                      //                                                   .bold),
-                      //                                     ),
-                      //                                     Text(user.skills[index]
-                      //                                         ["langProf"]),
-                      //                                   ],
-                      //                                 ),
-                      //                                 InkWell(
-                      //                                   child: CustomIcon(
-                      //                                       Icons.delete),
-                      //                                   onTap: () {
-                      //                                     setState(() {
-                      //                                       user.skills.removeAt(
-                      //                                           index);
-                      //                                     });
-                      //                                   },
-                      //                                 )
-                      //                               ],
-                      //                             ),
-                      //                           );
-                      //                         },
-                      //                       ),
-                      //                   )
                     ],
                   ),
                   Container(
@@ -388,7 +391,6 @@ class _CreateProfilePreviewBeforeSubmitState
                           children: [
                             Container(
                               padding: const EdgeInsets.only(
-                                left: 12.0,
                                 top: 15,
                                 bottom: 20,
                               ),
@@ -400,85 +402,54 @@ class _CreateProfilePreviewBeforeSubmitState
                                   ),
                                 ),
                               ),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    "Skills",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.9,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Skills",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 190.0),
-                                    child: CustomIcon(Icons.mode_edit),
-                                  ),
-                                ],
+                                    CustomIcon(Icons.mode_edit),
+                                  ],
+                                ),
                               ),
                             ),
-                          Container(
-                             height: 200,
-                                            child: ListView.builder(
-                                              itemCount: user.skills.length,
-                                              itemBuilder:
-                                                  (BuildContext context,
-                                                      int index) {
-                                                return Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 8),
-                                                  child:
-                                                   Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .start,
-                                                    children: [
-                                   
-                                      Chip(
-                                        label: Text(user.skills[index]),
-                                      ),
-                                  
-                                       ],
-                                                  ),
-                                                
-                                                );
-                                              },
+                            Padding(
+                              padding: const EdgeInsets.only(top: 5),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Wrap(
+                                  direction: Axis.horizontal,
+                                  children: [
+                                    for (var i = 0;
+                                        i < user?.skills.length;
+                                        i++)
+                                      Padding(
+                                        padding: const EdgeInsets.all(4),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: Color(0xffCDCECB),
+                                              borderRadius:
+                                                  BorderRadius.circular(25)),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              user.skills[i],
+                                              style: TextStyle(fontSize: 12),
                                             ),
-                          )
-                            // Column(
-                            //   children: [
-                            //     Padding(
-                            //       padding: const EdgeInsets.all(12.0),
-                            //       child:ListView.builder(
-                            //                   itemCount: user.skills.length,
-                            //                   itemBuilder:
-                            //                       (BuildContext context,
-                            //                           int index) {
-                            //                     return Padding(
-                            //                       padding:
-                            //                           const EdgeInsets.only(
-                            //                               top: 8),
-                            //                               child: Text(user.skills[index]),
-                            //                     );
-                            //                   },
-                            //                 ),
-                            //       // Wrap(
-                            //       //   spacing: 15,
-                            //       //   runSpacing: 5,
-                            //       //   children: [
-                            //       //     Chip(
-                            //       //       label: Text("HTML"),
-                            //       //     ),
-                            //       //     Chip(
-                            //       //       label: Text("CSS"),
-                            //       //     ),
-                            //       //   ],
-                            //       // ),
-                                
-                            //     ),
-                            //   ],
-                            // ),
-                         
+                                          ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ),
@@ -486,28 +457,18 @@ class _CreateProfilePreviewBeforeSubmitState
                   ),
                   Container(
                     color: bgUpworkSection,
-                    padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
                     child: Container(
-                      color: Colors.white,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        color: Colors.white,
                         child: Column(
                           children: [
                             Container(
                               padding: const EdgeInsets.only(
-                                left: 12.0,
-                                top: 15,
-                                bottom: 20,
-                              ),
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    width: 1.5,
-                                    color: bgUpworkSection,
-                                  ),
-                                ),
-                              ),
+                                  top: 15.0, bottom: 15.0),
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     "Employment history",
@@ -516,11 +477,16 @@ class _CreateProfilePreviewBeforeSubmitState
                                       fontSize: 18,
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 80.0),
-                                    child: CustomIcon(Icons.mode_edit),
-                                  ),
+                                  CustomIcon(Icons.mode_edit),
                                 ],
+                              ),
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    width: 1.5,
+                                    color: bgUpworkSection,
+                                  ),
+                                ),
                               ),
                             ),
                             Row(
@@ -534,9 +500,7 @@ class _CreateProfilePreviewBeforeSubmitState
                               ],
                             ),
                           ],
-                        ),
-                      ),
-                    ),
+                        )),
                   ),
                   Container(
                     color: bgUpworkSection,
@@ -549,7 +513,6 @@ class _CreateProfilePreviewBeforeSubmitState
                           children: [
                             Container(
                               padding: const EdgeInsets.only(
-                                left: 12.0,
                                 top: 15,
                                 bottom: 20,
                               ),
@@ -562,6 +525,8 @@ class _CreateProfilePreviewBeforeSubmitState
                                 ),
                               ),
                               child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     "Education",
@@ -570,22 +535,27 @@ class _CreateProfilePreviewBeforeSubmitState
                                       fontSize: 18,
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 160.0),
-                                    child: CustomIcon(Icons.mode_edit),
-                                  ),
+                                  CustomIcon(Icons.mode_edit),
                                 ],
                               ),
                             ),
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(12.0),
-                                  child: Text(
-                                    "Frontend Training",
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 15, bottom: 15),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    user.education["school"],
                                   ),
-                                ),
-                              ],
+                                  Text(
+                                    user.education["degree"] != null
+                                        ? user.education["degree"]
+                                        : "",
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),

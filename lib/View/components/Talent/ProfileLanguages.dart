@@ -47,46 +47,58 @@ class _ProfileLanguagesState extends State<ProfileLanguages> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 8.0),
-                  child: Row(
+                  child: Column(
                     children: [
-                      Text(
-                        "English: ",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
+                      Row(
+                        children: [
+                          Text(
+                            "English: ",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          Text(
+                            widget.user.englishProficiency,
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        widget.user.englishProficiency,
-                        style: TextStyle(
-                          fontSize: 14,
-                        ),
+                      Wrap(
+                        spacing: 15,
+                        runSpacing: 5,
+                        children: [
+                          for (var i = 0;
+                              i < widget.user.otherLanguages.length;
+                              i++)
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8, bottom: 8),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    widget.user.otherLanguages[i]["language"] +
+                                        ": ",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  Text(
+                                    widget.user.otherLanguages[i]["langProf"],
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                        ],
                       ),
                     ],
                   ),
                 ),
-                // widget.arabic != null
-                //     ? Padding(
-                //         padding: const EdgeInsets.only(top: 12.0),
-                //         child: Row(
-                //           children: [
-                //             Text(
-                //               "Arabic: ",
-                //               style: TextStyle(
-                //                 fontWeight: FontWeight.bold,
-                //                 fontSize: 16,
-                //               ),
-                //             ),
-                //             Text(
-                //               widget.arabic,
-                //               style: TextStyle(
-                //                 fontSize: 14,
-                //               ),
-                //             ),
-                //           ],
-                //         ),
-                //       )
-                //     : Text(""),
               ],
             ),
           ),
