@@ -43,7 +43,7 @@ class UserDataModel {
   Map badge;
   int connects;
   List connectsHistory;
-  List education;
+  Map education;
   List employmentHistory;
   String profilePhoto;
   String school;
@@ -82,7 +82,7 @@ class UserDataModel {
         badge: json["badge"],
         connects: json["connects"],
         education: json["education"],
-        company:json["company"],
+        company: json["company"],
         school: json["school"],
         email: json["email"],
         expertiseLevel: json["expertiseLevel"],
@@ -90,7 +90,7 @@ class UserDataModel {
         hourlyRate: json["hourlyRate"],
         jobHistory: json["jobHistory"],
         savedJobs: json["savedJobs"],
-        lastName:json["lastName"],  
+        lastName: json["lastName"],
         searchHistory: json["searchHistory"],
         employmentHistory: json["employmentHistory"],
         languages: json["languages"],

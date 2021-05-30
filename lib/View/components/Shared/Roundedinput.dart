@@ -9,8 +9,7 @@ class RoundedInputField extends StatelessWidget {
   final bool passInput;
   final TextInputType textInputType;
   final ValueChanged<String> onChanged;
-    final TextEditingController messageController ;
-
+  final TextEditingController messageController;
 
   const RoundedInputField({
     Key key,
@@ -29,6 +28,8 @@ class RoundedInputField extends StatelessWidget {
     return TextFieldContainer(
         child: Form(
       child: TextFormField(
+        // autovalidateMode: AutovalidateMode.onUserInteraction,        
+        // validator:(value) => RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)?null : err,
         controller: messageController,
         keyboardType: textInputType,
         obscureText: passInput,
@@ -40,12 +41,16 @@ class RoundedInputField extends StatelessWidget {
             color: Color(0xff6D6D6D),
             size: 18,
           ),
-          hintText: hintText,
+          hintText:hintText,
           hintStyle: TextStyle(
               color: Color(0xff6D6D6D),
               fontSize: 16,
-              fontWeight: FontWeight.w300),
+              fontWeight: FontWeight.w300
+          ),
           border: InputBorder.none,
+          // errorText: err,
+          // contentPadding: EdgeInsets.only(left: 11, right: 3, top: 0, bottom: 10),
+          // errorStyle: TextStyle(fontSize: 10, height: 0),
         ),
       ),
     ));

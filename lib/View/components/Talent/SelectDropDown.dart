@@ -4,13 +4,13 @@ import '../../../constanse.dart';
 class SelectDropDown extends StatefulWidget {
   final List listItems;
   final bool isExpand;
-  SelectDropDown(this.listItems, {this.isExpand});
+  String dropdownValue;
+  SelectDropDown( this.listItems, {this.isExpand});
   @override
   _SelectDropDownState createState() => _SelectDropDownState();
 }
 
 class _SelectDropDownState extends State<SelectDropDown> {
-  String dropdownValue;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -27,7 +27,7 @@ class _SelectDropDownState extends State<SelectDropDown> {
           padding: const EdgeInsets.only(bottom: 10, left: 10),
           child: Text(widget.listItems.first),
         ),
-        value: dropdownValue,
+        value: widget.dropdownValue,
         icon: Padding(
           padding: const EdgeInsets.only(bottom: 8.0, right: 10),
           child: Icon(Icons.arrow_drop_down),
@@ -35,7 +35,7 @@ class _SelectDropDownState extends State<SelectDropDown> {
         isExpanded: widget.isExpand == true ? true : false,
         onChanged: (newValue) {
           setState(() {
-            dropdownValue = newValue;
+            widget.dropdownValue = newValue;
           });
         },
         items: widget.listItems.map((valueItem) {

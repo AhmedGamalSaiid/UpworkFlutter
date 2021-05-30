@@ -32,13 +32,13 @@ class _PasswordPageState extends State<PasswordPage> {
             SizedBox(height: size.height * 0.03),
             Text(
               "Welcome",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 25),
             ),
             SizedBox(height: size.height * 0.03),
             if (widget.emailVal != null)
               Text(
                 widget.emailVal,
-                style: TextStyle(fontSize: 15),
+                style: TextStyle(fontSize: 15,fontWeight:FontWeight.w500,color: bgUpworkDark ),
               ),
             SizedBox(height: size.height * 0.03),
             RoundedInputField(
@@ -58,11 +58,18 @@ class _PasswordPageState extends State<PasswordPage> {
               press: () async {
                 bool isLogin =
                     await AuthService().signIn(widget.emailVal, passVal);
-                if (isLogin) {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return HomePage();
-                  }));
-                }
+                isLogin
+                    ? Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                        return HomePage();
+                      }))
+                    : Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                        return PasswordPage(emailVal: 'Email is not in use.. Go to Signup',);
+                      }));
+                // if (isLogin) {
+                //   Navigator.push(context, MaterialPageRoute(builder: (context) {return HomePage();}));
+                // }
               },
             ),
             SizedBox(height: 10),
