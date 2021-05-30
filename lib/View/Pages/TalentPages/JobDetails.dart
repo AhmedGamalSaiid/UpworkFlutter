@@ -4,7 +4,6 @@ import 'package:upwork/Models/JobData.dart';
 import 'package:upwork/Models/clientData.Dart';
 import 'package:upwork/Services/clientDataService.dart';
 import 'package:upwork/View/Pages/TalentPages/SubmitProposal.dart';
-import 'package:intl/intl.dart';
 
 class JobDetails extends StatefulWidget {
   final dateFormart = new DateFormat('kk:mm:a');
@@ -33,8 +32,8 @@ class _JobDetailsState extends State<JobDetails> {
   }
 
   @override
-  final dateFormat = new DateFormat('yyyy-MM-dd');
   Widget build(BuildContext context) {
+  final dateFormat = new DateFormat('yyyy-MM-dd');
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(color: Color(0xff5BBC2E)),
@@ -286,7 +285,7 @@ class _JobDetailsState extends State<JobDetails> {
                                           Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              widget.job.jobBudget + "\$",
+                                              widget.job.jobBudget.toString() + "\$",
                                               style: TextStyle(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.bold),

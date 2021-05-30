@@ -15,6 +15,8 @@ class ProfileEmploymentHistory extends StatefulWidget {
 class _ProfileEmploymentHistoryState extends State<ProfileEmploymentHistory> {
   @override
   Widget build(BuildContext context) {
+    print(widget.user.company);
+
     return Container(
       color: bgUpworkSection,
       padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
@@ -50,6 +52,7 @@ class _ProfileEmploymentHistoryState extends State<ProfileEmploymentHistory> {
                         ),
                       ),
                     ),
+                    widget.user.company.length>0?
                     Wrap(
                       spacing: 15,
                       runSpacing: 5,
@@ -72,7 +75,7 @@ class _ProfileEmploymentHistoryState extends State<ProfileEmploymentHistory> {
                                         ),
                                       ),
                                       Text(
-                                        widget.user.company[i]["companyName"],
+                                        widget.user?.company[i]["companyName"],
                                         style: TextStyle(
                                           fontSize: 16,
                                         ),
@@ -86,14 +89,14 @@ class _ProfileEmploymentHistoryState extends State<ProfileEmploymentHistory> {
                                   child: Row(
                                     children: [
                                       Text(
-                                        "jobTitile : ",
+                                        "jobTitle : ",
                                         style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                       Text(
-                                        widget.user.company[i]["jobTitile"],
+                                        widget.user?.company[i]["jobTitle"],
                                         style: TextStyle(
                                           fontSize: 16,
                                         ),
@@ -105,7 +108,8 @@ class _ProfileEmploymentHistoryState extends State<ProfileEmploymentHistory> {
                             ),
                           ),
                       ],
-                    ),
+                    )
+                    :Text(''),
                   ],
                 ),
               ),

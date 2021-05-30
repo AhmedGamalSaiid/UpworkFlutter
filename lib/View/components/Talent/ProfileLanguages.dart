@@ -66,6 +66,7 @@ class _ProfileLanguagesState extends State<ProfileLanguages> {
                           ),
                         ],
                       ),
+                          widget.user.otherLanguages.length>0?
                       Wrap(
                         spacing: 15,
                         runSpacing: 5,
@@ -95,7 +96,10 @@ class _ProfileLanguagesState extends State<ProfileLanguages> {
                               ),
                             ),
                         ],
-                      ),
+                      )
+                    
+                    :null
+                   
                     ],
                   ),
                 ),

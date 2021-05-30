@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/Services/authService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Verifyemail.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
@@ -7,7 +6,7 @@ import 'package:upwork/firebaseApp.dart';
 import 'Verifyemail.dart';
 
 class SignupDetails extends StatefulWidget {
-  final String emailVal;
+  String emailVal;
   String passWord;
   String firstName;
   String lastName;
@@ -22,7 +21,7 @@ class _SignupDetailsState extends State<SignupDetails> {
   String dropdownValue;
   @override
   Widget build(BuildContext context) {
-    String databaseErr='';
+    String databaseErr = '';
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -194,61 +193,99 @@ class _SignupDetailsState extends State<SignupDetails> {
                   textColor: Colors.white,
                   borderColor: Color(0x00000000),
                   press: () async {
-                    AuthService()
-                        .signUp(widget.emailVal, widget.passWord, {
-                          'firstName': widget.firstName,
-                          'lastName': widget.lastName,
-                          'email': widget.emailVal,
-                          'password': widget.passWord,
-                          'userType': 'talent',
-                          'totalJobs': 0,
-                          'totalEarnings': 0,
-                          'totalHours': 0,
-                          'badge': {
-                            'none': "",
-                            'risingTalent': "Rising Talent",
-                            'topRated': "Top Rated",
-                            'expert': "Expert-Vetted"
-                          },
-                          'profileCompletion': 0,
-                          'jobHistory': [],
-                          'portfolio': [],
-                          'skills': [],
-                          'connects': 20,
-                          'accepted':false,
-                        })
-                        .then((res) => {
-                          res !=null?
-                          Navigator.push(
+                    await auth.createUserWithEmailAndPassword(email: widget.emailVal, password: widget.passWord)
+                        .then((value) => {
+                          database.collection('talent').doc(auth.currentUser.uid).set({
+                                'firstName': widget.firstName,
+                                'lastName': widget.lastName,
+                                'email': widget.emailVal,
+                                'password': widget.passWord,
+                                'userType': 'talent',
+                                'totalJobs': 0,
+                                'totalEarnings': 0,
+                                'totalHours': 0,
+                                'badge': {
+                                  'none': "",
+                                  'risingTalent': "Rising Talent",
+                                  'topRated': "Top Rated",
+                                  'expert': "Expert-Vetted"
+                                },
+                                'profileCompletion': 0,
+                                'jobHistory': [],
+                                'portfolio': [],
+                                'skills': [],
+                                'connects': 20,
+                                'accepted': false,
+                              }),
+                              Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) {
                                   return Verifyemail(
                                     emailVal: widget.emailVal,
                                   );
-                                }
-                                ),
-                          ):null,
-                              auth.currentUser
-                                  .updateProfile(displayName: 'talent'),
-                              auth.currentUser.sendEmailVerification()
-                              
-                              
-                        }
-                        )
-                            
+                                }),
+                              ),
+                            })
                         .catchError((onError) => {
-                          //databaseErr=onError.toString(),
-                         Navigator.push(
+                              Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) {
                                   return SignupDetails(
-                                    emailVal: 'Email use in anthor account',
+                                    emailVal:
+                                        'The email address is already in use',
                                   );
-                                }
-                                ),
+                                }),
                               ),
-                        });
-                    
+                              // widget.emailVal=
+                              // 'The email address is already in use by another account'
+                            });
+                    // AuthService()
+                    //     .signUp(widget.emailVal, widget.passWord, {
+                    //       'firstName': widget.firstName,
+                    //       'lastName': widget.lastName,
+                    //       'email': widget.emailVal,
+                    //       'password': widget.passWord,
+                    //       'userType': 'talent',
+                    //       'totalJobs': 0,
+                    //       'totalEarnings': 0,
+                    //       'totalHours': 0,
+                    //       'badge': {
+                    //         'none': "",
+                    //         'risingTalent': "Rising Talent",
+                    //         'topRated': "Top Rated",
+                    //         'expert': "Expert-Vetted"
+                    //       },
+                    //       'profileCompletion': 0,
+                    //       'jobHistory': [],
+                    //       'portfolio': [],
+                    //       'skills': [],
+                    //       'connects': 20,
+                    //       'accepted': false,
+                    //     })
+                    //     .then((res) => {
+                    //           Navigator.push(
+                    //             context,
+                    //             MaterialPageRoute(builder: (context) {
+                    //               return Verifyemail(
+                    //                 emailVal: widget.emailVal,
+                    //               );
+                    //             }),
+                    //           ),
+                    //           auth.currentUser
+                    //               .updateProfile(displayName: 'talent'),
+                    //           auth.currentUser.sendEmailVerification()
+                    //         })
+                    //     .catchError((onError) => {
+                    //           //databaseErr=onError.toString(),
+                    //           Navigator.push(
+                    //             context,
+                    //             MaterialPageRoute(builder: (context) {
+                    //               return SignupDetails(
+                    //                 emailVal: 'Email use in anthor account',
+                    //               );
+                    //             }),
+                    //           ),
+                    //         });
                   },
                 ),
               ]),

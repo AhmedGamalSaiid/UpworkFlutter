@@ -34,6 +34,11 @@ class _SubmitProposalState extends State<SubmitProposal> {
   ///Needs image_picker plugin {https://pub.dev/packages/image_picker}
   final picker = ImagePicker();
 
+  void getRate(double numb) {
+    jobRate = numb;
+    // print(jobRate);
+  }
+
   Future pickImageGallary() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
 
@@ -62,10 +67,8 @@ class _SubmitProposalState extends State<SubmitProposal> {
 
   @override
   Widget build(BuildContext context) {
-    print(jobRate);
-    print(widget.job.jobPaymentType);
-    print(widget.job.jobID);
-
+    print(widget.job?.jobID);
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -228,11 +231,10 @@ class _SubmitProposalState extends State<SubmitProposal> {
                             ),
                           )),
                     ])),
-                if (widget.job.jobPaymentType == "Fixed Price" &&
-                    jobRate != null) ...[
-                  FixedPriceMoney(jobRate),
+                if (widget.job.jobPaymentType == "Fixed Price") ...[
+                  FixedPriceMoney(getRate),
                 ] else ...[
-                  HourlyRateMoney(jobRate),
+                  HourlyRateMoney(getRate),
                 ],
                 Card(
                     child: Column(
@@ -281,7 +283,7 @@ class _SubmitProposalState extends State<SubmitProposal> {
                                       child: Row(
                                         children: [
                                           SizedBox(
-                                            width: 320,
+                                            width: size.width * 0.8,
                                             child: TextField(
                                               onChanged: (value) => {
                                                 coverLetter = value,
@@ -339,14 +341,20 @@ class _SubmitProposalState extends State<SubmitProposal> {
                             textColor: Colors.white,
                             borderColor: Color(0x00000000),
                             press: () {
-                              DatabaseService().addSubCollectionDocument(
-                                  'job', 'proposals', widget.job.jobID, {
-                                'coverLetter': coverLetter,
-                                'budget': jobRate,
-                                'clientId': widget.job.authID,
-                                'jobPaymentType': widget.job.jobPaymentType,
-                                'talentId': auth.currentUser.uid
-                              });
+                              database
+                                  .collection('job')
+                                  .doc(widget.job.jobID)
+                                  .collection('proposals')
+                                  .add(
+                                  {
+                                    'coverLetter': coverLetter,
+                                    'budget': jobRate,
+                                    'clientId': widget.job.authID,
+                                    'jobPaymentType': widget.job.jobPaymentType,
+                                    'talentId': auth.currentUser.uid
+                                  }
+                                  );
+
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) {

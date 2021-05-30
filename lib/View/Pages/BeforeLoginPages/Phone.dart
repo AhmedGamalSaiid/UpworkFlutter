@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:upwork/Services/DatabaseService.dart';
-import 'package:upwork/View/Pages/TalentPages/HomePage.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:country_pickers/country.dart';
@@ -30,7 +29,7 @@ class _PhoneState extends State<Phone> {
                 builder: (context) => IconButton(
                   icon: CircleAvatar(
                     radius: 50,
-                    backgroundImage: ExactAssetImage("assets/img/06.jpg"),
+                    backgroundImage: ExactAssetImage("assets/img/default-avatar.jpg"),
                   ),
                   onPressed: () => Scaffold.of(context).openDrawer(),
                 ),

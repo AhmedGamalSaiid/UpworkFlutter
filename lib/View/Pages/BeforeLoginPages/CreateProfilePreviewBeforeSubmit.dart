@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:upwork/Models/UserData.dart';
 import 'package:upwork/Services/UserDataService.dart';
 import 'package:upwork/View/Pages/TalentPages/HomePage.dart';
+import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomIcon.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
@@ -36,12 +37,15 @@ class _CreateProfilePreviewBeforeSubmitState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+              drawer: CustomDrawer(),
+
       appBar: AppBar(
+        
         leading: Builder(
           builder: (context) => IconButton(
             icon: CircleAvatar(
               radius: 50,
-              backgroundImage: ExactAssetImage("assets/img/06.jpg"),
+              backgroundImage:user !=null ?NetworkImage(user?.profilePhoto): ExactAssetImage("assets/img/default-avatar.jpg"),
             ),
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
@@ -151,7 +155,7 @@ class _CreateProfilePreviewBeforeSubmitState
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(builder: (context) {
-                                            return CreateProfilePreviewBeforeSubmit();
+                                            return HomePage();
                                             // return HomePage();
                                           }),
                                         );
