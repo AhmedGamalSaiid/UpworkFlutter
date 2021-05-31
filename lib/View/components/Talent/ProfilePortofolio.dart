@@ -45,28 +45,22 @@ class _ProfilePortofolioState extends State<ProfilePortofolio> {
                   ),
                 ),
               ),
-              
               CustomIcon(Icons.add),
             ],
           ),
-          // Wrap(
-          //   spacing: 15,
-          //   runSpacing: 20,
-          //   children: [
-          //   widget.user!=null?
-          //     for (var i = 0; i < widget.user.portfolio.length; i++)
-          //       PortfolioItem(
-          //         widget.user.portfolio[i].image,
-          //          widget.user.portfolio[i].imagetitle,
-          //       ),
-              
-                
-          //     :
-          //     Text("")
-  
-              
-          //   ],
-          // ),
+          widget.user.portfolio.length > 0
+              ? Wrap(
+                  spacing: 15,
+                  runSpacing: 20,
+                  children: [
+                    for (var i = 0; i < widget.user.portfolio.length; i++)
+                      PortfolioItem(
+                        widget.user.portfolio[i].image,
+                        widget.user.portfolio[i].imagetitle,
+                      ),
+                  ],
+                )
+              : Text(""),
         ],
       ),
     );

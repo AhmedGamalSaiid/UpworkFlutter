@@ -454,7 +454,7 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                             .updateDocument('talent', auth.currentUser.uid, {
                           'company':[ {
                             // 'companyName': widget.company,
-                            'jobTitile': widget.title,
+                            'jobTitle': widget.title,
                             'stillWork': valuesecond,
                             'companyLocation': widget.location,
                           }]

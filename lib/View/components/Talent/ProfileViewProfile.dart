@@ -14,9 +14,7 @@ class ProfileViewProfile extends StatefulWidget {
 class _ProfileViewProfileState extends State<ProfileViewProfile> {
   @override
   Widget build(BuildContext context) {
-    return 
-    
-    Column(
+    return Column(
       children: [
         Row(
           children: [
@@ -35,25 +33,8 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
                 ),
               ),
             ),
-            // CustomIcon(Icons.mode_edit),
           ],
         ),
-        // Container(
-        //   padding: const EdgeInsets.only(
-        //     left: 20,
-        //     right: 20,
-        //     top: 0,
-        //     bottom: 10,
-        //   ),
-        //   child: SelectDropDown(
-        //     [
-        //       "All Work",
-        //       "CMS Development",
-        //       "Frontend Development",
-        //     ],
-        //     isExpand: true,
-        //   ),
-        // ),
         Row(
           children: [
             Padding(
@@ -83,7 +64,7 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
           child: Row(
             children: [
               Text(
-                "\$" + widget.user.hourlyRate + "/hr",
+                "\$" + widget.user.hourlyRate.toString() + "/hr",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
@@ -96,24 +77,22 @@ class _ProfileViewProfileState extends State<ProfileViewProfile> {
             ],
           ),
         ),
-        
         Align(
-      alignment: Alignment.topLeft,
-      child: SafeArea(
-        left: true,
-        top: true,
-        right: true,
-        bottom: true,
-        minimum: const EdgeInsets.all(16.0),
-        child: Text(
-                    widget.user.overview,
-                    style: TextStyle(
-                      fontSize: 14,
-                    ),
-                  ),
-      ),
-    ),
-      
+          alignment: Alignment.topLeft,
+          child: SafeArea(
+            left: true,
+            top: true,
+            right: true,
+            bottom: true,
+            minimum: const EdgeInsets.all(16.0),
+            child: Text(
+              widget.user.overview,
+              style: TextStyle(
+                fontSize: 14,
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }

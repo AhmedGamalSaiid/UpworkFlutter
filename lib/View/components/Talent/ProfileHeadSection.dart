@@ -15,7 +15,7 @@ class ProfileHeadSection extends StatefulWidget {
 class _ProfileHeadSectionState extends State<ProfileHeadSection> {
   @override
   Widget build(BuildContext context) {
-    print(widget.user.lastName);
+    print(widget.user?.lastName);
 
     return Container(
       color: bgUpworkSection,
@@ -34,16 +34,19 @@ class _ProfileHeadSectionState extends State<ProfileHeadSection> {
                     Positioned(
                       child: CircleAvatar(
                         radius: 40,
-                        backgroundImage: NetworkImage(widget.user.profilePhoto),
+                        backgroundImage: widget.user?.profilePhoto != null
+                            ? NetworkImage(widget.user?.profilePhoto)
+                            : NetworkImage(
+                                "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"),
                       ),
                     ),
                     Positioned(
-                       top: -2,
+                      top: -2,
                       left: -2,
                       child: CustomIcon(Icons.mode_edit),
                     ),
                     Positioned(
-                      right:8,
+                      right: 8,
                       bottom: 3,
                       child: Container(
                         width: 15,
@@ -65,7 +68,7 @@ class _ProfileHeadSectionState extends State<ProfileHeadSection> {
                     Padding(
                       padding: const EdgeInsets.only(top: 5.0, bottom: 5),
                       child: Text(
-                        "${widget.user.firstName} ${widget.user.lastName[0]}.",
+                        "${widget.user?.firstName} ${widget.user?.lastName[0]}.",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -83,9 +86,9 @@ class _ProfileHeadSectionState extends State<ProfileHeadSection> {
                           ),
                           Text(
                             " " +
-                                widget.user.location["city"] +
+                                widget.user?.location["city"] +
                                 ", " +
-                                widget.user.location["country"],
+                                widget.user?.location["country"],
                           ),
                         ],
                       ),

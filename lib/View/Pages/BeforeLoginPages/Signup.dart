@@ -13,6 +13,8 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  String err="Oops! Email is incorrect";
+  bool valid=false;
   @override
   Widget build(BuildContext context) {
     String emailVal;
@@ -46,7 +48,18 @@ class _SignupState extends State<Signup> {
             OrDivider(
               text: "or",
             ),
+           
+            // Align(
+            //   alignment: Alignment.centerLeft,
+            //   child: Container(
+            //     child: Text(
+            //       "*Should be left",
+            //       style: TextStyle(color: Colors.red),
+            //     ),
+            //   ),
+            // ),
             RoundedInputField(
+              validate: true,
               textInputType: TextInputType.emailAddress,
               icon: Icons.email,
               err: "Oops! Email is incorrect",
@@ -69,7 +82,8 @@ class _SignupState extends State<Signup> {
                     return SignupDetails(
                       emailVal: emailVal,
                     );
-                  }),
+                  }
+                ),
                 );
               },
             ),

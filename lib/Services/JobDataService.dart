@@ -10,11 +10,32 @@ class JobDataService {
         res.docs.forEach((doc) {
           jobs.add(JobDataModel.fromJson(doc.data()));
         });
+        print(jobs.length);
       });
     } catch (e) {
       print(e);
     }
     return jobs;
+  }
+
+  Future<JobDataModel> getJobData(id) async {
+     JobDataModel job;
+    try {
+      await FirebaseFirestore.instance
+          .collection('job')
+          .doc(id)
+          .get()
+          .then((DocumentSnapshot documentSnapshot) {
+        if (documentSnapshot.exists) {
+          print('Document exists on the database');
+          job =  JobDataModel.fromJson(documentSnapshot.data());
+        }
+      });
+    } catch (e) {
+      print(e);
+    }
+    print(job);
+    return job;
   }
 
   Future<List<JobDataModel>> getJobsSearch(val) async {

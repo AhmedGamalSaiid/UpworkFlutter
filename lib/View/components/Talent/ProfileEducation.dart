@@ -39,9 +39,9 @@ class _ProfileEducationState extends State<ProfileEducation> {
           ),
           for (var i = 0; i < 1; i++)
             ProfileEducationItem(
-              widget.user.school,
-              duration: "2020-2021",
-              fieldofStudy: "Frontend And Cross-Platform Mobile",
+              widget.user.education["school"],
+              duration: widget.user.education["gradYear"],
+              fieldofStudy: widget.user.education["areaOfSudy"],
             ),
         ],
       ),

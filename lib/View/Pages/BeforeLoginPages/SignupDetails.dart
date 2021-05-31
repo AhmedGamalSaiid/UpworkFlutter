@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:upwork/Services/authService.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/Verifyemail.dart';
 import 'package:upwork/View/components/Shared/Roundedinput.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
@@ -7,7 +6,7 @@ import 'package:upwork/firebaseApp.dart';
 import 'Verifyemail.dart';
 
 class SignupDetails extends StatefulWidget {
-  final String emailVal;
+  String emailVal;
   String passWord;
   String firstName;
   String lastName;
@@ -22,6 +21,7 @@ class _SignupDetailsState extends State<SignupDetails> {
   String dropdownValue;
   @override
   Widget build(BuildContext context) {
+    String databaseErr = '';
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -46,10 +46,12 @@ class _SignupDetailsState extends State<SignupDetails> {
                 Center(
                   child: Text(widget.emailVal),
                 ),
+                Center(
+                  child: Text(databaseErr),
+                ),
                 //Fname
                 RoundedInputField(
                   icon: Icons.person,
-                  err: "Oops! name is incorrect",
                   hintText: "First name",
                   onChanged: (value) {
                     widget.firstName = value;
@@ -58,7 +60,6 @@ class _SignupDetailsState extends State<SignupDetails> {
                 //Lastname
                 RoundedInputField(
                   icon: Icons.person,
-                  err: "Oops! name is incorrect",
                   hintText: "Last name",
                   onChanged: (value) {
                     widget.lastName = value;
@@ -69,11 +70,9 @@ class _SignupDetailsState extends State<SignupDetails> {
                   textInputType: TextInputType.visiblePassword,
                   passInput: true,
                   icon: Icons.lock,
-                  err: "Please enter more than 8 character",
                   hintText: "Create a password",
                   onChanged: (value) {
                     widget.passWord = value;
-                    print(widget.passWord);
                   },
                 ),
                 Container(
@@ -194,40 +193,99 @@ class _SignupDetailsState extends State<SignupDetails> {
                   textColor: Colors.white,
                   borderColor: Color(0x00000000),
                   press: () async {
-                    AuthService().signUp(widget.emailVal, widget.passWord, {
-                      'firstName': widget.firstName,
-                      'lastName': widget.lastName,
-                      'email': widget.emailVal,
-                      'password': widget.passWord,
-                      'userType': 'talent',
-                      'totalJobs': 0,
-                      'totalEarnings': 0,
-                      'totalHours': 0,
-                      'badge': {
-                        'none': "",
-                        'risingTalent': "Rising Talent",
-                        'topRated': "Top Rated",
-                        'expert': "Expert-Vetted"
-                      },
-                      'profileCompletion': 0,
-                      'jobHistory': [],
-                      'portfolio': [],
-                      'skills': [],
-                      'connects': 20
-                    }).then(
-                      (res) => {
-                        auth.currentUser.updateProfile(displayName: 'talent'),
-                        auth.currentUser.sendEmailVerification()
-                      }
-                      );
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) {
-                        return Verifyemail(
-                          emailVal: widget.emailVal,
-                        );
-                      }),
-                    );
+                    await auth.createUserWithEmailAndPassword(email: widget.emailVal, password: widget.passWord)
+                        .then((value) => {
+                          database.collection('talent').doc(auth.currentUser.uid).set({
+                                'firstName': widget.firstName,
+                                'lastName': widget.lastName,
+                                'email': widget.emailVal,
+                                'password': widget.passWord,
+                                'userType': 'talent',
+                                'totalJobs': 0,
+                                'totalEarnings': 0,
+                                'totalHours': 0,
+                                'badge': {
+                                  'none': "",
+                                  'risingTalent': "Rising Talent",
+                                  'topRated': "Top Rated",
+                                  'expert': "Expert-Vetted"
+                                },
+                                'profileCompletion': 0,
+                                'jobHistory': [],
+                                'portfolio': [],
+                                'skills': [],
+                                'connects': 20,
+                                'accepted': false,
+                              }),
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return Verifyemail(
+                                    emailVal: widget.emailVal,
+                                  );
+                                }),
+                              ),
+                            })
+                        .catchError((onError) => {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return SignupDetails(
+                                    emailVal:
+                                        'The email address is already in use',
+                                  );
+                                }),
+                              ),
+                              // widget.emailVal=
+                              // 'The email address is already in use by another account'
+                            });
+                    // AuthService()
+                    //     .signUp(widget.emailVal, widget.passWord, {
+                    //       'firstName': widget.firstName,
+                    //       'lastName': widget.lastName,
+                    //       'email': widget.emailVal,
+                    //       'password': widget.passWord,
+                    //       'userType': 'talent',
+                    //       'totalJobs': 0,
+                    //       'totalEarnings': 0,
+                    //       'totalHours': 0,
+                    //       'badge': {
+                    //         'none': "",
+                    //         'risingTalent': "Rising Talent",
+                    //         'topRated': "Top Rated",
+                    //         'expert': "Expert-Vetted"
+                    //       },
+                    //       'profileCompletion': 0,
+                    //       'jobHistory': [],
+                    //       'portfolio': [],
+                    //       'skills': [],
+                    //       'connects': 20,
+                    //       'accepted': false,
+                    //     })
+                    //     .then((res) => {
+                    //           Navigator.push(
+                    //             context,
+                    //             MaterialPageRoute(builder: (context) {
+                    //               return Verifyemail(
+                    //                 emailVal: widget.emailVal,
+                    //               );
+                    //             }),
+                    //           ),
+                    //           auth.currentUser
+                    //               .updateProfile(displayName: 'talent'),
+                    //           auth.currentUser.sendEmailVerification()
+                    //         })
+                    //     .catchError((onError) => {
+                    //           //databaseErr=onError.toString(),
+                    //           Navigator.push(
+                    //             context,
+                    //             MaterialPageRoute(builder: (context) {
+                    //               return SignupDetails(
+                    //                 emailVal: 'Email use in anthor account',
+                    //               );
+                    //             }),
+                    //           ),
+                    //         });
                   },
                 ),
               ]),

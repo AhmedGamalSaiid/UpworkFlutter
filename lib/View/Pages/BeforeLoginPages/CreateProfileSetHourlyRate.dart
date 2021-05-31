@@ -8,8 +8,6 @@ import 'package:upwork/firebaseApp.dart';
 import 'CreateProfileTitle.dart';
 import 'package:upwork/View/Pages/BeforeLoginPages/LanguageProficiency.dart';
 
-
-
 class CreateProfileSetHourlyRate extends StatefulWidget {
   @override
   _CreateProfileSetHourlyRateState createState() =>
@@ -30,7 +28,7 @@ class _CreateProfileSetHourlyRateState
               builder: (context) => IconButton(
                 icon: CircleAvatar(
                   radius: 50,
-                  backgroundImage: ExactAssetImage("assets/img/06.jpg"),
+                  backgroundImage: ExactAssetImage("assets/img/default-avatar.jpg"),
                 ),
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
@@ -83,7 +81,7 @@ class _CreateProfileSetHourlyRateState
                             height: 40,
                             width: 220,
                             child: TextField(
-                              keyboardType: TextInputType.number,
+                                keyboardType: TextInputType.number,
                                 maxLines: 1,
                                 textAlignVertical: TextAlignVertical.top,
                                 decoration: InputDecoration(
@@ -97,7 +95,6 @@ class _CreateProfileSetHourlyRateState
                                   setState(() {
                                     hourlyRate = double.parse(value);
                                   });
-                                  print(hourlyRate);
                                 }),
                           ),
                           Text(" /hr"),
@@ -247,7 +244,7 @@ class _CreateProfileSetHourlyRateState
                             press: () {
                               DatabaseService().updateDocument(
                                   'talent', auth.currentUser.uid, {
-                                'hourlyRate': hourlyRate.toString(),
+                                'hourlyRate': hourlyRate.toInt(),
                               });
                               Navigator.push(
                                 context,

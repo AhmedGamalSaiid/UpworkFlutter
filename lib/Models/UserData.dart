@@ -22,6 +22,7 @@ class UserDataModel {
       this.street,
       this.zip,
       this.overview,
+      this.accepted,
       this.password,
       this.portfolio,
       this.skills,
@@ -48,11 +49,12 @@ class UserDataModel {
   String profilePhoto;
   String school;
   List company;
+  bool accepted;
   List otherLanguages;
   String email;
   String expertiseLevel;
   String firstName;
-  String hourlyRate;
+  int hourlyRate;
   String jobCategory;
   List jobHistory;
   List languages;
@@ -82,7 +84,7 @@ class UserDataModel {
         badge: json["badge"],
         connects: json["connects"],
         education: json["education"],
-        company:json["company"],
+        company: json["company"],
         school: json["school"],
         email: json["email"],
         expertiseLevel: json["expertiseLevel"],
@@ -90,7 +92,7 @@ class UserDataModel {
         hourlyRate: json["hourlyRate"],
         jobHistory: json["jobHistory"],
         savedJobs: json["savedJobs"],
-        lastName:json["lastName"],  
+        lastName: json["lastName"],
         searchHistory: json["searchHistory"],
         employmentHistory: json["employmentHistory"],
         languages: json["languages"],
@@ -99,7 +101,8 @@ class UserDataModel {
         profileCompletion: json["profileCompletion"],
         location: json["location"],
         connectsHistory: json["connectsHistory"],
-        city: json["city"],
+        city: json["city"],       
+        accepted: json["accepted"],
         otherLanguages: json["otherLanguages"],
         country: json["country"],
         street: json["street"],
