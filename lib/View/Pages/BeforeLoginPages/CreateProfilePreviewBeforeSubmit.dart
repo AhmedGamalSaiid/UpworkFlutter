@@ -37,15 +37,15 @@ class _CreateProfilePreviewBeforeSubmitState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-              drawer: CustomDrawer(),
-
+      drawer: CustomDrawer(),
       appBar: AppBar(
-        
         leading: Builder(
           builder: (context) => IconButton(
             icon: CircleAvatar(
               radius: 50,
-              backgroundImage:user !=null ?NetworkImage(user?.profilePhoto): ExactAssetImage("assets/img/default-avatar.jpg"),
+              backgroundImage: user.profilePhoto != null
+                  ? NetworkImage(user?.profilePhoto)
+                  : ExactAssetImage("assets/img/default-avatar.jpg"),
             ),
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
@@ -250,7 +250,7 @@ class _CreateProfilePreviewBeforeSubmitState
                               bottom: 15,
                             ),
                             child: Text(
-                              "${user.title} ",
+                              "${user?.title} ",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
@@ -267,7 +267,7 @@ class _CreateProfilePreviewBeforeSubmitState
                               padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.8,
-                                child: Text("${user.overview}"),
+                                child: Text("${user?.overview}"),
                               ),
                             ),
                           ],
@@ -279,7 +279,7 @@ class _CreateProfilePreviewBeforeSubmitState
                           child: Row(
                             children: [
                               Text(
-                                "\$${user.hourlyRate}",
+                                "\$${user?.hourlyRate}",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,
@@ -351,7 +351,7 @@ class _CreateProfilePreviewBeforeSubmitState
                                           direction: Axis.horizontal,
                                           children: [
                                             for (var i = 0;
-                                                i < user?.languages.length;
+                                                i < user?.otherLanguages.length;
                                                 i++)
                                               Padding(
                                                 padding:
@@ -367,7 +367,7 @@ class _CreateProfilePreviewBeforeSubmitState
                                                         const EdgeInsets.all(
                                                             8.0),
                                                     child: Text(
-                                                      user.languages[i]
+                                                      user.otherLanguages[i]
                                                           ["language"],
                                                       style: TextStyle(
                                                           fontSize: 12),
