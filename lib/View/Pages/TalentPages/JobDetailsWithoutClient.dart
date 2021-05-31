@@ -25,11 +25,11 @@ class _JobDetailsWithoutClientState extends State<JobDetailsWithoutClient> {
           ),
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: Card(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Card(
                 child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -191,57 +191,57 @@ class _JobDetailsWithoutClientState extends State<JobDetailsWithoutClient> {
                     )),
               ],
             )),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Container(
-                  width: 260,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color(0xff018623),
-                  ),
-                  child: Center(
-                      child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: InkWell(
-                      child: Text(
-                        "Submit a Proposal",
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) {
-                            return SubmitProposal(widget.job);
-                          }),
-                        );
-                      },
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Container(
+                    width: 200,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color(0xff018623),
                     ),
-                  )),
+                    child: Center(
+                        child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: InkWell(
+                        child: Text(
+                          "Submit a Proposal",
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) {
+                              return SubmitProposal(widget.job);
+                            }),
+                          );
+                        },
+                      ),
+                    )),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 14.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      borderRadius: BorderRadius.circular(30)),
-                  child: Center(
-                      child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Icon(Icons.favorite_border),
-                  )),
-                ),
-              )
-            ],
-          )
-        ],
+                Padding(
+                  padding: const EdgeInsets.only(right: 14.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.grey),
+                        borderRadius: BorderRadius.circular(30)),
+                    child: Center(
+                        child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Icon(Icons.favorite_border),
+                    )),
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
