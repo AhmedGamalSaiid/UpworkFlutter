@@ -234,10 +234,10 @@ class _SearchResultsListViewState extends State<SearchResultsListView> {
       // ),
       children: widget.jobs != null
           ? [
-              for (var i = 0; i < widget.jobs.length; i++)
-                JobCard(
-                  job: widget.jobs[i],
-                ),
+              // for (var i = 0; i < widget.jobs.length; i++)
+              //   JobCard(
+              //     job: widget.jobs[i],
+              //   ),
             ]
           : [],
     );

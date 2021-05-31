@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:upwork/Models/JobData.dart';
 import 'package:upwork/Models/clientData.Dart';
+
 import 'package:upwork/Services/clientDataService.dart';
 import 'package:upwork/View/Pages/TalentPages/SubmitProposal.dart';
 
@@ -16,6 +18,14 @@ class JobDetails extends StatefulWidget {
 }
 
 class _JobDetailsState extends State<JobDetails> {
+  // FirebaseFirestore.instance
+  // .collection("talent")
+  //     .doc(auth.currentUser.uid)
+  //     .collection("jobProposal")
+  //     .where("jobId", "==", id)
+  //     .onSnapshot((res) => {
+  //       if (res?.docs.length > 0) setjobProposal(true);
+  //     });
   ClientDataModel client;
 
   getData() async {
@@ -118,9 +128,10 @@ class _JobDetailsState extends State<JobDetails> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text("4 required connects (111 available)",
+                                Text("2 required connects",
                                     style: TextStyle(
-                                        fontSize: 12, color: Colors.grey)),
+                                        fontSize: 12, color: Colors.grey)
+                                ),
                                 Icon(
                                   Icons.help,
                                   color: Color(0xff018623),
