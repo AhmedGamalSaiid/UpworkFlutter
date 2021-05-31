@@ -43,9 +43,7 @@ class _CreateProfilePreviewBeforeSubmitState
           builder: (context) => IconButton(
             icon: CircleAvatar(
               radius: 50,
-              backgroundImage: user.profilePhoto != null
-                  ? NetworkImage(user?.profilePhoto)
-                  : ExactAssetImage("assets/img/default-avatar.jpg"),
+              backgroundImage:user.profilePhoto !=null ?NetworkImage(user?.profilePhoto): ExactAssetImage("assets/img/default-avatar.jpg"),
             ),
             onPressed: () => Scaffold.of(context).openDrawer(),
           ),
@@ -431,9 +429,7 @@ class _CreateProfilePreviewBeforeSubmitState
                                 child: Wrap(
                                   direction: Axis.horizontal,
                                   children: [
-                                    for (var i = 0;
-                                        i < user?.skills.length;
-                                        i++)
+                                    for (var i = 0; i < user?.skills.length;i++)
                                       Padding(
                                         padding: const EdgeInsets.all(4),
                                         child: Container(
