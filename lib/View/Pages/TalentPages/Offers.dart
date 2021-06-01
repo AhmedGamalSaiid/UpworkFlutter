@@ -32,39 +32,39 @@ class _OffersState extends State<Offers> {
 
   @override
   Widget build(BuildContext context) {
-    return activePropals != null
-        ? DefaultTabController(
-            length: 3,
-            child: Scaffold(
-                drawer: CustomDrawer(),
-                appBar: AppBar(
-                  leading: Builder(
-                    builder: (context) => IconButton(
-                      icon: CustomCircleAvatar(),
-                      onPressed: () => Scaffold.of(context).openDrawer(),
-                    ),
-                  ),
-                  title: Center(
-                    child: Text(
-                      "Offers",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                  actions: [
-                    CustomMenuButton(),
-                  ],
+    return DefaultTabController(
+        length: 3,
+        child: Scaffold(
+            drawer: CustomDrawer(),
+            appBar: AppBar(
+              leading: Builder(
+                builder: (context) => IconButton(
+                  icon: CustomCircleAvatar(),
+                  onPressed: () => Scaffold.of(context).openDrawer(),
                 ),
-                body: Container(
-                  child: activePropals?.length > 0
-                      ? Column(children: [
-                          for (var i = 0; i < activePropals?.length; i++)
-                            OffersCard(
-                              activePropals[i],
-                            ),
-                        ])
-                      : Text(""),
+              ),
+              title: Center(
+                child: Text(
+                  "Offers",
+                  style: TextStyle(color: Colors.white),
                 ),
-                bottomNavigationBar: BottomNav()))
-        : CustomLoader();
+              ),
+              actions: [
+                CustomMenuButton(),
+              ],
+            ),
+            body: activePropals != null
+                ? Container(
+                    child: activePropals?.length > 0
+                        ? Column(children: [
+                            for (var i = 0; i < activePropals?.length; i++)
+                              OffersCard(
+                                activePropals[i],
+                              ),
+                          ])
+                        : Text("You Don't Have Offers Still Now"),
+                  )
+                : CustomLoader(),
+            bottomNavigationBar: BottomNav()));
   }
 }

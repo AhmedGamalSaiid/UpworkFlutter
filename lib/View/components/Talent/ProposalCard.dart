@@ -66,17 +66,7 @@ class _ProposalsCardState extends State<ProposalsCard> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15.0, top: 10.0),
-              child: Text(
-                '8 days ago',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w100,
-                  fontSize: 15,
-                ),
-              ),
-            ),
+          
             Padding(
               padding: const EdgeInsets.only(left: 15.0, top: 10.0),
               child: Text(

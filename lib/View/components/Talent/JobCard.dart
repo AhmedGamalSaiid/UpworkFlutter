@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:upwork/Models/JobData.dart';
 import 'package:upwork/View/Pages/TalentPages/JobDetails.dart';
 import 'package:upwork/constanse.dart';
@@ -13,6 +14,7 @@ class JobCard extends StatefulWidget {
 class _JobCardState extends State<JobCard> {
   @override
   Widget build(BuildContext context) {
+    final dateFormat = new DateFormat('yyyy-MM-dd');
     Size size = MediaQuery.of(context).size;
 
     return Container(
@@ -48,7 +50,7 @@ class _JobCardState extends State<JobCard> {
                     widget.job.jobPaymentType +
                         ": " +
                         widget.job.jobBudget.toString() +
-                        "\$ -posted 1h ago",
+                        "\$ -posted ${dateFormat.format(widget.job.postTime.toDate())}",
                     textAlign: TextAlign.justify,
                     style: TextStyle(
                         color: Colors.grey[600], fontWeight: FontWeight.bold),
@@ -88,7 +90,7 @@ class _JobCardState extends State<JobCard> {
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
-                    "Expert",
+                    widget.job.jobExperienceLevel,
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -99,15 +101,23 @@ class _JobCardState extends State<JobCard> {
                     style: TextStyle(fontSize: 17, color: Colors.grey),
                   ),
                 ),
-                Text("Hello we need to design website with wordpress"),
+                Text("${widget.job.jobDescription.substring(0, 40)}..."),
                 Row(
-                  children: [
-                    Icon(
-                      Icons.verified,
-                      color: Colors.blue,
-                    ),
-                    Text("Payment verified"),
-                  ],
+                  children: widget.job.clientPaymentVerified
+                      ? [
+                          Icon(
+                            Icons.verified,
+                            color: Colors.blue,
+                          ),
+                          Text("Payment verified"),
+                        ]
+                      : [
+                          Icon(
+                            Icons.cancel_outlined,
+                            color: Colors.red[200],
+                          ),
+                          Text("Payment unverified"),
+                        ],
                 )
               ],
             ),

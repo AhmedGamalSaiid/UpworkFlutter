@@ -69,12 +69,22 @@ class _MyFeedPageState extends State<MyFeedPage> {
                     color: Colors.white,
                     text: "There are new jobs.See them",
                     textColor: bgUpwork),
-                Column(children: [
+                Column(children:
+                jobs.length>0?
+                 [
                   for (var i = 0; i < jobs.length; i++)
                     JobCard(
                       job: jobs[i],
                     ),
-                ]),
+                ]
+                : [Padding(
+                  padding: const EdgeInsets.all(25),
+                  child: Text('There is no jobs...',style: TextStyle(color: bgUpworkDark,fontSize: 20,fontWeight:FontWeight.w800),),
+                ),
+                Icon( Icons.explore_outlined,size: 40,),
+                
+                ]
+                ),
               ],
             ),
           )
