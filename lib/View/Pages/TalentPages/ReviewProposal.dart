@@ -248,7 +248,7 @@ class _ReviewProposalState extends State<ReviewProposal> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                     child: Container(
-                      width: 170,
+                      width: 150,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.black12,
@@ -261,7 +261,7 @@ class _ReviewProposalState extends State<ReviewProposal> {
                           child: Text(
                             "Withdraw Proposal",
                             style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -280,7 +280,7 @@ class _ReviewProposalState extends State<ReviewProposal> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
                     child: Container(
-                      width: 170,
+                      width: 150,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Color(0xff018623),
@@ -292,7 +292,7 @@ class _ReviewProposalState extends State<ReviewProposal> {
                           child: Text(
                             "Accept Proposal",
                             style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold),
                           ),
