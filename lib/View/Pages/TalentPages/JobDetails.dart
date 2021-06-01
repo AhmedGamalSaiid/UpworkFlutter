@@ -699,7 +699,8 @@ class _JobDetailsState extends State<JobDetails> {
                         child: Center(
                             child: Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: InkWell(
+                          child:
+                           InkWell(
                             child: Text(
                               "Submit a Proposal",
                               style: TextStyle(
