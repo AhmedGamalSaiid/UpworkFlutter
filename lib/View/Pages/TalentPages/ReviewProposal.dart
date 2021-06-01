@@ -304,12 +304,12 @@ class _ReviewProposalState extends State<ReviewProposal> {
                                 print('delete');
                               });
                             });
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(builder: (context) {
-                            //     return SubmitProposal(widget.job);
-                            //   }),
-                            // );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return SubmitProposal(widget.job);
+                              }),
+                            );
                           },
                         ),
                       )),
