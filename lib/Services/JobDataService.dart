@@ -6,7 +6,12 @@ class JobDataService {
   Future<List<JobDataModel>> getJobsData() async {
     List<JobDataModel> jobs = [];
     try {
-      await database.collection('job').get().then((QuerySnapshot res) {
+      await database
+          .collection('job')
+          // .orderBy('postTime', descending: true)
+          .where('status', isEqualTo: 'public')
+          .get()
+          .then((QuerySnapshot res) {
         res.docs.forEach((doc) {
           jobs.add(JobDataModel.fromJson(doc.data()));
         });

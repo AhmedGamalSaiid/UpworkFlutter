@@ -193,9 +193,14 @@ class _SignupDetailsState extends State<SignupDetails> {
                   textColor: Colors.white,
                   borderColor: Color(0x00000000),
                   press: () async {
-                    await auth.createUserWithEmailAndPassword(email: widget.emailVal, password: widget.passWord)
+                    await auth
+                        .createUserWithEmailAndPassword(
+                            email: widget.emailVal, password: widget.passWord)
                         .then((value) => {
-                          database.collection('talent').doc(auth.currentUser.uid).set({
+                              database
+                                  .collection('talent')
+                                  .doc(auth.currentUser.uid)
+                                  .set({
                                 'firstName': widget.firstName,
                                 'lastName': widget.lastName,
                                 'email': widget.emailVal,
@@ -214,6 +219,7 @@ class _SignupDetailsState extends State<SignupDetails> {
                                 'jobHistory': [],
                                 'portfolio': [],
                                 'skills': [],
+                                'savedJobs': [],
                                 'connects': 20,
                                 'accepted': false,
                               }),

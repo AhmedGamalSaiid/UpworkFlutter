@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_button/custom/like_button.dart';
 import 'package:intl/intl.dart';
+import 'package:like_button/like_button.dart' as btn;
+
 import 'package:upwork/Models/JobData.dart';
+import 'package:upwork/Models/UserData.dart';
 import 'package:upwork/Models/clientData.Dart';
+import 'package:upwork/Services/DatabaseService.dart';
+import 'package:upwork/Services/UserDataService.dart';
 import 'package:upwork/Services/clientDataService.dart';
 import 'package:upwork/View/Pages/TalentPages/SubmitProposal.dart';
+import 'package:upwork/firebaseApp.dart';
 
 class JobDetails extends StatefulWidget {
   final dateFormart = new DateFormat('kk:mm:a');
   final JobDataModel job;
+  UserDataModel user;
   JobDetails(this.job);
-  
 
   @override
   _JobDetailsState createState() => _JobDetailsState();
@@ -17,10 +24,31 @@ class JobDetails extends StatefulWidget {
 
 class _JobDetailsState extends State<JobDetails> {
   ClientDataModel client;
+  Future<bool> onLikeButtonTapped(bool isLiked) async {
+    var temp;
+    print(isLiked);
+    // print(widget.user.savedJobs.contains(widget.job.jobID));
+    if (widget.user.savedJobs.contains(widget.job.jobID)) {
+      temp = widget.user.savedJobs;
+      temp..remove(widget.job.jobID);
+      DatabaseService()
+          .updateDocument('talent', auth.currentUser.uid, {'savedJobs': temp});
+      // isLiked = false;
+    } else {
+      temp = widget.user.savedJobs;
+      temp.add(widget.job.jobID);
+      DatabaseService()
+          .updateDocument('talent', auth.currentUser.uid, {'savedJobs': temp});
+      // isLiked = true;
+    }
+
+    return !isLiked;
+  }
 
   getData() async {
     // client = await ClientDataService().getClientData(widget.job.authID);
     client = await ClientDataService().getClientData(widget.job.authID);
+    widget.user = await UserDataService().getUserData();
 
     if (this.mounted) setState(() {});
   }
@@ -33,7 +61,9 @@ class _JobDetailsState extends State<JobDetails> {
 
   @override
   Widget build(BuildContext context) {
-  final dateFormat = new DateFormat('yyyy-MM-dd');
+    // print(widget.user.savedJobs);
+    print(widget.job.jobID);
+    final dateFormat = new DateFormat('yyyy-MM-dd');
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(color: Color(0xff5BBC2E)),
@@ -285,7 +315,8 @@ class _JobDetailsState extends State<JobDetails> {
                                           Align(
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              widget.job.jobBudget.toString() + "\$",
+                                              widget.job.jobBudget.toString() +
+                                                  "\$",
                                               style: TextStyle(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.bold),
@@ -371,28 +402,37 @@ class _JobDetailsState extends State<JobDetails> {
                               padding: const EdgeInsets.only(top: 8),
                               child: Align(
                                 alignment: Alignment.centerLeft,
-                                child:
-                                    Wrap(direction: Axis.horizontal, children: [
-                                  for (var i = 0;
-                                      i < widget.job.skills.length;
-                                      i++)
-                                    Padding(
-                                      padding: const EdgeInsets.all(4),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Color(0xffCDCECB),
-                                            borderRadius:
-                                                BorderRadius.circular(25)),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            widget.job.skills[i],
-                                            style: TextStyle(fontSize: 12),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                ]),
+                                child: widget.job.skills != null &&
+                                        widget.job.skills.length > 0
+                                    ? Wrap(
+                                        direction: Axis.horizontal,
+                                        children: [
+                                            for (var i = 0;
+                                                i < widget.job.skills.length;
+                                                i++)
+                                              Padding(
+                                                padding:
+                                                    const EdgeInsets.all(4),
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      color: Color(0xffCDCECB),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              25)),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      widget.job.skills[i],
+                                                      style: TextStyle(
+                                                          fontSize: 12),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                          ])
+                                    : Text(""),
                               ),
                             )
                           ],
@@ -637,7 +677,7 @@ class _JobDetailsState extends State<JobDetails> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 14.0),
+                padding: const EdgeInsets.only(right: 20),
                 child: Container(
                   width: 40,
                   height: 40,
@@ -646,8 +686,21 @@ class _JobDetailsState extends State<JobDetails> {
                       borderRadius: BorderRadius.circular(30)),
                   child: Center(
                       child: Padding(
-                    padding: const EdgeInsets.all(7.0),
-                    child: Icon(Icons.favorite_border),
+                    padding: const EdgeInsets.only(left: 3),
+                    child: btn.LikeButton(
+                      onTap: onLikeButtonTapped,
+                      circleColor: btn.CircleColor(
+                          start: Color(0xFFF44336), end: Color(0xFFF44336)),
+                      likeBuilder: (bool isLiked) {
+                        return Icon(
+                          Icons.favorite,
+                          color:
+                              widget.user?.savedJobs.contains(widget.job.jobID)
+                                  ? Colors.green
+                                  : Colors.grey,
+                        );
+                      },
+                    ),
                   )),
                 ),
               )
