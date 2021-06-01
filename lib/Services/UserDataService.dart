@@ -61,8 +61,8 @@ class UserDataService {
     return submittedProposals;
   }
 
-  Future<List<ProposalsDataModel>> getActiveProposalsData() async {
-    List<ProposalsDataModel> activeProposals = [];
+  Future<List<ProposalsDataModel>> getofferProposalsData() async {
+    List<ProposalsDataModel> offerProposals = [];
     try {
       await database
           .collection('talent')
@@ -72,17 +72,17 @@ class UserDataService {
           .get()
           .then((QuerySnapshot res) {
         res.docs.forEach((doc) {
-          activeProposals.add((ProposalsDataModel.fromJson(doc.data())));
+          offerProposals.add((ProposalsDataModel.fromJson(doc.data())));
         });
       });
     } catch (e) {
       print(e);
     }
-    return activeProposals;
+    return offerProposals;
   }
 
-  Future<List<ProposalsDataModel>> getHiredProposalsData() async {
-    List<ProposalsDataModel> hiredProposals = [];
+  Future<List<ProposalsDataModel>> getContractProposalsData() async {
+    List<ProposalsDataModel>  contractProposals = [];
     try {
       await database
           .collection('talent')
@@ -92,12 +92,12 @@ class UserDataService {
           .get()
           .then((QuerySnapshot res) {
         res.docs.forEach((doc) {
-          hiredProposals.add((ProposalsDataModel.fromJson(doc.data())));
+          contractProposals.add((ProposalsDataModel.fromJson(doc.data())));
         });
       });
     } catch (e) {
       print(e);
     }
-    return hiredProposals;
+    return  contractProposals;
   }
 }

@@ -3,6 +3,7 @@ import 'package:accordion/accordion.dart';
 import 'package:upwork/Models/JobData.dart';
 import 'package:upwork/Services/UserDataService.dart';
 import 'package:upwork/Models/ProposalsData.dart';
+import 'package:upwork/View/components/Shared/CustomLoader.dart';
 import 'package:upwork/View/components/Talent/ProposalCard.dart';
 
 class ActiveBody extends StatefulWidget {
@@ -12,11 +13,11 @@ class ActiveBody extends StatefulWidget {
 
 class _ActiveBodyState extends State<ActiveBody> {
   JobDataModel job;
-  List<ProposalsDataModel> activePropals;
+  List<ProposalsDataModel> contractPropals;
   List<ProposalsDataModel> submitPropals;
-  List<ProposalsDataModel> hiredPropals;
+  List<ProposalsDataModel> offerPropals;
   getData() async {
-    activePropals = await UserDataService().getActiveProposalsData();
+    contractPropals = await UserDataService().getContractProposalsData();
     setState(() {});
   }
 
@@ -26,7 +27,7 @@ class _ActiveBodyState extends State<ActiveBody> {
   }
 
   getData2() async {
-    hiredPropals = await UserDataService().getHiredProposalsData();
+    offerPropals = await UserDataService().getofferProposalsData();
     setState(() {});
   }
 
@@ -40,61 +41,68 @@ class _ActiveBodyState extends State<ActiveBody> {
 
   @override
   Widget build(BuildContext context) {
-    print(activePropals?.length);
-    return Container(
-        decoration: BoxDecoration(
-            color: Color(0xFFF1F2F4),
-            border: Border.all(
-              color: Theme.of(context).accentColor,
-            )),
-        child: Accordion(
-          maxOpenSections: 1,
-          headerTextStyle: TextStyle(
-              color: Colors.black, fontSize: 23, fontWeight: FontWeight.bold),
-          headerBackgroundColor: Colors.white,
-          headerPadding: EdgeInsets.all(10.0),
-          paddingBetweenClosedSections: 15.0,
-          contentBackgroundColor: Colors.white,
-          contentVerticalPadding: 5.0,
-          contentHorizontalPadding: 5.0,
-          children: [
-            AccordionSection(
-                isOpen: false,
-                headerText: hiredPropals?.length > 0
-                    ? "Offers (${hiredPropals?.length.toString()})"
-                    : "Offers",
-                content:  hiredPropals?.length>0?
-                Column(children: [
-                  for (var i = 0; i < hiredPropals?.length; i++)
-                    ProposalsCard(
-                      hiredPropals[i],
-                    ),
-                ]):Text("")),
-
-            AccordionSection(
-              isOpen: false,
-              headerText: "Active Proposals (${activePropals?.length})",
-              content: activePropals?.length > 0
-                  ? Column(children: [
-                      for (var i = 0; i < activePropals?.length; i++)
+    return contractPropals != null &&
+            submitPropals != null &&
+            offerPropals != null
+        ? Container(
+            decoration: BoxDecoration(
+                color: Color(0xFFF1F2F4),
+                border: Border.all(
+                  color: Theme.of(context).accentColor,
+                )),
+            child: Accordion(
+              maxOpenSections: 1,
+              headerTextStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 23,
+                  fontWeight: FontWeight.bold),
+              headerBackgroundColor: Colors.white,
+              headerPadding: EdgeInsets.all(10.0),
+              paddingBetweenClosedSections: 15.0,
+              contentBackgroundColor: Colors.white,
+              contentVerticalPadding: 5.0,
+              contentHorizontalPadding: 5.0,
+              children: [
+                AccordionSection(
+                    isOpen: false,
+                    headerText: offerPropals?.length > 0
+                        ? "Offers (${offerPropals?.length.toString()})"
+                        : "Offers(0)",
+                    content: offerPropals?.length > 0
+                        ? Column(children: [
+                            for (var i = 0; i < offerPropals?.length; i++)
+                              ProposalsCard(
+                                offerPropals[i],
+                              ),
+                          ])
+                        : Text("")),
+                AccordionSection(
+                  isOpen: false,
+                  headerText: contractPropals?.length > 0
+                      ? "Active Proposals (${contractPropals?.length.toString()})"
+                      : "Active Proposals(0)",
+                  content: contractPropals?.length > 0
+                      ? Column(children: [
+                          for (var i = 0; i < contractPropals?.length; i++)
+                            ProposalsCard(
+                              contractPropals[i],
+                            ),
+                        ])
+                      : Text(""),
+                ),
+                AccordionSection(
+                    isOpen: false,
+                    headerText: submitPropals?.length > 0
+                        ? "Submmitted Proposals (${submitPropals?.length.toString()})"
+                        : 'Submmitted Proposals()',
+                    content: Column(children: [
+                      for (var i = 0; i < submitPropals?.length; i++)
                         ProposalsCard(
-                          activePropals[i],
+                          submitPropals[i],
                         ),
-                    ])
-                  : Text(""),
-            ),
-            AccordionSection(
-                isOpen: false,
-                headerText: submitPropals?.length > 0
-                    ? "Submmitted Proposals (${submitPropals?.length.toString()})"
-                    : 'Submmitted Proposals',
-                content: Column(children: [
-                  for (var i = 0; i < submitPropals?.length; i++)
-                    ProposalsCard(
-                      submitPropals[i],
-                    ),
-                ])),
-          ],
-        ));
+                    ])),
+              ],
+            ))
+        : CustomLoader();
   }
 }
