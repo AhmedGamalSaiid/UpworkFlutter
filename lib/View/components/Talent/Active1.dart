@@ -40,6 +40,7 @@ class _ActiveBodyState extends State<ActiveBody> {
 
   @override
   Widget build(BuildContext context) {
+    print(activePropals?.length);
     return Container(
         decoration: BoxDecoration(
             color: Color(0xFFF1F2F4),
@@ -62,18 +63,14 @@ class _ActiveBodyState extends State<ActiveBody> {
                 headerText: hiredPropals?.length > 0
                     ? "Offers (${hiredPropals?.length.toString()})"
                     : "Offers",
-                content: Column(children: [
+                content:  hiredPropals?.length>0?
+                Column(children: [
                   for (var i = 0; i < hiredPropals?.length; i++)
                     ProposalsCard(
                       hiredPropals[i],
                     ),
-                ])),
+                ]):Text("")),
 
-            // // AccordionSection(
-            // //   isOpen: false,
-            // //   headerText: 'Invitations to interview (0)',
-            // //   content:  ProposalsCard()
-            // // ),
             AccordionSection(
               isOpen: false,
               headerText: "Active Proposals (${activePropals?.length})",
