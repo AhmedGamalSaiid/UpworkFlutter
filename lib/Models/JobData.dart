@@ -11,21 +11,16 @@ class JobDataModel {
     this.jobDescription,
     this.jobDuration,
     this.jobDurationAr,
-
     this.jobExperienceLevel,
-        this.jobExperienceLevelAr,
-
+    this.jobExperienceLevelAr,
     this.jobImages,
     this.jobPaymentType,
-     this.jobPaymentTypeAr,
-
+    this.jobPaymentTypeAr,
     this.jobTitle,
     this.jobType,
-       this.jobTypeAr,
-
+    this.jobTypeAr,
     this.jobVisibility,
-      this.jobVisibilityAr,
-
+    this.jobVisibilityAr,
     this.skills,
     this.postTime,
     this.dueDate,
@@ -38,12 +33,11 @@ class JobDataModel {
     this.clientPaymentVerified,
     this.clientAllReviews,
     this.talentJobReview,
-
   });
   String jobID;
   String authID;
   Timestamp postTime;
-  String freelancerNeed;  
+  String freelancerNeed;
   String freelancerNeedAr;
   int jobBudget;
   String jobCategory;
@@ -53,7 +47,7 @@ class JobDataModel {
 
   String jobExperienceLevel;
   String jobExperienceLevelAr;
-  
+
   List jobImages;
   String jobPaymentType;
   String jobPaymentTypeAr;
@@ -64,12 +58,11 @@ class JobDataModel {
 
   String jobVisibility;
   String jobVisibilityAr;
-  
+
   List skills;
   String dueDate;
   int hired;
   String status;
-
   String clientCountry;
   String clientCountryAr;
   Map clientJobReview;
@@ -79,32 +72,31 @@ class JobDataModel {
   bool clientPaymentVerified;
 
   factory JobDataModel.fromJson(Map<String, dynamic> json) => JobDataModel(
-      jobID: json["jobID"],
-      authID: json["authID"],
-      freelancerNeed: json["freelancerNeed"],
-      jobBudget: json["jobBudget"],
-      jobCategory: json["jobCategory"],
-      jobDescription: json["jobDescription"],
-      jobDuration: json["jobDuration"],
-      jobExperienceLevel: json["jobExperienceLevel"],
-      jobImages: json["jobImages"],
-  jobPaymentType: json["jobPaymentType"],
-  jobTitle: json["jobTitle"],
-  jobType: json["jobType"],
-  jobVisibility: json["jobVisibility"],
-  jobVisibilityAr: json["jobVisibilityAr"],
-  skills: json["skills"],
-  postTime: json["postTime"],
-  dueDate: json["dueDate"],
-  hired: json["hired"],
-  status: json["status"],
-  clientCountry :json['clientCountry'],
-  clientCountryAr :json['clientCountryAr'],
-  clientJobReview :json['clientJobReview'],
-  talentJobReview :json['talentJobReview'],
-  clientAllReviews :json['clientAllReviews'],
-  clientSpentMoney :json['clientSpentMoney'],
-  clientPaymentVerified :json['clientPaymentVerified'],
-      
-  );
+        jobID: json["jobID"],
+        authID: json["authID"],
+        freelancerNeed: json["freelancerNeed"],
+        jobBudget: json["jobBudget"],
+        jobCategory: json["jobCategory"],
+        jobDescription: json["jobDescription"],
+        jobDuration: json["jobDuration"],
+        jobExperienceLevel: json["jobExperienceLevel"],
+        jobImages: json["jobImages"],
+        jobPaymentType: json["jobPaymentType"],
+        jobTitle: json["jobTitle"],
+        jobType: json["jobType"],
+        jobVisibility: json["jobVisibility"],
+        jobVisibilityAr: json["jobVisibilityAr"],
+        skills: json["skills"],
+        postTime: json["postTime"],
+        dueDate: json["dueDate"],
+        hired: json["hired"],
+        status: json["status"],
+        clientCountry: json['clientCountry'],
+        clientCountryAr: json['clientCountryAr'],
+        clientJobReview: json['clientJobReview'],
+        talentJobReview: json['talentJobReview'],
+        clientAllReviews: json['clientAllReviews'],
+        clientSpentMoney: json['clientSpentMoney'],
+        clientPaymentVerified: json['clientPaymentVerified'],
+      );
 }

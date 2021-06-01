@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:upwork/Models/JobData.dart';
+import 'package:upwork/Models/ProposalsData.dart';
 import 'package:upwork/View/Pages/TalentPages/JobDetailsWithoutClient.dart';
 import 'package:upwork/Services/JobDataService.dart';
 
 class ProposalsCard extends StatefulWidget {
-  final String jobId;
-  ProposalsCard(this.jobId);
+  final ProposalsDataModel propos;
+  ProposalsCard(this.propos);
 
   @override
   _ProposalsCardState createState() => _ProposalsCardState();
@@ -16,7 +17,7 @@ class _ProposalsCardState extends State<ProposalsCard> {
   JobDataModel job;
 
   getData() async {
-    job = await JobDataService().getJobData(widget.jobId);
+    job = await JobDataService().getJobData(widget.propos.jobId);
     setState(() {});
   }
 
@@ -57,7 +58,7 @@ class _ProposalsCardState extends State<ProposalsCard> {
             Padding(
               padding: const EdgeInsets.only(left: 15.0, top: 10.0),
               child: Text(
-                dateFormart.format(job?.postTime.toDate()),
+                dateFormart.format(widget.propos.proposalTime.toDate()),
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.normal,
