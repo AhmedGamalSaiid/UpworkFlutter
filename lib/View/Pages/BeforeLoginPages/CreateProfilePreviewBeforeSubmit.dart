@@ -250,7 +250,7 @@ class _CreateProfilePreviewBeforeSubmitState
                               bottom: 15,
                             ),
                             child: Text(
-                              "${user.title} ",
+                              "${user?.title} ",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
@@ -267,7 +267,7 @@ class _CreateProfilePreviewBeforeSubmitState
                               padding: const EdgeInsets.fromLTRB(20, 5, 20, 5),
                               child: Container(
                                 width: MediaQuery.of(context).size.width * 0.8,
-                                child: Text("${user.overview}"),
+                                child: Text("${user?.overview}"),
                               ),
                             ),
                           ],
@@ -279,7 +279,7 @@ class _CreateProfilePreviewBeforeSubmitState
                           child: Row(
                             children: [
                               Text(
-                                "\$${user.hourlyRate}",
+                                "\$${user?.hourlyRate}",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 18,

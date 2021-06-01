@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
-// import 'package:upwork/Models/JobData.dart';
+import 'package:upwork/Models/ProposalsData.dart';
+import 'package:upwork/Services/UserDataService.dart';
 import 'package:upwork/View/components/Shared/CustomCircleAvatar.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
-import 'package:upwork/View/components/Talent/Active.dart';
+import 'package:upwork/View/components/Talent/Active1.dart';
 import 'package:upwork/View/components/Talent/Archived.dart';
 import 'package:upwork/View/components/Talent/BottomNav.dart';
 
 class ProposalsPage extends StatefulWidget {
   // final JobDataModel job;
   // ProposalsPage(this.job);
+
   @override
   _ProposalsPageState createState() => _ProposalsPageState();
 }
 
 class _ProposalsPageState extends State<ProposalsPage> {
+
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_button/custom/like_button.dart';
 import 'package:intl/intl.dart';
@@ -8,6 +9,7 @@ import 'package:upwork/Models/UserData.dart';
 import 'package:upwork/Models/clientData.Dart';
 import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/Services/UserDataService.dart';
+
 import 'package:upwork/Services/clientDataService.dart';
 import 'package:upwork/View/Pages/TalentPages/SubmitProposal.dart';
 import 'package:upwork/firebaseApp.dart';
@@ -23,6 +25,14 @@ class JobDetails extends StatefulWidget {
 }
 
 class _JobDetailsState extends State<JobDetails> {
+  // FirebaseFirestore.instance
+  // .collection("talent")
+  //     .doc(auth.currentUser.uid)
+  //     .collection("jobProposal")
+  //     .where("jobId", "==", id)
+  //     .onSnapshot((res) => {
+  //       if (res?.docs.length > 0) setjobProposal(true);
+  //     });
   ClientDataModel client;
   Future<bool> onLikeButtonTapped(bool isLiked) async {
     var temp;
@@ -148,7 +158,7 @@ class _JobDetailsState extends State<JobDetails> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text("4 required connects (111 available)",
+                                Text("2 required connects",
                                     style: TextStyle(
                                         fontSize: 12, color: Colors.grey)),
                                 Icon(
@@ -695,7 +705,7 @@ class _JobDetailsState extends State<JobDetails> {
                         return Icon(
                           Icons.favorite,
                           color:
-                              widget.user?.savedJobs.contains(widget.job.jobID)
+                              widget.user?.savedJobs?.contains(widget.job.jobID)
                                   ? Colors.green
                                   : Colors.grey,
                         );
