@@ -29,7 +29,8 @@ class _PhoneState extends State<Phone> {
                 builder: (context) => IconButton(
                   icon: CircleAvatar(
                     radius: 50,
-                    backgroundImage: ExactAssetImage("assets/img/default-avatar.jpg"),
+                    backgroundImage:
+                        ExactAssetImage("assets/img/default-avatar.jpg"),
                   ),
                   onPressed: () => Scaffold.of(context).openDrawer(),
                 ),
