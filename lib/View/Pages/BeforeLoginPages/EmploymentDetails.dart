@@ -8,13 +8,13 @@ import 'package:country_list_pick/country_list_pick.dart';
 import 'package:upwork/firebaseApp.dart';
 
 class EmployementDetails extends StatefulWidget {
-  //String company;
+  String company;
   String location;
   String title;
   String description;
 
   EmployementDetails({
-    //this.company,
+    this.company,
     this.location,
     this.description,
     this.title,
@@ -24,6 +24,7 @@ class EmployementDetails extends StatefulWidget {
 }
 
 class _EmployementDetailsState extends State<EmployementDetails> {
+  String dropdownValue2, dropdownValue, dropdownValue3, dropdownValue4;
   bool valuesecond = false;
   @override
   Widget build(BuildContext context) {
@@ -83,8 +84,8 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                               ),
                             ),
                             onChanged: (value) {
-                              // widget.company = value;
-                              //print(widget.company);
+                              widget.company = value;
+                              print(widget.company);
                             },
                           ),
                         ),
@@ -210,116 +211,69 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                           child: Column(
                             children: <Widget>[
                               Container(
-                                margin: EdgeInsets.symmetric(vertical: 10),
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 0.05),
-                                child: SelectDropDown(
-                                  [
-                                    "Month ",
-                                    "January",
-                                    "February",
-                                    "March",
-                                    "April",
-                                    "May",
-                                    "June",
-                                    "July",
-                                    "August",
-                                    "September",
-                                    "October",
-                                    "November",
-                                    "December",
-                                  ],
-                                  isExpand: true,
-                                ),
-                              ),
+                                  margin: EdgeInsets.symmetric(vertical: 10),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 0.05),
+                                  child: DropdownButtonHideUnderline(
+                                    child: DropdownButton(
+                                      hint: dropdownValue2 == null
+                                          ? Text("Month ")
+                                          : Text(
+                                              dropdownValue2,
+                                              style:
+                                                  TextStyle(color: Colors.grey),
+                                            ),
+                                      isExpanded: true,
+                                      iconSize: 30.0,
+                                      style: TextStyle(color: Colors.grey),
+                                      items: [
+                                        "January",
+                                        "February",
+                                        "March",
+                                        "April",
+                                        "May",
+                                        "June",
+                                        "July",
+                                        "August",
+                                        "September",
+                                        "October",
+                                        "November",
+                                        "December"
+                                      ].map(
+                                        (val) {
+                                          return DropdownMenuItem<String>(
+                                            value: val,
+                                            child: Text(val),
+                                          );
+                                        },
+                                      ).toList(),
+                                      onChanged: (val) {
+                                        print(val);
+                                        setState(
+                                          () {
+                                            dropdownValue2 = val;
+                                          },
+                                        );
+                                      },
+                                    ),
+                                  )),
                               SizedBox(height: size.height * 0.03),
                               Padding(
                                   padding: const EdgeInsets.only(
                                       left: 10, right: 10, top: 10, bottom: 10),
-                                  child: SelectDropDown(
-                                    [
-                                      "year",
-                                      "2021",
-                                      "2020",
-                                      "2019",
-                                      "2018",
-                                      "2017",
-                                      "2016",
-                                      "2015",
-                                      "2014",
-                                      "2013",
-                                      "2012",
-                                      "2011",
-                                      "2010",
-                                      "2009",
-                                      "2008",
-                                      "2007",
-                                      "2006",
-                                      "2005",
-                                      "2004",
-                                      "2003",
-                                      "2002",
-                                      "2001",
-                                      "2000",
-                                      "1999",
-                                      "1998",
-                                    ],
-                                    isExpand: true,
-                                  )),
-                            ],
-                          )),
-                      SizedBox(height: size.height * 0.03),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'through',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                              ),
-                            ),
-                          ]),
-                      Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, top: 10),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                margin: EdgeInsets.symmetric(vertical: 10),
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 0.05),
-                                child: SelectDropDown(
-                                  [
-                                    "Month ",
-                                    "January",
-                                    "February",
-                                    "March",
-                                    "April",
-                                    "May",
-                                    "June",
-                                    "July",
-                                    "August",
-                                    "September",
-                                    "October",
-                                    "November",
-                                    "December",
-                                  ],
-                                  isExpand: true,
-                                ),
-                              ),
-                              SizedBox(height: size.height * 0.03),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 10, right: 10, top: 10),
-                                child: Container(
-                                    margin: EdgeInsets.symmetric(vertical: 10),
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: 10, vertical: 0.05),
-                                    child: SelectDropDown(
-                                      [
-                                        "year",
+                                  child: DropdownButtonHideUnderline(
+                                    child: DropdownButton(
+                                      hint: dropdownValue == null
+                                          ? Text("Year ")
+                                          : Text(
+                                              dropdownValue,
+                                              style:
+                                                  TextStyle(color: Colors.grey),
+                                            ),
+                                      isExpanded: true,
+                                      iconSize: 30.0,
+                                      style: TextStyle(color: Colors.grey),
+                                      items: [
                                         "2021",
                                         "2020",
                                         "2019",
@@ -344,8 +298,152 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                                         "2000",
                                         "1999",
                                         "1998",
-                                      ],
-                                      isExpand: true,
+                                      ].map(
+                                        (val) {
+                                          return DropdownMenuItem<String>(
+                                            value: val,
+                                            child: Text(val),
+                                          );
+                                        },
+                                      ).toList(),
+                                      onChanged: (val) {
+                                        print(val);
+                                        setState(
+                                          () {
+                                            dropdownValue = val;
+                                          },
+                                        );
+                                      },
+                                    ),
+                                  ))
+                            ],
+                          )),
+                      SizedBox(height: size.height * 0.03),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'through',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ]),
+                      Padding(
+                          padding: const EdgeInsets.only(
+                              left: 10, right: 10, top: 10),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                  margin: EdgeInsets.symmetric(vertical: 10),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 0.05),
+                                  child: DropdownButtonHideUnderline(
+                                    child: DropdownButton(
+                                      hint: dropdownValue3 == null
+                                          ? Text("Month ")
+                                          : Text(
+                                              dropdownValue3,
+                                              style:
+                                                  TextStyle(color: Colors.grey),
+                                            ),
+                                      isExpanded: true,
+                                      iconSize: 30.0,
+                                      style: TextStyle(color: Colors.grey),
+                                      items: [
+                                        "January",
+                                        "February",
+                                        "March",
+                                        "April",
+                                        "May",
+                                        "June",
+                                        "July",
+                                        "August",
+                                        "September",
+                                        "October",
+                                        "November",
+                                        "December"
+                                      ].map(
+                                        (val) {
+                                          return DropdownMenuItem<String>(
+                                            value: val,
+                                            child: Text(val),
+                                          );
+                                        },
+                                      ).toList(),
+                                      onChanged: (val) {
+                                        print(val);
+                                        setState(
+                                          () {
+                                            dropdownValue3 = val;
+                                          },
+                                        );
+                                      },
+                                    ),
+                                  )),
+                              SizedBox(height: size.height * 0.03),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10),
+                                child: Container(
+                                    margin: EdgeInsets.symmetric(vertical: 10),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 0.05),
+                                    child: DropdownButtonHideUnderline(
+                                      child: DropdownButton(
+                                        hint: dropdownValue4 == null
+                                            ? Text("Year ")
+                                            : Text(
+                                                dropdownValue4,
+                                                style: TextStyle(
+                                                    color: Colors.grey),
+                                              ),
+                                        isExpanded: true,
+                                        iconSize: 30.0,
+                                        style: TextStyle(color: Colors.grey),
+                                        items: [
+                                          "2021",
+                                          "2020",
+                                          "2019",
+                                          "2018",
+                                          "2017",
+                                          "2016",
+                                          "2015",
+                                          "2014",
+                                          "2013",
+                                          "2012",
+                                          "2011",
+                                          "2010",
+                                          "2009",
+                                          "2008",
+                                          "2007",
+                                          "2006",
+                                          "2005",
+                                          "2004",
+                                          "2003",
+                                          "2002",
+                                          "2001",
+                                          "2000",
+                                          "1999",
+                                          "1998",
+                                        ].map(
+                                          (val) {
+                                            return DropdownMenuItem<String>(
+                                              value: val,
+                                              child: Text(val),
+                                            );
+                                          },
+                                        ).toList(),
+                                        onChanged: (val) {
+                                          print(val);
+                                          setState(
+                                            () {
+                                              dropdownValue4 = val;
+                                            },
+                                          );
+                                        },
+                                      ),
                                     )),
                               )
                             ],
@@ -452,12 +550,14 @@ class _EmployementDetailsState extends State<EmployementDetails> {
                       onPressed: () => {
                         DatabaseService()
                             .updateDocument('talent', auth.currentUser.uid, {
-                          'company':[ {
-                            // 'companyName': widget.company,
-                            'jobTitle': widget.title,
-                            'stillWork': valuesecond,
-                            'companyLocation': widget.location,
-                          }]
+                          'company': [
+                            {
+                              'companyName': widget.company,
+                              'jobTitle': widget.title,
+                              'stillWork': valuesecond,
+                              'companyLocation': widget.location,
+                            }
+                          ]
                         }),
                         Navigator.push(
                           context,
