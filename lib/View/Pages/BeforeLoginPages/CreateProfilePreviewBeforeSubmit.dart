@@ -43,7 +43,7 @@ class _CreateProfilePreviewBeforeSubmitState
           builder: (context) => IconButton(
             icon: CircleAvatar(
               radius: 50,
-              backgroundImage: user.profilePhoto != null
+              backgroundImage: user?.profilePhoto != null
                   ? NetworkImage(user?.profilePhoto)
                   : ExactAssetImage("assets/img/default-avatar.jpg"),
             ),
@@ -351,7 +351,9 @@ class _CreateProfilePreviewBeforeSubmitState
                                           direction: Axis.horizontal,
                                           children: [
                                             for (var i = 0;
-                                                i < user?.otherLanguages.length;
+                                                i <
+                                                    user?.otherLanguages
+                                                        ?.length;
                                                 i++)
                                               Padding(
                                                 padding:
@@ -493,16 +495,78 @@ class _CreateProfilePreviewBeforeSubmitState
                                 ),
                               ),
                             ),
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(12.0),
-                                  child: Text(
-                                    "No items to display.",
-                                  ),
-                                ),
-                              ],
-                            ),
+                            Padding(
+                                padding: const EdgeInsets.only(top: 5),
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Wrap(
+                                      direction: Axis.horizontal,
+                                      children: [
+                                        for (var i = 0;
+                                            i < user?.company?.length;
+                                            i++)
+                                          Padding(
+                                            padding: const EdgeInsets.all(4),
+                                            child: Container(
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: Column(
+                                                  children: [
+                                                    Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Text(
+                                                          "Company : ",
+                                                          style: TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 16),
+                                                        ),
+                                                        Text(
+                                                          user.company[i]
+                                                              ["companyName"],
+                                                          style: TextStyle(
+                                                              fontSize: 16),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              top: 8.0),
+                                                      child: Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Text(
+                                                            "Job Title : ",
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontSize: 16),
+                                                          ),
+                                                          Text(
+                                                            user.company[i]
+                                                                ["jobTitle"],
+                                                            style: TextStyle(
+                                                                fontSize: 16),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                      ]),
+                                ))
                           ],
                         )),
                   ),
@@ -528,35 +592,62 @@ class _CreateProfilePreviewBeforeSubmitState
                                   ),
                                 ),
                               ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Education",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18,
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * 0.9,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      "Education",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
                                     ),
-                                  ),
-                                  CustomIcon(Icons.mode_edit),
-                                ],
+                                    CustomIcon(Icons.mode_edit),
+                                  ],
+                                ),
                               ),
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 15, bottom: 15),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                              padding: const EdgeInsets.all(15),
+                              child: Column(
                                 children: [
-                                  Text(
-                                    user.education["school"],
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "Company : ",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16),
+                                      ),
+                                      Text(
+                                        user.education["school"],
+                                        style: TextStyle(fontSize: 16),
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    user.education["degree"] != null
-                                        ? user.education["degree"]
-                                        : "",
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "Job Title : ",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16),
+                                        ),
+                                        Text(
+                                          user.education["degree"],
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),

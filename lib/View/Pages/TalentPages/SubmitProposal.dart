@@ -1,10 +1,13 @@
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:upwork/Models/JobData.dart';
 import 'package:path/path.dart';
+import 'package:upwork/Models/UserData.dart';
 import 'package:upwork/Services/DatabaseService.dart';
+import 'package:upwork/Services/UserDataService.dart';
 import 'package:upwork/View/components/Talent/SelectDropDown.dart';
 import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 import 'package:upwork/View/components/Talent/FixedPriceMoney.dart';
@@ -23,6 +26,20 @@ class SubmitProposal extends StatefulWidget {
 }
 
 class _SubmitProposalState extends State<SubmitProposal> {
+  UserDataModel user;
+
+  getData() async {
+    user = await UserDataService().getUserData();
+
+    if (this.mounted) setState(() {});
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
   double jobRate = 0;
   String coverLetter;
   String title;
@@ -47,27 +64,24 @@ class _SubmitProposalState extends State<SubmitProposal> {
     });
   }
 
-  // Future uploadImageToFirebase(BuildContext context) async {
-  //   String fileName = basename(_proposalFile.path);
-  //   FirebaseStorage storage = FirebaseStorage.instance;
+  Future uploadImageToFirebase(BuildContext context) async {
+    String fileName = basename(_proposalFile.path);
+    FirebaseStorage storage = FirebaseStorage.instance;
 
-  //   Reference firebaseStorageRef = storage.ref().child('proposalImages/$fileName');
-  //   UploadTask uploadTask = firebaseStorageRef.putFile(_proposalFile);
-  //   uploadTask.then((res) {
-  //     res.ref.getDownloadURL().then((url) => {
-  //           proposalUrl = url,
-  //           url != null
-  //               ? DatabaseService().updateSubCollectionDocument('job','proposal',''
-  //                   auth.currentUser.uid, {'profilePhoto': proposalUrl})
-  //               : loading = true,
-  //         });
-  //     print(proposalUrl);
-  //   });
-  // }
+    Reference firebaseStorageRef = storage.ref().child('proposalImages/$fileName');
+    UploadTask uploadTask = firebaseStorageRef.putFile(_proposalFile);
+    uploadTask.then((res) {
+      res.ref.getDownloadURL().then((url) => {
+            proposalUrl = url,
+            print(proposalUrl), 
+      });
+      print(proposalUrl);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    print(widget.job?.jobID);
+    // print(widget.job?.jobID);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
@@ -155,7 +169,7 @@ class _SubmitProposalState extends State<SubmitProposal> {
                               Row(
                                 children: [
                                   Text(
-                                    "67 Connects ",
+                                    "${user?.connects.toInt()-2} Connects ",
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
@@ -346,15 +360,35 @@ class _SubmitProposalState extends State<SubmitProposal> {
                                   .doc(widget.job.jobID)
                                   .collection('proposals')
                                   .add(
-                                  {
-                                    'coverLetter': coverLetter,
-                                    'budget': jobRate,
-                                    'clientId': widget.job.authID,
-                                    'jobPaymentType': widget.job.jobPaymentType,
-                                    'talentId': auth.currentUser.uid
-                                  }
-                                  );
+                              {
+                                'coverLetter': coverLetter,
+                                'budget': jobRate,
+                                'clientId': widget.job.authID,
+                                'jobPaymentType': widget.job.jobPaymentType,
+                                'talentId': auth.currentUser.uid,
+                                'images':[proposalUrl],
+                                'proposalTime':DateTime.now(),
+                                'talentId': user.firstName+" "+ user.lastName,
 
+                              });
+                              DatabaseService().updateDocument(
+                                  'talent', auth.currentUser.uid, {
+                                'connects': user.connects - 2,
+                              });
+                              database
+                                  .collection('talent')
+                                  .doc(auth.currentUser.uid)
+                                  .collection('jobProposal')
+                                  .add(
+                             
+                                   {
+                                    'jobId':widget.job.jobID,
+                                    'status':'proposal',
+                                    'endContractTime':'',
+                                    'startContractTime':'',
+                                    'proposalTime':DateTime.now(),
+                                  });
+                                        uploadImageToFirebase(context);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) {

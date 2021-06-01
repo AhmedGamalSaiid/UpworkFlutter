@@ -23,6 +23,7 @@ class EducationDetails extends StatefulWidget {
 }
 
 class _EducationDetailsState extends State<EducationDetails> {
+  String dropdownValue, dropdownValue2;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -209,11 +210,21 @@ class _EducationDetailsState extends State<EducationDetails> {
                         padding:
                             const EdgeInsets.only(left: 10, right: 10, top: 10),
                         child: Container(
-                            margin: EdgeInsets.symmetric(vertical: 10),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 0.05),
-                            child: SelectDropDown(
-                              [
+                          margin: EdgeInsets.symmetric(vertical: 10),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 0.05),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton(
+                              hint: dropdownValue == null
+                                  ? Text('From')
+                                  : Text(
+                                      dropdownValue,
+                                      style: TextStyle(color: Colors.grey),
+                                    ),
+                              isExpanded: true,
+                              iconSize: 30.0,
+                              style: TextStyle(color: Colors.grey),
+                              items: [
                                 "From",
                                 "2021",
                                 "2020",
@@ -227,9 +238,25 @@ class _EducationDetailsState extends State<EducationDetails> {
                                 "2012",
                                 "2011",
                                 "2010",
-                              ],
-                              isExpand: true,
-                            )),
+                              ].map(
+                                (val) {
+                                  return DropdownMenuItem<String>(
+                                    value: val,
+                                    child: Text(val),
+                                  );
+                                },
+                              ).toList(),
+                              onChanged: (val) {
+                                print(val);
+                                setState(
+                                  () {
+                                    dropdownValue = val;
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                        ),
                       ),
                       SizedBox(height: size.height * 0.03),
                       Padding(
@@ -239,26 +266,48 @@ class _EducationDetailsState extends State<EducationDetails> {
                             margin: EdgeInsets.symmetric(vertical: 10),
                             padding: EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 0.05),
-                            child: SelectDropDown(
-                              [
-                                "To(expected graduation year)",
-                                "2028",
-                                "2027",
-                                "2026",
-                                "2025",
-                                "2024",
-                                "2023",
-                                "2022",
-                                "2021",
-                                "2020",
-                                "2019",
-                                "2018",
-                                "2017",
-                              ],
-                              isExpand: true,
-                              
-                            )
-                        ),
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton(
+                                hint: dropdownValue2 == null
+                                    ? Text('To(expected graduation year)')
+                                    : Text(
+                                        dropdownValue2,
+                                        style: TextStyle(color: Colors.grey),
+                                      ),
+                                isExpanded: true,
+                                iconSize: 30.0,
+                                style: TextStyle(color: Colors.grey),
+                                items: [
+                                  "2028",
+                                  "2027",
+                                  "2026",
+                                  "2025",
+                                  "2024",
+                                  "2023",
+                                  "2022",
+                                  "2021",
+                                  "2020",
+                                  "2019",
+                                  "2018",
+                                  "2017",
+                                ].map(
+                                  (val) {
+                                    return DropdownMenuItem<String>(
+                                      value: val,
+                                      child: Text(val),
+                                    );
+                                  },
+                                ).toList(),
+                                onChanged: (val) {
+                                  print(val);
+                                  setState(
+                                    () {
+                                      dropdownValue2 = val;
+                                    },
+                                  );
+                                },
+                              ),
+                            )),
                       ),
                       SizedBox(height: size.height * 0.03),
                       Row(
