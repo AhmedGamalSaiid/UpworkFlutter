@@ -105,6 +105,10 @@ class _BottomNavState extends State<BottomNav> {
               Navigator.pushNamed(context, "/messages");
               _currentIndex = index;
               break;
+            case 4:
+              Navigator.pushNamed(context, "/offers");
+              _currentIndex = index;
+              break;
             default:
           }
         });
