@@ -1,8 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:upwork/Models/JobData.dart';
 import 'package:upwork/Models/ProposalsData.dart';
+import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/Services/JobDataService.dart';
+import 'package:upwork/View/Pages/TalentPages/Proposals.dart';
+import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
+
+import '../../../firebaseApp.dart';
 
 class OffersCard extends StatefulWidget {
   final ProposalsDataModel propos;
@@ -134,25 +140,41 @@ class _OffersCardState extends State<OffersCard> {
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
-                      // onTap: () {
-                      //   Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(builder: (context) {
-                      //       return SubmitProposal(job);
-                      //     }),
-                      //   );
-                      // },
+                      onTap: () {
+                        DatabaseService().updateDocument('job', job.jobID, {
+                          'status': 'public',
+                        });
+                        database
+                            .collection('talent')
+                            .doc(auth.currentUser.uid)
+                            .collection('jobProposal')
+                            .where("jobId", isEqualTo: job.jobID)
+                            .get()
+                            .then((QuerySnapshot res) {
+                          res.docs.forEach((doc) {
+                            database
+                                .collection('talent')
+                                .doc(auth.currentUser.uid)
+                                .collection('jobProposal')
+                                .doc(doc.id)
+                                .update({
+                              'status': 'proposal',
+                            });
+                          });
+                        });
+                      },
                     ),
                   )),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                 child: Container(
                   width: 150,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Color(0xff018623),
+                    color: Color(0XFF37a000),
+                    border: Border.all(color: Colors.black12),
                   ),
                   child: Center(
                       child: Padding(
@@ -165,14 +187,30 @@ class _OffersCardState extends State<OffersCard> {
                             color: Colors.white,
                             fontWeight: FontWeight.bold),
                       ),
-                      // onTap: () {
-                      //   Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(builder: (context) {
-                      //       return ProposalsPage();
-                      //     }),
-                      //   );
-                      // },
+                      onTap: () {
+                        DatabaseService().updateDocument('job', job.jobID, {
+                          'status': 'hired',
+                        });
+                        database
+                            .collection('talent')
+                            .doc(auth.currentUser.uid)
+                            .collection('jobProposal')
+                            .where("jobId", isEqualTo: job.jobID)
+                            .get()
+                            .then((QuerySnapshot res) {
+                          res.docs.forEach((doc) {
+                            database
+                                .collection('talent')
+                                .doc(auth.currentUser.uid)
+                                .collection('jobProposal')
+                                .doc(doc.id)
+                                .update({
+                              'status': 'contract',
+                              'startTime': DateTime.now()
+                            });
+                          });
+                        });
+                      },
                     ),
                   )),
                 ),
