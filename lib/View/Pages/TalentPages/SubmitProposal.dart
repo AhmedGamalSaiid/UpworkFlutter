@@ -355,20 +355,20 @@ class _SubmitProposalState extends State<SubmitProposal> {
                             textColor: Colors.white,
                             borderColor: Color(0x00000000),
                             press: () {
-                              database
-                                  .collection('job')
-                                  .doc(widget.job.jobID)
-                                  .collection('proposals')
-                                  .add(
-                              {
-                                'coverLetter': coverLetter,
+                                database
+                                    .collection('job')
+                                    .doc(widget.job.jobID)
+                                    .collection('proposals')
+                                    .add(
+                                {
+                                  'coverLetter': coverLetter,
                                 'budget': jobRate,
                                 'clientId': widget.job.authID,
                                 'jobPaymentType': widget.job.jobPaymentType,
                                 'talentId': auth.currentUser.uid,
                                 'images':[proposalUrl],
                                 'proposalTime':DateTime.now(),
-                                'talentId': user.firstName+" "+ user.lastName,
+                                'talentName': user.firstName+" "+ user.lastName,
 
                               });
                               DatabaseService().updateDocument(
