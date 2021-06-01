@@ -140,14 +140,29 @@ class _OffersCardState extends State<OffersCard> {
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
-                      // onTap: () {
-                      //   Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(builder: (context) {
-                      //       return SubmitProposal(job);
-                      //     }),
-                      //   );
-                      // },
+                      onTap: () {
+                        DatabaseService().updateDocument('job', job.jobID, {
+                          'status': 'public',
+                        });
+                        database
+                            .collection('talent')
+                            .doc(auth.currentUser.uid)
+                            .collection('jobProposal')
+                            .where("jobId", isEqualTo: job.jobID)
+                            .get()
+                            .then((QuerySnapshot res) {
+                          res.docs.forEach((doc) {
+                            database
+                                .collection('talent')
+                                .doc(auth.currentUser.uid)
+                                .collection('jobProposal')
+                                .doc(doc.id)
+                                .update({
+                              'status': 'proposal',
+                            });
+                          });
+                        });
+                      },
                     ),
                   )),
                 ),
