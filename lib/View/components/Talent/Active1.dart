@@ -65,7 +65,7 @@ class _ActiveBodyState extends State<ActiveBody> {
                 content: Column(children: [
                   for (var i = 0; i < hiredPropals?.length; i++)
                     ProposalsCard(
-                      hiredPropals[i].jobId,
+                      hiredPropals[i],
                     ),
                 ])),
 
@@ -81,7 +81,7 @@ class _ActiveBodyState extends State<ActiveBody> {
                   ? Column(children: [
                       for (var i = 0; i < activePropals?.length; i++)
                         ProposalsCard(
-                          activePropals[i].jobId,
+                          activePropals[i],
                         ),
                     ])
                   : Text(""),
@@ -94,7 +94,7 @@ class _ActiveBodyState extends State<ActiveBody> {
                 content: Column(children: [
                   for (var i = 0; i < submitPropals?.length; i++)
                     ProposalsCard(
-                      submitPropals[i].jobId,
+                      submitPropals[i],
                     ),
                 ])),
           ],
