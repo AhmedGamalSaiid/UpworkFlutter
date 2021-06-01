@@ -44,7 +44,9 @@ class _BottomNavState extends State<BottomNav> {
           ),
         ),
         CustomNavigationBarItem(
-          icon: Icon(Icons.assignment_turned_in_sharp),
+          icon: Icon(
+  Icons.work_outline_outlined,
+),
           title: Text(
             "Contracts",
             style: TextStyle(color: Color(0xff6c788a), fontSize: 11),
@@ -68,11 +70,11 @@ class _BottomNavState extends State<BottomNav> {
         CustomNavigationBarItem(
           icon: Icon(Icons.notifications_outlined),
           title: Text(
-            "Alerts",
+            "Offers",
             style: TextStyle(color: Color(0xff6c788a), fontSize: 11),
           ),
           selectedTitle: Text(
-            "Alerts",
+            "Offers",
             style: TextStyle(color: bgUpwork, fontSize: 13),
           ),
           badgeCount: 5,

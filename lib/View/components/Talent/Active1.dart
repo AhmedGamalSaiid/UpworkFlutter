@@ -94,7 +94,8 @@ class _ActiveBodyState extends State<ActiveBody> {
                     isOpen: false,
                     headerText: submitPropals?.length > 0
                         ? "Submmitted Proposals (${submitPropals?.length.toString()})"
-                        : 'Submmitted Proposals()',
+                        : 'Submmitted Proposals(0)',
+                        headerTextStyle: TextStyle(fontSize: 20,fontWeight: FontWeight.w700),
                     content: Column(children: [
                       for (var i = 0; i < submitPropals?.length; i++)
                         ProposalsCard(
