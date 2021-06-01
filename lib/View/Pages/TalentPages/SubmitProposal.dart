@@ -68,13 +68,14 @@ class _SubmitProposalState extends State<SubmitProposal> {
     String fileName = basename(_proposalFile.path);
     FirebaseStorage storage = FirebaseStorage.instance;
 
-    Reference firebaseStorageRef = storage.ref().child('proposalImages/$fileName');
+    Reference firebaseStorageRef =
+        storage.ref().child('proposalImages/$fileName');
     UploadTask uploadTask = firebaseStorageRef.putFile(_proposalFile);
     uploadTask.then((res) {
       res.ref.getDownloadURL().then((url) => {
             proposalUrl = url,
-            print(proposalUrl), 
-      });
+            print(proposalUrl),
+          });
       print(proposalUrl);
     });
   }
@@ -169,7 +170,7 @@ class _SubmitProposalState extends State<SubmitProposal> {
                               Row(
                                 children: [
                                   Text(
-                                    "${user?.connects.toInt()-2} Connects ",
+                                    "${user?.connects.toInt() - 2} Connects ",
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
@@ -359,17 +360,16 @@ class _SubmitProposalState extends State<SubmitProposal> {
                                   .collection('job')
                                   .doc(widget.job.jobID)
                                   .collection('proposals')
-                                  .add(
-                              {
+                                  .add({
                                 'coverLetter': coverLetter,
                                 'budget': jobRate,
                                 'clientId': widget.job.authID,
                                 'jobPaymentType': widget.job.jobPaymentType,
                                 'talentId': auth.currentUser.uid,
-                                'images':[proposalUrl],
-                                'proposalTime':DateTime.now(),
-                                'talentId': user.firstName+" "+ user.lastName,
-
+                                'images': [proposalUrl],
+                                'proposalTime': DateTime.now(),
+                                'talentName':
+                                    user.firstName + " " + user.lastName,
                               });
                               DatabaseService().updateDocument(
                                   'talent', auth.currentUser.uid, {
@@ -379,16 +379,14 @@ class _SubmitProposalState extends State<SubmitProposal> {
                                   .collection('talent')
                                   .doc(auth.currentUser.uid)
                                   .collection('jobProposal')
-                                  .add(
-                             
-                                   {
-                                    'jobId':widget.job.jobID,
-                                    'status':'proposal',
-                                    'endContractTime':'',
-                                    'startContractTime':'',
-                                    'proposalTime':DateTime.now(),
-                                  });
-                                        uploadImageToFirebase(context);
+                                  .add({
+                                'jobId': widget.job.jobID,
+                                'status': 'proposal',
+                                'endContractTime': '',
+                                'startContractTime': '',
+                                'proposalTime': DateTime.now(),
+                              });
+                              uploadImageToFirebase(context);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) {

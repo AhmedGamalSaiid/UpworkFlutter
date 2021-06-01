@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:upwork/Models/JobData.dart';
 import 'package:upwork/View/Pages/TalentPages/Proposals.dart';
 import 'package:upwork/View/Pages/TalentPages/SubmitProposal.dart';
 import 'package:intl/intl.dart';
+
+import '../../../firebaseApp.dart';
 
 class ReviewProposal extends StatefulWidget {
   final dateFormart = new DateFormat('kk:mm:a');
@@ -266,12 +269,47 @@ class _ReviewProposalState extends State<ReviewProposal> {
                                 fontWeight: FontWeight.bold),
                           ),
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return SubmitProposal(widget.job);
-                              }),
-                            );
+                            database
+                                .collection('job')
+                                .doc(widget.job.jobID)
+                                .collection('proposals')
+                                .where("talentId",
+                                    isEqualTo: auth.currentUser.uid)
+                                .get()
+                                .then((QuerySnapshot res) {
+                              res.docs.forEach((doc) {
+                                database
+                                    .collection('job')
+                                    .doc(widget.job.jobID)
+                                    .collection('proposals')
+                                    .doc(doc.id)
+                                    .delete();
+                              });
+                            });
+                            database
+                                .collection('talent')
+                                .doc(auth.currentUser.uid)
+                                .collection('jobProposal')
+                                .where("jobId", isEqualTo: widget.job.jobID)
+                                .get()
+                                .then((QuerySnapshot res) {
+                              res.docs.forEach((doc) {
+                                print(doc.id);
+                                database
+                                    .collection('talent')
+                                    .doc(auth.currentUser.uid)
+                                    .collection('jobProposal')
+                                    .doc(doc.id)
+                                    .delete();
+                                print('delete');
+                              });
+                            });
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(builder: (context) {
+                            //     return SubmitProposal(widget.job);
+                            //   }),
+                            // );
                           },
                         ),
                       )),
