@@ -210,6 +210,13 @@ class _OffersCardState extends State<OffersCard> {
                             });
                           });
                         });
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return ProposalsPage();
+                          }),
+                        );
                       },
                     ),
                   )),
