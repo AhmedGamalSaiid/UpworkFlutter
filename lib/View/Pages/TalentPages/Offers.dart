@@ -62,7 +62,7 @@ class _OffersState extends State<Offers> {
                                 activePropals[i],
                               ),
                           ])
-                        : Text("You Don't Have Offers Still Now "),
+                        : Text("You Don't Have Offers Still Now"),
                   )
                 : CustomLoader(),
             bottomNavigationBar: BottomNav()));
