@@ -6,6 +6,7 @@ import 'package:upwork/View/Pages/TalentPages/HomePage.dart';
 import 'package:upwork/View/Pages/TalentPages/Messages.dart';
 import 'package:upwork/View/Pages/TalentPages/Proposals.dart';
 import 'package:upwork/View/Pages/TalentPages/myreports.dart';
+import 'View/Pages/TalentPages/Offers.dart';
 import 'constanse.dart';
 import 'firebaseApp.dart';
 
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         '/proposals': (context) => ProposalsPage(),
         '/contracts': (context) => Contracts(),
         '/messages': (context) => Messages(),
-        // '/alerts': (context) => (),
+        '/offers': (context) => Offers(),
         '/reports': (context) => ReportsPage(),
       },
     );
