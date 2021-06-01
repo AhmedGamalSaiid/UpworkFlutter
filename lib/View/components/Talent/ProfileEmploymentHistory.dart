@@ -52,64 +52,69 @@ class _ProfileEmploymentHistoryState extends State<ProfileEmploymentHistory> {
                         ),
                       ),
                     ),
-                    widget.user.company.length>0?
-                    Wrap(
-                      spacing: 15,
-                      runSpacing: 5,
-                      children: [
-                        for (var i = 0; i < widget.user.company.length; i++)
-                          Padding(
-                            padding: const EdgeInsets.only(top: 8, bottom: 8),
-                            child: Column(
-                              children: [
+                    widget.user.company.length > 0
+                        ? Wrap(
+                            spacing: 15,
+                            runSpacing: 5,
+                            children: [
+                              for (var i = 0;
+                                  i < widget.user?.company?.length;
+                                  i++)
                                 Padding(
                                   padding:
                                       const EdgeInsets.only(top: 8, bottom: 8),
-                                  child: Row(
+                                  child: Column(
                                     children: [
-                                      Text(
-                                        "companyName : ",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16,
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 8, bottom: 8),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              "companyName : ",
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                            Text(
+                                              widget.user.company[i]
+                                                  ["companyName"],
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                      Text(
-                                        widget.user?.company[i]["companyName"],
-                                        style: TextStyle(
-                                          fontSize: 16,
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 8, bottom: 8),
+                                        child: Row(
+                                          children: [
+                                            Text(
+                                              "jobTitle : ",
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Text(
+                                              widget.user?.company[i]
+                                                  ["jobTitle"],
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 8, bottom: 8),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        "jobTitle : ",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                      Text(
-                                        widget.user?.company[i]["jobTitle"],
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                      ],
-                    )
-                    :Text(''),
+                            ],
+                          )
+                        : Text(''),
                   ],
                 ),
               ),
