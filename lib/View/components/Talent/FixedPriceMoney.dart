@@ -82,7 +82,8 @@ class _FixedPriceMoneyState extends State<FixedPriceMoney> {
                                 ),
                                 onChanged: (value) {
                                   setState(() {
-                                    widget.sendRate( double.parse(value));
+                                    widget.sendRate(double.parse(value));
+                                    widget.hourlyRate = double.parse(value);
                                   });
                                 }),
                           ),
