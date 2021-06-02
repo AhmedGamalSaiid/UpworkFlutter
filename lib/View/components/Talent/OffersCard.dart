@@ -6,6 +6,7 @@ import 'package:upwork/Models/ProposalsData.dart';
 import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/Services/JobDataService.dart';
 import 'package:upwork/View/Pages/TalentPages/Proposals.dart';
+import 'package:upwork/View/components/Shared/CustomLoader.dart';
 
 import '../../../firebaseApp.dart';
 
@@ -41,10 +42,11 @@ class _OffersCardState extends State<OffersCard> {
           Card(
               child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children:job !=null?
+             [
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 14.0, right: 14.0, top: 10.0, bottom: 5.0),
+                    left: 14.0, right: 14.0, top: 10.0, bottom: 30.0),
                 child: Text("${job?.jobTitle}",
                     style:
                         TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
@@ -114,7 +116,9 @@ class _OffersCardState extends State<OffersCard> {
                       ),
                     ],
                   )),
-            ],
+            ]:[
+               CustomLoader(),
+            ]
           )),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
