@@ -88,6 +88,7 @@ class _HourlyRateMoneyState extends State<HourlyRateMoney> {
                                 onChanged: (value) {
                                   setState(() {
                                     widget.setRate(double.parse(value));
+                                    widget.hourlyRate = double.parse(value);
                                   });
                                 }),
                           ),
