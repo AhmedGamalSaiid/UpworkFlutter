@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:upwork/Models/JobData.dart';
 import 'package:upwork/View/Pages/TalentPages/Proposals.dart';
 import 'package:upwork/View/Pages/TalentPages/SubmitProposal.dart';
@@ -62,7 +63,17 @@ class _OffersState extends State<Offers> {
                                 activePropals[i],
                               ),
                           ])
-                        : Text("You Don't Have Offers Still Now"),
+                        : Center(child:Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: 
+                        
+                        [
+
+                         Text("You Don't Have Offers Still Now",style:TextStyle(fontWeight: FontWeight.w600,fontSize: 20) ),
+                         SvgPicture.asset("assets/svg/saved.svg"),
+                        ],)
+
+                        ),
                   )
                 : CustomLoader(),
             bottomNavigationBar: BottomNav()));
