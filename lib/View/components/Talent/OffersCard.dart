@@ -33,8 +33,13 @@ class _OffersCardState extends State<OffersCard> {
 
   @override
   Widget build(BuildContext context) {
+        Size size = MediaQuery.of(context).size;
+
     final dateFormart = new DateFormat('yyyy-MM-dd');
     return Container(
+              height: size.height * 0.8,
+              width: size.height * 0.8,
+
         child: SingleChildScrollView(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -199,7 +204,7 @@ class _OffersCardState extends State<OffersCard> {
                             });
                           });
                         });
-                        
+                       Navigator.pushNamed(context, "/jobs");
                       },
                     ),
                   )),
@@ -270,12 +275,7 @@ class _OffersCardState extends State<OffersCard> {
                           });
                         });
 
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) {
-                            return ProposalsPage();
-                          }),
-                        );
+                         Navigator.pushNamed(context, "/jobs");
                       },
                     ),
                   )),
