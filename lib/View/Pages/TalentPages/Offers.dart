@@ -5,6 +5,7 @@ import 'package:upwork/View/Pages/TalentPages/SubmitProposal.dart';
 import 'package:intl/intl.dart';
 import 'package:upwork/View/components/Shared/CustomCircleAvatar.dart';
 import 'package:upwork/View/components/Shared/CustomDrawer.dart';
+import 'package:upwork/View/components/Shared/CustomLoader.dart';
 import 'package:upwork/View/components/Shared/CustomMenuButton.dart';
 import 'package:upwork/View/components/Talent/BottomNav.dart';
 import 'package:upwork/Models/ProposalsData.dart';
@@ -19,7 +20,7 @@ class Offers extends StatefulWidget {
 class _OffersState extends State<Offers> {
   List<ProposalsDataModel> activePropals;
   getData() async {
-    activePropals = await UserDataService().getActiveProposalsData();
+    activePropals = await UserDataService().getofferProposalsData();
     setState(() {});
   }
 
@@ -31,7 +32,6 @@ class _OffersState extends State<Offers> {
 
   @override
   Widget build(BuildContext context) {
-    print(activePropals);
     return DefaultTabController(
         length: 3,
         child: Scaffold(
@@ -53,18 +53,18 @@ class _OffersState extends State<Offers> {
                 CustomMenuButton(),
               ],
             ),
-            body: Column(
-              children: [
-                activePropals?.length > 0
-                    ? Column(children: [
-                        for (var i = 0; i < activePropals?.length; i++)
-                          OffersCard(
-                            activePropals[i],
-                          ),
-                      ])
-                    : Text(""),
-              ],
-            ),
+            body: activePropals != null
+                ? Container(
+                    child: activePropals?.length > 0
+                        ? Column(children: [
+                            for (var i = 0; i < activePropals?.length; i++)
+                              OffersCard(
+                                activePropals[i],
+                              ),
+                          ])
+                        : Text("You Don't Have Offers Still Now"),
+                  )
+                : CustomLoader(),
             bottomNavigationBar: BottomNav()));
   }
 }
