@@ -6,6 +6,7 @@ import 'package:upwork/Models/ProposalsData.dart';
 import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/Services/JobDataService.dart';
 import 'package:upwork/View/Pages/TalentPages/Proposals.dart';
+import 'package:upwork/View/components/Shared/CustomLoader.dart';
 
 import '../../../firebaseApp.dart';
 
@@ -32,90 +33,112 @@ class _OffersCardState extends State<OffersCard> {
 
   @override
   Widget build(BuildContext context) {
+        Size size = MediaQuery.of(context).size;
+
     final dateFormart = new DateFormat('yyyy-MM-dd');
     return Container(
+              height: size.height * 0.8,
+              width: size.height * 0.8,
+
         child: SingleChildScrollView(
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
           Card(
               child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 14.0, right: 14.0, top: 10.0, bottom: 5.0),
-                child: Text("${job?.jobTitle}",
-                    style:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              ),
-              Divider(
-                color: Colors.grey,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 14.0, right: 14.0, top: 5.0, bottom: 5.0),
-                child: Container(
-                  width: 360,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 5.0),
-                        child: Text(dateFormart.format(job?.postTime.toDate()),
-                            style: TextStyle(fontSize: 16, color: Colors.grey)),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Divider(
-                color: Colors.grey,
-              ),
-              Padding(
-                  padding: const EdgeInsets.only(
-                      left: 14.0, right: 14.0, top: 5.0, bottom: 5.0),
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 360,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              width: 100,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: job != null
+                      ? [
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 14.0,
+                                right: 14.0,
+                                top: 10.0,
+                                bottom: 30.0),
+                            child: Text("${job?.jobTitle}",
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold)),
+                          ),
+                          Divider(
+                            color: Colors.grey,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 14.0, right: 14.0, top: 5.0, bottom: 5.0),
+                            child: Container(
+                              width: 360,
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      "${job?.jobBudget}\$",
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 5),
-                                    child: Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                        "${job?.jobPaymentType}",
+                                    padding: const EdgeInsets.only(bottom: 5.0),
+                                    child: Text(
+                                        dateFormart
+                                            .format(job?.postTime.toDate()),
                                         style: TextStyle(
-                                            fontSize: 16, color: Colors.grey),
-                                      ),
-                                    ),
-                                  )
+                                            fontSize: 16, color: Colors.grey)),
+                                  ),
                                 ],
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  )),
-            ],
-          )),
+                          ),
+                          Divider(
+                            color: Colors.grey,
+                          ),
+                          Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 14.0,
+                                  right: 14.0,
+                                  top: 5.0,
+                                  bottom: 5.0),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    width: 360,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          width: 100,
+                                          child: Column(
+                                            children: [
+                                              Align(
+                                                alignment: Alignment.centerLeft,
+                                                child: Text(
+                                                  "${job?.jobBudget}\$",
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    top: 5),
+                                                child: Align(
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  child: Text(
+                                                    "${job?.jobPaymentType}",
+                                                    style: TextStyle(
+                                                        fontSize: 16,
+                                                        color: Colors.grey),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )),
+                        ]
+                      : [
+                          CustomLoader(),
+                        ])),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -140,9 +163,9 @@ class _OffersCardState extends State<OffersCard> {
                             fontWeight: FontWeight.bold),
                       ),
                       onTap: () {
-                        DatabaseService().updateDocument('job', job.jobID, {
-                          'status': 'public',
-                        });
+                        // DatabaseService().updateDocument('job', job.jobID, {
+                        //   'status': 'public',
+                        // });
                         database
                             .collection('talent')
                             .doc(auth.currentUser.uid)
@@ -161,6 +184,27 @@ class _OffersCardState extends State<OffersCard> {
                             });
                           });
                         });
+                             database
+                            .collection('client')
+                            .doc(job.authID)
+                            .collection('contracts')
+                            .where("jobID", isEqualTo: job.jobID)
+                            .get()
+                            .then((QuerySnapshot res) {
+                          // var x = res.docs[0].id;
+                          res.docs.forEach((doc) {
+                            database
+                                .collection('client')
+                                .doc(job.authID)
+                                .collection('contracts')
+                                .doc(doc.id)
+                                .update({
+                              'talentResponse': 'reject',
+                              // 'startTime': DateTime.now()
+                            });
+                          });
+                        });
+                       Navigator.pushNamed(context, "/jobs");
                       },
                     ),
                   )),
@@ -210,12 +254,28 @@ class _OffersCardState extends State<OffersCard> {
                           });
                         });
 
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) {
-                            return ProposalsPage();
-                          }),
-                        );
+                        database
+                            .collection('client')
+                            .doc(job.authID)
+                            .collection('contracts')
+                            .where("jobID", isEqualTo: job.jobID)
+                            .get()
+                            .then((QuerySnapshot res) {
+                          // var x = res.docs[0].id;
+                          res.docs.forEach((doc) {
+                            database
+                                .collection('client')
+                                .doc(job.authID)
+                                .collection('contracts')
+                                .doc(doc.id)
+                                .update({
+                              'talentResponse': 'accept',
+                              // 'startTime': DateTime.now()
+                            });
+                          });
+                        });
+
+                         Navigator.pushNamed(context, "/jobs");
                       },
                     ),
                   )),
