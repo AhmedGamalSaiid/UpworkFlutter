@@ -294,7 +294,6 @@ class _ReviewProposalState extends State<ReviewProposal> {
                                 .get()
                                 .then((QuerySnapshot res) {
                               res.docs.forEach((doc) {
-                                print(doc.id);
                                 database
                                     .collection('talent')
                                     .doc(auth.currentUser.uid)
