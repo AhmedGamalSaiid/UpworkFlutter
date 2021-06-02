@@ -82,7 +82,7 @@ class UserDataService {
   }
 
   Future<List<ProposalsDataModel>> getContractProposalsData() async {
-    List<ProposalsDataModel>  contractProposals = [];
+    List<ProposalsDataModel> contractProposals = [];
     try {
       await database
           .collection('talent')
@@ -98,6 +98,72 @@ class UserDataService {
     } catch (e) {
       print(e);
     }
-    return  contractProposals;
+    return contractProposals;
+  }
+
+  Future<double> getWorkInProgressData() async {
+    double workInprogressBudget;
+    try {
+      database
+          .collection('talent')
+          .doc(auth.currentUser.uid)
+          .collection('jobProposal')
+          .where('status', isEqualTo: 'hired')
+          .get()
+          .then((QuerySnapshot res) {
+        res.docs.forEach((doc) {
+          print(doc.data()['jobId']);
+          database
+              .collection('job')
+              .doc(doc.data()['jobId'])
+              .collection('proposals')
+              .where("talentId", isEqualTo: auth.currentUser.uid)
+              .get()
+              .then((QuerySnapshot res) {
+            res.docs.forEach((doc) {
+              print(doc.data());
+              print(doc.data()['budget']);
+              workInprogressBudget = doc.data()['budget'];
+            });
+          });
+        });
+      });
+    } catch (e) {
+      print(e);
+    }
+    return workInprogressBudget;
+  }
+
+  Future<double> getavailableData() async {
+    double availableBudget;
+    try {
+      database
+          .collection('talent')
+          .doc(auth.currentUser.uid)
+          .collection('jobProposal')
+          .where('status', isEqualTo: 'closed')
+          .get()
+          .then((QuerySnapshot res) {
+        res.docs.forEach((doc) {
+          print(doc.data()['jobId']);
+          database
+              .collection('job')
+              .doc(doc.data()['jobId'])
+              .collection('proposals')
+              .where("talentId", isEqualTo: auth.currentUser.uid)
+              .get()
+              .then((QuerySnapshot res) {
+            res.docs.forEach((doc) {
+              print(doc.data());
+              print(doc.data()['budget']);
+              availableBudget = doc.data()['budget'];
+            });
+          });
+        });
+      });
+    } catch (e) {
+      print(e);
+    }
+    return availableBudget;
   }
 }

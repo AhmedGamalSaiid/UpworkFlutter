@@ -39,7 +39,7 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Chat",
+          "Messages",
           style: TextStyle(
               fontSize: 35,
               color: Colors.black,
@@ -48,12 +48,12 @@ class _ChatScreenState extends State<ChatScreen> {
               letterSpacing: 1.5),
         ),
         backgroundColor: Colors.white,
-        actions: <Widget>[
-          IconButton(
-              icon: FaIcon(FontAwesomeIcons.signOutAlt),
-              color: Colors.black,
-              onPressed: logOut),
-        ],
+        // actions: <Widget>[
+        //   IconButton(
+        //       icon: FaIcon(FontAwesomeIcons.signOutAlt),
+        //       color: Colors.black,
+        //       onPressed: logOut),
+        // ],
       ),
       backgroundColor: Color(0xffebeef3),
       body: Column(

@@ -26,7 +26,7 @@ class _JobCardState extends State<JobCard> {
         },
         child: Container(
           width: size.width * 1.0,
-          height: size.height * 0.57,
+          height: size.height * 0.7,
           child: Card(
             color: Colors.grey[100],
             child: Column(
@@ -59,34 +59,34 @@ class _JobCardState extends State<JobCard> {
                 SizedBox(
                   height: size.height * 0.001,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "Less than 30 hrs/week",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "1 to 3 months",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "Hours needed",
-                      style: TextStyle(fontSize: 17, color: Colors.grey),
-                    ),
-                    Text(
-                      "Duration",
-                      style: TextStyle(fontSize: 17, color: Colors.grey),
-                    ),
-                  ],
-                ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //   children: [
+                //     Text(
+                //       "Less than 30 hrs/week",
+                //       style:
+                //           TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                //     ),
+                //     Text(
+                //       "1 to 3 months",
+                //       style:
+                //           TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                //     ),
+                //   ],
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //   children: [
+                //     Text(
+                //       "Hours needed",
+                //       style: TextStyle(fontSize: 17, color: Colors.grey),
+                //     ),
+                //     Text(
+                //       "Duration",
+                //       style: TextStyle(fontSize: 17, color: Colors.grey),
+                //     ),
+                //   ],
+                // ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
@@ -101,7 +101,45 @@ class _JobCardState extends State<JobCard> {
                     style: TextStyle(fontSize: 17, color: Colors.grey),
                   ),
                 ),
-                Text("${widget.job.jobDescription.substring(0, 40)}..."),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Text(
+                    "Skills",
+                    style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Wrap(
+                    direction: Axis.horizontal,
+                    children: [
+                      for (var i = 0; i < widget.job?.skills.length; i++)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 5),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Color(0xffCDCECB),
+                                borderRadius: BorderRadius.circular(25)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                widget.job.skills[i],
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child:
+                      Text("${widget.job.jobDescription.substring(0, 40)}..."),
+                ),
                 Row(
                   children: widget.job.clientPaymentVerified
                       ? [
