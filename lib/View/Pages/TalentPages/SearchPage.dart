@@ -18,7 +18,6 @@ class _SearchPageState extends State<SearchPage> {
   getData() async {
     if (selectedTerm != null) {
       jobs = await JobDataService().getJobsSearch(selectedTerm);
-      print(jobs);
       setState(() {});
     }
   }
@@ -111,7 +110,6 @@ class _SearchPageState extends State<SearchPage> {
           setState(() {
             addSearchTerm(query);
             selectedTerm = query;
-            print(selectedTerm);
             getData();
           });
           controller.close();

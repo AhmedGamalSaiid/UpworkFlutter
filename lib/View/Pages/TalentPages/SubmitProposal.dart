@@ -405,6 +405,7 @@ class _SubmitProposalState extends State<SubmitProposal> {
                                     'endContractTime': '',
                                     'startContractTime': '',
                                     'proposalTime': DateTime.now(),
+                                    'budget': jobRate,
                                   });
                                   uploadImageToFirebase(context);
                                   Navigator.push(

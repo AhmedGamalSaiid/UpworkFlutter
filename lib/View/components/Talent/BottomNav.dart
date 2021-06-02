@@ -9,7 +9,7 @@ class BottomNav extends StatefulWidget {
 }
 
 class _BottomNavState extends State<BottomNav> {
-  int _currentIndex = 0;
+  int _currentIndex =0;
 
   @override
   Widget build(BuildContext context) {
