@@ -6,7 +6,6 @@ import 'package:upwork/Models/ProposalsData.dart';
 import 'package:upwork/Services/DatabaseService.dart';
 import 'package:upwork/Services/JobDataService.dart';
 import 'package:upwork/View/Pages/TalentPages/Proposals.dart';
-import 'package:upwork/View/components/beforeLogin/Loginbtn.dart';
 
 import '../../../firebaseApp.dart';
 

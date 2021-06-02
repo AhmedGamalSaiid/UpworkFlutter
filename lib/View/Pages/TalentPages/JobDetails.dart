@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_button/custom/like_button.dart';
@@ -20,21 +22,16 @@ class JobDetails extends StatefulWidget {
   final JobDataModel job;
   UserDataModel user;
   JobDetails(this.job);
+  bool proposalSet = false;
 
   @override
   _JobDetailsState createState() => _JobDetailsState();
 }
 
 class _JobDetailsState extends State<JobDetails> {
-  // FirebaseFirestore.instance
-  // .collection("talent")
-  //     .doc(auth.currentUser.uid)
-  //     .collection("jobProposal")
-  //     .where("jobId", "==", id)
-  //     .onSnapshot((res) => {
-  //       if (res?.docs.length > 0) setjobProposal(true);
-  //     });
   ClientDataModel client;
+
+
   Future<bool> onLikeButtonTapped(bool isLiked) async {
     var temp;
     print(isLiked);
@@ -60,6 +57,20 @@ class _JobDetailsState extends State<JobDetails> {
     // client = await ClientDataService().getClientData(widget.job.authID);
     client = await ClientDataService().getClientData(widget.job.authID);
     widget.user = await UserDataService().getUserData();
+    await database
+        .collection("talent")
+        .doc(auth.currentUser.uid)
+        .collection("jobProposal")
+        .where("jobId", isEqualTo: widget.job.jobID)
+        .get()
+        .then((res) => {
+              if (res?.docs.length > 0)
+                {
+                  widget.proposalSet = true,
+                  print(widget.proposalSet),
+                },
+            });
+
 
     if (this.mounted) setState(() {});
   }
@@ -68,6 +79,7 @@ class _JobDetailsState extends State<JobDetails> {
   void initState() {
     super.initState();
     getData();
+   
   }
 
   @override
@@ -136,8 +148,7 @@ class _JobDetailsState extends State<JobDetails> {
                                     padding: const EdgeInsets.only(bottom: 0),
                                     child: Text(
                                         dateFormat.format(
-                                            widget.job.postTime.toDate()
-                                        ),
+                                            widget.job.postTime.toDate()),
                                         style: TextStyle(
                                             fontSize: 12, color: Colors.grey)),
                                   ),
@@ -699,24 +710,77 @@ class _JobDetailsState extends State<JobDetails> {
                         child: Center(
                             child: Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child:
-                           InkWell(
-                            child: Text(
-                              "Submit a Proposal",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) {
-                                  return SubmitProposal(widget.job);
-                                }),
-                              );
-                            },
+                          child:widget.proposalSet == true
+                              ? InkWell(
+                          child: Text(
+                            "Withdraw Proposal",
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
                           ),
+                          onTap: () {
+                            database
+                                .collection('job')
+                                .doc(widget.job.jobID)
+                                .collection('proposals')
+                                .where("talentId",
+                                    isEqualTo: auth.currentUser.uid)
+                                .get()
+                                .then((QuerySnapshot res) {
+                              res.docs.forEach((doc) {
+                                database
+                                    .collection('job')
+                                    .doc(widget.job.jobID)
+                                    .collection('proposals')
+                                    .doc(doc.id)
+                                    .delete();
+                              });
+                            });
+                            database
+                                .collection('talent')
+                                .doc(auth.currentUser.uid)
+                                .collection('jobProposal')
+                                .where("jobId", isEqualTo: widget.job.jobID)
+                                .get()
+                                .then((QuerySnapshot res) {
+                              res.docs.forEach((doc) {
+                                print(doc.id);
+                                database
+                                    .collection('talent')
+                                    .doc(auth.currentUser.uid)
+                                    .collection('jobProposal')
+                                    .doc(doc.id)
+                                    .delete();
+                                print('delete');
+                              });
+                            });
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return SubmitProposal(widget.job);
+                              }),
+                            );
+                          },
+                        )
+                      
+                              : InkWell(
+                                  child: Text(
+                                    "Submit a Proposal",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) {
+                                        return SubmitProposal(widget.job);
+                                      }),
+                                    );
+                                  },
+                                ),
                         )),
                       ),
                     ),
@@ -746,7 +810,8 @@ class _JobDetailsState extends State<JobDetails> {
                               );
                             },
                           ),
-                        )),
+                        )
+                      ),
                       ),
                     )
                   ],

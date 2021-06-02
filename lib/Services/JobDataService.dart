@@ -48,7 +48,7 @@ class JobDataService {
     try {
       await database.collection('job').get().then((QuerySnapshot res) {
         res.docs.forEach((doc) {
-          if (doc.data()["jobTitle"].contains(val)) {
+          if (doc.data()["skills"].contains(val)) {
             jobs.add(JobDataModel.fromJson(doc.data()));
           }
         });
