@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_button/custom/like_button.dart';
@@ -20,6 +22,7 @@ class JobDetails extends StatefulWidget {
   final JobDataModel job;
   UserDataModel user;
   JobDetails(this.job);
+  bool proposalSet = false;
 
   @override
   _JobDetailsState createState() => _JobDetailsState();
@@ -34,6 +37,29 @@ class _JobDetailsState extends State<JobDetails> {
   //     .onSnapshot((res) => {
   //       if (res?.docs.length > 0) setjobProposal(true);
   //     });
+  Future<bool> proposal() async {
+  
+    await database
+        .collection("talent")
+        .doc(auth.currentUser.uid)
+        .collection("jobProposal")
+        .where("jobId", isEqualTo: widget.job.jobID)
+        .get()
+        .then((res) => {
+         // print(res.docs.length)
+
+        if (res?.docs.length > 0){
+
+          widget.proposalSet = true,
+          print(widget.proposalSet),
+        },
+        
+         }
+         );
+
+    return widget.proposalSet;
+  }
+
   ClientDataModel client;
   Future<bool> onLikeButtonTapped(bool isLiked) async {
     var temp;
@@ -136,8 +162,7 @@ class _JobDetailsState extends State<JobDetails> {
                                     padding: const EdgeInsets.only(bottom: 0),
                                     child: Text(
                                         dateFormat.format(
-                                            widget.job.postTime.toDate()
-                                        ),
+                                            widget.job.postTime.toDate()),
                                         style: TextStyle(
                                             fontSize: 12, color: Colors.grey)),
                                   ),
@@ -699,24 +724,25 @@ class _JobDetailsState extends State<JobDetails> {
                         child: Center(
                             child: Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child:
-                           InkWell(
-                            child: Text(
-                              "Submit a Proposal",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) {
-                                  return SubmitProposal(widget.job);
-                                }),
-                              );
-                            },
-                          ),
+                          child: proposal() ==true
+                              ? Text('data')
+                              : InkWell(
+                                  child: Text(
+                                    "Submit a Proposal",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) {
+                                        return SubmitProposal(widget.job);
+                                      }),
+                                    );
+                                  },
+                                ),
                         )),
                       ),
                     ),
