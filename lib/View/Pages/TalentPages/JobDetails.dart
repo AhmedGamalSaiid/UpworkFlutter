@@ -29,38 +29,9 @@ class JobDetails extends StatefulWidget {
 }
 
 class _JobDetailsState extends State<JobDetails> {
-  // FirebaseFirestore.instance
-  // .collection("talent")
-  //     .doc(auth.currentUser.uid)
-  //     .collection("jobProposal")
-  //     .where("jobId", "==", id)
-  //     .onSnapshot((res) => {
-  //       if (res?.docs.length > 0) setjobProposal(true);
-  //     });
-  Future<bool> proposal() async {
-  
-    await database
-        .collection("talent")
-        .doc(auth.currentUser.uid)
-        .collection("jobProposal")
-        .where("jobId", isEqualTo: widget.job.jobID)
-        .get()
-        .then((res) => {
-         // print(res.docs.length)
-
-        if (res?.docs.length > 0){
-
-          widget.proposalSet = true,
-          print(widget.proposalSet),
-        },
-        
-         }
-         );
-
-    return widget.proposalSet;
-  }
-
   ClientDataModel client;
+
+
   Future<bool> onLikeButtonTapped(bool isLiked) async {
     var temp;
     print(isLiked);
@@ -86,6 +57,20 @@ class _JobDetailsState extends State<JobDetails> {
     // client = await ClientDataService().getClientData(widget.job.authID);
     client = await ClientDataService().getClientData(widget.job.authID);
     widget.user = await UserDataService().getUserData();
+    await database
+        .collection("talent")
+        .doc(auth.currentUser.uid)
+        .collection("jobProposal")
+        .where("jobId", isEqualTo: widget.job.jobID)
+        .get()
+        .then((res) => {
+              if (res?.docs.length > 0)
+                {
+                  widget.proposalSet = true,
+                  print(widget.proposalSet),
+                },
+            });
+
 
     if (this.mounted) setState(() {});
   }
@@ -94,6 +79,7 @@ class _JobDetailsState extends State<JobDetails> {
   void initState() {
     super.initState();
     getData();
+   
   }
 
   @override
@@ -724,8 +710,60 @@ class _JobDetailsState extends State<JobDetails> {
                         child: Center(
                             child: Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: proposal() ==true
-                              ? Text('data')
+                          child:widget.proposalSet == true
+                              ? InkWell(
+                          child: Text(
+                            "Withdraw Proposal",
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onTap: () {
+                            database
+                                .collection('job')
+                                .doc(widget.job.jobID)
+                                .collection('proposals')
+                                .where("talentId",
+                                    isEqualTo: auth.currentUser.uid)
+                                .get()
+                                .then((QuerySnapshot res) {
+                              res.docs.forEach((doc) {
+                                database
+                                    .collection('job')
+                                    .doc(widget.job.jobID)
+                                    .collection('proposals')
+                                    .doc(doc.id)
+                                    .delete();
+                              });
+                            });
+                            database
+                                .collection('talent')
+                                .doc(auth.currentUser.uid)
+                                .collection('jobProposal')
+                                .where("jobId", isEqualTo: widget.job.jobID)
+                                .get()
+                                .then((QuerySnapshot res) {
+                              res.docs.forEach((doc) {
+                                print(doc.id);
+                                database
+                                    .collection('talent')
+                                    .doc(auth.currentUser.uid)
+                                    .collection('jobProposal')
+                                    .doc(doc.id)
+                                    .delete();
+                                print('delete');
+                              });
+                            });
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) {
+                                return SubmitProposal(widget.job);
+                              }),
+                            );
+                          },
+                        )
+                      
                               : InkWell(
                                   child: Text(
                                     "Submit a Proposal",
@@ -772,7 +810,8 @@ class _JobDetailsState extends State<JobDetails> {
                               );
                             },
                           ),
-                        )),
+                        )
+                      ),
                       ),
                     )
                   ],
