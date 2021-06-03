@@ -59,34 +59,6 @@ class _JobCardState extends State<JobCard> {
                 SizedBox(
                   height: size.height * 0.001,
                 ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                //   children: [
-                //     Text(
-                //       "Less than 30 hrs/week",
-                //       style:
-                //           TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                //     ),
-                //     Text(
-                //       "1 to 3 months",
-                //       style:
-                //           TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                //     ),
-                //   ],
-                // ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                //   children: [
-                //     Text(
-                //       "Hours needed",
-                //       style: TextStyle(fontSize: 17, color: Colors.grey),
-                //     ),
-                //     Text(
-                //       "Duration",
-                //       style: TextStyle(fontSize: 17, color: Colors.grey),
-                //     ),
-                //   ],
-                // ),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
@@ -118,7 +90,8 @@ class _JobCardState extends State<JobCard> {
                     children: [
                       for (var i = 0; i < widget.job?.skills.length; i++)
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 5),
+                          padding: const EdgeInsets.only(
+                              bottom: 5, left: 5, right: 2),
                           child: Container(
                             decoration: BoxDecoration(
                                 color: Color(0xffCDCECB),
